@@ -12,6 +12,7 @@
 		D026F9D72372E41200372EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D026F9D62372E41200372EA0 /* Assets.xcassets */; };
 		D026F9DA2372E41200372EA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D026F9D82372E41200372EA0 /* LaunchScreen.storyboard */; };
 		D026F9EA2373027B00372EA0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026F9E92373027B00372EA0 /* HomeViewController.swift */; };
+		D05A455B237892E5000E8363 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A455A237892E5000E8363 /* TabBarView.swift */; };
 		D0736011237491F500CD6B72 /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0736010237491F500CD6B72 /* ProductsCollectionViewController.swift */; };
 		D0736013237494E600CD6B72 /* ProductsCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0736012237494E600CD6B72 /* ProductsCollectionViewModel.swift */; };
 		D07360162374A46300CD6B72 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360152374A46300CD6B72 /* TabBarViewController.swift */; };
@@ -29,6 +30,7 @@
 		D026F9D92372E41200372EA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D026F9DB2372E41200372EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D026F9E92373027B00372EA0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D05A455A237892E5000E8363 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		D0736010237491F500CD6B72 /* ProductsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewController.swift; sourceTree = "<group>"; };
 		D0736012237494E600CD6B72 /* ProductsCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewModel.swift; sourceTree = "<group>"; };
 		D07360152374A46300CD6B72 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		D026F9E12372E52400372EA0 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				D09C29672378E87F007E69AF /* Extensions */,
 				D026F9E22372E52B00372EA0 /* Protocols */,
 			);
 			path = Additions;
@@ -133,6 +136,14 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		D05A4559237892C0000E8363 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D05A455A237892E5000E8363 /* TabBarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D073600E2374908D00CD6B72 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +163,7 @@
 		D07360142374A44300CD6B72 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				D05A4559237892C0000E8363 /* Views */,
 				D07360152374A46300CD6B72 /* TabBarViewController.swift */,
 			);
 			path = TabBar;
@@ -171,6 +183,13 @@
 				D08A5C9F2374C9EF00221F37 /* SearchViewController.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		D09C29672378E87F007E69AF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D08A5CA02374C9EF00221F37 /* SearchViewController.swift in Sources */,
+				D05A455B237892E5000E8363 /* TabBarView.swift in Sources */,
 				D0736011237491F500CD6B72 /* ProductsCollectionViewController.swift in Sources */,
 				D0736013237494E600CD6B72 /* ProductsCollectionViewModel.swift in Sources */,
 				D07360182374A9E700CD6B72 /* UIViewController.swift in Sources */,

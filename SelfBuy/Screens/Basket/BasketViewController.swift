@@ -1,5 +1,5 @@
 //
-//  SearchViewController.swift
+//  BasketViewController.swift
 //  SelfBuy
 //
 //  Created by Maxence Mottard on 07/11/2019.
@@ -8,13 +8,11 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class BasketViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = .orange
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .lightGray
     }
     
 

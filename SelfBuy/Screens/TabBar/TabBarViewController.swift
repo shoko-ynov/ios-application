@@ -10,29 +10,47 @@ import UIKit
 
 final class TabBarViewController: UITabBarController {
     
+    private var tabBarView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 35
+        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        view.backgroundColor = .white
+        view.applyShadow()
+        
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.delegate = self
         
-        let homeVC = HomeViewController()
-        let homeNavigationVC = UINavigationController(rootViewController: homeVC)
-        homeNavigationVC.tabBarItem.image = UIImage(named: "home")
+        let homeNavigationController = UINavigationController(controller: HomeViewController(), imageName: "home")
+        let basketNavigationController = UINavigationController(controller: BasketViewController(), imageName: "basket")
+        let profileNavigationController = UINavigationController(controller: ProfileViewController(), imageName: "user")
         
-        let profileVC = ProfileViewController()
-        let profileNavigationVC = UINavigationController(rootViewController: profileVC)
-        profileNavigationVC.tabBarItem.image = UIImage(named: "user")
+        self.viewControllers = [
+            homeNavigationController,
+            basketNavigationController,
+            profileNavigationController
+        ]
         
-        let searchVC = SearchViewController()
-        let searchNavigationVC = UINavigationController(rootViewController: searchVC)
-        searchNavigationVC.tabBarItem.image = UIImage(named: "search")
-        
-        self.viewControllers = [ homeNavigationVC, profileNavigationVC, searchNavigationVC ]
-        
-        //tabBar.shadowImage = UIImage()
+        tabBar.shadowImage = UIImage()
         tabBar.backgroundImage = UIImage()
-        //tabBar.backgroundColor = .white
-        tabBar.tintColor = .green
+        tabBar.tintColor = .primary
+        tabBar.unselectedItemTintColor = .darkGray
+        tabBar.clipsToBounds = true
+        
+        let window = UIApplication.shared.windows[0]
+        let bottomPadding = window.safeAreaInsets.bottom
+        let tabBarViewHeight = tabBar.frame.height + bottomPadding
+        tabBarView.frame = CGRect(
+            x: 0,
+            y: view.frame.height - tabBarViewHeight,
+            width: tabBar.frame.width,
+            height: tabBarViewHeight
+        )
+        view.insertSubview(tabBarView, belowSubview: tabBar)
         
         for tabBarItem in tabBar.items! {
             tabBarItem.title = ""

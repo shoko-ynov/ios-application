@@ -10,12 +10,16 @@ import Foundation
 import UIKit
 
 extension UIView {
-   
-    func applyShadow() {
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 8.0
-        self.layer.shadowOpacity = 0.13
-    }
     
+     func applyShadow() {
+         self.layer.shadowColor = UIColor.black.cgColor
+         self.layer.shadowOffset = .zero
+         self.layer.shadowRadius = 8.0
+         self.layer.shadowOpacity = 0.13
+     }
+     
+      func applyCornerRadius() {
+        self.layer.cornerRadius = 15
+      }
+      
 }

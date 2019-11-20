@@ -14,6 +14,11 @@ extension UINavigationController {
     public convenience init(controller: UIViewController, imageName image: String) {
         self.init(rootViewController: controller)
         controller.tabBarItem.image = UIImage(named: image)
+        
+        
     }
+    
+
+    
     
 }

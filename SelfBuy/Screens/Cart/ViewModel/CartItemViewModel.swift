@@ -1,5 +1,5 @@
 //
-//  CartCellViewModel.swift
+//  CartItemViewModel.swift
 //  SelfBuy
 //
 //  Created by Arthur on 20/11/2019.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol CartCellViewModelling {
+protocol CartItemViewModelling {
     var cartItem: CartItem { get }
 }
 
-final class CartCellViewModel : CartCellViewModelling {
+final class CartItemViewModel : CartItemViewModelling {
 
     let cartItem: CartItem
     

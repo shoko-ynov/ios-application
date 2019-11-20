@@ -11,8 +11,16 @@ import UIKit
 
 extension UILabel {
     
-    func setFontSize(size fontSize: CGFloat) {
-        self.font = UIFont(name: "", size: fontSize)
+    func setToBold(size: CGFloat) {
+        self.font = UIFont(name: "Poppins-Bold", size: size)
+    }
+    
+    func setToMedium(size: CGFloat) {
+        self.font = UIFont(name: "Poppins-Medium", size: size)
+    }
+    
+    func setToLight(size: CGFloat) {
+        self.font = UIFont(name: "Poppins-Light", size: size)
     }
     
 }

@@ -26,12 +26,12 @@ final class TabBarViewController: UITabBarController {
         self.delegate = self
         
         let homeNavigationController = UINavigationController(controller: HomeViewController(), imageName: "home")
-        let basketNavigationController = UINavigationController(controller: CartTableViewController(viewModel: CartTableViewModel()), imageName: "basket")
+        let cartNavigationController = UINavigationController(controller: CartViewController(viewModel: CartViewModel()), imageName: "cart")
         let profileNavigationController = UINavigationController(controller: ProfileViewController(), imageName: "user")
         
         self.viewControllers = [
             homeNavigationController,
-            basketNavigationController,
+            cartNavigationController,
             profileNavigationController
         ]
         

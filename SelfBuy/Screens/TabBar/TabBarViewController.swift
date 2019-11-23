@@ -25,14 +25,17 @@ final class TabBarViewController: UITabBarController {
         
         self.delegate = self
         
-        let homeNavigationController = UINavigationController(controller: HomeViewController(), imageName: "home")
-        let cartNavigationController = UINavigationController(controller: CartViewController(viewModel: CartViewModel()), imageName: "cart")
-        let profileNavigationController = UINavigationController(controller: ProfileViewController(), imageName: "user")
+        let homeVC = HomeViewController()
+        homeVC.tabBarItem.image = UIImage(named: "home")
+        let cartVC = CartViewController(viewModel: CartViewModel())
+        cartVC.tabBarItem.image = UIImage(named: "cart")
+        let profileVC = ProfileViewController()
+        profileVC.tabBarItem.image = UIImage(named: "user")
         
         self.viewControllers = [
-            homeNavigationController,
-            cartNavigationController,
-            profileNavigationController
+            homeVC,
+            cartVC,
+            profileVC
         ]
         
         tabBar.shadowImage = UIImage()

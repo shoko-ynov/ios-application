@@ -12,7 +12,7 @@ class CartCellView: UICollectionViewCell, ReusableView {
     
     private lazy var itemTitle: UILabel = {
         let label = UILabel()
-        label.tintColor = .black
+        label.textColor = .black
         label.setToBold(size: 16)
         
         return label
@@ -22,14 +22,14 @@ class CartCellView: UICollectionViewCell, ReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.addSubview(itemTitle)
+        contentView.addSubview(itemTitle)
         
         itemTitle.anchor(
-            top: self.topAnchor,
-            leading: self.leadingAnchor,
+            top: contentView.topAnchor,
+            leading: contentView.leadingAnchor,
             bottom: nil,
-            trailing: self.trailingAnchor,
-            padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            trailing: contentView.trailingAnchor,
+            padding: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0)
         )
         
         backgroundColor = .white

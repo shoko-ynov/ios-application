@@ -20,7 +20,6 @@
 		D05A455B237892E5000E8363 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A455A237892E5000E8363 /* TabBarView.swift */; };
 		D0719DCC238469610046EC0B /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719DCB238469610046EC0B /* UIViewExtensions.swift */; };
 		D0719DD023847DC10046EC0B /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719DCF23847DC10046EC0B /* UIColorExtensions.swift */; };
-		D0719DD2238489860046EC0B /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719DD1238489860046EC0B /* UINavigationControllerExtensions.swift */; };
 		D0736011237491F500CD6B72 /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0736010237491F500CD6B72 /* ProductsCollectionViewController.swift */; };
 		D0736013237494E600CD6B72 /* ProductsCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0736012237494E600CD6B72 /* ProductsCollectionViewModel.swift */; };
 		D07360162374A46300CD6B72 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360152374A46300CD6B72 /* TabBarViewController.swift */; };
@@ -28,6 +27,7 @@
 		D073601A2374AA1500CD6B72 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360192374AA1500CD6B72 /* ReusableView.swift */; };
 		D08A5C9D2374C78100221F37 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A5C9C2374C78100221F37 /* ProfileViewController.swift */; };
 		D0941C3A238912F30052F598 /* CartCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0941C39238912F30052F598 /* CartCellView.swift */; };
+		D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0941C3C238942EE0052F598 /* UIViewControllerExtenstion.swift */; };
 		D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B11B8A2385C3F000C74CEA /* CartViewController.swift */; };
 		D0B11B8F2385DEDE00C74CEA /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B11B8C2385DEDE00C74CEA /* Poppins-Medium.ttf */; };
 		D0B11B902385DEDE00C74CEA /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B11B8D2385DEDE00C74CEA /* Poppins-Bold.ttf */; };
@@ -50,7 +50,6 @@
 		D05A455A237892E5000E8363 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		D0719DCB238469610046EC0B /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		D0719DCF23847DC10046EC0B /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
-		D0719DD1238489860046EC0B /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		D0736010237491F500CD6B72 /* ProductsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewController.swift; sourceTree = "<group>"; };
 		D0736012237494E600CD6B72 /* ProductsCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewModel.swift; sourceTree = "<group>"; };
 		D07360152374A46300CD6B72 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +57,7 @@
 		D07360192374AA1500CD6B72 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		D08A5C9C2374C78100221F37 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D0941C39238912F30052F598 /* CartCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCellView.swift; sourceTree = "<group>"; };
+		D0941C3C238942EE0052F598 /* UIViewControllerExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtenstion.swift; sourceTree = "<group>"; };
 		D0B11B8A2385C3F000C74CEA /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D0B11B8C2385DEDE00C74CEA /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		D0B11B8D2385DEDE00C74CEA /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -131,6 +131,7 @@
 		D026F9E12372E52400372EA0 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				D0941C3B238942B80052F598 /* Reusables */,
 				D09C29672378E87F007E69AF /* Extensions */,
 				D026F9E22372E52B00372EA0 /* Protocols */,
 			);
@@ -239,13 +240,20 @@
 			path = Cart;
 			sourceTree = "<group>";
 		};
+		D0941C3B238942B80052F598 /* Reusables */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reusables;
+			sourceTree = "<group>";
+		};
 		D09C29672378E87F007E69AF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				D0719DCB238469610046EC0B /* UIViewExtensions.swift */,
 				D0719DCF23847DC10046EC0B /* UIColorExtensions.swift */,
-				D0719DD1238489860046EC0B /* UINavigationControllerExtensions.swift */,
 				8E1C3CBE23858FE6005847A0 /* UILabelExtensions.swift */,
+				D0941C3C238942EE0052F598 /* UIViewControllerExtenstion.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -345,9 +353,9 @@
 				D073601A2374AA1500CD6B72 /* ReusableView.swift in Sources */,
 				D0941C3A238912F30052F598 /* CartCellView.swift in Sources */,
 				D026F9CE2372E41000372EA0 /* AppDelegate.swift in Sources */,
+				D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */,
 				8E1C3CBF23858FE6005847A0 /* UILabelExtensions.swift in Sources */,
 				D026F9D02372E41000372EA0 /* SceneDelegate.swift in Sources */,
-				D0719DD2238489860046EC0B /* UINavigationControllerExtensions.swift in Sources */,
 				D08A5C9D2374C78100221F37 /* ProfileViewController.swift in Sources */,
 				D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */,
 				D07360162374A46300CD6B72 /* TabBarViewController.swift in Sources */,

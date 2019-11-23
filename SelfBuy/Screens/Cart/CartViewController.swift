@@ -10,20 +10,11 @@ import UIKit
 
 final class CartViewController: UIViewController {
 
-    private lazy var itemCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    private var itemCollectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .clear
         
         return collectionView
-    }()
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.text = "Mon panier"
-        label.setToBold(size: 30)
-        
-        return label
     }()
     
     let viewModel: CartViewModelling
@@ -39,16 +30,15 @@ final class CartViewController: UIViewController {
     
     fileprivate func setupView() {
         view.backgroundColor = .lightGray
-        view.addSubview(titleLabel)
         view.addSubview(itemCollectionView)
         
-        titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 10, left: 20, bottom: 0, right: 20))
+        let titleLabel = setTitleLabel("Mon panier")
         
         itemCollectionView.delegate = self
         itemCollectionView.dataSource = self
         itemCollectionView.alwaysBounceVertical = true
         itemCollectionView.register(CartCellView.self, forCellWithReuseIdentifier: CartCellView.reuseIdentifier)
-        itemCollectionView.anchor(top: titleLabel.bottomAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 5, left: 20, bottom: 5, right: 20))
+        itemCollectionView.anchor(top: titleLabel.bottomAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 5, left: 0, bottom: 5, right: 0))
         
     }
     
@@ -77,14 +67,10 @@ extension CartViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("NUMBER OF ITEMS")
-        print(self.viewModel.numberOfItems)
         return self.viewModel.numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("\n IndexPath")
-        print(indexPath.row)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CartCellView.reuseIdentifier, for: indexPath) as! CartCellView
         cell.configure(with: self.viewModel.getItem(index: indexPath))
         
@@ -104,12 +90,12 @@ extension CartViewController: UICollectionViewDelegate {
 extension CartViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = itemCollectionView.frame.height
-        return CGSize.init(width: size - 21, height: size)
+        let size = itemCollectionView.frame.width
+        return CGSize.init(width: size - 30, height: 70)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.init(top: 0, left: 16, bottom: 0, right: 16)
+        return UIEdgeInsets.init(top: 25, left: 0, bottom: 0, right: 0)
     }
 
 }

@@ -14,12 +14,12 @@ extension UIView {
     func applyShadow() {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 8.0
-        self.layer.shadowOpacity = 0.13
+        self.layer.shadowRadius = 5.0
+        self.layer.shadowOpacity = 0.08
     }
     
     func applyCornerRadius() {
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = 8
     }
     
     func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {

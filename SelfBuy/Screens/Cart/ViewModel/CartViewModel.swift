@@ -33,7 +33,7 @@ final class CartViewModel: CartViewModelling {
     }
     
     init() {
-        let product = Product(_id: "azçà", name: "Test de produit", price: 3.0, description: "Hola la famille", images: [])
+        let product = Product(_id: "azçà", name: "Test de produit", category: "Divers", price: 3.0, description: "Hola la famille", images: [])
         let item = CartItem(_id: "189U3H1B", cartId: "10K213K1", product: product, quantity: 3)
         
         self.itemsViewModels.append(CartCellViewModel(cartItem: item))

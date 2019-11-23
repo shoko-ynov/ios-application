@@ -17,11 +17,16 @@
 		D026F9D72372E41200372EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D026F9D62372E41200372EA0 /* Assets.xcassets */; };
 		D026F9DA2372E41200372EA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D026F9D82372E41200372EA0 /* LaunchScreen.storyboard */; };
 		D026F9EA2373027B00372EA0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026F9E92373027B00372EA0 /* HomeViewController.swift */; };
-		D05A455B237892E5000E8363 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A455A237892E5000E8363 /* TabBarView.swift */; };
+		D043C0B523894A9E00B05967 /* ProductCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043C0B423894A9E00B05967 /* ProductCellView.swift */; };
+		D043C0B723894BC100B05967 /* ProductCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043C0B623894BC100B05967 /* ProductCellViewModel.swift */; };
+		D043C0BB23894D0F00B05967 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = D043C0BA23894D0F00B05967 /* Cartfile */; };
+		D043C0BD23894E5F00B05967 /* ProductApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043C0BC23894E5F00B05967 /* ProductApiService.swift */; };
+		D043C0BF23894F9400B05967 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043C0BE23894F9400B05967 /* Config.swift */; };
+		D043C0C32389526600B05967 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043C0C22389526600B05967 /* Alamofire.framework */; };
+		D043C0C62389566600B05967 /* ApiDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043C0C52389566600B05967 /* ApiDTO.swift */; };
 		D0719DCC238469610046EC0B /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719DCB238469610046EC0B /* UIViewExtensions.swift */; };
 		D0719DD023847DC10046EC0B /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719DCF23847DC10046EC0B /* UIColorExtensions.swift */; };
-		D0736011237491F500CD6B72 /* ProductsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0736010237491F500CD6B72 /* ProductsCollectionViewController.swift */; };
-		D0736013237494E600CD6B72 /* ProductsCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0736012237494E600CD6B72 /* ProductsCollectionViewModel.swift */; };
+		D0736013237494E600CD6B72 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0736012237494E600CD6B72 /* HomeViewModel.swift */; };
 		D07360162374A46300CD6B72 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360152374A46300CD6B72 /* TabBarViewController.swift */; };
 		D07360182374A9E700CD6B72 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360172374A9E700CD6B72 /* UIViewController.swift */; };
 		D073601A2374AA1500CD6B72 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360192374AA1500CD6B72 /* ReusableView.swift */; };
@@ -47,11 +52,16 @@
 		D026F9D92372E41200372EA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D026F9DB2372E41200372EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D026F9E92373027B00372EA0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		D05A455A237892E5000E8363 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		D043C0B423894A9E00B05967 /* ProductCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellView.swift; sourceTree = "<group>"; };
+		D043C0B623894BC100B05967 /* ProductCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellViewModel.swift; sourceTree = "<group>"; };
+		D043C0BA23894D0F00B05967 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		D043C0BC23894E5F00B05967 /* ProductApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductApiService.swift; sourceTree = "<group>"; };
+		D043C0BE23894F9400B05967 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		D043C0C22389526600B05967 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		D043C0C52389566600B05967 /* ApiDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiDTO.swift; sourceTree = "<group>"; };
 		D0719DCB238469610046EC0B /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		D0719DCF23847DC10046EC0B /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
-		D0736010237491F500CD6B72 /* ProductsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewController.swift; sourceTree = "<group>"; };
-		D0736012237494E600CD6B72 /* ProductsCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewModel.swift; sourceTree = "<group>"; };
+		D0736012237494E600CD6B72 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D07360152374A46300CD6B72 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D07360172374A9E700CD6B72 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		D07360192374AA1500CD6B72 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
@@ -69,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D043C0C32389526600B05967 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +106,7 @@
 		8E1C3CB923858868005847A0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D043C0C42389565600B05967 /* DTO */,
 				8E1C3CBA238588AA005847A0 /* CartItem.swift */,
 				8E1C3CBC238588D0005847A0 /* Product.swift */,
 			);
@@ -104,8 +116,10 @@
 		D026F9C12372E41000372EA0 = {
 			isa = PBXGroup;
 			children = (
+				D043C0BA23894D0F00B05967 /* Cartfile */,
 				D026F9CC2372E41000372EA0 /* SelfBuy */,
 				D026F9CB2372E41000372EA0 /* Products */,
+				D043C0C12389526600B05967 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,6 +138,7 @@
 				D026F9E12372E52400372EA0 /* Additions */,
 				D026F9E32372E53700372EA0 /* Application */,
 				D026F9E52372E5A800372EA0 /* Screens */,
+				D043C0B823894CA700B05967 /* Services */,
 			);
 			path = SelfBuy;
 			sourceTree = "<group>";
@@ -152,6 +167,7 @@
 			children = (
 				D026F9CD2372E41000372EA0 /* AppDelegate.swift */,
 				D026F9CF2372E41000372EA0 /* SceneDelegate.swift */,
+				D043C0BE23894F9400B05967 /* Config.swift */,
 				D026F9E42372E54D00372EA0 /* Supporting Files */,
 			);
 			path = Application;
@@ -182,33 +198,50 @@
 		D026F9E62372E5E500372EA0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D043C0B323894A8100B05967 /* Reusables */,
 				D073600F2374909300CD6B72 /* ViewModels */,
-				D073600E2374908D00CD6B72 /* Views */,
 				D026F9E92373027B00372EA0 /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		D05A4559237892C0000E8363 /* Views */ = {
+		D043C0B323894A8100B05967 /* Reusables */ = {
 			isa = PBXGroup;
 			children = (
-				D05A455A237892E5000E8363 /* TabBarView.swift */,
+				D043C0B423894A9E00B05967 /* ProductCellView.swift */,
 			);
-			path = Views;
+			path = Reusables;
 			sourceTree = "<group>";
 		};
-		D073600E2374908D00CD6B72 /* Views */ = {
+		D043C0B823894CA700B05967 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D0736010237491F500CD6B72 /* ProductsCollectionViewController.swift */,
+				D043C0BC23894E5F00B05967 /* ProductApiService.swift */,
 			);
-			path = Views;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D043C0C12389526600B05967 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D043C0C22389526600B05967 /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D043C0C42389565600B05967 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				D043C0C52389566600B05967 /* ApiDTO.swift */,
+			);
+			path = DTO;
 			sourceTree = "<group>";
 		};
 		D073600F2374909300CD6B72 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				D0736012237494E600CD6B72 /* ProductsCollectionViewModel.swift */,
+				D0736012237494E600CD6B72 /* HomeViewModel.swift */,
+				D043C0B623894BC100B05967 /* ProductCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -216,7 +249,6 @@
 		D07360142374A44300CD6B72 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				D05A4559237892C0000E8363 /* Views */,
 				D07360152374A46300CD6B72 /* TabBarViewController.swift */,
 			);
 			path = TabBar;
@@ -275,6 +307,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D026F9DE2372E41200372EA0 /* Build configuration list for PBXNativeTarget "SelfBuy" */;
 			buildPhases = (
+				D043C0C02389515B00B05967 /* Carthage Script */,
 				D026F9C62372E41000372EA0 /* Sources */,
 				D026F9C72372E41000372EA0 /* Frameworks */,
 				D026F9C82372E41000372EA0 /* Resources */,
@@ -326,6 +359,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D043C0BB23894D0F00B05967 /* Cartfile in Resources */,
 				D0B11B8F2385DEDE00C74CEA /* Poppins-Medium.ttf in Resources */,
 				D0B11B912385DEDE00C74CEA /* Poppins-Light.ttf in Resources */,
 				D026F9DA2372E41200372EA0 /* LaunchScreen.storyboard in Resources */,
@@ -336,6 +370,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D043C0C02389515B00B05967 /* Carthage Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			name = "Carthage Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D026F9C62372E41000372EA0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -343,12 +402,11 @@
 			files = (
 				8E1C3CBD238588D0005847A0 /* Product.swift in Sources */,
 				D0719DD023847DC10046EC0B /* UIColorExtensions.swift in Sources */,
+				D043C0B523894A9E00B05967 /* ProductCellView.swift in Sources */,
 				8E1C3CB823856DFC005847A0 /* CartCellViewModel.swift in Sources */,
-				D05A455B237892E5000E8363 /* TabBarView.swift in Sources */,
 				8E1C3CBB238588AA005847A0 /* CartItem.swift in Sources */,
-				D0736011237491F500CD6B72 /* ProductsCollectionViewController.swift in Sources */,
 				8E1C3CB323856B1E005847A0 /* CartViewModel.swift in Sources */,
-				D0736013237494E600CD6B72 /* ProductsCollectionViewModel.swift in Sources */,
+				D0736013237494E600CD6B72 /* HomeViewModel.swift in Sources */,
 				D07360182374A9E700CD6B72 /* UIViewController.swift in Sources */,
 				D073601A2374AA1500CD6B72 /* ReusableView.swift in Sources */,
 				D0941C3A238912F30052F598 /* CartCellView.swift in Sources */,
@@ -356,6 +414,10 @@
 				D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */,
 				8E1C3CBF23858FE6005847A0 /* UILabelExtensions.swift in Sources */,
 				D026F9D02372E41000372EA0 /* SceneDelegate.swift in Sources */,
+				D043C0B723894BC100B05967 /* ProductCellViewModel.swift in Sources */,
+				D043C0C62389566600B05967 /* ApiDTO.swift in Sources */,
+				D043C0BF23894F9400B05967 /* Config.swift in Sources */,
+				D043C0BD23894E5F00B05967 /* ProductApiService.swift in Sources */,
 				D08A5C9D2374C78100221F37 /* ProfileViewController.swift in Sources */,
 				D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */,
 				D07360162374A46300CD6B72 /* TabBarViewController.swift in Sources */,
@@ -498,6 +560,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4J5D3N22R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "SelfBuy/Application/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -516,6 +582,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4J5D3N22R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "SelfBuy/Application/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol HomeViewModelling: class {
     var numberOfSection: Int { get }
@@ -15,9 +16,13 @@ protocol HomeViewModelling: class {
     var service: ProductApiService { get }
     func getItem(index: IndexPath) -> ProductCellViewModelling
     func fetchData()
+    var bag: DisposeBag { get }
+    var shouldReloadData: PublishSubject<Void> { get }
 }
 
 class HomeViewModel: HomeViewModelling {
+    var bag = DisposeBag()
+    var shouldReloadData: PublishSubject<Void> = PublishSubject<Void>()
     
     init() {
         
@@ -30,7 +35,11 @@ class HomeViewModel: HomeViewModelling {
         return self.productViewModels.count
     }
     
-    var productViewModels: [ProductCellViewModelling] = []
+    var productViewModels = [ProductCellViewModelling]() {
+        didSet {
+            self.shouldReloadData.onNext(())
+        }
+    }
     
     func getItem(index: IndexPath) -> ProductCellViewModelling {
         return self.productViewModels[index.row]
@@ -40,11 +49,13 @@ class HomeViewModel: HomeViewModelling {
         service.getAllProducts { result in
             switch result {
             case .success(let products):
+                self.productViewModels = []
                 for product in products {
                     self.productViewModels.append(ProductCellViewModel(product: product))
                 }
             case .failure(let error as NSError):
                 print(error)
+                self.productViewModels = []
             }
         }
     }

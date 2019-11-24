@@ -33,6 +33,7 @@
 		D08A5C9D2374C78100221F37 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A5C9C2374C78100221F37 /* ProfileViewController.swift */; };
 		D0941C3A238912F30052F598 /* CartCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0941C39238912F30052F598 /* CartCellView.swift */; };
 		D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0941C3C238942EE0052F598 /* UIViewControllerExtenstion.swift */; };
+		D097768B238AA8250080F701 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D097768A238AA8250080F701 /* UIImageViewExtensions.swift */; };
 		D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B11B8A2385C3F000C74CEA /* CartViewController.swift */; };
 		D0B11B8F2385DEDE00C74CEA /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B11B8C2385DEDE00C74CEA /* Poppins-Medium.ttf */; };
 		D0B11B902385DEDE00C74CEA /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B11B8D2385DEDE00C74CEA /* Poppins-Bold.ttf */; };
@@ -68,6 +69,7 @@
 		D08A5C9C2374C78100221F37 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D0941C39238912F30052F598 /* CartCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCellView.swift; sourceTree = "<group>"; };
 		D0941C3C238942EE0052F598 /* UIViewControllerExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtenstion.swift; sourceTree = "<group>"; };
+		D097768A238AA8250080F701 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		D0B11B8A2385C3F000C74CEA /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D0B11B8C2385DEDE00C74CEA /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		D0B11B8D2385DEDE00C74CEA /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				D0719DCF23847DC10046EC0B /* UIColorExtensions.swift */,
 				8E1C3CBE23858FE6005847A0 /* UILabelExtensions.swift */,
 				D0941C3C238942EE0052F598 /* UIViewControllerExtenstion.swift */,
+				D097768A238AA8250080F701 /* UIImageViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				D07360182374A9E700CD6B72 /* UIViewController.swift in Sources */,
 				D073601A2374AA1500CD6B72 /* ReusableView.swift in Sources */,
 				D0941C3A238912F30052F598 /* CartCellView.swift in Sources */,
+				D097768B238AA8250080F701 /* UIImageViewExtensions.swift in Sources */,
 				D026F9CE2372E41000372EA0 /* AppDelegate.swift in Sources */,
 				D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */,
 				8E1C3CBF23858FE6005847A0 /* UILabelExtensions.swift in Sources */,

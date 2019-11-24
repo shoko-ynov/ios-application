@@ -24,3 +24,19 @@ extension UILabel {
     }
     
 }
+
+extension UITextField {
+    
+    func setToBold(size: CGFloat) {
+        self.font = UIFont(name: "Poppins-Bold", size: size)
+    }
+    
+    func setToMedium(size: CGFloat) {
+        self.font = UIFont(name: "Poppins-Medium", size: size)
+    }
+    
+    func setToLight(size: CGFloat) {
+        self.font = UIFont(name: "Poppins-Light", size: size)
+    }
+    
+}

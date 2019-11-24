@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class HomeViewController: UIViewController {
     
@@ -18,6 +20,7 @@ final class HomeViewController: UIViewController {
     }()
     
     let viewModel: HomeViewModelling
+    let dispodeBag = DisposeBag()
     
     init(viewModel: HomeViewModelling) {
         self.viewModel = viewModel
@@ -35,6 +38,13 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         // Je dois reload la collectionView une fois que j'ai récupéré les données.
+        self.viewModel
+            .shouldReloadData
+            .asDriver(onErrorJustReturn: ())
+            .drive(onNext: { [weak self] _ in
+                self?.productsCollectionView.reloadData()
+            })
+            .disposed(by: dispodeBag)
         self.viewModel.fetchData()
         setupView()
     }
@@ -74,7 +84,7 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCellView.reuseIdentifier, for: indexPath) as! ProductCellView
-        cell.configure(viewModel: "Bla")
+        cell.configure(viewModel: self.viewModel.getItem(index: indexPath))
         
         return cell
     }
@@ -86,5 +96,15 @@ extension HomeViewController: UICollectionViewDelegate {
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = productsCollectionView.frame.width
+        return CGSize.init(width: size / 2 - 20, height: 250)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return UIEdgeInsets.init(top: 25, left: 13, bottom: 0, right: 13)
+    }
     
 }

@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ProductCellView: UICollectionViewCell, ReusableView {
+final class ProductCellView: UICollectionViewCell, ReusableView {
     
+    //  MARK: - UI
     private lazy var productCategoryLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
@@ -18,13 +19,14 @@ class ProductCellView: UICollectionViewCell, ReusableView {
         return label
     }()
     
-    private lazy var productNameLabel: UITextField = {
-        let label = UITextField()
-        label.textColor = .black
-        label.setToMedium(size: 15)
-        label.contentVerticalAlignment = .top
+    private lazy var productNameLabel: UIViewLabel = {
+        let viewLabel = UIViewLabel()
+        viewLabel.label.textColor = .black
+        viewLabel.label.setToMedium(size: 15)
+        viewLabel.lineHeight = 0.8
+        viewLabel.numberOfRows = 2
         
-        return label
+        return viewLabel
     }()
     
     private lazy var productFirstImage: UIImageView = {
@@ -42,6 +44,7 @@ class ProductCellView: UICollectionViewCell, ReusableView {
         return label
     }()
     
+    //  MARK: - Behaviour
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -54,7 +57,7 @@ class ProductCellView: UICollectionViewCell, ReusableView {
         contentView.addSubview(productFirstImage)
         contentView.addSubview(productPriceLabel)
         
-        let padding = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        let padding = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         let spacing = 8
         
         productCategoryLabel.anchor(
@@ -68,15 +71,15 @@ class ProductCellView: UICollectionViewCell, ReusableView {
             leading: contentView.leadingAnchor,
             bottom: nil,
             trailing: contentView.trailingAnchor,
-            padding: .init(top: 0, left: padding.left, bottom: 0, right: padding.right),
-            size: .init(width: contentView.frame.width - padding.left - padding.right, height: productNameLabel.font!.lineHeight * 3))
+            padding: .init(top: 3, left: padding.left, bottom: 0, right: padding.right),
+            size: .init(width: contentView.frame.width - padding.left - padding.right, height: productNameLabel.label.font!.lineHeight * 2))
         productFirstImage.anchor(
             top: productNameLabel.bottomAnchor,
             leading: contentView.leadingAnchor,
             bottom: nil,
             trailing: contentView.trailingAnchor,
             padding: .init(top: 8, left: 0, bottom: 0, right: 0),
-            size: .init(width: contentView.frame.width, height: 110))
+            size: .init(width: contentView.frame.width, height: 120))
         productPriceLabel.anchor(
             top: nil,
             leading: contentView.leadingAnchor,
@@ -89,6 +92,7 @@ class ProductCellView: UICollectionViewCell, ReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //  MARK: - ViewModel
     func configure(viewModel: ProductCellViewModelling) {
         productNameLabel.text = viewModel.product.name
         

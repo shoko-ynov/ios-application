@@ -10,8 +10,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+//  MARK: - ViewController
+
 final class HomeViewController: UIViewController {
     
+    //  MARK: - UI
     private var productsCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .clear
@@ -19,6 +22,7 @@ final class HomeViewController: UIViewController {
         return collectionView
     }()
     
+    //  MARK: - Behaviour
     let viewModel: HomeViewModelling
     let dispodeBag = DisposeBag()
     
@@ -37,16 +41,18 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Je dois reload la collectionView une fois que j'ai récupéré les données.
-        self.viewModel
+        viewModel
             .shouldReloadData
             .asDriver(onErrorJustReturn: ())
             .drive(onNext: { [weak self] _ in
                 self?.productsCollectionView.reloadData()
             })
             .disposed(by: dispodeBag)
-        self.viewModel.fetchData()
         setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.viewModel.fetchData()
     }
     
     fileprivate func setupView() {
@@ -62,20 +68,10 @@ final class HomeViewController: UIViewController {
         productsCollectionView.anchor(top: titleLabel.bottomAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 5, left: 0, bottom: 5, right: 0))
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
+//  MARK: - ProductCollectionView
 extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

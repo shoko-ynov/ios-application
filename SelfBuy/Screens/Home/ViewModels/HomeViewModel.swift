@@ -20,7 +20,7 @@ protocol HomeViewModelling: class {
     var shouldReloadData: PublishSubject<Void> { get }
 }
 
-class HomeViewModel: HomeViewModelling {
+final class HomeViewModel: HomeViewModelling {
     var bag = DisposeBag()
     var shouldReloadData: PublishSubject<Void> = PublishSubject<Void>()
     

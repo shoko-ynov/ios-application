@@ -9,42 +9,13 @@
 import UIKit
 
 final class HomeViewController: UIViewController {
-
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView();
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.distribution = .fill
-        stackView.backgroundColor = .red
-        
-                
-        return stackView
-    }()
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Accueil"
-        label.textColor = .white
-        
-        return label
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(titleLabel)
+        _ = setTitleLabel("Accueil")
         view.backgroundColor = .lightGray
         
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50.0),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0)
-        ])
-        
-        self.view.layoutIfNeeded()
-        
-        //stackView.addArrangedSubview(productList)
     }
     
 

@@ -148,19 +148,19 @@ class ProfileViewController: UIViewController {
 //        ])
         
             ordersProfileButton.titleLabel?.anchor(
-                     top: accountProfileButton.bottomAnchor,
-                     leading: self.view.leadingAnchor,
-                     bottom: nil,
-                     trailing: self.view.trailingAnchor,
-                     padding: .init(top: 35, left: 35, bottom: 0, right: 0)
+                 top: accountProfileButton.bottomAnchor,
+                 leading: self.view.leadingAnchor,
+                 bottom: nil,
+                 trailing: self.view.trailingAnchor,
+                 padding: .init(top: 35, left: 35, bottom: 0, right: 0)
             )
              
         
         let lineView2 = UIView(frame: CGRect(x: 35, y: 490, width: 300, height: 1.0))
-        lineView2.layer.borderWidth = 1.0
-        lineView2.layer.borderColor = UIColor.gray.cgColor
-        self.view.addSubview(lineView2)
-        
+            lineView2.layer.borderWidth = 1.0
+            lineView2.layer.borderColor = UIColor.gray.cgColor
+            self.view.addSubview(lineView2)
+            
         // PAYMENT BUTTON
         let paymentProfileButton = UIButton()
             paymentProfileButton.setTitleColor(UIColor.gray, for: .normal)
@@ -187,11 +187,11 @@ class ProfileViewController: UIViewController {
 //        ])
         
             paymentProfileButton.titleLabel?.anchor(
-                     top: ordersProfileButton.bottomAnchor,
-                     leading: self.view.leadingAnchor,
-                     bottom: nil,
-                     trailing: self.view.trailingAnchor,
-                     padding: .init(top: 30, left: 35, bottom: 0, right: 0)
+                 top: ordersProfileButton.bottomAnchor,
+                 leading: self.view.leadingAnchor,
+                 bottom: nil,
+                 trailing: self.view.trailingAnchor,
+                 padding: .init(top: 30, left: 35, bottom: 0, right: 0)
             )
 
         let lineView3 = UIView(frame: CGRect(x: 35, y: 550, width: 300, height: 1.0))
@@ -223,18 +223,18 @@ class ProfileViewController: UIViewController {
 //        ])
         
             ppProfileButton.titleLabel?.anchor(
-                            top: paymentProfileButton.bottomAnchor,
-                            leading: self.view.leadingAnchor,
-                            bottom: nil,
-                            trailing: self.view.trailingAnchor,
-                            padding: .init(top: 30, left: 35, bottom: 0, right: 0)
+                top: paymentProfileButton.bottomAnchor,
+                leading: self.view.leadingAnchor,
+                bottom: nil,
+                trailing: self.view.trailingAnchor,
+                padding: .init(top: 30, left: 35, bottom: 0, right: 0)
            )
         
         
         let lineView4 = UIView(frame: CGRect(x: 35, y: 610, width: 300, height: 1.0))
-        lineView4.layer.borderWidth = 1.0
-        lineView4.layer.borderColor = UIColor.gray.cgColor
-        self.view.addSubview(lineView4)
+            lineView4.layer.borderWidth = 1.0
+            lineView4.layer.borderColor = UIColor.gray.cgColor
+            self.view.addSubview(lineView4)
         
         
         // ABOUT US BUTTON
@@ -262,11 +262,11 @@ class ProfileViewController: UIViewController {
 //        ])
         
             aboutUsProfileButton.titleLabel?.anchor(
-                            top: ppProfileButton.bottomAnchor,
-                            leading: self.view.leadingAnchor,
-                            bottom: nil,
-                            trailing: self.view.trailingAnchor,
-                            padding: .init(top: 30, left: 35, bottom: 0, right: 0)
+                top: ppProfileButton.bottomAnchor,
+                leading: self.view.leadingAnchor,
+                bottom: nil,
+                trailing: self.view.trailingAnchor,
+                padding: .init(top: 30, left: 35, bottom: 0, right: 0)
             )
             
         // SIGN OUT BUTTON
@@ -275,18 +275,18 @@ class ProfileViewController: UIViewController {
             logoutProfileButton.setTitleColor(UIColor.gray, for: .normal)
             logoutProfileButton.setTitleColor(.black, for: .highlighted)
             logoutProfileButton.addTarget(self, action: #selector(pushLogoutButtonAction), for: .touchUpInside)
-            logoutProfileButton.setTitle("About Us", for: .normal)
+            logoutProfileButton.setTitle("Sign Out", for: .normal)
             logoutProfileButton.titleLabel?.setToLight(size: 20)
             logoutProfileButton.translatesAutoresizingMaskIntoConstraints = false
             logoutProfileButton.semanticContentAttribute = .forceRightToLeft
             self.view.addSubview(logoutProfileButton)
         
             logoutProfileButton.titleLabel?.anchor(
-                             top: nil,
-                             leading: titleProfile.trailingAnchor,
-                             bottom: nil,
-                             trailing: self.view.trailingAnchor,
-                             padding: .init(top: 0, left: 0, bottom: 0, right: 0)
+                top: self.view.topAnchor,
+                 leading: titleProfile.leadingAnchor,
+                 bottom: nil,
+                 trailing: self.view.trailingAnchor,
+                 padding: .init(top: 60, left: 245, bottom: 0, right: 0)
             )
     }
     

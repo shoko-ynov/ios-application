@@ -46,7 +46,7 @@
 		8E1C3CBA238588AA005847A0 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		8E1C3CBC238588D0005847A0 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		8E1C3CBE23858FE6005847A0 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
-		D026F9CA2372E41000372EA0 /* SelfBuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SelfBuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D026F9CA2372E41000372EA0 /* Shok'o.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shok'o.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D026F9CD2372E41000372EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D026F9CF2372E41000372EA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D026F9D62372E41200372EA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 		D026F9CB2372E41000372EA0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D026F9CA2372E41000372EA0 /* SelfBuy.app */,
+				D026F9CA2372E41000372EA0 /* Shok'o.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -321,7 +321,7 @@
 			);
 			name = SelfBuy;
 			productName = SelfBuy;
-			productReference = D026F9CA2372E41000372EA0 /* SelfBuy.app */;
+			productReference = D026F9CA2372E41000372EA0 /* Shok'o.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -574,7 +574,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.maxencemottard.SelfBuy;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Shok'o";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -596,7 +596,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.maxencemottard.SelfBuy;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Shok'o";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

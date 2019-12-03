@@ -24,6 +24,7 @@ final class HomeViewController: UIViewController {
     
     //  MARK: - Behaviour
     let viewModel: HomeViewModelling
+    var products: [Product] = []
     let dispodeBag = DisposeBag()
     
     init(viewModel: HomeViewModelling) {
@@ -40,26 +41,20 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel
-            .shouldReloadData
-            .asDriver(onErrorJustReturn: ())
-            .drive(onNext: { [weak self] _ in
-                self?.productsCollectionView.reloadData()
-            })
-            .disposed(by: dispodeBag)
-        setupView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.viewModel.fetchData()
-    }
-    
-    fileprivate func setupView() {
+        setHeaderImage()
+        let titleLabel = setTitleLabel("Accueil", textColor: .white)
         view.backgroundColor = .lightGray
         view.addSubview(productsCollectionView)
         
-        let titleLabel = setTitleLabel("Accueil")
+        self.viewModel.fetchData()
+            .subscribe(onSuccess: { products in
+                self.products = products
+                self.productsCollectionView.reloadData()
+            }, onError: { err in
+                self.products = []
+                print(err)
+            }).disposed(by: dispodeBag)
+        
         
         productsCollectionView.delegate = self
         productsCollectionView.dataSource = self
@@ -75,12 +70,12 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.numberOfItems
+        return self.products.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCellView.reuseIdentifier, for: indexPath) as! ProductCellView
-        cell.configure(viewModel: self.viewModel.getItem(index: indexPath))
+        cell.configure(viewModel: ProductCellViewModel(product: self.products[indexPath.row]))
         
         return cell
     }

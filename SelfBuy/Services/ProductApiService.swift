@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 final class ProductApiService {
     let decoder = JSONDecoder()
@@ -27,6 +28,30 @@ final class ProductApiService {
                 case.failure(let error):
                     completion(.failure(error))
                 }
+        }
+        
+    }
+    
+    func getAllProducts() -> Single<[Product]> {
+        return Single<[Product]>.create { single in
+            AF.request("\(Config.baseApi)/products", method: .get)
+                .validate()
+                .responseData { response in
+                switch response.result {
+                case .success(let data):
+                    do {
+                        let decodedData = try self.decoder.decode(ProductsDTO.self, from: data)
+                        single(.success(decodedData.data))
+                    } catch let error {
+                        single(.error(error))
+                    }
+                case.failure(let error):
+                    single(.error(error))
+                }
+                
+            }
+            
+            return Disposables.create()
         }
         
     }

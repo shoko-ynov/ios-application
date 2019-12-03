@@ -23,10 +23,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
         
-       
         let tabBarVC = TabBarViewController()
+        let nvc = UINavigationController(rootViewController: tabBarVC)
+        nvc.navigationBar.backItem?.leftBarButtonItem?.tintColor = .white
+        nvc.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        nvc.navigationBar.shadowImage = UIImage()
+        nvc.navigationBar.isTranslucent = true
+        nvc.view.backgroundColor = .clear
         
-        window?.rootViewController = tabBarVC
+        window?.rootViewController = nvc
         //window?.makeKeyAndVisible()
     }
 

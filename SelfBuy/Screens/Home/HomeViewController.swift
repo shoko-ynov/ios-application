@@ -16,11 +16,10 @@ final class HomeViewController: UIViewController {
         stackView.alignment = .center
         stackView.distribution = .fill
         stackView.backgroundColor = .red
-        
-                
+
         return stackView
     }()
-    
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Accueil"

@@ -27,7 +27,7 @@ final class TabBarViewController: UITabBarController {
         
         let homeNavigationController = UINavigationController(controller: HomeViewController(), imageName: "home")
         let basketNavigationController = UINavigationController(controller: BasketViewController(), imageName: "basket")
-        let profileNavigationController = UINavigationController(controller: ProfileViewController(), imageName: "user")
+        let profileNavigationController = UINavigationController(controller: SignInViewController(), imageName: "user")
         
         self.viewControllers = [
             homeNavigationController,

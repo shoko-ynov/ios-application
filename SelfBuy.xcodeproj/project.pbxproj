@@ -32,6 +32,13 @@
 		D0B11B8F2385DEDE00C74CEA /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B11B8C2385DEDE00C74CEA /* Poppins-Medium.ttf */; };
 		D0B11B902385DEDE00C74CEA /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B11B8D2385DEDE00C74CEA /* Poppins-Bold.ttf */; };
 		D0B11B912385DEDE00C74CEA /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B11B8E2385DEDE00C74CEA /* Poppins-Light.ttf */; };
+		E3157A302397FDC7005CF4F6 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3157A2F2397FDC7005CF4F6 /* ProfileButton.swift */; };
+		E3157A322397FDE5005CF4F6 /* Reusables in Resources */ = {isa = PBXBuildFile; fileRef = E3157A312397FDE5005CF4F6 /* Reusables */; };
+		E3945F46239290AC007ED444 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F45239290AC007ED444 /* AccountViewController.swift */; };
+		E3945F48239290C8007ED444 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F47239290C8007ED444 /* OrdersViewController.swift */; };
+		E3945F4A239290D8007ED444 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F49239290D8007ED444 /* PaymentViewController.swift */; };
+		E3945F4C239290EA007ED444 /* PPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F4B239290EA007ED444 /* PPViewController.swift */; };
+		E3945F4E239290FB007ED444 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F4D239290FB007ED444 /* AboutUsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +69,13 @@
 		D0B11B8C2385DEDE00C74CEA /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		D0B11B8D2385DEDE00C74CEA /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		D0B11B8E2385DEDE00C74CEA /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		E3157A2F2397FDC7005CF4F6 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileButton.swift; path = Reusables/ProfileButton.swift; sourceTree = "<group>"; };
+		E3157A312397FDE5005CF4F6 /* Reusables */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Reusables; sourceTree = "<group>"; };
+		E3945F45239290AC007ED444 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		E3945F47239290C8007ED444 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		E3945F49239290D8007ED444 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		E3945F4B239290EA007ED444 /* PPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPViewController.swift; sourceTree = "<group>"; };
+		E3945F4D239290FB007ED444 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,7 +239,14 @@
 		D08A5C9B2374C75A00221F37 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E3157A312397FDE5005CF4F6 /* Reusables */,
 				D08A5C9C2374C78100221F37 /* ProfileViewController.swift */,
+				E3945F45239290AC007ED444 /* AccountViewController.swift */,
+				E3945F47239290C8007ED444 /* OrdersViewController.swift */,
+				E3945F49239290D8007ED444 /* PaymentViewController.swift */,
+				E3945F4B239290EA007ED444 /* PPViewController.swift */,
+				E3945F4D239290FB007ED444 /* AboutUsViewController.swift */,
+				E3157A2F2397FDC7005CF4F6 /* ProfileButton.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -331,6 +352,7 @@
 				D026F9DA2372E41200372EA0 /* LaunchScreen.storyboard in Resources */,
 				D026F9D72372E41200372EA0 /* Assets.xcassets in Resources */,
 				D0B11B902385DEDE00C74CEA /* Poppins-Bold.ttf in Resources */,
+				E3157A322397FDE5005CF4F6 /* Reusables in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,8 +364,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E1C3CBD238588D0005847A0 /* Product.swift in Sources */,
+				E3157A302397FDC7005CF4F6 /* ProfileButton.swift in Sources */,
 				D0719DD023847DC10046EC0B /* UIColorExtensions.swift in Sources */,
+				E3945F46239290AC007ED444 /* AccountViewController.swift in Sources */,
+				E3945F48239290C8007ED444 /* OrdersViewController.swift in Sources */,
 				8E1C3CB823856DFC005847A0 /* CartCellViewModel.swift in Sources */,
+				E3945F4E239290FB007ED444 /* AboutUsViewController.swift in Sources */,
 				D05A455B237892E5000E8363 /* TabBarView.swift in Sources */,
 				8E1C3CBB238588AA005847A0 /* CartItem.swift in Sources */,
 				D0736011237491F500CD6B72 /* ProductsCollectionViewController.swift in Sources */,
@@ -355,12 +381,14 @@
 				D026F9CE2372E41000372EA0 /* AppDelegate.swift in Sources */,
 				D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */,
 				8E1C3CBF23858FE6005847A0 /* UILabelExtensions.swift in Sources */,
+				E3945F4C239290EA007ED444 /* PPViewController.swift in Sources */,
 				D026F9D02372E41000372EA0 /* SceneDelegate.swift in Sources */,
 				D08A5C9D2374C78100221F37 /* ProfileViewController.swift in Sources */,
 				D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */,
 				D07360162374A46300CD6B72 /* TabBarViewController.swift in Sources */,
 				D0719DCC238469610046EC0B /* UIViewExtensions.swift in Sources */,
 				D026F9EA2373027B00372EA0 /* HomeViewController.swift in Sources */,
+				E3945F4A239290D8007ED444 /* PaymentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

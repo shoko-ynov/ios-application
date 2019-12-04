@@ -15,6 +15,7 @@ final class HomeViewController: UIViewController {
 
         _ = setTitleLabel("Accueil")
         view.backgroundColor = .lightGray
+        navigationController?.setNavigationBarHidden(true, animated: true)
         
     }
     

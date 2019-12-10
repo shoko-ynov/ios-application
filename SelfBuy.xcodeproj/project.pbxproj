@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7347E10F2385948E00644970 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7347E10E2385948E00644970 /* Token.swift */; };
+		7347E1112385954C00644970 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7347E1102385954C00644970 /* User.swift */; };
+		7366555D2385431C0062A358 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366555C2385431C0062A358 /* SignInViewController.swift */; };
+		7366555F2385435E0062A358 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366555E2385435E0062A358 /* SignInView.swift */; };
+		7380E7322397DE1500685B7C /* AuthAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7380E7312397DE1500685B7C /* AuthAPIService.swift */; };
 		8E1C3CB323856B1E005847A0 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C3CB223856B1E005847A0 /* CartViewModel.swift */; };
 		8E1C3CB823856DFC005847A0 /* CartCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C3CB723856DFC005847A0 /* CartCellViewModel.swift */; };
 		8E1C3CBB238588AA005847A0 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C3CBA238588AA005847A0 /* CartItem.swift */; };
@@ -23,13 +28,16 @@
 		D043C0BD23894E5F00B05967 /* ProductApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043C0BC23894E5F00B05967 /* ProductApiService.swift */; };
 		D043C0BF23894F9400B05967 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043C0BE23894F9400B05967 /* Config.swift */; };
 		D043C0C32389526600B05967 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043C0C22389526600B05967 /* Alamofire.framework */; };
-		D043C0C62389566600B05967 /* ApiDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043C0C52389566600B05967 /* ApiDTO.swift */; };
+		D043C0C62389566600B05967 /* GenericServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043C0C52389566600B05967 /* GenericServerResponse.swift */; };
+		D0709B29239FB5E500055F20 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0709B28239FB5E500055F20 /* Request.swift */; };
 		D0719DCC238469610046EC0B /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719DCB238469610046EC0B /* UIViewExtensions.swift */; };
 		D0719DD023847DC10046EC0B /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719DCF23847DC10046EC0B /* UIColorExtensions.swift */; };
 		D0736013237494E600CD6B72 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0736012237494E600CD6B72 /* HomeViewModel.swift */; };
 		D07360162374A46300CD6B72 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360152374A46300CD6B72 /* TabBarViewController.swift */; };
 		D07360182374A9E700CD6B72 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360172374A9E700CD6B72 /* UIViewController.swift */; };
 		D073601A2374AA1500CD6B72 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360192374AA1500CD6B72 /* ReusableView.swift */; };
+		D08681D1239FF84600F65961 /* AnyEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08681D0239FF84600F65961 /* AnyEncodable.swift */; };
+		D08681D3239FF91900F65961 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08681D2239FF91900F65961 /* UserDTO.swift */; };
 		D08A5C9D2374C78100221F37 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A5C9C2374C78100221F37 /* ProfileViewController.swift */; };
 		D0941C3A238912F30052F598 /* CartCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0941C39238912F30052F598 /* CartCellView.swift */; };
 		D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0941C3C238942EE0052F598 /* UIViewControllerExtenstion.swift */; };
@@ -41,6 +49,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7347E10E2385948E00644970 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		7347E1102385954C00644970 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7366555C2385431C0062A358 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		7366555E2385435E0062A358 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		7380E7312397DE1500685B7C /* AuthAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIService.swift; sourceTree = "<group>"; };
 		8E1C3CB223856B1E005847A0 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		8E1C3CB723856DFC005847A0 /* CartCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCellViewModel.swift; sourceTree = "<group>"; };
 		8E1C3CBA238588AA005847A0 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
@@ -59,13 +72,16 @@
 		D043C0BC23894E5F00B05967 /* ProductApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductApiService.swift; sourceTree = "<group>"; };
 		D043C0BE23894F9400B05967 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D043C0C22389526600B05967 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		D043C0C52389566600B05967 /* ApiDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiDTO.swift; sourceTree = "<group>"; };
+		D043C0C52389566600B05967 /* GenericServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericServerResponse.swift; sourceTree = "<group>"; };
+		D0709B28239FB5E500055F20 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		D0719DCB238469610046EC0B /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		D0719DCF23847DC10046EC0B /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		D0736012237494E600CD6B72 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D07360152374A46300CD6B72 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D07360172374A9E700CD6B72 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		D07360192374AA1500CD6B72 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		D08681D0239FF84600F65961 /* AnyEncodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyEncodable.swift; sourceTree = "<group>"; };
+		D08681D2239FF91900F65961 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		D08A5C9C2374C78100221F37 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D0941C39238912F30052F598 /* CartCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCellView.swift; sourceTree = "<group>"; };
 		D0941C3C238942EE0052F598 /* UIViewControllerExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtenstion.swift; sourceTree = "<group>"; };
@@ -88,6 +104,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		73665558238541220062A358 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		73665559238541320062A358 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7366555A238542D90062A358 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				7366555B238542EF0062A358 /* Views */,
+				7366555C2385431C0062A358 /* SignInViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		7366555B238542EF0062A358 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7366555E2385435E0062A358 /* SignInView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8E1C3CB123856AFD005847A0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				D043C0C42389565600B05967 /* DTO */,
+				D043C0C52389566600B05967 /* GenericServerResponse.swift */,
+				7347E1102385954C00644970 /* User.swift */,
+				7347E10E2385948E00644970 /* Token.swift */,
 				8E1C3CBA238588AA005847A0 /* CartItem.swift */,
 				8E1C3CBC238588D0005847A0 /* Product.swift */,
 			);
@@ -189,6 +239,7 @@
 		D026F9E52372E5A800372EA0 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				7366555A238542D90062A358 /* SignIn */,
 				D08A5C9E2374C9DF00221F37 /* Cart */,
 				D08A5C9B2374C75A00221F37 /* Profile */,
 				D07360142374A44300CD6B72 /* TabBar */,
@@ -219,6 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				D043C0BC23894E5F00B05967 /* ProductApiService.swift */,
+				7380E7312397DE1500685B7C /* AuthAPIService.swift */,
+				D0709B28239FB5E500055F20 /* Request.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -234,7 +287,8 @@
 		D043C0C42389565600B05967 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				D043C0C52389566600B05967 /* ApiDTO.swift */,
+				D08681D0239FF84600F65961 /* AnyEncodable.swift */,
+				D08681D2239FF91900F65961 /* UserDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -259,6 +313,8 @@
 		D08A5C9B2374C75A00221F37 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				73665559238541320062A358 /* ViewModels */,
+				73665558238541220062A358 /* Views */,
 				D08A5C9C2374C78100221F37 /* ProfileViewController.swift */,
 			);
 			path = Profile;
@@ -415,17 +471,25 @@
 				D0941C3A238912F30052F598 /* CartCellView.swift in Sources */,
 				D097768B238AA8250080F701 /* UIImageViewExtensions.swift in Sources */,
 				D026F9CE2372E41000372EA0 /* AppDelegate.swift in Sources */,
+				7366555D2385431C0062A358 /* SignInViewController.swift in Sources */,
 				D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */,
+				D08681D3239FF91900F65961 /* UserDTO.swift in Sources */,
 				8E1C3CBF23858FE6005847A0 /* UILabelExtensions.swift in Sources */,
 				D026F9D02372E41000372EA0 /* SceneDelegate.swift in Sources */,
 				D043C0B723894BC100B05967 /* ProductCellViewModel.swift in Sources */,
-				D043C0C62389566600B05967 /* ApiDTO.swift in Sources */,
+				D08681D1239FF84600F65961 /* AnyEncodable.swift in Sources */,
+				D043C0C62389566600B05967 /* GenericServerResponse.swift in Sources */,
 				D043C0BF23894F9400B05967 /* Config.swift in Sources */,
 				D043C0BD23894E5F00B05967 /* ProductApiService.swift in Sources */,
 				D08A5C9D2374C78100221F37 /* ProfileViewController.swift in Sources */,
 				D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */,
+				7380E7322397DE1500685B7C /* AuthAPIService.swift in Sources */,
 				D07360162374A46300CD6B72 /* TabBarViewController.swift in Sources */,
 				D0719DCC238469610046EC0B /* UIViewExtensions.swift in Sources */,
+				7347E1112385954C00644970 /* User.swift in Sources */,
+				D0709B29239FB5E500055F20 /* Request.swift in Sources */,
+				7366555F2385435E0062A358 /* SignInView.swift in Sources */,
+				7347E10F2385948E00644970 /* Token.swift in Sources */,
 				D026F9EA2373027B00372EA0 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

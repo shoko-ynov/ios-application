@@ -68,9 +68,23 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }()
     
     @objc func buttonClicked() {
-        let alert = UIAlertController(title: "Error", message: "Invalid credentials", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        let mail = loginTextField.text
+        let password = passwordTextField.text
+        let userLogin = UserLogin.init(mail: mail!, password: password!)
+        
+        let service: AuthAPIService = AuthAPIService()
+        service.login(user: userLogin, completionHandler: { result in
+            switch result {
+            case .success(let tokenObject as TokenDTO):
+                print(tokenObject)
+            case .failure(let error as NSError):
+                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            default:
+                print("default")
+            }
+        })
     }
     
     override func viewDidLoad() {

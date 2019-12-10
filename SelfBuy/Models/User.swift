@@ -12,7 +12,13 @@ struct User : Codable {
     let isAdmin: Bool
     let _id: String
     let mail: String
+    let password: String
     let activationKey: String
     let active: Bool
     let registrationDate: Int
+}
+
+struct UserLogin : Encodable {
+    let mail: String
+    let password : String
 }

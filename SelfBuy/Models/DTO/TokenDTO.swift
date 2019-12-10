@@ -13,3 +13,8 @@ struct Token : Codable {
     let userId: String
     let refreshToken: String
 }
+
+struct TokenDTO: Decodable {
+    var success: Bool
+    var data: Token
+}

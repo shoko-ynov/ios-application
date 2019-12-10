@@ -8,9 +8,7 @@
 
 import Foundation
 
-struct GenericServerResponse <T> where T: Decodable {
-
+class GenericServerResponse<T: Decodable>: Decodable {    
     let success: Bool
     let data: T
-    let errors: [String]
 }

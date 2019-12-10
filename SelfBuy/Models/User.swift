@@ -17,8 +17,3 @@ struct User : Codable {
     let active: Bool
     let registrationDate: Int
 }
-
-struct UserLogin : Encodable {
-    let mail: String
-    let password : String
-}

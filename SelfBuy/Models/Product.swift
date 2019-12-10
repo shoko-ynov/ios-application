@@ -16,8 +16,3 @@ struct Product: Decodable {
     var description: String
     var images: [String]
 }
-
-struct ProductsDTO: Decodable {
-    var success: Bool
-    var data: [Product]
-}

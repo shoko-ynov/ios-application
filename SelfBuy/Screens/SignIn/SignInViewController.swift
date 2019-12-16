@@ -52,6 +52,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         input.backgroundColor = .white
         input.layer.cornerRadius = 15
         input.borderStyle = UITextField.BorderStyle.roundedRect
+        input.tintColor = .black
+        input.textColor = .black
         
         return input
     }()
@@ -63,19 +65,24 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         password.isSecureTextEntry = true
         password.layer.cornerRadius = 15
         password.borderStyle = UITextField.BorderStyle.roundedRect
+        password.tintColor = .black
+        password.textColor = .black
         
         return password
     }()
     
     @objc func buttonClicked() {
-        let mail = loginTextField.text
-        let password = passwordTextField.text
-        let userLogin = UserLogin.init(mail: mail!, password: password!)
+        
+        guard let password = passwordTextField.text, let mail = loginTextField.text else {
+            return
+        }
+        
+        let userLogin = UserLoginDTO(mail: mail, password: password)
         
         let service: AuthAPIService = AuthAPIService()
         service.login(user: userLogin, completionHandler: { result in
             switch result {
-            case .success(let tokenObject as TokenDTO):
+            case .success(let tokenObject):
                 print(tokenObject)
             case .failure(let error as NSError):
                 let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)

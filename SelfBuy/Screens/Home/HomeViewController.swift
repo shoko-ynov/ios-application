@@ -48,8 +48,10 @@ final class HomeViewController: UIViewController {
         
         self.viewModel.fetchData()
             .subscribe(onSuccess: { products in
-                self.products = products
-                self.productsCollectionView.reloadData()
+                DispatchQueue.main.async {
+                    self.products = products
+                    self.productsCollectionView.reloadData()
+                }
             }, onError: { err in
                 self.products = []
                 print(err)

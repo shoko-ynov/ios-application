@@ -24,7 +24,7 @@ class LoginViewModel
         
         service.login(user: userLogin, completionHandler: { result in
             switch result {
-            case .success(let tokenObject):
+            case .success(_):
                 print("success")
             case .failure(let error as NSError):
             //               let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)

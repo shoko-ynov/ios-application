@@ -7,10 +7,26 @@
 //
 
 import Foundation
-import Alamofire
 import RxSwift
 
 final class AuthAPIService{
+    
+    func register(mail: RegisterDTO,completionHandler: @escaping (Result<Token, Error>) -> Void) {
+        let request = Request()
+        
+        request
+            .setPath("/users")
+            .setMethod(.POST)
+            .setBody(mail)
+            .send(RegisterResponseDTO.self) {
+                switch $0 {
+                case .success(let data):
+                    print(data)
+                case .failure(let error):
+                    print(error)
+                }
+        }
+    }
     
     func getMe(){
         let request = Request()
@@ -32,7 +48,6 @@ final class AuthAPIService{
     }
     
     func login(user: UserLoginDTO, completionHandler: @escaping (Result<Token, Error>) -> Void) {
-        
         let request = Request()
         
         request

@@ -13,7 +13,6 @@ class RegisterViewController: UIViewController {
         let email = UITextField(frame: CGRect(x: -10, y: 335,width:250 ,height: 50))
         email.placeholder = " Email"
         email.backgroundColor = .white
-        email.isSecureTextEntry = true
         email.layer.cornerRadius = 15
         email.borderStyle = UITextField.BorderStyle.roundedRect
         email.tintColor = .black

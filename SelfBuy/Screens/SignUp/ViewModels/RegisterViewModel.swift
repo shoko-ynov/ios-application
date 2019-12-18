@@ -20,7 +20,17 @@ class RegisterViewModel
     let passwordTextInput = BehaviorRelay<String>(value: "")
     
     func register() {
-        print("register")
-        print(mailTextInput.value)
+        let userRegister = RegisterDTO(mail: mailTextInput.value)
+        
+        service.register(mail: userRegister, completionHandler: { result in
+            switch result {
+            case .success(_):
+                print("success")
+            case .failure(let error as NSError):
+                print(error)
+            default:
+                print("default")
+            }
+        })
     }
 }

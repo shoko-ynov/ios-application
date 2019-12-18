@@ -13,6 +13,8 @@
 		7366555D2385431C0062A358 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366555C2385431C0062A358 /* LoginViewController.swift */; };
 		7366555F2385435E0062A358 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366555E2385435E0062A358 /* LoginView.swift */; };
 		7380E7322397DE1500685B7C /* AuthAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7380E7312397DE1500685B7C /* AuthAPIService.swift */; };
+		73872A1A23AA7C59007530CB /* RegisterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73872A1923AA7C59007530CB /* RegisterDTO.swift */; };
+		73872A1C23AA817C007530CB /* RegisterResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73872A1B23AA817C007530CB /* RegisterResponseDTO.swift */; };
 		7396720C23AA237A0077EFA5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396720B23AA237A0077EFA5 /* LoginViewModel.swift */; };
 		7396720E23AA359B0077EFA5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7396720D23AA359B0077EFA5 /* RegisterViewController.swift */; };
 		8E1C3CB323856B1E005847A0 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C3CB223856B1E005847A0 /* CartViewModel.swift */; };
@@ -58,6 +60,8 @@
 		7366555C2385431C0062A358 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7366555E2385435E0062A358 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		7380E7312397DE1500685B7C /* AuthAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIService.swift; sourceTree = "<group>"; };
+		73872A1923AA7C59007530CB /* RegisterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDTO.swift; sourceTree = "<group>"; };
+		73872A1B23AA817C007530CB /* RegisterResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponseDTO.swift; sourceTree = "<group>"; };
 		7396720B23AA237A0077EFA5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		7396720D23AA359B0077EFA5 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		8E1C3CB223856B1E005847A0 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -330,6 +334,8 @@
 			children = (
 				D08681D0239FF84600F65961 /* AnyEncodable.swift */,
 				D08681D2239FF91900F65961 /* UserDTO.swift */,
+				73872A1923AA7C59007530CB /* RegisterDTO.swift */,
+				73872A1B23AA817C007530CB /* RegisterResponseDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -508,7 +514,9 @@
 				8E1C3CB323856B1E005847A0 /* CartViewModel.swift in Sources */,
 				D0736013237494E600CD6B72 /* HomeViewModel.swift in Sources */,
 				D07360182374A9E700CD6B72 /* UIViewController.swift in Sources */,
+				73872A1A23AA7C59007530CB /* RegisterDTO.swift in Sources */,
 				7396720C23AA237A0077EFA5 /* LoginViewModel.swift in Sources */,
+				73872A1C23AA817C007530CB /* RegisterResponseDTO.swift in Sources */,
 				D073601A2374AA1500CD6B72 /* ReusableView.swift in Sources */,
 				D0941C3A238912F30052F598 /* CartCellView.swift in Sources */,
 				D097768B238AA8250080F701 /* UIImageViewExtensions.swift in Sources */,

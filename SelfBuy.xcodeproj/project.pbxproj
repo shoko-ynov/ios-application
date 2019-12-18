@@ -53,6 +53,7 @@
 		E3945F4A239290D8007ED444 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F49239290D8007ED444 /* PaymentViewController.swift */; };
 		E3945F4C239290EA007ED444 /* PPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F4B239290EA007ED444 /* PPViewController.swift */; };
 		E3945F4E239290FB007ED444 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F4D239290FB007ED444 /* AboutUsViewController.swift */; };
+		E3E5787823AA4DA000E6D43F /* InfoLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E5787723AA4DA000E6D43F /* InfoLine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		E3945F49239290D8007ED444 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		E3945F4B239290EA007ED444 /* PPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPViewController.swift; sourceTree = "<group>"; };
 		E3945F4D239290FB007ED444 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		E3E5787723AA4DA000E6D43F /* InfoLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +339,7 @@
 				E3945F4B239290EA007ED444 /* PPViewController.swift */,
 				E3945F4D239290FB007ED444 /* AboutUsViewController.swift */,
 				E3157A2F2397FDC7005CF4F6 /* ProfileButton.swift */,
+				E3E5787723AA4DA000E6D43F /* InfoLine.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -488,7 +491,6 @@
 				E3945F48239290C8007ED444 /* OrdersViewController.swift in Sources */,
 				8E1C3CB823856DFC005847A0 /* CartCellViewModel.swift in Sources */,
 				E3945F4E239290FB007ED444 /* AboutUsViewController.swift in Sources */,
-				D05A455B237892E5000E8363 /* TabBarView.swift in Sources */,
 				D043C0B523894A9E00B05967 /* ProductCellView.swift in Sources */,
 				8E1C3CB823856DFC005847A0 /* CartCellViewModel.swift in Sources */,
 				8E1C3CBB238588AA005847A0 /* CartItem.swift in Sources */,
@@ -503,6 +505,7 @@
 				D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */,
 				D08681D3239FF91900F65961 /* UserDTO.swift in Sources */,
 				8E1C3CBF23858FE6005847A0 /* UILabelExtensions.swift in Sources */,
+				E3E5787823AA4DA000E6D43F /* InfoLine.swift in Sources */,
 				E3945F4C239290EA007ED444 /* PPViewController.swift in Sources */,
 				D026F9D02372E41000372EA0 /* SceneDelegate.swift in Sources */,
 				D043C0B723894BC100B05967 /* ProductCellViewModel.swift in Sources */,

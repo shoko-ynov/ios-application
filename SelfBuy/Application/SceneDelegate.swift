@@ -30,9 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         nvc.navigationBar.shadowImage = UIImage()
         nvc.navigationBar.isTranslucent = true
         nvc.view.backgroundColor = .clear
-        
-        let nvc = UINavigationController(rootViewController: tabBarVC)
-        
+                
         window?.rootViewController = nvc
         //window?.makeKeyAndVisible()
     }

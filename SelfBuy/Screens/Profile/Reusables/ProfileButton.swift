@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import RxSwift
 
 class ProfileButton: UIView {
-
+    
+    let ProfileViewController = UINavigationController()
+    let bag = DisposeBag()
+    var onTapHandler: (() ->Void)?
+    
     private let button: UIButton = {
         let button = UIButton()
-        button.titleLabel?.setToLight(size: 20)
+        button.titleLabel?.setToMedium(size: 20)
         button.setTitleColor(UIColor.gray, for: .normal)
         button.setTitleColor(.black, for: .highlighted)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -32,11 +37,11 @@ class ProfileButton: UIView {
         let line = UIView()
         line.layer.borderWidth = 1.0
         line.layer.borderColor = UIColor.gray.cgColor
-        
+
         return line
     }()
     
-    init(text: String) {
+    init(text: String, viewController: UIViewController.Type) {
         super.init(frame: .zero)
         
         button.setTitle(text, for: .normal)
@@ -62,7 +67,12 @@ class ProfileButton: UIView {
             size: .init(width: 15, height: 25)
         )
         
-        //ordersProfileButton.addTarget(self, action: #selector(pushProfileOrdersButtonAction), for: .touchUpInside)
+        button
+            .rx
+            .tap
+            .bind {
+                self.onTapHandler?()
+            }.disposed(by: bag)
         
         line.anchor(
             top: button.bottomAnchor,

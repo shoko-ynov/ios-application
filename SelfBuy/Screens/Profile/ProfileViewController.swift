@@ -22,32 +22,18 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
-        
+
     }
     
     override func loadView() {
         super.loadView()
-        
+        setHeaderImage()
         
         //        let ultraLightConfiguration = UIImage.SymbolConfiguration(pointSize: UIFont.systemFontSize, weight: .light, scale: .large)
         let ultraLightConfiguration = UIImage.SymbolConfiguration(weight: .ultraLight)
         let ultraLightSymbolImage = UIImage(systemName: "chevron.right", withConfiguration: ultraLightConfiguration)
         
         let test = ultraLightSymbolImage!.withTintColor(UIColor.black, renderingMode: .alwaysOriginal)
-        
-        let imageView1 = UIImageView(image: test)
-        let imageView2 = UIImageView(image: test)
-        let imageView3 = UIImageView(image: test)
-        let imageView4 = UIImageView(image: test)
-        let imageView5 = UIImageView(image: test)
-        //        imageView.frame = CGRect(x: 30, y: 130, width: 100, height: 200)
-        self.view.addSubview(imageView1)
-        self.view.addSubview(imageView2)
-        self.view.addSubview(imageView3)
-        self.view.addSubview(imageView4)
-        self.view.addSubview(imageView5)
-        
-        
         
         
         // PROFILE PICTURE
@@ -59,8 +45,8 @@ class ProfileViewController: UIViewController {
         //        self.view.addSubview(profilePictureView)
         //
         
-        //        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        let titleProfile = setTitleLabel("Profile")
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        _ = setTitleLabel("Profile")
         
         
         // MARK: Profile name label
@@ -87,7 +73,7 @@ class ProfileViewController: UIViewController {
         profileEmailLabel.text = profileEmail
         profileEmailLabel.translatesAutoresizingMaskIntoConstraints = false
         profileEmailLabel.textAlignment = .center
-        profileEmailLabel.setToMedium(size: 20.0)
+        profileEmailLabel.setToLight(size: 20.0)
         self.view.addSubview(profileEmailLabel)
         
         profileEmailLabel.anchor(
@@ -95,12 +81,12 @@ class ProfileViewController: UIViewController {
             leading: self.view.leadingAnchor,
             bottom: nil,
             trailing: self.view.trailingAnchor,
-            padding: .init(top: 20, left: 0, bottom: 0, right: 0)
+            padding: .init(top: 10, left: 0, bottom: 0, right: 0)
         )
     
         
         // MARK: Account
-        let accountButton = ProfileButton(text: "Account")
+        let accountButton = ProfileButton(text: "Account", viewController: AccountViewController.self)
         
         self.view.addSubview(accountButton)
         accountButton.anchor(
@@ -108,11 +94,14 @@ class ProfileViewController: UIViewController {
             leading: self.view.leadingAnchor,
             bottom: nil,
             trailing: self.view.trailingAnchor,
-            padding: .init(top: 100, left: 0, bottom: 0, right: 0)
+            padding: .init(top: 150, left: 0, bottom: 0, right: 0)
         )
+        accountButton.onTapHandler = { [weak self] in
+            self?.present(AccountViewController(), animated: true)
+        }
         
         // MARK: Orders button
-        let ordersButton = ProfileButton(text: "Orders")
+        let ordersButton = ProfileButton(text: "Orders", viewController: OrdersViewController.self)
         
         self.view.addSubview(ordersButton)
         ordersButton.anchor(
@@ -122,9 +111,12 @@ class ProfileViewController: UIViewController {
             trailing: self.view.trailingAnchor,
             padding: .init(top: 20, left: 0, bottom: 0, right: 0)
         )
+        ordersButton.onTapHandler = { [weak self] in
+                 self?.present(OrdersViewController(), animated: true)
+        }
         
          // MARK: Payment method button
-        let paymentButton = ProfileButton(text: "Payment")
+        let paymentButton = ProfileButton(text: "Payment", viewController: PaymentViewController.self)
         
         self.view.addSubview(paymentButton)
         paymentButton.anchor(
@@ -134,9 +126,12 @@ class ProfileViewController: UIViewController {
             trailing: self.view.trailingAnchor,
             padding: .init(top: 20, left: 0, bottom: 0, right: 0)
         )
+        paymentButton.onTapHandler = { [weak self] in
+                 self?.present(PaymentViewController(), animated: true)
+        }
         
         // MARK: Privacy & Policy button
-        let ppButton = ProfileButton(text: "Privacy & Policy")
+        let ppButton = ProfileButton(text: "Privacy & Policy", viewController: PPViewController.self)
           
           self.view.addSubview(ppButton)
           ppButton.anchor(
@@ -146,9 +141,12 @@ class ProfileViewController: UIViewController {
               trailing: self.view.trailingAnchor,
               padding: .init(top: 20, left: 0, bottom: 0, right: 0)
           )
+        ppButton.onTapHandler = { [weak self] in
+                 self?.present(PPViewController(), animated: true)
+        }
         
         // MARK: About us button
-        let aboutUsButton = ProfileButton(text: "About Us")
+        let aboutUsButton = ProfileButton(text: "About us", viewController: AboutUsViewController.self)
            
            self.view.addSubview(aboutUsButton)
            aboutUsButton.anchor(
@@ -158,14 +156,9 @@ class ProfileViewController: UIViewController {
                trailing: self.view.trailingAnchor,
                padding: .init(top: 20, left: 0, bottom: 0, right: 0)
            )
-        
-    }
-    
-    
-    @objc private func pushProfileAccountButtonAction() {
-        let accountVC = AboutUsViewController()
-        //        print(self.navigationController)
-        self.navigationController?.pushViewController(accountVC, animated: true)
+            aboutUsButton.onTapHandler = { [weak self] in
+                     self?.present(AboutUsViewController(), animated: true)
+            }
         
     }
     

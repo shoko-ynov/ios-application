@@ -12,6 +12,25 @@ import RxSwift
 
 final class AuthAPIService{
     
+    func getMe(){
+        let request = Request()
+        
+        request
+            .setPath("/me")
+            .setMethod(.GET)
+            .withAuthentication()
+            .send(User.self) {
+                switch $0 {
+                case .success(let data):
+                    print("là")
+                    print(data)
+                case .failure(let error):
+                    print("ici")
+                    print(error)
+                }
+        }
+    }
+    
     func login(user: UserLoginDTO, completionHandler: @escaping (Result<Token, Error>) -> Void) {
         
         let request = Request()
@@ -23,11 +42,12 @@ final class AuthAPIService{
             .send(Token.self) {
                 switch $0 {
                 case .success(let token):
-                    print(token)
+                    UserDefaults().set(token.refreshToken, forKey: "refreshToken")
+                    UserDefaults().set(token.token, forKey: "TOKEN")
                 case .failure(let error):
                     print(error)
                 }
         }
-            
     }
+    
 }

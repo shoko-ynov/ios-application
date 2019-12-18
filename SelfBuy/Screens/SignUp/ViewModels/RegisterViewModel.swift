@@ -19,8 +19,7 @@ class RegisterViewModel
     let mailTextInput = BehaviorRelay<String>(value: "")
     let passwordTextInput = BehaviorRelay<String>(value: "")
     
-    func register()
-    {
+    func register() {
         print("register")
         print(mailTextInput.value)
     }

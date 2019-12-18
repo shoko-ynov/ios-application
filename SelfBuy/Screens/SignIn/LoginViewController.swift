@@ -138,8 +138,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             .disposed(by: viewModel.bag)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool
-    {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true;
     }

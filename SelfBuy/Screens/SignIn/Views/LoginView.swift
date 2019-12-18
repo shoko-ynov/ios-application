@@ -8,6 +8,6 @@
 
 import UIKit
 
-class SignInView: UIView {
+class LoginView: UIView {
  
 }

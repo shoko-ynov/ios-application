@@ -1,13 +1,14 @@
 //
-//  SignInViewController.swift
+//  LoginViewController.swift
 //  SelfBuy
 //
 //  Created by Coline Rousselot on 20/11/2019.
 //  Copyright © 2019 MaxenceMottard. All rights reserved.
 //
 import UIKit
+import RxSwift
 
-class SignInViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     private var loginLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 290, width: 80, height: 41))
         label.font = UIFont(name: "Helvetica", size: 32)
@@ -46,7 +47,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
-    private var loginTextField: UITextField = {
+    private var emailTextField: UITextField = {
         let input = UITextField(frame: CGRect(x: -10, y: 350,width:250 ,height: 50))
         input.placeholder = " Email"
         input.backgroundColor = .white
@@ -54,7 +55,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         input.borderStyle = UITextField.BorderStyle.roundedRect
         input.tintColor = .black
         input.textColor = .black
-        
         return input
     }()
     
@@ -71,56 +71,71 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         return password
     }()
     
-    @objc func buttonClicked() {
+    let viewModel: LoginViewModel
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
         
-        guard let password = passwordTextField.text, let mail = loginTextField.text else {
-            return
-        }
-        
-        let userLogin = UserLoginDTO(mail: mail, password: password)
-        
-        let service: AuthAPIService = AuthAPIService()
-        service.login(user: userLogin, completionHandler: { result in
-            switch result {
-            case .success(let tokenObject):
-                print(tokenObject)
-            case .failure(let error as NSError):
-                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            default:
-                print("default")
-            }
-        })
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loginLabel.center.x = self.view.center.x
-        loginTextField.center.x = self.view.center.x
+        emailTextField.center.x = self.view.center.x
         passwordTextField.center.x = self.view.center.x
         loginBtn.center.x = self.view.center.x
         registerBtn.center.x = self.view.center.x
         forgottenPassword.center.x = self.view.center.x
         
+//        Constraints
+//        loginLabel.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
+        
         registerBtn.frame = CGRect(x: self.view.frame.size.width - 100, y: 200, width: 250, height: 50)
         
-        loginTextField.delegate = self
+        emailTextField.delegate = self
         passwordTextField.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        self.view.backgroundColor = .lightGray
+        loginBtn.rx.tap.bind { _ in
+            self.viewModel.login()
+        }.disposed(by: self.viewModel.bag)
         
-        loginBtn.addTarget(self, action: #selector(self.buttonClicked), for: .touchUpInside)
+        registerBtn.rx.tap.bind { _ in
+            let vc = RegisterViewController(viewModel: RegisterViewModel())
+            self.navigationController?.pushViewController(vc, animated: true)
+        }.disposed(by: self.viewModel.bag)
         
         self.view.addSubview(passwordTextField)
-        self.view.addSubview(loginTextField)
+        self.view.addSubview(emailTextField)
         self.view.addSubview(loginLabel)
         self.view.addSubview(loginBtn)
         self.view.addSubview(registerBtn)
         self.view.addSubview(forgottenPassword)
+        self.view.backgroundColor = .lightGray
+        
+        emailTextField
+            .rx
+            .text
+            .skip(1)
+            .map({ $0.unsafelyUnwrapped })
+            .asObservable()
+            .bind(to: viewModel.mailTextInput)
+            .disposed(by: viewModel.bag)
+        
+        passwordTextField
+            .rx
+            .text
+            .skip(1)
+            .map({ $0.unsafelyUnwrapped })
+            .asObservable()
+            .bind(to: viewModel.passwordTextInput)
+            .disposed(by: viewModel.bag)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool

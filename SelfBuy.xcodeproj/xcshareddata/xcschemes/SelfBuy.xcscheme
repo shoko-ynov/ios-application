@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D026F9C92372E41000372EA0"
-               BuildableName = "SelfBuy.app"
+               BuildableName = "Shok&apos;o.app"
                BlueprintName = "SelfBuy"
                ReferencedContainer = "container:SelfBuy.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D026F9C92372E41000372EA0"
-            BuildableName = "SelfBuy.app"
+            BuildableName = "Shok&apos;o.app"
             BlueprintName = "SelfBuy"
             ReferencedContainer = "container:SelfBuy.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D026F9C92372E41000372EA0"
-            BuildableName = "SelfBuy.app"
+            BuildableName = "Shok&apos;o.app"
             BlueprintName = "SelfBuy"
             ReferencedContainer = "container:SelfBuy.xcodeproj">
          </BuildableReference>

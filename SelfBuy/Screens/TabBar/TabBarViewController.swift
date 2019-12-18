@@ -25,11 +25,11 @@ final class TabBarViewController: UITabBarController {
         
         self.delegate = self
         
-        let homeVC = HomeViewController()
+        let homeVC = HomeViewController(viewModel: HomeViewModel())
         homeVC.tabBarItem.image = UIImage(named: "home")
         let cartVC = CartViewController(viewModel: CartViewModel())
         cartVC.tabBarItem.image = UIImage(named: "cart")
-        let profileVC = ProfileViewController()
+        let profileVC = SignInViewController()
         profileVC.tabBarItem.image = UIImage(named: "user")
         
         self.viewControllers = [

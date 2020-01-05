@@ -44,11 +44,27 @@ class ProductDetailViewController: UIViewController {
         return label
     }()
     
+    private var addCartBtn: UIButton = {
+        let button:UIButton = UIButton(frame: CGRect(x: 0, y: 475, width: 250, height: 50))
+        button.layer.borderWidth = 1.0
+        button.backgroundColor = .primary
+//        button.layer.borderColor = UIColor.primary
+        button.layer.cornerRadius = 5.0
+        button.layer.cornerRadius = 18
+        button.layer.borderWidth = 0
+        
+        button.setTitleColor(.black, for: .normal)
+        button.setTitle("Ajouter Au Panier", for: .normal)
+        
+        return button
+    }()
+    
     private func setupView() {
         view.addSubview(productFirstImage)
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(priceLabel)
+        view.addSubview(addCartBtn)
         
         productFirstImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 40, left: 0, bottom: 0, right: 0), size: .init(width: 200, height: 200))
         
@@ -60,6 +76,8 @@ class ProductDetailViewController: UIViewController {
         
         priceLabel.anchor(top: descriptionLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 35, left: 50, bottom: 0, right: 0))
         priceLabel.text = "\(viewModel.product.price) €"
+        
+        addCartBtn.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 110, bottom: 200, right: 110))
         
         if (viewModel.product.images.count > 0) {
             let url = URL(string: viewModel.product.images.first!)

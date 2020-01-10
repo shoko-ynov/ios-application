@@ -13,7 +13,7 @@ class AccountViewController: UIViewController {
     override func loadView() {
          super.loadView()
     
-
+        _ = setTitleLabel("Account")
         view.backgroundColor = .lightGray
         navigationController?.navigationBar.isHidden = true
 
@@ -93,7 +93,6 @@ class AccountViewController: UIViewController {
            editBirthDate.onTapHandler = { [weak self] in
                self?.present(AccountViewController(), animated: true)
            }
-        
         
         let profileLine = InfoLine(text: "Account")
 

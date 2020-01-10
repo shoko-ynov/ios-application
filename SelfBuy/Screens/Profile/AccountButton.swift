@@ -59,11 +59,11 @@ class AccountButton: UIView {
         
         icon.anchor(
             top: self.topAnchor,
-            leading: self.leadingAnchor,
+            leading: nil,
             bottom: nil,
-            trailing: button.trailingAnchor,
-            padding: .init(top: 0, left: 50, bottom: 0, right: 150)
-//            size: .init(width: 35, height: 35)
+            trailing: button.leadingAnchor,
+            padding: .init(top: 10, left: 0, bottom: 0, right: 20)
+//            size: .init(width: 35, height: 30)
         )
         
         profileData.anchor(

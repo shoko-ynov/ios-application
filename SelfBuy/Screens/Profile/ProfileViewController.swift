@@ -29,29 +29,14 @@ class ProfileViewController: UIViewController {
         super.loadView()
         setHeaderImage()
         
-        //        let ultraLightConfiguration = UIImage.SymbolConfiguration(pointSize: UIFont.systemFontSize, weight: .light, scale: .large)
-        let ultraLightConfiguration = UIImage.SymbolConfiguration(weight: .ultraLight)
-        let ultraLightSymbolImage = UIImage(systemName: "chevron.right", withConfiguration: ultraLightConfiguration)
-        
-        let test = ultraLightSymbolImage!.withTintColor(UIColor.black, renderingMode: .alwaysOriginal)
-        
-        
-        // PROFILE PICTURE
-        //        let profilePictureView = UIImageView()
-        //        profilePictureView.frame = CGRect(x: UIScreen.main.bounds.width / 2 - 60, y: 150, width: 120, height: 120)
-        //        profilePictureView.image = UIImage(named: avatarFileName)
-        //        profilePictureView.layer.cornerRadius = 60
-        //        profilePictureView.layer.masksToBounds = true
-        //        self.view.addSubview(profilePictureView)
-        //
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        _ = setTitleLabel("Profile")
+        _ = setTitleLabel("Profile", textColor: UIColor.white)
         
         
         // MARK: Profile name label
         let profileNameLabel = UILabel()
-        profileNameLabel.textColor = UIColor.black
+        profileNameLabel.textColor = UIColor.white
         profileNameLabel.text = profileName
         profileNameLabel.translatesAutoresizingMaskIntoConstraints = false
         profileNameLabel.textAlignment = .center
@@ -69,11 +54,11 @@ class ProfileViewController: UIViewController {
         
         // MARK: Profile email label
         let profileEmailLabel = UILabel()
-        profileEmailLabel.textColor = UIColor.black
+        profileEmailLabel.textColor = UIColor.white
         profileEmailLabel.text = profileEmail
         profileEmailLabel.translatesAutoresizingMaskIntoConstraints = false
         profileEmailLabel.textAlignment = .center
-        profileEmailLabel.setToLight(size: 20.0)
+        profileEmailLabel.setToMedium(size: 20.0)
         self.view.addSubview(profileEmailLabel)
         
         profileEmailLabel.anchor(
@@ -112,7 +97,7 @@ class ProfileViewController: UIViewController {
             padding: .init(top: 20, left: 0, bottom: 0, right: 0)
         )
         ordersButton.onTapHandler = { [weak self] in
-                 self?.present(OrdersViewController(), animated: true)
+//                 self?.present(OrdersViewController(), animated: true)
         }
         
          // MARK: Payment method button

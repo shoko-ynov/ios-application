@@ -30,7 +30,7 @@ class AccountViewController: UIViewController {
             padding: .init(top: 200, left: 0, bottom: 0, right: 0)
         )
         editProfileName.onTapHandler = { [weak self] in
-            self?.present(AccountViewController(), animated: true)
+            self?.present(EditInfoViewController(), animated: false)
         }
         
         
@@ -93,17 +93,6 @@ class AccountViewController: UIViewController {
            editBirthDate.onTapHandler = { [weak self] in
                self?.present(AccountViewController(), animated: true)
            }
-        
-        let profileLine = InfoLine(text: "Account")
-
-        self.view.addSubview(profileLine)
-            profileLine.anchor(
-                top: nil,
-                leading: self.view.leadingAnchor,
-                bottom: nil,
-                trailing: self.view.trailingAnchor,
-                padding: .init(top: 100, left: 0, bottom: 0, right: 0)
-            )
             
 
     }

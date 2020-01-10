@@ -14,9 +14,9 @@ class OrdersViewController: UIViewController {
     override func loadView() {
          super.loadView()
         
+        _ = setTitleLabel("Orders")
         view.backgroundColor = .lightGray
-        navigationController?.navigationBar.isHidden = true;
-
+        navigationController?.navigationBar.isHidden = true
     }
     
 

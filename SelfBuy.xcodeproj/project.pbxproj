@@ -48,6 +48,7 @@
 		D0B11B912385DEDE00C74CEA /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B11B8E2385DEDE00C74CEA /* Poppins-Light.ttf */; };
 		E3157A302397FDC7005CF4F6 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3157A2F2397FDC7005CF4F6 /* ProfileButton.swift */; };
 		E3157A322397FDE5005CF4F6 /* Reusables in Resources */ = {isa = PBXBuildFile; fileRef = E3157A312397FDE5005CF4F6 /* Reusables */; };
+		E3163E6523C8F4B800AC83A9 /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3163E6423C8F4B800AC83A9 /* AccountButton.swift */; };
 		E3945F46239290AC007ED444 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F45239290AC007ED444 /* AccountViewController.swift */; };
 		E3945F48239290C8007ED444 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F47239290C8007ED444 /* OrdersViewController.swift */; };
 		E3945F4A239290D8007ED444 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F49239290D8007ED444 /* PaymentViewController.swift */; };
@@ -100,6 +101,7 @@
 		D0B11B8E2385DEDE00C74CEA /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
 		E3157A2F2397FDC7005CF4F6 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileButton.swift; path = Reusables/ProfileButton.swift; sourceTree = "<group>"; };
 		E3157A312397FDE5005CF4F6 /* Reusables */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Reusables; sourceTree = "<group>"; };
+		E3163E6423C8F4B800AC83A9 /* AccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountButton.swift; sourceTree = "<group>"; };
 		E3945F45239290AC007ED444 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		E3945F47239290C8007ED444 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		E3945F49239290D8007ED444 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 		D08A5C9B2374C75A00221F37 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E3163E6423C8F4B800AC83A9 /* AccountButton.swift */,
 				E3157A312397FDE5005CF4F6 /* Reusables */,
 				73665559238541320062A358 /* ViewModels */,
 				73665558238541220062A358 /* Views */,
@@ -491,6 +494,7 @@
 				E3945F48239290C8007ED444 /* OrdersViewController.swift in Sources */,
 				8E1C3CB823856DFC005847A0 /* CartCellViewModel.swift in Sources */,
 				E3945F4E239290FB007ED444 /* AboutUsViewController.swift in Sources */,
+				E3163E6523C8F4B800AC83A9 /* AccountButton.swift in Sources */,
 				D043C0B523894A9E00B05967 /* ProductCellView.swift in Sources */,
 				8E1C3CB823856DFC005847A0 /* CartCellViewModel.swift in Sources */,
 				8E1C3CBB238588AA005847A0 /* CartItem.swift in Sources */,

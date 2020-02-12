@@ -136,6 +136,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             .asObservable()
             .bind(to: viewModel.passwordTextInput)
             .disposed(by: viewModel.bag)
+        
+        viewModel.onSuccesfulLogin = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tabBarController?.selectedIndex = 0
+                
+                let homeVC = HomeViewController(viewModel: HomeViewModel())
+                homeVC.tabBarItem.image = UIImage(named: "home")
+                let cartVC = CartViewController(viewModel: CartViewModel())
+                cartVC.tabBarItem.image = UIImage(named: "cart")
+                let profileVC = ProfileViewController()
+                profileVC.tabBarItem.image = UIImage(named: "user")
+                
+                self?.tabBarController?.viewControllers = [
+                    homeVC,
+                    cartVC,
+                    profileVC
+                ]
+            }
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

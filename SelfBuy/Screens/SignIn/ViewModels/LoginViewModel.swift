@@ -18,6 +18,8 @@ class LoginViewModel
     
     let mailTextInput = BehaviorRelay<String>(value: "")
     let passwordTextInput = BehaviorRelay<String>(value: "")
+    var onSuccesfulLogin: (() -> Void)?
+    var onErrorLogin: (() -> Void)?
     
     func login() {
         let userLogin = UserLoginDTO(mail: mailTextInput.value, password: passwordTextInput.value)
@@ -25,15 +27,21 @@ class LoginViewModel
         service.login(user: userLogin, completionHandler: { result in
             switch result {
             case .success(_):
-                print("success")
+                self.onSuccesfulLogin?()
             case .failure(let error as NSError):
-            //               let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
-            //               alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-            //               self.present(alert, animated: true, completion: nil)
-                print(error)
+//                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+//                alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
+                print("error", error)
+                self.onSuccesfulLogin?()
             default:
                 print("default")
             }
         })
+
+        
+//        service.login(user: userLogin, completionHandler: {  [weak self] result in
+//          self?.onSuccesfulLogin?()
+//        })
     }
 }

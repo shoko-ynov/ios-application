@@ -59,8 +59,10 @@ final class AuthAPIService{
                 case .success(let token):
                     UserDefaults().set(token.refreshToken, forKey: "refreshToken")
                     UserDefaults().set(token.token, forKey: "TOKEN")
+
+                    completionHandler(Result.success(token))
                 case .failure(let error):
-                    print(error)
+                    completionHandler(Result.failure(error))
                 }
         }
     }

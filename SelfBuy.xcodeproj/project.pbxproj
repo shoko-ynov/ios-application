@@ -120,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				7320AF3723AA50BA00FF5EB7 /* ViewModels */,
+				7396720D23AA359B0077EFA5 /* RegisterViewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -269,7 +270,6 @@
 			isa = PBXGroup;
 			children = (
 				7320AF3623AA50B400FF5EB7 /* SignUp */,
-				7396720D23AA359B0077EFA5 /* RegisterViewController.swift */,
 				7366555A238542D90062A358 /* SignIn */,
 				D08A5C9E2374C9DF00221F37 /* Cart */,
 				D08A5C9B2374C75A00221F37 /* Profile */,

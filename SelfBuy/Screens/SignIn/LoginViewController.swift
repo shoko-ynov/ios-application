@@ -23,26 +23,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         button.backgroundColor = .primary
         button.layer.cornerRadius = 25
         button.layer.borderWidth = 0
-        button.setTitle("Connect", for: .normal)
+        button.setTitle("Connexion", for: .normal)
         
         return button
     }()
     
     private var forgottenPassword: UIButton = {
-        let button:UIButton = UIButton(frame: CGRect(x: 0, y: 525, width: 250, height: 50))
+        let button:UIButton = UIButton(frame: CGRect(x: 0, y: 605, width: 250, height: 50))
         button.setTitleColor(.blue, for: .normal)
-        button.setTitle("Forgotten password ?", for: .normal)
+        button.setTitle("Mot de passe oublié ?", for: .normal)
         
         return button
     }()
     
     private var registerBtn: UIButton = {
-        let button:UIButton = UIButton(frame: CGRect(x: 0, y: 200, width: 250, height: 50))
+        let button:UIButton = UIButton(frame: CGRect(x: 0, y: 535, width: 250, height: 50))
         button.backgroundColor = .primary
         button.layer.cornerRadius = 25
-        button.contentHorizontalAlignment = .left
-        button.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 0.0)
-        button.setTitle("Register", for: .normal)
+        button.setTitle("Inscription", for: .normal)
         
         return button
     }()
@@ -60,7 +58,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private var passwordTextField: UITextField = {
         let password = UITextField(frame: CGRect(x: -10, y: 405,width:250 ,height: 50))
-        password.placeholder = " Password"
+        password.placeholder = " Mot de passe"
         password.backgroundColor = .white
         password.isSecureTextEntry = true
         password.layer.cornerRadius = 15
@@ -85,7 +83,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginLabel.center.x = self.view.center.x
         emailTextField.center.x = self.view.center.x
         passwordTextField.center.x = self.view.center.x
         loginBtn.center.x = self.view.center.x
@@ -93,9 +90,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         forgottenPassword.center.x = self.view.center.x
         
 //        Constraints
-//        loginLabel.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
-        
-        registerBtn.frame = CGRect(x: self.view.frame.size.width - 100, y: 200, width: 250, height: 50)
+//        item.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -113,7 +108,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         self.view.addSubview(passwordTextField)
         self.view.addSubview(emailTextField)
-        self.view.addSubview(loginLabel)
         self.view.addSubview(loginBtn)
         self.view.addSubview(registerBtn)
         self.view.addSubview(forgottenPassword)

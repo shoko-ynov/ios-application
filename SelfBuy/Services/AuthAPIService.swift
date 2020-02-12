@@ -38,12 +38,30 @@ final class AuthAPIService{
             .send(User.self) {
                 switch $0 {
                 case .success(let data):
-                    print("là")
                     print(data)
                 case .failure(let error):
-                    print("ici")
-                    print(error)
+                    print("error \(error)")
                 }
+        }
+    }
+    
+    func refreshToken(){
+        let request = Request()
+        let refreshTokenSaved = UserDefaults.standard.string(forKey: "refreshToken") ?? ""
+        
+        let token = RefreshTokenDTO(refreshToken: refreshTokenSaved)
+    
+        request
+            .setPath("/auth/refresh")
+            .setMethod(.POST)
+            .setBody(token)
+            .send(Token.self) {
+              switch $0 {
+              case .success(let data):
+                  print(data)
+              case .failure(let error):
+                print("error \(error)")
+              }
         }
     }
     
@@ -57,9 +75,11 @@ final class AuthAPIService{
             .send(Token.self) {
                 switch $0 {
                 case .success(let token):
-                    UserDefaults().set(token.refreshToken, forKey: "refreshToken")
-                    UserDefaults().set(token.token, forKey: "TOKEN")
-
+                    let userDefaults = UserDefaults.standard
+                    
+                    userDefaults.set(token.refreshToken, forKey: "refreshToken")
+                    userDefaults.set(token.token, forKey: "TOKEN")
+                    
                     completionHandler(Result.success(token))
                 case .failure(let error):
                     completionHandler(Result.failure(error))

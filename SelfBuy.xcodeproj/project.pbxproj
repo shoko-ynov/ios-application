@@ -21,6 +21,8 @@
 		8E1C3CBB238588AA005847A0 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C3CBA238588AA005847A0 /* CartItem.swift */; };
 		8E1C3CBD238588D0005847A0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C3CBC238588D0005847A0 /* Product.swift */; };
 		8E1C3CBF23858FE6005847A0 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C3CBE23858FE6005847A0 /* UILabelExtensions.swift */; };
+		B374343D23F4303100F9B288 /* RefreshTokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B374343C23F4303100F9B288 /* RefreshTokenDTO.swift */; };
+		B376F52B23F4357C00FD8F3A /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B376F52A23F4357C00FD8F3A /* ApiError.swift */; };
 		D026F9CE2372E41000372EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026F9CD2372E41000372EA0 /* AppDelegate.swift */; };
 		D026F9D02372E41000372EA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026F9CF2372E41000372EA0 /* SceneDelegate.swift */; };
 		D026F9D72372E41200372EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D026F9D62372E41200372EA0 /* Assets.xcassets */; };
@@ -67,6 +69,8 @@
 		8E1C3CBA238588AA005847A0 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		8E1C3CBC238588D0005847A0 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		8E1C3CBE23858FE6005847A0 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
+		B374343C23F4303100F9B288 /* RefreshTokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenDTO.swift; sourceTree = "<group>"; };
+		B376F52A23F4357C00FD8F3A /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		D026F9CA2372E41000372EA0 /* Shok'o.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shok'o.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D026F9CD2372E41000372EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D026F9CF2372E41000372EA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 				7347E10E2385948E00644970 /* Token.swift */,
 				8E1C3CBA238588AA005847A0 /* CartItem.swift */,
 				8E1C3CBC238588D0005847A0 /* Product.swift */,
+				B376F52A23F4357C00FD8F3A /* ApiError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				D08681D2239FF91900F65961 /* UserDTO.swift */,
 				73872A1923AA7C59007530CB /* RegisterDTO.swift */,
 				73872A1B23AA817C007530CB /* RegisterResponseDTO.swift */,
+				B374343C23F4303100F9B288 /* RefreshTokenDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -501,6 +507,7 @@
 				D073601A2374AA1500CD6B72 /* ReusableView.swift in Sources */,
 				D0941C3A238912F30052F598 /* CartCellView.swift in Sources */,
 				D097768B238AA8250080F701 /* UIImageViewExtensions.swift in Sources */,
+				B374343D23F4303100F9B288 /* RefreshTokenDTO.swift in Sources */,
 				D026F9CE2372E41000372EA0 /* AppDelegate.swift in Sources */,
 				7366555D2385431C0062A358 /* LoginViewController.swift in Sources */,
 				D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */,
@@ -517,6 +524,7 @@
 				D08A5C9D2374C78100221F37 /* ProfileViewController.swift in Sources */,
 				D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */,
 				7380E7322397DE1500685B7C /* AuthAPIService.swift in Sources */,
+				B376F52B23F4357C00FD8F3A /* ApiError.swift in Sources */,
 				D07360162374A46300CD6B72 /* TabBarViewController.swift in Sources */,
 				D0719DCC238469610046EC0B /* UIViewExtensions.swift in Sources */,
 				7347E1112385954C00644970 /* User.swift in Sources */,

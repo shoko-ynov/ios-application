@@ -10,7 +10,8 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    let service: AuthAPIService = AuthAPIService()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let notificationCenter = NotificationCenter.default
@@ -35,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     @objc func appMovedToBackground() {
-        // Check 
+        service.getMe()
     }
 }
 

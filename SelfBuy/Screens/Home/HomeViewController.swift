@@ -63,6 +63,19 @@ final class HomeViewController: UIViewController {
         productsCollectionView.alwaysBounceVertical = true
         productsCollectionView.register(ProductCellView.self, forCellWithReuseIdentifier: ProductCellView.reuseIdentifier)
         productsCollectionView.anchor(top: titleLabel.bottomAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 5, left: 0, bottom: 5, right: 0))
+        
+        productsCollectionView
+            .rx
+            .itemSelected
+            .subscribe { indexPath in
+                guard let itemIndex = indexPath.element?.row else {
+                    return;
+                }
+                
+                let productDetailVM = ProductCellViewModel(product: self.products[itemIndex])
+                let productDetailVC = ProductDetailViewController(viewModel: productDetailVM)
+                self.navigationController?.pushViewController(productDetailVC, animated: true)
+        }.disposed(by: dispodeBag)
     }
 }
 

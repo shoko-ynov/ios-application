@@ -63,9 +63,7 @@ final class HomeViewController: UIViewController {
         productsCollectionView.alwaysBounceVertical = true
         productsCollectionView.register(ProductCellView.self, forCellWithReuseIdentifier: ProductCellView.reuseIdentifier)
         productsCollectionView.anchor(top: titleLabel.bottomAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 5, left: 0, bottom: 5, right: 0))
-        
     }
-
 }
 
 //  MARK: - ProductCollectionView

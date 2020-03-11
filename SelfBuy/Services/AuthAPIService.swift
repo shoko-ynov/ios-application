@@ -7,13 +7,65 @@
 //
 
 import Foundation
-import Alamofire
 import RxSwift
 
 final class AuthAPIService{
     
-    func login(user: UserLoginDTO, completionHandler: @escaping (Result<Token, Error>) -> Void) {
+    func register(mail: RegisterDTO,completionHandler: @escaping (Result<Token, Error>) -> Void) {
+        let request = Request()
         
+        request
+            .setPath("/users")
+            .setMethod(.POST)
+            .setBody(mail)
+            .send(RegisterResponseDTO.self) {
+                switch $0 {
+                case .success(let data):
+                    print(data)
+                case .failure(let error):
+                    print(error)
+                }
+        }
+    }
+    
+    func getMe(){
+        let request = Request()
+        
+        request
+            .setPath("/me")
+            .setMethod(.GET)
+            .withAuthentication()
+            .send(User.self) {
+                switch $0 {
+                case .success(let data):
+                    print(data)
+                case .failure(let error):
+                    print("error \(error)")
+                }
+        }
+    }
+    
+    func refreshToken(){
+        let request = Request()
+        let refreshTokenSaved = UserDefaults.standard.string(forKey: "refreshToken") ?? ""
+        
+        let token = RefreshTokenDTO(refreshToken: refreshTokenSaved)
+    
+        request
+            .setPath("/auth/refresh")
+            .setMethod(.POST)
+            .setBody(token)
+            .send(Token.self) {
+              switch $0 {
+              case .success(let data):
+                  print(data)
+              case .failure(let error):
+                print("error \(error)")
+              }
+        }
+    }
+    
+    func login(user: UserLoginDTO, completionHandler: @escaping (Result<Token, Error>) -> Void) {
         let request = Request()
         
         request
@@ -23,11 +75,16 @@ final class AuthAPIService{
             .send(Token.self) {
                 switch $0 {
                 case .success(let token):
-                    print(token)
+                    let userDefaults = UserDefaults.standard
+                    
+                    userDefaults.set(token.refreshToken, forKey: "refreshToken")
+                    userDefaults.set(token.token, forKey: "TOKEN")
+                    
+                    completionHandler(Result.success(token))
                 case .failure(let error):
-                    print(error)
+                    completionHandler(Result.failure(error))
                 }
         }
-            
     }
+    
 }

@@ -37,10 +37,9 @@ class Request {
     }
     
     func withAuthentication() -> Request {
-        guard let tokenSaved = UserDefaults().string(forKey: "TOKEN") else {
+        guard let tokenSaved = UserDefaults.standard.string(forKey: "TOKEN") else {
             return self
         }
-        
         self.token = tokenSaved
         return self
     }
@@ -93,8 +92,20 @@ class Request {
             do {
                 print("Status code : \(urlResponse.statusCode)")
                 if urlResponse.statusCode == 401 {
+                    let response = self.decodeData(ApiError.self, data: data)
                     
-                    print("RefreshToken")
+                    switch response {
+                    case .success(let decoded):
+                        if(decoded.data.code == "INVALID_REFRESH_TOKEN") {
+                            UserDefaults.standard.set("", forKey: "TOKEN")
+                            UserDefaults.standard.set("", forKey: "refreshToken")
+                        } else {
+                            let service: AuthAPIService = AuthAPIService()
+                            service.refreshToken()
+                        }
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
                     
                 } else if urlResponse.statusCode != 200 && urlResponse.statusCode != 201 && urlResponse.statusCode != 204 {
                     throw NSError(domain: "Server error, status code : \(urlResponse.statusCode)", code: 500)

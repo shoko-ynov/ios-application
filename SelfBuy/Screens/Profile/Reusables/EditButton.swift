@@ -17,8 +17,6 @@ class EditButton: UIView {
     
     private let button: UIButton = {
         let button = UIButton()
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.imageEdgeInsets = UIEdgeInsets(top: 40, left: 40, bottom: 40, right: 40)
     
         return button
     }()

@@ -29,7 +29,8 @@ final class TabBarViewController: UITabBarController {
         homeVC.tabBarItem.image = UIImage(named: "home")
         let cartVC = CartViewController(viewModel: CartViewModel())
         cartVC.tabBarItem.image = UIImage(named: "cart")
-        let profileVC = SignInViewController()
+        let profileVC = LoginViewController(viewModel: LoginViewModel())
+
         profileVC.tabBarItem.image = UIImage(named: "user")
         
         self.viewControllers = [
@@ -57,10 +58,10 @@ final class TabBarViewController: UITabBarController {
         
         for tabBarItem in tabBar.items! {
             tabBarItem.title = ""
+            
             tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         }
     }
-    
 }
 
 

@@ -77,7 +77,6 @@ final class HomeViewController: UIViewController {
                 self.navigationController?.pushViewController(productDetailVC, animated: true)
         }.disposed(by: dispodeBag)
     }
-
 }
 
 //  MARK: - ProductCollectionView

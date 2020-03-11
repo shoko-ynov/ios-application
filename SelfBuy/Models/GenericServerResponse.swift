@@ -9,6 +9,5 @@
 import Foundation
 
 class GenericServerResponse<T: Decodable>: Decodable {    
-    let success: Bool
     let data: T
 }

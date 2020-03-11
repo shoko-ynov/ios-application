@@ -15,7 +15,6 @@ class AboutUsViewController: UIViewController {
   
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         _ = setTitleLabel("About us")

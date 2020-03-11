@@ -10,11 +10,10 @@ import UIKit
 import RxSwift
 
 class EditInfoViewController: UIViewController {
-   
     
     let bag = DisposeBag()
     
-    private let okButton: UIButton = {
+    private let validationButton: UIButton = {
             let button = UIButton()
             return button
     }()
@@ -31,8 +30,6 @@ class EditInfoViewController: UIViewController {
         view.backgroundColor = .lightGray
         navigationController?.navigationBar.isHidden = true
      
-       
-         
         // MARK: Edit name
         let editName = UITextField()
             editName.backgroundColor = UIColor.white
@@ -75,50 +72,15 @@ class EditInfoViewController: UIViewController {
         // MARK: Edit address
         let editAddress = ProfileInput(title: "Address", input: "27 Rue Raoul Servent 69007 Lyon")
         
-//        let editAddress = UITextField()
-//        editAddress.backgroundColor = UIColor.white
-//        editAddress.textColor = UIColor.black
-//        editAddress.minimumFontSize = 20.0
-//        editAddress.borderStyle = UITextField.BorderStyle.roundedRect
-//        editAddress.layer.cornerRadius = 5.0
-//        editAddress.font = UIFont(name: "Poppins", size: 15.0)
-//        editAddress.becomeFirstResponder()
+            self.view.addSubview(editAddress)
         
-        self.view.addSubview(editAddress)
-        
-        editAddress.anchor(
-            top: editName.bottomAnchor,
-            leading: self.view.leadingAnchor,
-            bottom: nil,
-            trailing: self.view.trailingAnchor,
-            padding: .init(top: 50, left: 0, bottom: 0, right: 0)
-        )
-        
-//        let editAddressLabel: UILabel = {
-//            let editAddressLabel = UILabel()
-//            editAddressLabel.textColor = UIColor.black
-//            editAddressLabel.setToMedium(size: 20)
-//            editAddressLabel.text = "Name"
-//
-//            return editAddressLabel
-//        }()
-//
-//        editAddress.anchor(
-//            top: self.view.topAnchor,
-//            leading: self.view.leadingAnchor,
-//            bottom: nil,
-//            trailing: self.view.trailingAnchor,
-//            padding: .init(top: 120, left: 40, bottom: 0, right: 40)
-//        )
-//
-//        editLabel.anchor(
-//            top: nil,
-//            leading: self.view.leadingAnchor,
-//            bottom: editName.topAnchor,
-//            trailing: self.view.trailingAnchor,
-//            padding: .init(top: 0, left: 40, bottom: 0, right: 0)
-//        )
-        
+            editAddress.anchor(
+                top: editName.bottomAnchor,
+                leading: self.view.leadingAnchor,
+                bottom: nil,
+                trailing: self.view.trailingAnchor,
+                padding: .init(top: 50, left: 0, bottom: 0, right: 0)
+            )
         
         // MARK: Edit email
         let editEmail = ProfileInput(title: "Email", input: "test")
@@ -160,13 +122,12 @@ class EditInfoViewController: UIViewController {
         )
         
       
-        
         // MARK: Validation button
-        self.view.addSubview(okButton)
+        self.view.addSubview(validationButton)
         
-        okButton.setImage(closeIcon, for: .normal)
+        validationButton.setImage(closeIcon, for: .normal)
         
-        okButton.anchor(
+        validationButton.anchor(
             top: self.view.topAnchor,
             leading: nil,
             bottom: nil,
@@ -174,7 +135,7 @@ class EditInfoViewController: UIViewController {
             padding: .init(top: 25, left: 0, bottom: 0, right: 20)
         )
         
-        okButton
+        validationButton
             .rx
             .tap
             .bind { [ weak self ] in

@@ -19,11 +19,11 @@ final class OrdersViewController: UIViewController {
     
     let viewModel: OrdersViewModelling
     
-    init(viewModel: OrdersViewModelling) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
+//    init(viewModel: OrdersViewModelling) {
+//        self.viewModel = viewModel
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

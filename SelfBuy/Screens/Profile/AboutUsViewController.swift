@@ -18,15 +18,7 @@ class AboutUsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        _ = setTitleLabel("About us")
         view.backgroundColor = .lightGray
-        
-        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "Profile", style: .plain, target: nil, action: nil)
-        
-//        let backBTN = UIBarButtonItem(image: UIImage(named: "arrow_right.png"),
-//                                      style: .plain,
-//                                      target: navigationController,
-//                                      action: #selector(UINavigationController.popViewController(animated:)))
-//
-//        navigationController?.navigationItem.leftBarButtonItem = backBTN
     }
 }

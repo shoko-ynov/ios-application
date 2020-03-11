@@ -12,7 +12,7 @@ class PPViewController: UIViewController {
     
     override func loadView() {
          super.loadView()
-        
+        _ = setTitleLabel("Privacy & Policy")
         view.backgroundColor = .lightGray
 
         

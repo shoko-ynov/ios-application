@@ -1,6 +1,6 @@
 
 //
-//  ProfileButton.swift
+//  InfoLine.swift
 //  SelfBuy
 //
 //  Created by Zakarya TOLBA on 04/12/2019.
@@ -10,11 +10,11 @@
 import UIKit
 import RxSwift
 
-class AccountButton: UIView {
-    
-    let ProfileViewController = UINavigationController()
+class InfoLine: UIView {
+
     let bag = DisposeBag()
     var onTapHandler: (() ->Void)?
+    var text: String?
     
     private let button: UIButton = {
         let button = UIButton()
@@ -30,19 +30,17 @@ class AccountButton: UIView {
         let profileData = UILabel()
         profileData.setToLight(size: 16)
         profileData.textColor = UIColor.gray
-        profileData.text = "Zakarya TOLBA"
         profileData.translatesAutoresizingMaskIntoConstraints = false
         
         return profileData
     }()
     
     
-    init(text: String, iconName: String, data: String, viewController: UIViewController.Type) {
+    init(text: String, iconName: String, data: String) {
         super.init(frame: .zero)
         
-        
         profileData.text = data
-        let icon = UIImageView(image: UIImage(systemName: iconName, withConfiguration: UIImage.SymbolConfiguration(scale: .large))?.withTintColor(UIColor.primary, renderingMode: .alwaysOriginal))
+        let icon = UIImageView(image: UIImage(systemName: iconName, withConfiguration: UIImage.SymbolConfiguration(pointSize: 20.0, weight: .regular, scale: .large))?.withTintColor(UIColor.primary, renderingMode: .alwaysOriginal))
         button.setTitle(text, for: .normal)
         
         self.addSubview(button)
@@ -54,7 +52,7 @@ class AccountButton: UIView {
             leading: self.leadingAnchor,
             bottom: nil,
             trailing: nil,
-            padding: .init(top: 0, left: 100, bottom: 0, right: 0)
+            padding: .init(top: 0, left: 90, bottom: 0, right: 0)
         )
         
         icon.anchor(
@@ -63,7 +61,6 @@ class AccountButton: UIView {
             bottom: nil,
             trailing: button.leadingAnchor,
             padding: .init(top: 10, left: 0, bottom: 0, right: 20)
-//            size: .init(width: 35, height: 30)
         )
         
         profileData.anchor(
@@ -71,18 +68,9 @@ class AccountButton: UIView {
             leading: self.leadingAnchor,
             bottom: nil,
             trailing: nil,
-            padding: .init(top: -5, left: 100, bottom: 0, right: 150)
+            padding: .init(top: -5, left: 90, bottom: 0, right: 150)
 
         )
-        
-        button
-            .rx
-            .tap
-            .bind {
-                self.onTapHandler?()
-            }.disposed(by: bag)
-    
-        
     }
     
     required init?(coder: NSCoder) {

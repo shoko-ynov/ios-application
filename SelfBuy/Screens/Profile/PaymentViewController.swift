@@ -12,7 +12,7 @@ class PaymentViewController: UIViewController {
     
     override func loadView() {
          super.loadView()
-        
+        _ = setTitleLabel("Payment")
         view.backgroundColor = .lightGray
         navigationController?.navigationBar.isHidden = true;
 

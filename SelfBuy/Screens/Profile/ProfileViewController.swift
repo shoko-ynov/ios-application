@@ -69,9 +69,9 @@ class ProfileViewController: UIViewController {
             padding: .init(top: 10, left: 0, bottom: 0, right: 0)
         )
     
-        
-        // MARK: Account
-        let accountButton = ProfileButton(text: "Account", viewController: AccountViewController.self)
+        // text: String, iconName: String, data: String
+        // MARK: Account button
+        let accountButton = ProfileButton(text: "Account")
         
         self.view.addSubview(accountButton)
         accountButton.anchor(
@@ -85,8 +85,9 @@ class ProfileViewController: UIViewController {
             self?.present(AccountViewController(), animated: true)
         }
         
+        
         // MARK: Orders button
-        let ordersButton = ProfileButton(text: "Orders", viewController: OrdersViewController.self)
+        let ordersButton = ProfileButton(text: "Orders")
         
         self.view.addSubview(ordersButton)
         ordersButton.anchor(
@@ -97,11 +98,11 @@ class ProfileViewController: UIViewController {
             padding: .init(top: 20, left: 0, bottom: 0, right: 0)
         )
         ordersButton.onTapHandler = { [weak self] in
-//                 self?.present(OrdersViewController(), animated: true)
+                 self?.present(OrdersViewController(), animated: true)
         }
         
          // MARK: Payment method button
-        let paymentButton = ProfileButton(text: "Payment", viewController: PaymentViewController.self)
+        let paymentButton = ProfileButton(text: "Payment")
         
         self.view.addSubview(paymentButton)
         paymentButton.anchor(
@@ -112,12 +113,12 @@ class ProfileViewController: UIViewController {
             padding: .init(top: 20, left: 0, bottom: 0, right: 0)
         )
         paymentButton.onTapHandler = { [weak self] in
-                 self?.present(PaymentViewController(), animated: true)
+                 self?.present(EditInfoViewController(), animated: true)
         }
         
         // MARK: Privacy & Policy button
-        let ppButton = ProfileButton(text: "Privacy & Policy", viewController: PPViewController.self)
-          
+        let ppButton = ProfileButton(text: "Privacy & Policy")
+        
           self.view.addSubview(ppButton)
           ppButton.anchor(
               top: paymentButton.bottomAnchor,
@@ -131,7 +132,7 @@ class ProfileViewController: UIViewController {
         }
         
         // MARK: About us button
-        let aboutUsButton = ProfileButton(text: "About us", viewController: AboutUsViewController.self)
+        let aboutUsButton = ProfileButton(text: "About us")
            
            self.view.addSubview(aboutUsButton)
            aboutUsButton.anchor(
@@ -145,39 +146,6 @@ class ProfileViewController: UIViewController {
                      self?.present(AboutUsViewController(), animated: true)
             }
         
-    }
-    
-    
-    
-    @objc private func pushProfileOrdersButtonAction() {
-        let orderVC = AboutUsViewController()
-        self.navigationController?.pushViewController(orderVC, animated: true)
-    }
-    
-    
-    
-    @objc private func pushProfilePaymentButtonAction() {
-        let paymentVC = AboutUsViewController()
-        self.navigationController?.pushViewController(paymentVC, animated: true)
-    }
-    
-    
-    
-    @objc private func pushPrivacyPButtonAction() {
-        let ppVC = AboutUsViewController()
-        self.navigationController?.pushViewController(ppVC, animated: true)
-    }
-    
-    
-    
-    @objc private func pushAboutUsButtonAction() {
-        let aboutUsVC = AboutUsViewController()
-        self.navigationController?.pushViewController(aboutUsVC, animated: true)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    @objc private func pushLogoutButtonAction() {
-        // no implementation
     }
     
     

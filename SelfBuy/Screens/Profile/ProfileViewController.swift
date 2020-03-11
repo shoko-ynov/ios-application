@@ -98,7 +98,7 @@ class ProfileViewController: UIViewController {
             padding: .init(top: 20, left: 0, bottom: 0, right: 0)
         )
         ordersButton.onTapHandler = { [weak self] in
-                 self?.present(AboutUsViewController, animated: true)
+                 self?.present(AboutUsViewController(), animated: true)
         }
         
          // MARK: Payment method button

@@ -35,6 +35,10 @@
 		D043C0BF23894F9400B05967 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043C0BE23894F9400B05967 /* Config.swift */; };
 		D043C0C32389526600B05967 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043C0C22389526600B05967 /* Alamofire.framework */; };
 		D043C0C62389566600B05967 /* GenericServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043C0C52389566600B05967 /* GenericServerResponse.swift */; };
+		D0632E022419264D0010A7D9 /* ProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0632E012419264D0010A7D9 /* ProfileInput.swift */; };
+		D0632E04241926550010A7D9 /* InfoLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0632E03241926550010A7D9 /* InfoLine.swift */; };
+		D0632E062419265E0010A7D9 /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0632E052419265E0010A7D9 /* EditButton.swift */; };
+		D0632E08241926C70010A7D9 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0632E07241926C70010A7D9 /* AboutUsViewController.swift */; };
 		D0709B29239FB5E500055F20 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0709B28239FB5E500055F20 /* Request.swift */; };
 		D0719DCC238469610046EC0B /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719DCB238469610046EC0B /* UIViewExtensions.swift */; };
 		D0719DD023847DC10046EC0B /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719DCF23847DC10046EC0B /* UIColorExtensions.swift */; };
@@ -52,7 +56,6 @@
 		D0B11B8F2385DEDE00C74CEA /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B11B8C2385DEDE00C74CEA /* Poppins-Medium.ttf */; };
 		D0B11B902385DEDE00C74CEA /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B11B8D2385DEDE00C74CEA /* Poppins-Bold.ttf */; };
 		D0B11B912385DEDE00C74CEA /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0B11B8E2385DEDE00C74CEA /* Poppins-Light.ttf */; };
-		E3163E6523C8F4B800AC83A9 /* AccountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3163E6423C8F4B800AC83A9 /* AccountButton.swift */; };
 		E3163E6723C92DDF00AC83A9 /* EditInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3163E6623C92DDF00AC83A9 /* EditInfoViewController.swift */; };
 		E3163E6923C935A000AC83A9 /* OrdersCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3163E6823C935A000AC83A9 /* OrdersCellView.swift */; };
 		E3163E6D23C9377C00AC83A9 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3163E6C23C9377B00AC83A9 /* ProfileButton.swift */; };
@@ -62,7 +65,6 @@
 		E3945F48239290C8007ED444 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F47239290C8007ED444 /* OrdersViewController.swift */; };
 		E3945F4A239290D8007ED444 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F49239290D8007ED444 /* PaymentViewController.swift */; };
 		E3945F4C239290EA007ED444 /* PPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F4B239290EA007ED444 /* PPViewController.swift */; };
-		E3945F4E239290FB007ED444 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F4D239290FB007ED444 /* AboutUsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +98,10 @@
 		D043C0BE23894F9400B05967 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D043C0C22389526600B05967 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D043C0C52389566600B05967 /* GenericServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericServerResponse.swift; sourceTree = "<group>"; };
+		D0632E012419264D0010A7D9 /* ProfileInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInput.swift; sourceTree = "<group>"; };
+		D0632E03241926550010A7D9 /* InfoLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoLine.swift; sourceTree = "<group>"; };
+		D0632E052419265E0010A7D9 /* EditButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
+		D0632E07241926C70010A7D9 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		D0709B28239FB5E500055F20 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		D0719DCB238469610046EC0B /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		D0719DCF23847DC10046EC0B /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
@@ -113,7 +119,6 @@
 		D0B11B8C2385DEDE00C74CEA /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		D0B11B8D2385DEDE00C74CEA /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		D0B11B8E2385DEDE00C74CEA /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
-		E3163E6423C8F4B800AC83A9 /* AccountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountButton.swift; sourceTree = "<group>"; };
 		E3163E6623C92DDF00AC83A9 /* EditInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfoViewController.swift; sourceTree = "<group>"; };
 		E3163E6823C935A000AC83A9 /* OrdersCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersCellView.swift; sourceTree = "<group>"; };
 		E3163E6C23C9377B00AC83A9 /* ProfileButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
@@ -123,7 +128,6 @@
 		E3945F47239290C8007ED444 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		E3945F49239290D8007ED444 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		E3945F4B239290EA007ED444 /* PPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPViewController.swift; sourceTree = "<group>"; };
-		E3945F4D239290FB007ED444 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 		73665558238541220062A358 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D0632E07241926C70010A7D9 /* AboutUsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -379,7 +384,6 @@
 				E3945F47239290C8007ED444 /* OrdersViewController.swift */,
 				E3945F49239290D8007ED444 /* PaymentViewController.swift */,
 				E3945F4B239290EA007ED444 /* PPViewController.swift */,
-				E3945F4D239290FB007ED444 /* AboutUsViewController.swift */,
 				E3163E6623C92DDF00AC83A9 /* EditInfoViewController.swift */,
 			);
 			path = Profile;
@@ -427,8 +431,10 @@
 		E3163E6E23C9379700AC83A9 /* Reusables */ = {
 			isa = PBXGroup;
 			children = (
+				D0632E052419265E0010A7D9 /* EditButton.swift */,
+				D0632E03241926550010A7D9 /* InfoLine.swift */,
+				D0632E012419264D0010A7D9 /* ProfileInput.swift */,
 				E3163E6C23C9377B00AC83A9 /* ProfileButton.swift */,
-				E3163E6423C8F4B800AC83A9 /* AccountButton.swift */,
 				E3163E6823C935A000AC83A9 /* OrdersCellView.swift */,
 			);
 			path = Reusables;
@@ -539,11 +545,11 @@
 				E3945F46239290AC007ED444 /* AccountViewController.swift in Sources */,
 				E3945F48239290C8007ED444 /* OrdersViewController.swift in Sources */,
 				8E1C3CB823856DFC005847A0 /* CartCellViewModel.swift in Sources */,
-				E3945F4E239290FB007ED444 /* AboutUsViewController.swift in Sources */,
-				E3163E6523C8F4B800AC83A9 /* AccountButton.swift in Sources */,
+				D0632E062419265E0010A7D9 /* EditButton.swift in Sources */,
 				D043C0B523894A9E00B05967 /* ProductCellView.swift in Sources */,
 				8E1C3CB823856DFC005847A0 /* CartCellViewModel.swift in Sources */,
 				8E1C3CBB238588AA005847A0 /* CartItem.swift in Sources */,
+				D0632E04241926550010A7D9 /* InfoLine.swift in Sources */,
 				8E1C3CB323856B1E005847A0 /* CartViewModel.swift in Sources */,
 				E3163E7223C9380800AC83A9 /* OrdersCellViewModel.swift in Sources */,
 				D0736013237494E600CD6B72 /* HomeViewModel.swift in Sources */,
@@ -574,14 +580,15 @@
 				D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */,
 				E3163E6923C935A000AC83A9 /* OrdersCellView.swift in Sources */,
 				7380E7322397DE1500685B7C /* AuthAPIService.swift in Sources */,
+				D0632E08241926C70010A7D9 /* AboutUsViewController.swift in Sources */,
 				B376F52B23F4357C00FD8F3A /* ApiError.swift in Sources */,
 				D07360162374A46300CD6B72 /* TabBarViewController.swift in Sources */,
 				D0719DCC238469610046EC0B /* UIViewExtensions.swift in Sources */,
 				7347E1112385954C00644970 /* User.swift in Sources */,
 				D0709B29239FB5E500055F20 /* Request.swift in Sources */,
+				D0632E022419264D0010A7D9 /* ProfileInput.swift in Sources */,
 				E3163E7023C937EF00AC83A9 /* OrdersViewModel.swift in Sources */,
 				E3163E6723C92DDF00AC83A9 /* EditInfoViewController.swift in Sources */,
-				7366555F2385435E0062A358 /* SignInView.swift in Sources */,
 				7347E10F2385948E00644970 /* Token.swift in Sources */,
 				D026F9EA2373027B00372EA0 /* HomeViewController.swift in Sources */,
 				E3945F4A239290D8007ED444 /* PaymentViewController.swift in Sources */,

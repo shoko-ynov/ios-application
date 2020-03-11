@@ -65,6 +65,8 @@
 		E3945F48239290C8007ED444 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F47239290C8007ED444 /* OrdersViewController.swift */; };
 		E3945F4A239290D8007ED444 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F49239290D8007ED444 /* PaymentViewController.swift */; };
 		E3945F4C239290EA007ED444 /* PPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F4B239290EA007ED444 /* PPViewController.swift */; };
+		D0CE24A62393002E00C41ACD /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE24A52393002E00C41ACD /* ProductDetailViewController.swift */; };
+		D0CE24A92393005B00C41ACD /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE24A82393005B00C41ACD /* ProductDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +130,8 @@
 		E3945F47239290C8007ED444 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		E3945F49239290D8007ED444 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		E3945F4B239290EA007ED444 /* PPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPViewController.swift; sourceTree = "<group>"; };
+		D0CE24A52393002E00C41ACD /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		D0CE24A82393005B00C41ACD /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +304,7 @@
 			children = (
 				7320AF3623AA50B400FF5EB7 /* SignUp */,
 				7366555A238542D90062A358 /* SignIn */,
+				D0CE24A42393000C00C41ACD /* ProductDetail */,
 				D08A5C9E2374C9DF00221F37 /* Cart */,
 				D08A5C9B2374C75A00221F37 /* Profile */,
 				D07360142374A44300CD6B72 /* TabBar */,
@@ -438,6 +443,23 @@
 				E3163E6823C935A000AC83A9 /* OrdersCellView.swift */,
 			);
 			path = Reusables;
+			sourceTree = "<group>";
+		};
+		D0CE24A42393000C00C41ACD /* ProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D0CE24A72393004800C41ACD /* ViewModels */,
+				D0CE24A52393002E00C41ACD /* ProductDetailViewController.swift */,
+			);
+			path = ProductDetail;
+			sourceTree = "<group>";
+		};
+		D0CE24A72393004800C41ACD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D0CE24A82393005B00C41ACD /* ProductDetailViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -582,7 +604,9 @@
 				7380E7322397DE1500685B7C /* AuthAPIService.swift in Sources */,
 				D0632E08241926C70010A7D9 /* AboutUsViewController.swift in Sources */,
 				B376F52B23F4357C00FD8F3A /* ApiError.swift in Sources */,
+				D0CE24A92393005B00C41ACD /* ProductDetailViewModel.swift in Sources */,
 				D07360162374A46300CD6B72 /* TabBarViewController.swift in Sources */,
+				D0CE24A62393002E00C41ACD /* ProductDetailViewController.swift in Sources */,
 				D0719DCC238469610046EC0B /* UIViewExtensions.swift in Sources */,
 				7347E1112385954C00644970 /* User.swift in Sources */,
 				D0709B29239FB5E500055F20 /* Request.swift in Sources */,

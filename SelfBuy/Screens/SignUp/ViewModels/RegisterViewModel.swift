@@ -17,7 +17,6 @@ class RegisterViewModel
     let bag = DisposeBag()
     
     let mailTextInput = BehaviorRelay<String>(value: "")
-    let passwordTextInput = BehaviorRelay<String>(value: "")
     
     func register() {
         let userRegister = RegisterDTO(mail: mailTextInput.value)

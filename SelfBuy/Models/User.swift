@@ -9,9 +9,14 @@
 import Foundation
 
 struct User : Codable {
-    let isAdmin: Bool
+//    let isAdmin: Bool
     let _id: String
     let mail: String
     let active: Bool
-    let registrationDate: Int
+    let firstName: String
+    let lastName: String
+    let registrationDate: Date
+    let address: String
+    let postalCode: String
+    let city: String
 }

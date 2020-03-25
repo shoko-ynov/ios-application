@@ -19,6 +19,16 @@ class StripeRequest {
         self.url = url
     }
     
+    func setBody(_ body: Encodable) -> StripeRequest {
+        self.body = body
+        return self
+    }
+    
+    func setMethod(_ method: HTTPMethod) -> StripeRequest {
+        self.method = method
+        return self
+    }
+    
     private func getRequest() -> URLRequest? {
         var request = URLRequest(url: URL(string: self.url)!)
         request.httpMethod = self.method.rawValue

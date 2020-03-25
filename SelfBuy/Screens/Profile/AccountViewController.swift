@@ -164,7 +164,7 @@ class AccountViewController: UIViewController {
             .rx
             .tap
             .bind { [ weak self ] in
-                self?.present(EditInfoViewController(), animated: true)
+                self?.present(EditInfoViewController(viewModel: UserViewModel()), animated: true)
         }.disposed(by: bag)
         
     }

@@ -12,6 +12,7 @@ import RxSwift
 class EditInfoViewController: UIViewController {
     
     let bag = DisposeBag()
+    let viewModel: UserViewModelling
     
     private let validationButton: UIButton = {
         let button = UIButton()
@@ -22,6 +23,19 @@ class EditInfoViewController: UIViewController {
         let image = UIImage(systemName: "checkmark.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25.0, weight: .regular, scale: .large))?.withTintColor(UIColor.primary, renderingMode: .alwaysOriginal)
         return image!
     }()
+    
+    
+    init(viewModel: UserViewModelling) {
+        self.viewModel = viewModel
+        
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func loadView() {
         super.loadView()

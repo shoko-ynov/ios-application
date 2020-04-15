@@ -12,7 +12,7 @@ import RxSwift
 class EditInfoViewController: UIViewController {
     
     let bag = DisposeBag()
-    let viewModel: UserViewModelling
+    let viewModel: UserViewModel
     
     private let validationButton: UIButton = {
         let button = UIButton()
@@ -25,9 +25,8 @@ class EditInfoViewController: UIViewController {
     }()
     
     
-    init(viewModel: UserViewModelling) {
+    init(viewModel: UserViewModel) {
         self.viewModel = viewModel
-        
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -40,10 +39,15 @@ class EditInfoViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
+//        self.viewModel.showData()
+        
         _ = setTitleLabel("Edit")
         view.backgroundColor = .lightGray
         navigationController?.navigationBar.isHidden = true
         
+//        let service: AuthAPIService = AuthAPIService()
+//        let test = service.getMe()
+
         // MARK: Edit name
         let editName = UITextField()
         editName.backgroundColor = UIColor.white
@@ -245,6 +249,9 @@ class EditInfoViewController: UIViewController {
               padding: .init(top: 0, left: 40, bottom: 0, right: 0)
           )
         
+//        func updateData(){
+//            editEmail.text = User.mail
+//        }
         
         
         // MARK: Validation button

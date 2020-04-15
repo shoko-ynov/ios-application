@@ -83,7 +83,7 @@ class Request {
         return request
     }
     
-    func send<T: Decodable>(_ type: T.Type, completion: @escaping (Result<T, Error>) -> Void ) {
+    func send<T: Decodable>(_ type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         guard let request = self.getRequest() else { return }
         
         URLSession.shared.dataTask(with: request) { (data, urlResponse, error) in

@@ -13,10 +13,10 @@ struct User : Codable {
     let _id: String
     let mail: String
     let active: Bool
-    let firstName: String
-    let lastName: String
+    let firstName: String?
+    let lastName: String?
     let registrationDate: Date
-    let address: String
-    let postalCode: String
-    let city: String
+    let address: String?
+    let postalCode: String?
+    let city: String?
 }

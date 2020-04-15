@@ -82,7 +82,7 @@ class ProfileViewController: UIViewController {
             padding: .init(top: 150, left: 0, bottom: 0, right: 0)
         )
         accountButton.onTapHandler = { [weak self] in
-            self?.present(AccountViewController(), animated: true)
+            self?.present(AccountViewController(viewModel: UserViewModel()), animated: true)
         }
         
         
@@ -113,7 +113,7 @@ class ProfileViewController: UIViewController {
             padding: .init(top: 20, left: 0, bottom: 0, right: 0)
         )
         paymentButton.onTapHandler = { [weak self] in
-            self?.present(EditInfoViewController(viewModel: UserViewModel()), animated: true)
+//            self?.present(EditInfoViewController(viewModel: UserViewModel()), animated: true)
         }
         
         // MARK: Privacy & Policy button

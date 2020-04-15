@@ -14,9 +14,15 @@ final class PaymentApiService {
     func createCard(card: CardPaymentDTO,completionHandler: @escaping (Result<CardPayment, Error>) -> Void) {
         let request = StripeRequest(url: "https://api.stripe.com/v1/tokens")
         
+        var body = "card[number]=\(card.number)";
+        body += "&card[exp_month]=\(card.monthExpiration)";
+        body += "&card[exp_year]=\(card.yearExpiration)";
+        body += "&card[cvc]=\(card.cvc)";
+        body += "&card[name]=\(card.name)";
+        
         request
             .setMethod(.POST)
-            .setBody(card)
+            .setBody(body)
             .send(CardPayment.self) {
                 switch $0 {
                 case .success(let data):

@@ -10,7 +10,7 @@ import Foundation
 
 class StripeRequest {
     private var url: String
-    private var body: Encodable?
+    private var body: String?
     private var method: HTTPMethod = .GET
     private var token: String?
     private let encoder = JSONEncoder()
@@ -19,7 +19,7 @@ class StripeRequest {
         self.url = url
     }
     
-    func setBody(_ body: Encodable) -> StripeRequest {
+    func setBody(_ body: String) -> StripeRequest {
         self.body = body
         return self
     }
@@ -33,21 +33,16 @@ class StripeRequest {
         var request = URLRequest(url: URL(string: self.url)!)
         request.httpMethod = self.method.rawValue
         
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-
-        let apiKey = "pk_test_QaiIO5kPkgG7O1mVrUkBtxuT00e0pQ3xq2"
-        let encodedApiKey = apiKey.data(using: .utf8)
-        let oui = encodedApiKey?.base64EncodedString()
-        print(oui as Any)
-        request.addValue("Authorization", forHTTPHeaderField: "Basic \(oui!)")
+        let encodedApiKey = Config.stripePublicKey.data(using: .utf8)!.base64EncodedString()
+        
+        request.addValue("Basic \(encodedApiKey)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
         guard let body = body else {
             return request
         }
         
-        let encodable = AnyEncodable(body)
-        request.httpBody = try? JSONEncoder().encode(encodable)
+        request.httpBody = NSMutableData(data: body.data(using: .utf8)!) as Data;
                 
         return request
     }
@@ -65,6 +60,7 @@ class StripeRequest {
     
     func send<T: Decodable>(_ type: T.Type, completion: @escaping (Result<T, Error>) -> Void ) {
         guard let request = self.getRequest() else { return }
+        print("request")
         print(request)
         
         URLSession.shared.dataTask(with: request) { (data, urlResponse, error) in

@@ -60,8 +60,6 @@ class StripeRequest {
     
     func send<T: Decodable>(_ type: T.Type, completion: @escaping (Result<T, Error>) -> Void ) {
         guard let request = self.getRequest() else { return }
-        print("request")
-        print(request)
         
         URLSession.shared.dataTask(with: request) { (data, urlResponse, error) in
             guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else { return }

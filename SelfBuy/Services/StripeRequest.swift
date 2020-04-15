@@ -47,11 +47,11 @@ class StripeRequest {
         return request
     }
     
-    private func decodeData<T: Decodable>(_ type: T.Type, data: Data) -> Result<GenericServerResponse<T>, Error> {
+    private func decodeData<T: Decodable>(_ type: T.Type, data: Data) -> Result<T, Error> {
         let decoder = JSONDecoder()
         
         do {
-            let decodedData = try decoder.decode(GenericServerResponse<T>.self, from: data)
+            let decodedData = try decoder.decode(type, from: data)
             return .success(decodedData)
         } catch let error {
             return .failure(error)
@@ -74,11 +74,11 @@ class StripeRequest {
                     throw NSError(domain: "Server error, status code : \(urlResponse.statusCode)", code: 500)
                 }
                 
-                let response = self.decodeData(T.self, data: data)
+                let response = self.decodeData(type, data: data)
                 
                 switch response {
                 case .success(let decoded):
-                    completion(.success(decoded.data))
+                    completion(.success(decoded))
                 case .failure(let error):
                     completion(.failure(error))
                 }

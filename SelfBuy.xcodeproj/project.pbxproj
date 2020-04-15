@@ -29,7 +29,7 @@
 		B3C4D2FC242BA31C0083F47F /* ProductPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D2FB242BA31C0083F47F /* ProductPayment.swift */; };
 		B3C4D2FE242BA3610083F47F /* ProductPaymentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D2FD242BA3610083F47F /* ProductPaymentDTO.swift */; };
 		B3C4D300242BA7670083F47F /* CardPaymentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D2FF242BA7670083F47F /* CardPaymentDTO.swift */; };
-		B3C4D302242BA7720083F47F /* CardPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D301242BA7720083F47F /* CardPayment.swift */; };
+		B3C4D302242BA7720083F47F /* StripeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D301242BA7720083F47F /* StripeCard.swift */; };
 		B3C4D304242BA8CA0083F47F /* StripeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D303242BA8CA0083F47F /* StripeRequest.swift */; };
 		D026F9CE2372E41000372EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026F9CD2372E41000372EA0 /* AppDelegate.swift */; };
 		D026F9D02372E41000372EA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026F9CF2372E41000372EA0 /* SceneDelegate.swift */; };
@@ -99,7 +99,7 @@
 		B3C4D2FB242BA31C0083F47F /* ProductPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPayment.swift; sourceTree = "<group>"; };
 		B3C4D2FD242BA3610083F47F /* ProductPaymentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPaymentDTO.swift; sourceTree = "<group>"; };
 		B3C4D2FF242BA7670083F47F /* CardPaymentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentDTO.swift; sourceTree = "<group>"; };
-		B3C4D301242BA7720083F47F /* CardPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPayment.swift; sourceTree = "<group>"; };
+		B3C4D301242BA7720083F47F /* StripeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCard.swift; sourceTree = "<group>"; };
 		B3C4D303242BA8CA0083F47F /* StripeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeRequest.swift; sourceTree = "<group>"; };
 		D026F9CA2372E41000372EA0 /* Shok'o.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shok'o.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D026F9CD2372E41000372EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 				8E1C3CBC238588D0005847A0 /* Product.swift */,
 				B376F52A23F4357C00FD8F3A /* ApiError.swift */,
 				B3C4D2FB242BA31C0083F47F /* ProductPayment.swift */,
-				B3C4D301242BA7720083F47F /* CardPayment.swift */,
+				B3C4D301242BA7720083F47F /* StripeCard.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -617,7 +617,7 @@
 				73872A1A23AA7C59007530CB /* RegisterDTO.swift in Sources */,
 				7396720C23AA237A0077EFA5 /* LoginViewModel.swift in Sources */,
 				73872A1C23AA817C007530CB /* RegisterResponseDTO.swift in Sources */,
-				B3C4D302242BA7720083F47F /* CardPayment.swift in Sources */,
+				B3C4D302242BA7720083F47F /* StripeCard.swift in Sources */,
 				D073601A2374AA1500CD6B72 /* ReusableView.swift in Sources */,
 				D0941C3A238912F30052F598 /* CartCellView.swift in Sources */,
 				B3C4D2F4242B93650083F47F /* CardViewModel.swift in Sources */,

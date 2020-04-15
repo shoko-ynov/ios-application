@@ -11,7 +11,7 @@ import Foundation
 final class PaymentApiService {
     let decoder = JSONDecoder()
     
-    func createCard(card: CardPaymentDTO,completionHandler: @escaping (Result<CardPayment, Error>) -> Void) {
+    func createCard(card: CardPaymentDTO,completionHandler: @escaping (Result<StripeCard, Error>) -> Void) {
         let request = StripeRequest(url: "https://api.stripe.com/v1/tokens")
         
         var body = "card[number]=\(card.number)";
@@ -23,7 +23,7 @@ final class PaymentApiService {
         request
             .setMethod(.POST)
             .setBody(body)
-            .send(CardPayment.self) {
+            .send(StripeCard.self) {
                 switch $0 {
                 case .success(let data):
                     print(data)

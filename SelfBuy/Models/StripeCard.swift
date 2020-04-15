@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct CardPayment : Decodable {
+struct StripeCard : Decodable {
     var id : String
 }

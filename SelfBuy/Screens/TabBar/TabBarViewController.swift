@@ -30,13 +30,15 @@ final class TabBarViewController: UITabBarController {
         let cartVC = CartViewController(viewModel: CartViewModel())
         cartVC.tabBarItem.image = UIImage(named: "cart")
         let profileVC = LoginViewController(viewModel: LoginViewModel())
-
         profileVC.tabBarItem.image = UIImage(named: "user")
+        let cardVC = CardViewController(viewModel: CardViewModel())
+        cardVC.tabBarItem.image = UIImage(named: "card")
         
         self.viewControllers = [
             homeVC,
             cartVC,
-            profileVC
+            profileVC,
+            cardVC
         ]
         
         tabBar.shadowImage = UIImage()

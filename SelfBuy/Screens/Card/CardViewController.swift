@@ -14,6 +14,7 @@ class CardViewController: UIViewController {
 
     lazy var cardTextField: STPPaymentCardTextField = {
         let cardTextField = STPPaymentCardTextField()
+        cardTextField.postalCodeEntryEnabled = false
         return cardTextField
     }()
     lazy var nameTextField: UITextField = {

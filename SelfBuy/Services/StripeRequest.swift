@@ -35,6 +35,12 @@ class StripeRequest {
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
+
+        let apiKey = "pk_test_QaiIO5kPkgG7O1mVrUkBtxuT00e0pQ3xq2"
+        let encodedApiKey = apiKey.data(using: .utf8)
+        let oui = encodedApiKey?.base64EncodedString()
+        print(oui as Any)
+        request.addValue("Authorization", forHTTPHeaderField: "Basic \(oui!)")
         
         guard let body = body else {
             return request
@@ -59,6 +65,7 @@ class StripeRequest {
     
     func send<T: Decodable>(_ type: T.Type, completion: @escaping (Result<T, Error>) -> Void ) {
         guard let request = self.getRequest() else { return }
+        print(request)
         
         URLSession.shared.dataTask(with: request) { (data, urlResponse, error) in
             guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else { return }

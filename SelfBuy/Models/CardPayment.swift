@@ -9,5 +9,5 @@
 import Foundation
 
 struct CardPayment : Decodable {
-    var token : String
+    var id : String
 }

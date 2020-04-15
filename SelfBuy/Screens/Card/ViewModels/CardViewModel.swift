@@ -13,6 +13,7 @@ import Stripe
 
 class CardViewModel {
     let bag = DisposeBag()
+    let service = PaymentApiService()
     
     let nameTextInput = BehaviorRelay<String>(value: "")
     
@@ -23,7 +24,16 @@ class CardViewModel {
         let cvc = cardParams.cvc!
         
         let card = CardPaymentDTO(number: number, monthExpiration: Int(expMonth), yearExpiration: Int(expYear), cvc: cvc, name: nameTextInput.value)
-        
+        service.createCard(card: card) { (result) in
+            switch result {
+            case .success(let stripeCard):
+                print("success")
+            case .failure(let error as NSError):
+                print(error)
+            default:
+                print("default")
+            }
+        }
         print(card)
     }
 }

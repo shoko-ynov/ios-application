@@ -33,8 +33,8 @@ class StripeRequest {
         var request = URLRequest(url: URL(string: self.url)!)
         request.httpMethod = self.method.rawValue
         
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.addValue("application/json", forHTTPHeaderField: "Accept")
 
         let apiKey = "pk_test_QaiIO5kPkgG7O1mVrUkBtxuT00e0pQ3xq2"
         let encodedApiKey = apiKey.data(using: .utf8)

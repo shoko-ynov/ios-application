@@ -23,6 +23,14 @@
 		8E1C3CBF23858FE6005847A0 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C3CBE23858FE6005847A0 /* UILabelExtensions.swift */; };
 		B374343D23F4303100F9B288 /* RefreshTokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B374343C23F4303100F9B288 /* RefreshTokenDTO.swift */; };
 		B376F52B23F4357C00FD8F3A /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B376F52A23F4357C00FD8F3A /* ApiError.swift */; };
+		B3C4D2F1242B93160083F47F /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D2F0242B93160083F47F /* CardViewController.swift */; };
+		B3C4D2F4242B93650083F47F /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D2F3242B93650083F47F /* CardViewModel.swift */; };
+		B3C4D2F6242B98C90083F47F /* PaymentApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D2F5242B98C90083F47F /* PaymentApiService.swift */; };
+		B3C4D2FC242BA31C0083F47F /* ProductPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D2FB242BA31C0083F47F /* ProductPayment.swift */; };
+		B3C4D2FE242BA3610083F47F /* ProductPaymentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D2FD242BA3610083F47F /* ProductPaymentDTO.swift */; };
+		B3C4D300242BA7670083F47F /* CardPaymentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D2FF242BA7670083F47F /* CardPaymentDTO.swift */; };
+		B3C4D302242BA7720083F47F /* CardPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D301242BA7720083F47F /* CardPayment.swift */; };
+		B3C4D304242BA8CA0083F47F /* StripeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4D303242BA8CA0083F47F /* StripeRequest.swift */; };
 		D026F9CE2372E41000372EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026F9CD2372E41000372EA0 /* AppDelegate.swift */; };
 		D026F9D02372E41000372EA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026F9CF2372E41000372EA0 /* SceneDelegate.swift */; };
 		D026F9D72372E41200372EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D026F9D62372E41200372EA0 /* Assets.xcassets */; };
@@ -85,6 +93,14 @@
 		8E1C3CBE23858FE6005847A0 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		B374343C23F4303100F9B288 /* RefreshTokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenDTO.swift; sourceTree = "<group>"; };
 		B376F52A23F4357C00FD8F3A /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		B3C4D2F0242B93160083F47F /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		B3C4D2F3242B93650083F47F /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		B3C4D2F5242B98C90083F47F /* PaymentApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentApiService.swift; sourceTree = "<group>"; };
+		B3C4D2FB242BA31C0083F47F /* ProductPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPayment.swift; sourceTree = "<group>"; };
+		B3C4D2FD242BA3610083F47F /* ProductPaymentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPaymentDTO.swift; sourceTree = "<group>"; };
+		B3C4D2FF242BA7670083F47F /* CardPaymentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentDTO.swift; sourceTree = "<group>"; };
+		B3C4D301242BA7720083F47F /* CardPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPayment.swift; sourceTree = "<group>"; };
+		B3C4D303242BA8CA0083F47F /* StripeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeRequest.swift; sourceTree = "<group>"; };
 		D026F9CA2372E41000372EA0 /* Shok'o.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shok'o.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D026F9CD2372E41000372EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D026F9CF2372E41000372EA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -221,8 +237,27 @@
 				8E1C3CBA238588AA005847A0 /* CartItem.swift */,
 				8E1C3CBC238588D0005847A0 /* Product.swift */,
 				B376F52A23F4357C00FD8F3A /* ApiError.swift */,
+				B3C4D2FB242BA31C0083F47F /* ProductPayment.swift */,
+				B3C4D301242BA7720083F47F /* CardPayment.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B3C4D2EF242B92B60083F47F /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				B3C4D2F2242B93230083F47F /* ViewModels */,
+				B3C4D2F0242B93160083F47F /* CardViewController.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		B3C4D2F2242B93230083F47F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B3C4D2F3242B93650083F47F /* CardViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		D026F9C12372E41000372EA0 = {
@@ -299,6 +334,7 @@
 		D026F9E52372E5A800372EA0 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				B3C4D2EF242B92B60083F47F /* Card */,
 				7320AF3623AA50B400FF5EB7 /* SignUp */,
 				7366555A238542D90062A358 /* SignIn */,
 				D0CE24A42393000C00C41ACD /* ProductDetail */,
@@ -334,6 +370,8 @@
 				D043C0BC23894E5F00B05967 /* ProductApiService.swift */,
 				7380E7312397DE1500685B7C /* AuthAPIService.swift */,
 				D0709B28239FB5E500055F20 /* Request.swift */,
+				B3C4D2F5242B98C90083F47F /* PaymentApiService.swift */,
+				B3C4D303242BA8CA0083F47F /* StripeRequest.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -353,6 +391,8 @@
 				73872A1923AA7C59007530CB /* RegisterDTO.swift */,
 				73872A1B23AA817C007530CB /* RegisterResponseDTO.swift */,
 				B374343C23F4303100F9B288 /* RefreshTokenDTO.swift */,
+				B3C4D2FD242BA3610083F47F /* ProductPaymentDTO.swift */,
+				B3C4D2FF242BA7670083F47F /* CardPaymentDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -566,6 +606,8 @@
 				D0632E062419265E0010A7D9 /* EditButton.swift in Sources */,
 				D043C0B523894A9E00B05967 /* ProductCellView.swift in Sources */,
 				8E1C3CB823856DFC005847A0 /* CartCellViewModel.swift in Sources */,
+				B3C4D304242BA8CA0083F47F /* StripeRequest.swift in Sources */,
+				B3C4D2F1242B93160083F47F /* CardViewController.swift in Sources */,
 				8E1C3CBB238588AA005847A0 /* CartItem.swift in Sources */,
 				D0632E04241926550010A7D9 /* InfoLine.swift in Sources */,
 				8E1C3CB323856B1E005847A0 /* CartViewModel.swift in Sources */,
@@ -575,12 +617,16 @@
 				73872A1A23AA7C59007530CB /* RegisterDTO.swift in Sources */,
 				7396720C23AA237A0077EFA5 /* LoginViewModel.swift in Sources */,
 				73872A1C23AA817C007530CB /* RegisterResponseDTO.swift in Sources */,
+				B3C4D302242BA7720083F47F /* CardPayment.swift in Sources */,
 				D073601A2374AA1500CD6B72 /* ReusableView.swift in Sources */,
 				D0941C3A238912F30052F598 /* CartCellView.swift in Sources */,
+				B3C4D2F4242B93650083F47F /* CardViewModel.swift in Sources */,
 				D097768B238AA8250080F701 /* UIImageViewExtensions.swift in Sources */,
+				B3C4D2FC242BA31C0083F47F /* ProductPayment.swift in Sources */,
 				B374343D23F4303100F9B288 /* RefreshTokenDTO.swift in Sources */,
 				D026F9CE2372E41000372EA0 /* AppDelegate.swift in Sources */,
 				7366555D2385431C0062A358 /* LoginViewController.swift in Sources */,
+				B3C4D2F6242B98C90083F47F /* PaymentApiService.swift in Sources */,
 				D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */,
 				D08681D3239FF91900F65961 /* UserDTO.swift in Sources */,
 				7320AF3A23AA514300FF5EB7 /* RegisterViewModel.swift in Sources */,
@@ -596,6 +642,7 @@
 				D043C0BD23894E5F00B05967 /* ProductApiService.swift in Sources */,
 				D08A5C9D2374C78100221F37 /* ProfileViewController.swift in Sources */,
 				D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */,
+				B3C4D300242BA7670083F47F /* CardPaymentDTO.swift in Sources */,
 				E3163E6923C935A000AC83A9 /* OrdersCellView.swift in Sources */,
 				7380E7322397DE1500685B7C /* AuthAPIService.swift in Sources */,
 				D0632E08241926C70010A7D9 /* AboutUsViewController.swift in Sources */,
@@ -612,6 +659,7 @@
 				7347E10F2385948E00644970 /* Token.swift in Sources */,
 				D026F9EA2373027B00372EA0 /* HomeViewController.swift in Sources */,
 				E3945F4A239290D8007ED444 /* PaymentViewController.swift in Sources */,
+				B3C4D2FE242BA3610083F47F /* ProductPaymentDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,16 @@ final class CartViewController: UIViewController {
         
         return collectionView
     }()
+    private var checkoutBtn: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .primary
+        button.layer.cornerRadius = 25
+        button.contentHorizontalAlignment = .left
+        button.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 0.0)
+        button.setTitle("Valider le panier", for: .normal)
+        
+        return button
+    }()
     
     let viewModel: CartViewModelling
     
@@ -32,6 +42,10 @@ final class CartViewController: UIViewController {
         view.backgroundColor = .lightGray
         view.addSubview(itemCollectionView)
         
+        checkoutBtn.frame = CGRect(x: 0, y: self.view.frame.size.height - 160, width: 250, height:50)
+        checkoutBtn.center.x = self.view.center.x
+        view.addSubview(checkoutBtn)
+        
         let titleLabel = setTitleLabel("Mon panier")
         
         itemCollectionView.delegate = self
@@ -40,6 +54,9 @@ final class CartViewController: UIViewController {
         itemCollectionView.register(CartCellView.self, forCellWithReuseIdentifier: CartCellView.reuseIdentifier)
         itemCollectionView.anchor(top: titleLabel.bottomAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 5, left: 0, bottom: 5, right: 0))
         
+        checkoutBtn.rx.tap.bind { _ in
+            print("valider")
+        }.disposed(by: self.viewModel.bag)
     }
     
     override func viewDidLoad() {

@@ -10,8 +10,9 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    let profileName = ""
-    let profileEmail = ""
+    // MARK: Temporary profile menu titles
+    let profileName = " "
+    let profileEmail = " "
 //    let profileName = "Zakarya Tolba"
 //    let profileEmail = "zakarya.tolba@ynov.com"
     

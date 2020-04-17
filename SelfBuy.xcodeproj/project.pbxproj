@@ -488,7 +488,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = MaxenceMottard;
 				TargetAttributes = {
 					D026F9C92372E41000372EA0 = {
@@ -566,7 +566,6 @@
 				8E1C3CB823856DFC005847A0 /* CartCellViewModel.swift in Sources */,
 				D0632E062419265E0010A7D9 /* EditButton.swift in Sources */,
 				D043C0B523894A9E00B05967 /* ProductCellView.swift in Sources */,
-				8E1C3CB823856DFC005847A0 /* CartCellViewModel.swift in Sources */,
 				8E1C3CBB238588AA005847A0 /* CartItem.swift in Sources */,
 				D0632E04241926550010A7D9 /* InfoLine.swift in Sources */,
 				8E1C3CB323856B1E005847A0 /* CartViewModel.swift in Sources */,

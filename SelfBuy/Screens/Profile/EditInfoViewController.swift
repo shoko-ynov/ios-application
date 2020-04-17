@@ -28,6 +28,8 @@ class EditInfoViewController: UIViewController {
     init(viewModel: UserViewModel) {
         self.viewModel = viewModel
         
+        viewModel.showData()
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -38,16 +40,12 @@ class EditInfoViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        
-//        self.viewModel.showData()
-        
+
         _ = setTitleLabel("Edit")
         view.backgroundColor = .lightGray
         navigationController?.navigationBar.isHidden = true
-        
-//        let service: AuthAPIService = AuthAPIService()
-//        let test = service.getMe()
 
+        
         // MARK: Edit name
         let editName = UITextField()
         editName.backgroundColor = UIColor.white
@@ -88,6 +86,47 @@ class EditInfoViewController: UIViewController {
             padding: .init(top: 0, left: 40, bottom: 0, right: 0)
         )
         
+        // MARK: Edit email
+        let editEmail = UITextField()
+        editEmail.backgroundColor = UIColor.white
+        editEmail.textColor = UIColor.black
+        editEmail.minimumFontSize = 20.0
+        editEmail.borderStyle = UITextField.BorderStyle.roundedRect
+        editEmail.layer.cornerRadius = 5.0
+        editEmail.font = UIFont(name: "Poppins", size: 15.0)
+        editEmail.becomeFirstResponder()
+        editEmail.text = ""
+        
+        let editEmailLabel: UILabel = {
+            let editEmailLabel = UILabel()
+            editEmailLabel.textColor = UIColor.black
+            editEmailLabel.setToMedium(size: 20)
+            editEmailLabel.text = "Email"
+            
+            return editEmailLabel
+        }()
+        
+        
+        self.view.addSubview(editEmail)
+        self.view.addSubview(editEmailLabel)
+        
+        editEmail.anchor(
+            top: editName.topAnchor,
+            leading: self.view.leadingAnchor,
+            bottom: nil,
+            trailing: self.view.trailingAnchor,
+            padding: .init(top: 80, left: 40, bottom: 0, right: 40)
+        )
+        
+        editEmailLabel.anchor(
+            top: nil,
+            leading: self.view.leadingAnchor,
+            bottom: editEmail.topAnchor,
+            trailing: self.view.trailingAnchor,
+            padding: .init(top: 0, left: 40, bottom: 0, right: 0)
+        )
+        
+        
         // MARK: Edit address
         let editAddress = UITextField()
         editAddress.backgroundColor = UIColor.white
@@ -113,7 +152,7 @@ class EditInfoViewController: UIViewController {
         self.view.addSubview(editAddressLabel)
         
         editAddress.anchor(
-            top: editName.topAnchor,
+            top: editEmail.topAnchor,
             leading: self.view.leadingAnchor,
             bottom: nil,
             trailing: self.view.trailingAnchor,
@@ -127,131 +166,6 @@ class EditInfoViewController: UIViewController {
             trailing: self.view.trailingAnchor,
             padding: .init(top: 0, left: 40, bottom: 0, right: 0)
         )
-        
-        // MARK: Edit email
-        let editEmail = UITextField()
-          editEmail.backgroundColor = UIColor.white
-          editEmail.textColor = UIColor.black
-          editEmail.minimumFontSize = 20.0
-          editEmail.borderStyle = UITextField.BorderStyle.roundedRect
-          editEmail.layer.cornerRadius = 5.0
-          editEmail.font = UIFont(name: "Poppins", size: 15.0)
-          editEmail.becomeFirstResponder()
-          editEmail.text = ""
-          
-          let editEmailLabel: UILabel = {
-              let editEmailLabel = UILabel()
-              editEmailLabel.textColor = UIColor.black
-              editEmailLabel.setToMedium(size: 20)
-              editEmailLabel.text = "Email"
-              
-              return editEmailLabel
-          }()
-          
-          
-          self.view.addSubview(editEmail)
-          self.view.addSubview(editEmailLabel)
-          
-          editEmail.anchor(
-              top: editAddress.topAnchor,
-              leading: self.view.leadingAnchor,
-              bottom: nil,
-              trailing: self.view.trailingAnchor,
-              padding: .init(top: 80, left: 40, bottom: 0, right: 40)
-          )
-          
-          editEmailLabel.anchor(
-              top: nil,
-              leading: self.view.leadingAnchor,
-              bottom: editEmail.topAnchor,
-              trailing: self.view.trailingAnchor,
-              padding: .init(top: 0, left: 40, bottom: 0, right: 0)
-          )
-          
-        
-        // MARK: Edit phone
-        let editPhone = UITextField()
-          editPhone.backgroundColor = UIColor.white
-          editPhone.textColor = UIColor.black
-          editPhone.minimumFontSize = 20.0
-          editPhone.borderStyle = UITextField.BorderStyle.roundedRect
-          editPhone.layer.cornerRadius = 5.0
-          editPhone.font = UIFont(name: "Poppins", size: 15.0)
-          editPhone.becomeFirstResponder()
-          editPhone.text = ""
-          
-          let editPhoneLabel: UILabel = {
-              let editPhoneLabel = UILabel()
-              editPhoneLabel.textColor = UIColor.black
-              editPhoneLabel.setToMedium(size: 20)
-              editPhoneLabel.text = "Phone"
-              
-              return editPhoneLabel
-          }()
-          
-          
-          self.view.addSubview(editPhone)
-          self.view.addSubview(editPhoneLabel)
-          
-          editPhone.anchor(
-              top: editEmail.topAnchor,
-              leading: self.view.leadingAnchor,
-              bottom: nil,
-              trailing: self.view.trailingAnchor,
-              padding: .init(top: 80, left: 40, bottom: 0, right: 40)
-          )
-          
-          editPhoneLabel.anchor(
-              top: nil,
-              leading: self.view.leadingAnchor,
-              bottom: editPhone.topAnchor,
-              trailing: self.view.trailingAnchor,
-              padding: .init(top: 0, left: 40, bottom: 0, right: 0)
-          )
-        
-        // MARK: Edit birth date
-        let editBirthdate = UITextField()
-          editBirthdate.backgroundColor = UIColor.white
-          editBirthdate.textColor = UIColor.black
-          editBirthdate.minimumFontSize = 20.0
-          editBirthdate.borderStyle = UITextField.BorderStyle.roundedRect
-          editBirthdate.layer.cornerRadius = 5.0
-          editBirthdate.font = UIFont(name: "Poppins", size: 15.0)
-          editBirthdate.becomeFirstResponder()
-          editBirthdate.text = ""
-          
-          let editBirthdateLabel: UILabel = {
-              let editBirthdateLabel = UILabel()
-              editBirthdateLabel.textColor = UIColor.black
-              editBirthdateLabel.setToMedium(size: 20)
-              editBirthdateLabel.text = "Birth date"
-              
-              return editBirthdateLabel
-          }()
-          
-          
-          self.view.addSubview(editBirthdate)
-          self.view.addSubview(editBirthdateLabel)
-          
-          editBirthdate.anchor(
-              top: editPhone.topAnchor,
-              leading: self.view.leadingAnchor,
-              bottom: nil,
-              trailing: self.view.trailingAnchor,
-              padding: .init(top: 80, left: 40, bottom: 0, right: 40)
-          )
-          
-          editBirthdateLabel.anchor(
-              top: nil,
-              leading: self.view.leadingAnchor,
-              bottom: editBirthdate.topAnchor,
-              trailing: self.view.trailingAnchor,
-              padding: .init(top: 0, left: 40, bottom: 0, right: 0)
-          )
-        
-//        func updateData(){
-//            editEmail.text = User.mail
-//        }
         
         
         // MARK: Validation button
@@ -277,6 +191,5 @@ class EditInfoViewController: UIViewController {
         
         
     }
-    
-    
+
 }

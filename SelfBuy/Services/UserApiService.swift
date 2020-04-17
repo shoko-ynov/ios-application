@@ -33,23 +33,21 @@ final class UserApiService {
 
     }
     
-//    func getCurrentUser() -> String {
-//        let request = Request()
-//
-//           request
-//               .setPath("/me")
-//               .setMethod(.GET)
-//               .withAuthentication()
-//               .send(User.self) {
-//                   switch $0 {
-//                   case .success(let data):
-//                       print(data)
-//                   case .failure(let error):
-//                       print("error \(error)")
-//                   }
-//           }
-//        print(request)
-//        return request
-//    }
     
+    func updateUser(user: User, id: Int, completionHandler: @escaping (Result<Token, Error>) -> Void) {
+          let request = Request()
+          
+          request
+              .setPath("users/:\(id)")
+              .setMethod(.POST)
+              .setBody(user)
+              .send(RegisterResponseDTO.self) {
+                  switch $0 {
+                  case .success(let data):
+                      print(data)
+                  case .failure(let error):
+                      print(error)
+                  }
+          }
+      }
 }

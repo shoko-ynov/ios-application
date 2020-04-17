@@ -10,9 +10,10 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    // Temp strings for profileName & avatarFileName
-    let profileName = "Zakarya Tolba"
-    let profileEmail = "zakarya.tolba@ynov.com"
+    let profileName = ""
+    let profileEmail = ""
+//    let profileName = "Zakarya Tolba"
+//    let profileEmail = "zakarya.tolba@ynov.com"
     
     // Button arrow
     let chevron_left = UIImage(systemName: "chevron.left")
@@ -22,7 +23,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
-
+        
     }
     
     override func loadView() {
@@ -69,7 +70,6 @@ class ProfileViewController: UIViewController {
             padding: .init(top: 10, left: 0, bottom: 0, right: 0)
         )
     
-        // text: String, iconName: String, data: String
         // MARK: Account button
         let accountButton = ProfileButton(text: "Account")
         

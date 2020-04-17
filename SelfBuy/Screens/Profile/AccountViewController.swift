@@ -73,10 +73,6 @@ class AccountViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     
         
-
-        // MARK: UIStackView
-
-
         // MARK: Close button
         self.view.addSubview(closeButton)
         
@@ -98,43 +94,25 @@ class AccountViewController: UIViewController {
         }.disposed(by: bag)
         
         
-        // MARK: Payment method button
-        //        let paymentButton = ProfileButton(text: "Payment", viewController: PaymentViewController.self)
-        //
-        //        self.view.addSubview(paymentButton)
-        //        paymentButton.anchor(
-        //            top: closeButton.bottomAnchor,
-        //            leading: self.view.leadingAnchor,
-        //            bottom: nil,
-        //            trailing: self.view.trailingAnchor,
-        //            padding: .init(top: 20, left: 0, bottom: 0, right: 0)
-        //        )
-        //        paymentButton.onTapHandler = { [weak self] in
-        //                 self?.present(EditInfoViewController(), animated: true)
-        //        }
-        
-    
-        
-        // MARK: Edit button
-        self.view.addSubview(editButton)
-        
-        editButton.setImage(editIcon, for: .normal)
-        
-        editButton.anchor(
-            top: nil,
-            leading: self.view.trailingAnchor,
-            bottom: self.view.bottomAnchor,
-            trailing: nil,
-            padding: .init(top: 0, left: -230, bottom: 150, right: 0)
-        )
-        
-        editButton
-            .rx
-            .tap
-            .bind { [ weak self ] in
-            
+        // MARK: Edit button (disabled)
+//        self.view.addSubview(editButton)
+//
+//        editButton.setImage(editIcon, for: .normal)
+//
+//        editButton.anchor(
+//            top: nil,
+//            leading: self.view.trailingAnchor,
+//            bottom: self.view.bottomAnchor,
+//            trailing: nil,
+//            padding: .init(top: 0, left: -230, bottom: 150, right: 0)
+//        )
+//
+//        editButton
+//            .rx
+//            .tap
+//            .bind { [ weak self ] in
 //                self?.present(EditInfoViewController(viewModel: UserViewModel()), animated: true)
-        }.disposed(by: bag)
+//        }.disposed(by: bag)
         
     }
     
@@ -157,7 +135,7 @@ class AccountViewController: UIViewController {
             
             for (index, value) in values.enumerated()  {
                 let view = InfoLine(text: viewModel.staticUserData[index].label, iconName: viewModel.staticUserData[index].iconName, data: value)
-                view.heightAnchor.constraint(equalToConstant: 35).isActive = true
+                view.heightAnchor.constraint(equalToConstant: 65).isActive = true
                 view.translatesAutoresizingMaskIntoConstraints = false
                 views.append(view)
             }

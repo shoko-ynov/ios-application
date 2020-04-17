@@ -98,7 +98,7 @@ class ProfileViewController: UIViewController {
             padding: .init(top: 20, left: 0, bottom: 0, right: 0)
         )
         ordersButton.onTapHandler = { [weak self] in
-                 self?.present(AboutUsViewController(), animated: true)
+//                 self?.present(AboutUsViewController(), animated: true)
         }
         
          // MARK: Payment method button
@@ -128,7 +128,7 @@ class ProfileViewController: UIViewController {
               padding: .init(top: 20, left: 0, bottom: 0, right: 0)
           )
         ppButton.onTapHandler = { [weak self] in
-                 self?.present(PPViewController(), animated: true)
+//                 self?.present(PPViewController(), animated: true)
         }
         
         // MARK: About us button
@@ -143,7 +143,7 @@ class ProfileViewController: UIViewController {
                padding: .init(top: 20, left: 0, bottom: 0, right: 0)
            )
             aboutUsButton.onTapHandler = { [weak self] in
-                     self?.present(AboutUsViewController(), animated: true)
+//                     self?.present(AboutUsViewController(), animated: true)
             }
         
     }

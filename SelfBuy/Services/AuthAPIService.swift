@@ -28,22 +28,16 @@ final class AuthAPIService{
         }
     }
     
-    func getMe(){
+    func getMe(completion: @escaping (Result<User, Error>) -> Void){
         let request = Request()
         
         request
             .setPath("/me")
             .setMethod(.GET)
             .withAuthentication()
-            .send(User.self) {
-                switch $0 {
-                case .success(let data):
-                    print(data)
-                case .failure(let error):
-                    print("error \(error)")
-                }
-        }
+            .send(User.self, completion: completion)
     }
+    
     
     func refreshToken(){
         let request = Request()

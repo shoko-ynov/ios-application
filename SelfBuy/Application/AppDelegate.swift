@@ -39,7 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     @objc func appMovedToBackground() {
-        service.getMe()
+        service.getMe() {
+            print($0)
+        }
     }
 }
 

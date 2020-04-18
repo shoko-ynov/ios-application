@@ -10,7 +10,6 @@ import Foundation
 import RxSwift
 
 protocol HomeViewModelling: class {
-   
     var service: ProductApiService { get }
     func fetchData() -> Single<[Product]>
 }

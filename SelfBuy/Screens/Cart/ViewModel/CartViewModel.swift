@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol CartViewModelling {
     var numberOfSection: Int { get }
@@ -17,13 +18,16 @@ protocol CartViewModelling {
     func addItem()
     func getItem(index: IndexPath) -> CartCellViewModel
     func fetchOrders()
+    
+    var bag : DisposeBag { get }
 }
 
 final class CartViewModel: CartViewModelling {
-    
     func fetchOrders() {
         //self.cellViewModels.append(contentsOf: <#T##Sequence#>)
     }
+    
+    var bag = DisposeBag()
     
     var itemsViewModels: [CartCellViewModel] = []
     var numberOfSection: Int = 1

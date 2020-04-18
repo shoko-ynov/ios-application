@@ -44,16 +44,22 @@ class ProductDetailViewController: UIViewController {
         return label
     }()
     
-    private var addCartBtn: UIButton = {
-        let button:UIButton = UIButton(frame: CGRect(x: 0, y: 475, width: 250, height: 50))
-        button.layer.borderWidth = 1.0
-        button.backgroundColor = .primary
-//        button.layer.borderColor = UIColor.primary
-        button.layer.cornerRadius = 5.0
-        button.layer.cornerRadius = 18
-        button.layer.borderWidth = 0
+    private var pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
+    
+    private var nbPicker: UIPickerView = {
+        let picker = UIPickerView()
         
-        button.setTitleColor(.black, for: .normal)
+        return picker
+    }()
+    
+    private var addCartBtn: UIButton = {
+        let button:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
+        button.layer.borderWidth = 1.0
+        button.layer.cornerRadius = 18
+        button.layer.borderColor = UIColor.primary.cgColor
+        button.layer.borderWidth = 2
+        button.setTitleColor(.primary, for: .normal)
+        button.titleLabel?.setToBold(size: 14)
         button.setTitle("Ajouter Au Panier", for: .normal)
         
         return button
@@ -64,6 +70,7 @@ class ProductDetailViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(priceLabel)
+        view.addSubview(nbPicker)
         view.addSubview(addCartBtn)
         
         productFirstImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 40, left: 0, bottom: 0, right: 0), size: .init(width: 200, height: 200))
@@ -76,6 +83,8 @@ class ProductDetailViewController: UIViewController {
         
         priceLabel.anchor(top: descriptionLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 35, left: 50, bottom: 0, right: 0))
         priceLabel.text = "\(viewModel.product.price) €"
+        
+        nbPicker.anchor(top: priceLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.leadingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0))
         
         addCartBtn.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 110, bottom: 200, right: 110))
         
@@ -102,8 +111,11 @@ class ProductDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        view.backgroundColor = .lightGray
         
+        nbPicker.dataSource = self
+        nbPicker.delegate = self
+        
+        view.backgroundColor = .lightGray
     }
     
 
@@ -117,4 +129,18 @@ class ProductDetailViewController: UIViewController {
     }
     */
 
+}
+
+
+extension ProductDetailViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(pickerData[row])"
+    }
 }

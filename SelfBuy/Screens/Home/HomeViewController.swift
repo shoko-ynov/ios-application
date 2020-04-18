@@ -43,6 +43,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         setHeaderImage()
         let titleLabel = setTitleLabel("Accueil", textColor: .white)
+        
         view.backgroundColor = .lightGray
         view.addSubview(productsCollectionView)
         

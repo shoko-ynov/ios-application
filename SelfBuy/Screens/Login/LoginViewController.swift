@@ -80,6 +80,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var onDismiss = {}
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        onDismiss()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -133,20 +141,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         viewModel.onSuccesfulLogin = { [weak self] in
             DispatchQueue.main.async {
-                self?.tabBarController?.selectedIndex = 0
-                
-                let homeVC = HomeViewController(viewModel: HomeViewModel())
-                homeVC.tabBarItem.image = UIImage(named: "home")
-                let cartVC = CartViewController(viewModel: CartViewModel())
-                cartVC.tabBarItem.image = UIImage(named: "cart")
-                let profileVC = ProfileViewController()
-                profileVC.tabBarItem.image = UIImage(named: "user")
-                
-                self?.tabBarController?.viewControllers = [
-                    homeVC,
-                    cartVC,
-                    profileVC
-                ]
+                self?.dismiss(animated: true)
             }
         }
     }

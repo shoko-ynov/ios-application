@@ -1,5 +1,5 @@
 //
-//  CartService.swift
+//  CartItemRepository.swift
 //  SelfBuy
 //
 //  Created by Maxence Mottard on 18/04/2020.
@@ -9,9 +9,9 @@
 import Foundation
 import RxSwift
 
-final class CartService {
+final class CartItemRepository {
     
-    static let shared = CartService()
+    static let shared = CartItemRepository()
     
     init() {}
     

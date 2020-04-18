@@ -12,31 +12,30 @@ import RxSwift
 protocol CartViewModelling {
     var numberOfSection: Int { get }
     var numberOfItems: Int { get }
-    
-    func getItem(index: IndexPath) -> CartCellViewModel
+    var cartItemPublishSubject: PublishSubject<[CartItem]> { get }
     
     var bag : DisposeBag { get }
     
-    var cartItemPublishSubject: PublishSubject<[CartItem]> { get }
+    func getItem(index: IndexPath) -> CartCellViewModel
 }
 
 final class CartViewModel: CartViewModelling {
-    var cartItemPublishSubject: PublishSubject<[CartItem]>
     var bag = DisposeBag()
 
     var numberOfSection: Int = 1
-    
     var numberOfItems: Int {
-        return CartService.shared.products.count
+        return CartItemRepository.shared.products.count
     }
+    
+    var cartItemPublishSubject: PublishSubject<[CartItem]>
     
     init() {
         cartItemPublishSubject = PublishSubject()
-        cartItemPublishSubject.onNext(CartService.shared.products)
+        cartItemPublishSubject.onNext(CartItemRepository.shared.products)
     }
     
     func getItem(index: IndexPath) -> CartCellViewModel {
-        let cartItem = CartService.shared.products[index.row]
+        let cartItem = CartItemRepository.shared.products[index.row]
         return CartCellViewModel(cartItem: cartItem)
     }
     

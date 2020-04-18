@@ -92,7 +92,7 @@ class ProductDetailViewController: UIViewController {
             .tap
             .bind { [weak self] in
                 guard let strongSelf = self else { return }
-                CartService.shared.addProductToCart(product: strongSelf.viewModel.product, quantity: 1)
+                CartItemRepository.shared.addProductToCart(product: strongSelf.viewModel.product, quantity: 1)
         }.disposed(by: viewModel.bag)
         
         if (viewModel.product.images.count > 0) {

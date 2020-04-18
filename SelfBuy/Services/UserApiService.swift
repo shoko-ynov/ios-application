@@ -33,6 +33,27 @@ final class UserApiService {
 
     }
     
+    func getUserCards() -> Single<[Card]> {
+        return Single<[Card]>.create { single in
+            Request()
+                .setPath("/cards")
+                .setMethod(.GET)
+                .withAuthentication()
+                .send([Card].self) {
+                    switch $0 {
+                    case .success(let cards):
+                        print(cards)
+                        single(.success(cards))
+                    case .failure(let error):
+                        print(error)
+                        single(.error(error))
+                    }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
     
     func updateUser(user: User, id: Int, completionHandler: @escaping (Result<Token, Error>) -> Void) {
           let request = Request()

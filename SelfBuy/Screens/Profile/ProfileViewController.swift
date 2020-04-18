@@ -29,8 +29,8 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         
-        titleLabel = setTitleLabel("Profile", textColor: UIColor.white)
         setHeaderImage()
+        titleLabel = setTitleLabel("Profile", textColor: UIColor.white)
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         

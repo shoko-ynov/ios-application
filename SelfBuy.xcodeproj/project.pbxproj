@@ -815,6 +815,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ynov.shoko;
 				PRODUCT_NAME = "Shok'o";
 				SWIFT_VERSION = 5.0;
@@ -838,6 +839,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ynov.shoko;
 				PRODUCT_NAME = "Shok'o";
 				SWIFT_VERSION = 5.0;

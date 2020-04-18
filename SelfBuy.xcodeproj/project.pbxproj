@@ -70,6 +70,8 @@
 		D0E57513244AD54400B7B26A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E57512244AD54400B7B26A /* Card.swift */; };
 		D0E57516244ADAB400B7B26A /* CardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E57515244ADAB400B7B26A /* CardCellView.swift */; };
 		D0E57518244ADAD500B7B26A /* CardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E57517244ADAD500B7B26A /* CardCellViewModel.swift */; };
+		D0E5751A244B05E400B7B26A /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E57519244B05E400B7B26A /* CartService.swift */; };
+		D0E5751C244B06B300B7B26A /* CartItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5751B244B06B300B7B26A /* CartItemDTO.swift */; };
 		E300E2F6242B866900D122C5 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E300E2F5242B866900D122C5 /* UserViewModel.swift */; };
 		E300E2FC242B956600D122C5 /* UserApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E300E2FB242B956600D122C5 /* UserApiService.swift */; };
 		E3163E6723C92DDF00AC83A9 /* EditInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3163E6623C92DDF00AC83A9 /* EditInfoViewController.swift */; };
@@ -148,6 +150,8 @@
 		D0E57512244AD54400B7B26A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		D0E57515244ADAB400B7B26A /* CardCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellView.swift; sourceTree = "<group>"; };
 		D0E57517244ADAD500B7B26A /* CardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViewModel.swift; sourceTree = "<group>"; };
+		D0E57519244B05E400B7B26A /* CartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
+		D0E5751B244B06B300B7B26A /* CartItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemDTO.swift; sourceTree = "<group>"; };
 		E300E2F5242B866900D122C5 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserViewModel.swift; path = SelfBuy/Screens/Account/ViewModels/UserViewModel.swift; sourceTree = SOURCE_ROOT; };
 		E300E2FB242B956600D122C5 /* UserApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApiService.swift; sourceTree = "<group>"; };
 		E3163E6623C92DDF00AC83A9 /* EditInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfoViewController.swift; sourceTree = "<group>"; };
@@ -388,6 +392,7 @@
 				B3C4D2F5242B98C90083F47F /* PaymentApiService.swift */,
 				B3C4D303242BA8CA0083F47F /* StripeRequest.swift */,
 				E300E2FB242B956600D122C5 /* UserApiService.swift */,
+				D0E57519244B05E400B7B26A /* CartService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -409,6 +414,7 @@
 				B374343C23F4303100F9B288 /* RefreshTokenDTO.swift */,
 				B3C4D2FD242BA3610083F47F /* ProductPaymentDTO.swift */,
 				B3C4D2FF242BA7670083F47F /* CardPaymentDTO.swift */,
+				D0E5751B244B06B300B7B26A /* CartItemDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -689,6 +695,7 @@
 				B3C4D2F6242B98C90083F47F /* PaymentApiService.swift in Sources */,
 				D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */,
 				D08681D3239FF91900F65961 /* UserDTO.swift in Sources */,
+				D0E5751A244B05E400B7B26A /* CartService.swift in Sources */,
 				7320AF3A23AA514300FF5EB7 /* RegisterViewModel.swift in Sources */,
 				8E1C3CBF23858FE6005847A0 /* UILabelExtensions.swift in Sources */,
 				E3945F4C239290EA007ED444 /* PPViewController.swift in Sources */,
@@ -717,6 +724,7 @@
 				D0719DCC238469610046EC0B /* UIViewExtensions.swift in Sources */,
 				7347E1112385954C00644970 /* User.swift in Sources */,
 				E300E2F6242B866900D122C5 /* UserViewModel.swift in Sources */,
+				D0E5751C244B06B300B7B26A /* CartItemDTO.swift in Sources */,
 				D0709B29239FB5E500055F20 /* Request.swift in Sources */,
 				D0632E022419264D0010A7D9 /* ProfileInput.swift in Sources */,
 				E3163E7023C937EF00AC83A9 /* OrdersViewModel.swift in Sources */,

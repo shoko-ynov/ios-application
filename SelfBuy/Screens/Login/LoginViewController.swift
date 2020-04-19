@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: PresentableViewController {
     private var loginLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 290, width: 80, height: 41))
         label.font = UIFont(name: "Helvetica", size: 32)
@@ -70,6 +70,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }()
     
     let viewModel: LoginViewModel
+    
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
         
@@ -97,9 +98,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         registerBtn.center.x = self.view.center.x
         forgottenPassword.center.x = self.view.center.x
         
-//        Constraints
-//        item.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 10, left: 0, bottom: 0, right: 0))
-        
         emailTextField.delegate = self
         passwordTextField.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -111,7 +109,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         registerBtn.rx.tap.bind { _ in
             let vc = RegisterViewController(viewModel: RegisterViewModel())
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.present(vc, animated: true)
         }.disposed(by: self.viewModel.bag)
         
         self.view.addSubview(passwordTextField)
@@ -146,12 +144,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true;
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
 }

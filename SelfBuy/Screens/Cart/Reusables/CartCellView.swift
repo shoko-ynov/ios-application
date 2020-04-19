@@ -50,6 +50,7 @@ class CartCellView: UICollectionViewCell, ReusableView {
         button.layer.cornerRadius = 20
         button.setImage(UIImage(systemName: "trash"), for: .normal)
         button.tintColor = .white
+        button.isEnabled = false
         
         NSLayoutConstraint.activate([
             button.heightAnchor.constraint(equalToConstant: 40),
@@ -59,16 +60,11 @@ class CartCellView: UICollectionViewCell, ReusableView {
         return button
     }()
     
-    private let isMove: PublishSubject<Bool>
-    private let bag = DisposeBag()
     private var xOrigin: CGFloat = 0
-    private var product: Product?
+    private var viewModel: CartCellViewModelling?
     
     override init(frame: CGRect) {
-        isMove = PublishSubject()
-        
         super.init(frame: frame)
-        isMove.onNext(false)
         
         contentView.addSubview(container)
         contentView.addSubview(deleteButton)
@@ -132,8 +128,16 @@ class CartCellView: UICollectionViewCell, ReusableView {
             trailing: container.trailingAnchor,
             padding: .init(top: 10, left: 0, bottom: 0, right: 20)
         )
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func bindDeleteButton() {
+        guard let strongVM = viewModel else { return }
         
-        isMove.subscribe(onNext: { [weak self] isMove in
+        strongVM.isMove.subscribe(onNext: { [weak self] isMove in
             guard let strongSelf = self else { return }
             
             if (isMove) {
@@ -156,33 +160,31 @@ class CartCellView: UICollectionViewCell, ReusableView {
                     )
                 }
             }
-        }).disposed(by: bag)
+        }).disposed(by: strongVM.bag)
         
         deleteButton.rx
             .tap
             .bind { [weak self] in
-                guard let strongSelf = self, let strongProduct = strongSelf.product else { return }
-                print(strongProduct)
-                CartItemRepository.shared.deleteProduct(product: strongProduct)
-        }.disposed(by: bag)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+                guard let strongSelf = self, let strongVm = strongSelf.viewModel else { return }
+                strongVm.deleteProductFromCart()
+        }.disposed(by: strongVM.bag)
     }
     
     @objc
     func handleSwipeRight() {
-        isMove.onNext(false)
+        viewModel?.isMove.onNext(false)
+        deleteButton.isEnabled = false
     }
     
     @objc
     func handleSwipeLeft() {
-        isMove.onNext(true)
+        viewModel?.isMove.onNext(true)
+        deleteButton.isEnabled = true
     }
     
     func configure(with setupModel: CartCellViewModelling) {
-        self.product = setupModel.cartItem.product
+        self.viewModel = setupModel
+                
         let price = setupModel.cartItem.product.price * Float(setupModel.cartItem.quantity)
         
         itemNameLabel.text = setupModel.cartItem.product.name
@@ -195,7 +197,8 @@ class CartCellView: UICollectionViewCell, ReusableView {
                 self.productFirstImage.load(url: safeUrl)
             }
         }
-        isMove.onNext(false)
+        self.bindDeleteButton()
+        viewModel?.isMove.onNext(false)
     }
     
 }

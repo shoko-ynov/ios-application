@@ -32,6 +32,11 @@ final class CartViewModel: CartViewModelling {
     init() {
         cartItemPublishSubject = PublishSubject()
         cartItemPublishSubject.onNext(CartItemRepository.shared.products)
+        
+        CartItemRepository.shared.productsPublishSubject.subscribe(onNext: { [weak self] products in
+            guard let strongSelf = self else { return }
+            strongSelf.cartItemPublishSubject.onNext(CartItemRepository.shared.products)
+        })
     }
     
     func getItem(index: IndexPath) -> CartCellViewModel {

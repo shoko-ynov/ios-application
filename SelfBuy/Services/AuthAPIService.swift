@@ -39,9 +39,9 @@ final class AuthAPIService{
     }
     
     
-    func refreshToken(){
+    func refreshToken(completion: @escaping (Result<Token, Error>) -> Void) {
         let request = Request()
-        let refreshTokenSaved = UserDefaults.standard.string(forKey: "refreshToken") ?? ""
+        let refreshTokenSaved = AuthenticationManager.getRefreshToken() ?? ""
         
         let token = RefreshTokenDTO(refreshToken: refreshTokenSaved)
     
@@ -49,14 +49,8 @@ final class AuthAPIService{
             .setPath("/auth/refresh")
             .setMethod(.POST)
             .setBody(token)
-            .send(Token.self) {
-              switch $0 {
-              case .success(let data):
-                  print(data)
-              case .failure(let error):
-                print("error \(error)")
-              }
-        }
+            .disableCanRefreshToken()
+            .send(Token.self, completion: completion)
     }
     
     func login(user: UserLoginDTO, completionHandler: @escaping (Result<Token, Error>) -> Void) {

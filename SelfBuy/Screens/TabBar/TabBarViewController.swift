@@ -20,10 +20,6 @@ final class TabBarViewController: UITabBarController {
         return view
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        print("APPEAR")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

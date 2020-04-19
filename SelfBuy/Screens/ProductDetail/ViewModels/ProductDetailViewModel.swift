@@ -7,17 +7,21 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol ProductDetailViewModelling {
     var product: Product { get }
+    var bag: DisposeBag { get }
 }
 
 final class ProductDetailViewModel: ProductDetailViewModelling {
     
+    let bag: DisposeBag
     let product: Product
     
     init(product: Product) {
         self.product = product
+        self.bag = DisposeBag()
     }
     
 }

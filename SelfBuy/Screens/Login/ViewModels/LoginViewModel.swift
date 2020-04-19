@@ -26,22 +26,15 @@ class LoginViewModel
         
         service.login(user: userLogin, completionHandler: { result in
             switch result {
-            case .success(_):
+            case .success(let token):
+                UserDefaults.standard.set(token.refreshToken, forKey: "refreshToken")
+                UserDefaults.standard.set(token.token, forKey: "TOKEN")
+                
                 self.onSuccesfulLogin?()
             case .failure(let error as NSError):
-//                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
-//                alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-//                self.present(alert, animated: true, completion: nil)
                 print("error", error)
                 self.onSuccesfulLogin?()
-            default:
-                print("default")
             }
         })
-
-        
-//        service.login(user: userLogin, completionHandler: {  [weak self] result in
-//          self?.onSuccesfulLogin?()
-//        })
     }
 }

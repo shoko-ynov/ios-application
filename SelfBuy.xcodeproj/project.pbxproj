@@ -682,7 +682,6 @@
 				D0632E062419265E0010A7D9 /* EditButton.swift in Sources */,
 				D0E57511244AD4CC00B7B26A /* PaymentMethodViewModel.swift in Sources */,
 				D043C0B523894A9E00B05967 /* ProductCellView.swift in Sources */,
-				8E1C3CB823856DFC005847A0 /* CartCellViewModel.swift in Sources */,
 				B3C4D304242BA8CA0083F47F /* StripeRequest.swift in Sources */,
 				B3C4D2F1242B93160083F47F /* CardViewController.swift in Sources */,
 				8E1C3CBB238588AA005847A0 /* CartItem.swift in Sources */,

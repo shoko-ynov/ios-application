@@ -23,7 +23,14 @@ class CardViewModel {
         let expMonth = cardParams.expMonth!
         let cvc = cardParams.cvc!
         
-        let card = CardPaymentDTO(number: number, monthExpiration: Int(expMonth), yearExpiration: Int(expYear), cvc: cvc, name: nameTextInput.value)
+        let card = CardPaymentDTO(
+            number: number,
+            monthExpiration: Int(truncating: expMonth),
+            yearExpiration: Int(truncating: expYear),
+            cvc: cvc,
+            name: nameTextInput.value
+        )
+        
         service.createCard(card: card) { (result) in
             switch result {
             case .success(let stripeCard):

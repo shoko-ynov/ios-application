@@ -164,7 +164,7 @@ class CartCellView: UICollectionViewCell, ReusableView {
                 guard let strongSelf = self, let strongProduct = strongSelf.product else { return }
                 print(strongProduct)
                 CartItemRepository.shared.deleteProduct(product: strongProduct)
-        }
+        }.disposed(by: bag)
     }
     
     required init?(coder: NSCoder) {

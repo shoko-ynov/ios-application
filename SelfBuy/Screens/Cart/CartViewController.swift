@@ -9,7 +9,7 @@
 import UIKit
 
 final class CartViewController: UIViewController {
-
+    
     private var itemCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .clear
@@ -65,15 +65,16 @@ final class CartViewController: UIViewController {
         
         checkoutBtn.rx.tap.bind { _ in
             print("valider")
-        }.disposed(by: self.viewModel.bag)
+        }.disposed(by: viewModel.bag)
         
         viewModel.cartItemPublishSubject
             .subscribe(onNext: { [weak self] _ in
                 guard let strongSelf = self else { return }
                 strongSelf.itemCollectionView.reloadData()
             })
+            .disposed(by: viewModel.bag)
     }
-
+    
 }
 
 extension CartViewController: UICollectionViewDataSource {
@@ -106,5 +107,5 @@ extension CartViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets.init(top: 25, left: 0, bottom: 0, right: 0)
     }
-
+    
 }

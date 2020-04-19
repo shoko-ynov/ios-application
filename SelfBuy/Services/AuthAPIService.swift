@@ -11,7 +11,7 @@ import RxSwift
 
 final class AuthAPIService{
     
-    func register(mail: RegisterDTO,completionHandler: @escaping (Result<Token, Error>) -> Void) {
+    func register(mail: RegisterDTO, completionHandler: @escaping (Result<Token, Error>) -> Void) {
         let request = Request()
         
         request
@@ -66,19 +66,7 @@ final class AuthAPIService{
             .setPath("/auth")
             .setMethod(.POST)
             .setBody(user)
-            .send(Token.self) {
-                switch $0 {
-                case .success(let token):
-                    let userDefaults = UserDefaults.standard
-                    
-                    userDefaults.set(token.refreshToken, forKey: "refreshToken")
-                    userDefaults.set(token.token, forKey: "TOKEN")
-                    
-                    completionHandler(Result.success(token))
-                case .failure(let error):
-                    completionHandler(Result.failure(error))
-                }
-        }
+            .send(Token.self, completion: completionHandler)
     }
     
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class ProductDetailViewController: UIViewController {
     
-    let viewModel: ProductCellViewModelling
+    let viewModel: ProductDetailViewModelling
     
     private var productFirstImage: UIImageView = {
         let image = UIImageView()
@@ -88,6 +88,13 @@ class ProductDetailViewController: UIViewController {
         
         addCartBtn.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 110, bottom: 200, right: 110))
         
+        addCartBtn.rx
+            .tap
+            .bind { [weak self] in
+                guard let strongSelf = self else { return }
+                CartItemRepository.shared.addProductToCart(product: strongSelf.viewModel.product, quantity: 1)
+        }.disposed(by: viewModel.bag)
+        
         if (viewModel.product.images.count > 0) {
             let url = URL(string: viewModel.product.images.first!)
             
@@ -97,7 +104,7 @@ class ProductDetailViewController: UIViewController {
         }
     }
     
-    init(viewModel: ProductCellViewModelling) {
+    init(viewModel: ProductDetailViewModelling) {
         self.viewModel = viewModel
         
         

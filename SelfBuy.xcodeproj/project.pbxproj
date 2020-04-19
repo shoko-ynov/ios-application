@@ -298,6 +298,7 @@
 		D026F9CC2372E41000372EA0 /* SelfBuy */ = {
 			isa = PBXGroup;
 			children = (
+				D0E57520244B230200B7B26A /* Repositories */,
 				8E1C3CB923858868005847A0 /* Models */,
 				D026F9E12372E52400372EA0 /* Additions */,
 				D026F9E32372E53700372EA0 /* Application */,
@@ -412,6 +413,7 @@
 				B374343C23F4303100F9B288 /* RefreshTokenDTO.swift */,
 				B3C4D2FD242BA3610083F47F /* ProductPaymentDTO.swift */,
 				B3C4D2FF242BA7670083F47F /* CardPaymentDTO.swift */,
+				D0E5751B244B06B300B7B26A /* CartItemDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -538,6 +540,14 @@
 				D0E57515244ADAB400B7B26A /* CardCellView.swift */,
 			);
 			path = Reusables;
+			sourceTree = "<group>";
+		};
+		D0E57520244B230200B7B26A /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				D0E57519244B05E400B7B26A /* CartItemRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		E3163E6E23C9379700AC83A9 /* Reusables */ = {
@@ -685,6 +695,7 @@
 				B3C4D2F6242B98C90083F47F /* PaymentApiService.swift in Sources */,
 				D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */,
 				D08681D3239FF91900F65961 /* UserDTO.swift in Sources */,
+				D0E5751A244B05E400B7B26A /* CartItemRepository.swift in Sources */,
 				7320AF3A23AA514300FF5EB7 /* RegisterViewModel.swift in Sources */,
 				8E1C3CBF23858FE6005847A0 /* UILabelExtensions.swift in Sources */,
 				E3945F4C239290EA007ED444 /* PPViewController.swift in Sources */,
@@ -713,6 +724,7 @@
 				D0719DCC238469610046EC0B /* UIViewExtensions.swift in Sources */,
 				7347E1112385954C00644970 /* User.swift in Sources */,
 				E300E2F6242B866900D122C5 /* UserViewModel.swift in Sources */,
+				D0E5751C244B06B300B7B26A /* CartItemDTO.swift in Sources */,
 				D0709B29239FB5E500055F20 /* Request.swift in Sources */,
 				D0632E022419264D0010A7D9 /* ProfileInput.swift in Sources */,
 				E3163E7023C937EF00AC83A9 /* OrdersViewModel.swift in Sources */,

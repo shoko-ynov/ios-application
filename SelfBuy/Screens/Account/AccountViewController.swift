@@ -9,10 +9,7 @@
 import UIKit
 import RxSwift
 
-class AccountViewController: UIViewController {
-    
-    
-    let bag = DisposeBag()
+class AccountViewController: PresentableViewController {
     let viewModel: UserViewModel
     
     private lazy var stackView: UIStackView = {
@@ -35,22 +32,11 @@ class AccountViewController: UIViewController {
     required init?(coder: NSCoder) {
          fatalError("init(coder:) has not been implemented")
      }
-     
-    
-    private let closeButton: UIButton = {
-        let button = UIButton()
-        return button
-    }()
     
     private let editButton: UIButton = {
          let button = UIButton()
          return button
      }()
-     
-    private let closeIcon : UIImage = {
-        let image = UIImage(systemName: "xmark.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25.0, weight: .regular, scale: .large))?.withTintColor(UIColor.gray, renderingMode: .alwaysOriginal)
-        return image!
-    }()
     
     private let editIcon : UIImage = {
          let image = UIImage(systemName: "pencil.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 35.0, weight: .regular, scale: .large))?.withTintColor(UIColor.primary, renderingMode: .alwaysOriginal)
@@ -71,27 +57,6 @@ class AccountViewController: UIViewController {
         
         _ = setTitleLabel("Account", textColor: UIColor.black)
         navigationController?.navigationBar.isHidden = true
-    
-        
-        // MARK: Close button
-        self.view.addSubview(closeButton)
-        
-        closeButton.setImage(closeIcon, for: .normal)
-        
-        closeButton.anchor(
-            top: self.view.topAnchor,
-            leading: nil,
-            bottom: nil,
-            trailing: self.view.trailingAnchor,
-            padding: .init(top: 25, left: 0, bottom: 0, right: 20)
-        )
-        
-        closeButton
-            .rx
-            .tap
-            .bind { [ weak self ] in
-                self?.dismiss(animated: true, completion: nil)
-        }.disposed(by: bag)
         
         
         // MARK: Edit button (disabled)

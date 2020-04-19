@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CardCellView: UICollectionViewCell, ReusableView {
+final class PaymentMethodCellView: UICollectionViewCell, ReusableView {
     
     private let nameLabel: UILabel = {
         let label = UILabel()

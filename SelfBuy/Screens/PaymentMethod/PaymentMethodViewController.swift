@@ -44,7 +44,7 @@ final class PaymentMethodViewController: PresentableViewController {
         cardsCollectionView.delegate = self
         cardsCollectionView.dataSource = self
         cardsCollectionView.alwaysBounceVertical = true
-        cardsCollectionView.register(CardCellView.self, forCellWithReuseIdentifier: CardCellView.reuseIdentifier)
+        cardsCollectionView.register(PaymentMethodCellView.self, forCellWithReuseIdentifier: PaymentMethodCellView.reuseIdentifier)
         cardsCollectionView.anchor(
             top: titleLabel.bottomAnchor,
             leading: view.leadingAnchor,
@@ -75,8 +75,8 @@ extension PaymentMethodViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCellView.reuseIdentifier, for: indexPath) as! CardCellView
-        cell.configure(viewModel: CardCellViewModel(card: self.cards[indexPath.row]))
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PaymentMethodCellView.reuseIdentifier, for: indexPath) as! PaymentMethodCellView
+        cell.configure(viewModel: PaymentMethodCellViewModel(card: self.cards[indexPath.row]))
         
         return cell
     }

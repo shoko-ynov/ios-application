@@ -73,7 +73,7 @@ final class HomeViewController: UIViewController {
                     return;
                 }
                 
-                let productDetailVM = ProductCellViewModel(product: strongSelf.products[itemIndex])
+                let productDetailVM = ProductDetailViewModel(product: strongSelf.products[itemIndex])
                 let productDetailVC = ProductDetailViewController(viewModel: productDetailVM)
                 
                 strongSelf.present(productDetailVC, animated: true)

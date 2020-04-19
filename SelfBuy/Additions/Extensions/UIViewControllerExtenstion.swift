@@ -25,7 +25,13 @@ extension UIViewController {
         
         self.view.addSubview(titleLabel)
         
-        titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
+        titleLabel.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: nil,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 20, left: 20, bottom: 0, right: 60)
+        )
         
         return titleLabel
     }

@@ -75,7 +75,7 @@ extension PaymentMethodViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PaymentMethodCellView.reuseIdentifier, for: indexPath) as! PaymentMethodCellView
-        cell.configure(viewModel: PaymentMethodCellViewModel(card: self.cards[indexPath.row]))
+        cell.configure(viewModel: PaymentMethodCellViewModel(card: self.cards[indexPath.row]), index: indexPath)
         
         return cell
     }
@@ -90,7 +90,7 @@ extension PaymentMethodViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = cardsCollectionView.frame.width
-        return CGSize.init(width: size - 20, height: 70)
+        return CGSize.init(width: size - 20, height: 175)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

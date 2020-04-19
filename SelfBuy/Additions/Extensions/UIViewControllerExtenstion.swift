@@ -33,7 +33,7 @@ extension UIViewController {
     func setHeaderImage() {
         
         let headerImage: UIImageView = {
-            let image = UIImage(named: "HeaderImage")
+            let image = UIImage(named: "chocolat")
             let imageView = UIImageView()
             imageView.image = image
             
@@ -49,6 +49,7 @@ extension UIViewController {
             trailing: self.view.trailingAnchor
         )
         
+        headerImage.heightAnchor.constraint(equalToConstant: 300).isActive = true
     }
     
 }

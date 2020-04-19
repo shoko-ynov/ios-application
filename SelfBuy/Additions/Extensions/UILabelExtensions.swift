@@ -12,15 +12,15 @@ import UIKit
 extension UILabel {
     
     func setToBold(size: CGFloat) {
-        self.font = UIFont(name: "Poppins-Bold", size: size)
+        self.font = UIFont(name: "Inter-Bold", size: size)
     }
     
     func setToMedium(size: CGFloat) {
-        self.font = UIFont(name: "Poppins-Medium", size: size)
+        self.font = UIFont(name: "Inter-Medium", size: size)
     }
     
     func setToLight(size: CGFloat) {
-        self.font = UIFont(name: "Poppins-Light", size: size)
+        self.font = UIFont(name: "Inter-Light", size: size)
     }
     
     func setLineHeight(lineHeight: CGFloat) {

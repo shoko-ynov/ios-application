@@ -39,8 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     @objc func appMovedToBackground() {
-        service.getMe() {
-            print($0)
+        if AuthenticationManager.hasToken() {
+            service.getMe() {
+                print($0)
+            }
         }
     }
 }

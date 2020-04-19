@@ -177,13 +177,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7320AF3623AA50B400FF5EB7 /* SignUp */ = {
+		7320AF3623AA50B400FF5EB7 /* Register */ = {
 			isa = PBXGroup;
 			children = (
 				7320AF3723AA50BA00FF5EB7 /* ViewModels */,
 				7396720D23AA359B0077EFA5 /* RegisterViewController.swift */,
 			);
-			path = SignUp;
+			path = Register;
 			sourceTree = "<group>";
 		};
 		7320AF3723AA50BA00FF5EB7 /* ViewModels */ = {
@@ -356,7 +356,7 @@
 				D051DD53244A700200D6AC3C /* Account */,
 				D051DD4E244A596900D6AC3C /* PaymentMethod */,
 				B3C4D2EF242B92B60083F47F /* Card */,
-				7320AF3623AA50B400FF5EB7 /* SignUp */,
+				7320AF3623AA50B400FF5EB7 /* Register */,
 				7366555A238542D90062A358 /* Login */,
 				D0CE24A42393000C00C41ACD /* ProductDetail */,
 				D08A5C9E2374C9DF00221F37 /* Cart */,

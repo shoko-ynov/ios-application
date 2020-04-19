@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: PresentableViewController {
     private var emailTextField: UITextField = {
         let email = UITextField(frame: CGRect(x: -10, y: 335,width:250 ,height: 50))
         email.placeholder = " Email"

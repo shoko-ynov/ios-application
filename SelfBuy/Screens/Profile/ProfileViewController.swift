@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         loginVC.onDismiss = {[weak self] in
-            if let _ = UserDefaults.standard.string(forKey: "TOKEN") {
+            if AuthenticationManager.hasToken() {
                 self?.showView()
             } else {
                 self?.tabBarController?.selectedIndex = 0
@@ -44,7 +44,7 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if let _ = UserDefaults.standard.string(forKey: "TOKEN") {
+        if AuthenticationManager.hasToken() {
             self.showView()
         } else {
             self.present(loginVC, animated: true)
@@ -158,8 +158,7 @@ class ProfileViewController: UIViewController {
         )
         
         disconnectButton.onTapHandler = { [weak self] in
-            UserDefaults.standard.set(nil, forKey: "TOKEN")
-            UserDefaults.standard.set(nil, forKey: "refreshToken")
+            AuthenticationManager.removeTokens()
             self?.present(self!.loginVC, animated: true)
         }
         

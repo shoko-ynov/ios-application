@@ -41,9 +41,15 @@ final class AuthAPIService{
     
     func refreshToken(completion: @escaping (Result<Token, Error>) -> Void) {
         let request = Request()
-        let refreshTokenSaved = AuthenticationManager.getRefreshToken() ?? ""
+        let refreshTokenSaved = AuthenticationManager.getRefreshToken()
         
-        let token = RefreshTokenDTO(refreshToken: refreshTokenSaved)
+        guard let strongRefreshToken = refreshTokenSaved else {
+            let error = NSError(domain: "Empty refresh toekn", code: 401)
+            completion(.failure(error))
+            return
+        }
+        
+        let token = RefreshTokenDTO(refreshToken: strongRefreshToken)
     
         request
             .setPath("/auth/refresh")

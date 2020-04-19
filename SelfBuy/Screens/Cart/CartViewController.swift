@@ -48,6 +48,7 @@ final class CartViewController: UIViewController {
     }
     
     fileprivate func setupView() {
+        setHeaderImage()
         view.backgroundColor = .lightGray
         view.addSubview(itemCollectionView)
         
@@ -55,7 +56,7 @@ final class CartViewController: UIViewController {
         checkoutBtn.center.x = self.view.center.x
         view.addSubview(checkoutBtn)
         
-        let titleLabel = setTitleLabel("Mon panier")
+        let titleLabel = setTitleLabel("Mon panier", textColor: .white)
         
         itemCollectionView.delegate = self
         itemCollectionView.dataSource = self

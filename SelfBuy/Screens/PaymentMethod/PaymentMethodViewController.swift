@@ -9,22 +9,11 @@
 import UIKit
 import RxSwift
 
-final class PaymentMethodViewController: UIViewController {
+final class PaymentMethodViewController: PresentableViewController {
     
     let viewModel: PaymentMethodViewModelling
     var cards: [Card] = []
     let dispodeBag = DisposeBag()
-
-    
-    private let closeIcon : UIImage = {
-        let image = UIImage(systemName: "xmark.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 25.0, weight: .regular, scale: .large))?.withTintColor(UIColor.gray, renderingMode: .alwaysOriginal)
-        return image!
-    }()
-    
-    private let closeButton: UIButton = {
-        let button = UIButton()
-        return button
-    }()
     
     private var cardsCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -49,25 +38,6 @@ final class PaymentMethodViewController: UIViewController {
         let titleLabel = setTitleLabel("Moyen de paiement", textColor: UIColor.black)
         view.backgroundColor = .lightGray
         navigationController?.navigationBar.isHidden = true
-        
-        self.view.addSubview(closeButton)
-        
-        closeButton.setImage(closeIcon, for: .normal)
-        
-        closeButton.anchor(
-            top: self.view.topAnchor,
-            leading: nil,
-            bottom: nil,
-            trailing: self.view.trailingAnchor,
-            padding: .init(top: 25, left: 0, bottom: 0, right: 20)
-        )
-        
-        closeButton
-            .rx
-            .tap
-            .bind { [ weak self ] in
-                self?.dismiss(animated: true, completion: nil)
-        }.disposed(by: dispodeBag)
         
         self.view.addSubview(cardsCollectionView)
         

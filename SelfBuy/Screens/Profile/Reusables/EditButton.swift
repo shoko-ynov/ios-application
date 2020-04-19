@@ -17,7 +17,7 @@ class EditButton: UIView {
     
     private let button: UIButton = {
         let button = UIButton()
-    
+        
         return button
     }()
     
@@ -32,7 +32,7 @@ class EditButton: UIView {
     
     init() {
         super.init(frame: .zero)
-
+        
         self.addSubview(button)
         self.addSubview(icon)
         
@@ -58,7 +58,7 @@ class EditButton: UIView {
             .bind {
                 print("ça marche")
                 self.onTapHandler?()
-        }
+        }.disposed(by: bag)
         
     }
     

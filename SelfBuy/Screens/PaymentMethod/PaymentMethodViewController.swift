@@ -13,7 +13,6 @@ final class PaymentMethodViewController: PresentableViewController {
     
     let viewModel: PaymentMethodViewModelling
     var cards: [Card] = []
-    let dispodeBag = DisposeBag()
     
     private var cardsCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -35,7 +34,7 @@ final class PaymentMethodViewController: PresentableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let titleLabel = setTitleLabel("Moyen de paiement", textColor: UIColor.black)
+        let titleLabel = setTitleLabel("Mes moyens de paiements", textColor: UIColor.black)
         view.backgroundColor = .lightGray
         navigationController?.navigationBar.isHidden = true
         
@@ -62,7 +61,7 @@ final class PaymentMethodViewController: PresentableViewController {
             }, onError: { [weak self] err in
                 self?.cards = []
                 print(err)
-            }).disposed(by: dispodeBag)
+            }).disposed(by: viewModel.bag)
     }
 
 }

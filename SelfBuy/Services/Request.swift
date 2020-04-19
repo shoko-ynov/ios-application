@@ -16,6 +16,7 @@ class Request {
     private var method: HTTPMethod = .GET
     private var token: String?
     private let encoder = JSONEncoder()
+    private var canRefreshToken = true
     
     init(domain: String = Config.baseApi) {
         self.domain = domain
@@ -37,10 +38,17 @@ class Request {
     }
     
     func withAuthentication() -> Request {
-        guard let tokenSaved = UserDefaults.standard.string(forKey: "TOKEN") else {
+        guard let tokenSaved = AuthenticationManager.getToken() else {
             return self
         }
         self.token = tokenSaved
+        
+        return self
+    }
+    
+    func disableCanRefreshToken() -> Request {
+        self.canRefreshToken = false
+        
         return self
     }
     
@@ -92,25 +100,31 @@ class Request {
             do {
                 print("Status code : \(urlResponse.statusCode)")
                 if urlResponse.statusCode == 401 {
-                    let response = self.decodeData(ApiError.self, data: data)
-                    
-                    switch response {
-                    case .success(let decoded):
-                        if(decoded.data.code == "INVALID_REFRESH_TOKEN") {
-                            UserDefaults.standard.set("", forKey: "TOKEN")
-                            UserDefaults.standard.set("", forKey: "refreshToken")
-                        } else {
-                            let service: AuthAPIService = AuthAPIService()
-                            service.refreshToken()
-                        }
-                    case .failure(let error):
-                        completion(.failure(error))
+                    if (!self.canRefreshToken) {
+                        AuthenticationManager.removeTokens()
+                        return
                     }
                     
+                    let service: AuthAPIService = AuthAPIService()
+                    
+                    self.canRefreshToken = false
+                    service.refreshToken() {
+                        switch $0 {
+                        case .success(let token):
+                            AuthenticationManager.setToken(token: token)
+                            self.token = token.token
+                            self.send(type, completion: completion)
+                        case .failure(let error):
+                            print(error)
+                            AuthenticationManager.removeTokens()
+                            completion(.failure(error))
+                        }
+                    }
+                    
+                    return
                 } else if urlResponse.statusCode != 200 && urlResponse.statusCode != 201 && urlResponse.statusCode != 204 {
                     throw NSError(domain: "Server error, status code : \(urlResponse.statusCode)", code: 500)
                 }
-                
                 
                 let response = self.decodeData(T.self, data: data)
                 

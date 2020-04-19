@@ -27,8 +27,7 @@ class LoginViewModel
         service.login(user: userLogin, completionHandler: { result in
             switch result {
             case .success(let token):
-                UserDefaults.standard.set(token.refreshToken, forKey: "refreshToken")
-                UserDefaults.standard.set(token.token, forKey: "TOKEN")
+                AuthenticationManager.setToken(token: token)
                 
                 self.onSuccesfulLogin?()
             case .failure(let error as NSError):

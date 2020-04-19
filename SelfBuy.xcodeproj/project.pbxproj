@@ -61,6 +61,7 @@
 		D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0941C3C238942EE0052F598 /* UIViewControllerExtenstion.swift */; };
 		D097768B238AA8250080F701 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D097768A238AA8250080F701 /* UIImageViewExtensions.swift */; };
 		D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B11B8A2385C3F000C74CEA /* CartViewController.swift */; };
+		D0C03478244CADBB008ACAAC /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03477244CADBB008ACAAC /* AuthenticationManager.swift */; };
 		D0C03476244C9C93008ACAAC /* PresentableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03475244C9C93008ACAAC /* PresentableViewController.swift */; };
 		D0CE24A62393002E00C41ACD /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE24A52393002E00C41ACD /* ProductDetailViewController.swift */; };
 		D0CE24A92393005B00C41ACD /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE24A82393005B00C41ACD /* ProductDetailViewModel.swift */; };
@@ -142,6 +143,7 @@
 		D0941C3C238942EE0052F598 /* UIViewControllerExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtenstion.swift; sourceTree = "<group>"; };
 		D097768A238AA8250080F701 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		D0B11B8A2385C3F000C74CEA /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		D0C03477244CADBB008ACAAC /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		D0C03475244C9C93008ACAAC /* PresentableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableViewController.swift; sourceTree = "<group>"; };
 		D0CE24A52393002E00C41ACD /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		D0CE24A82393005B00C41ACD /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				B3C4D2F5242B98C90083F47F /* PaymentApiService.swift */,
 				B3C4D303242BA8CA0083F47F /* StripeRequest.swift */,
 				E300E2FB242B956600D122C5 /* UserApiService.swift */,
+				D0C03477244CADBB008ACAAC /* AuthenticationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 				D0736013237494E600CD6B72 /* HomeViewModel.swift in Sources */,
 				D07360182374A9E700CD6B72 /* UIViewController.swift in Sources */,
 				73872A1A23AA7C59007530CB /* RegisterDTO.swift in Sources */,
+				D0C03478244CADBB008ACAAC /* AuthenticationManager.swift in Sources */,
 				7396720C23AA237A0077EFA5 /* LoginViewModel.swift in Sources */,
 				73872A1C23AA817C007530CB /* RegisterResponseDTO.swift in Sources */,
 				B3C4D302242BA7720083F47F /* StripeCard.swift in Sources */,

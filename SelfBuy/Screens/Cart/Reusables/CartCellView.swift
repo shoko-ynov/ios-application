@@ -113,9 +113,9 @@ class CartCellView: UICollectionViewCell, ReusableView {
             leading: container.leadingAnchor,
             bottom: container.bottomAnchor,
             trailing: nil,
-            padding: .init(top: 20, left: 10, bottom: 20, right: 0),
-            size: .init(width: 90, height: 90)
+            padding: .init(top: 20, left: 10, bottom: 20, right: 0)
         )
+        productFirstImage.widthAnchor.constraint(equalToConstant: 90).isActive = true
         
         itemNameLabel.anchor(
             top: container.topAnchor,

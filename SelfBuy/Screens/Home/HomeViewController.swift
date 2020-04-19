@@ -69,13 +69,14 @@ final class HomeViewController: UIViewController {
             .rx
             .itemSelected
             .subscribe { [weak self] indexPath in
-                guard let itemIndex = indexPath.element?.row, let strongSelf = self else {
+                guard let strongSelf = self, let itemIndex = indexPath.element?.row else {
                     return;
                 }
                 
-                let productDetailVM = ProductDetailViewModel(product: strongSelf.products[itemIndex])
+                let productDetailVM = ProductCellViewModel(product: strongSelf.products[itemIndex])
                 let productDetailVC = ProductDetailViewController(viewModel: productDetailVM)
-                strongSelf.navigationController?.pushViewController(productDetailVC, animated: true)
+                
+                strongSelf.present(productDetailVC, animated: true)
         }.disposed(by: dispodeBag)
     }
 }

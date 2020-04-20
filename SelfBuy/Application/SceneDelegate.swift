@@ -43,6 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 userId: userId)
             )
             
+            window?.rootViewController = TabBarService.shared.tabBarController
             window?.rootViewController?.present(activationVC, animated: true)
             window?.makeKeyAndVisible()
         }

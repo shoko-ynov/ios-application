@@ -54,6 +54,16 @@ final class UserApiService {
         }
     }
     
+    func activeUser(_ userActivationDto: UserActivationDTO, completion: @escaping (Result<NSNull, Error>) -> Void) {
+        let request = Request()
+        
+        request
+            .setPath("/users/activation")
+            .setMethod(.POST)
+            .setBody(userActivationDto)
+            .send(completion: completion)
+    }
+    
     
     func updateUser(user: User, id: Int, completionHandler: @escaping (Result<NSNull, Error>) -> Void) {
           let request = Request()

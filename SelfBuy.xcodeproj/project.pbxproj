@@ -35,7 +35,6 @@
 		D01E3FD2244D2B600091931B /* UserActivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E3FD1244D2B600091931B /* UserActivationViewController.swift */; };
 		D01E3FD5244D2B720091931B /* UserActivationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E3FD4244D2B720091931B /* UserActivationViewModel.swift */; };
 		D01E86E2244D85B000C65C59 /* UserActivationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E86E1244D85B000C65C59 /* UserActivationDTO.swift */; };
-		D01E86E4244D8C0000C65C59 /* EmptyResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E86E3244D8C0000C65C59 /* EmptyResponseDTO.swift */; };
 		D01E86E6244DFB5B00C65C59 /* TabBarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E86E5244DFB5B00C65C59 /* TabBarService.swift */; };
 		D026F9CE2372E41000372EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026F9CD2372E41000372EA0 /* AppDelegate.swift */; };
 		D026F9D02372E41000372EA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026F9CF2372E41000372EA0 /* SceneDelegate.swift */; };
@@ -122,7 +121,6 @@
 		D01E3FD1244D2B600091931B /* UserActivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivationViewController.swift; sourceTree = "<group>"; };
 		D01E3FD4244D2B720091931B /* UserActivationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivationViewModel.swift; sourceTree = "<group>"; };
 		D01E86E1244D85B000C65C59 /* UserActivationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivationDTO.swift; sourceTree = "<group>"; };
-		D01E86E3244D8C0000C65C59 /* EmptyResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponseDTO.swift; sourceTree = "<group>"; };
 		D01E86E5244DFB5B00C65C59 /* TabBarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarService.swift; sourceTree = "<group>"; };
 		D026F9CA2372E41000372EA0 /* Shok'o.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shok'o.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D026F9CD2372E41000372EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -454,7 +452,6 @@
 				B3C4D2FF242BA7670083F47F /* CardPaymentDTO.swift */,
 				D0E5751B244B06B300B7B26A /* CartItemDTO.swift */,
 				D01E86E1244D85B000C65C59 /* UserActivationDTO.swift */,
-				D01E86E3244D8C0000C65C59 /* EmptyResponseDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -714,7 +711,6 @@
 			files = (
 				8E1C3CBD238588D0005847A0 /* Product.swift in Sources */,
 				D0E57516244ADAB400B7B26A /* CardCellView.swift in Sources */,
-				D01E86E4244D8C0000C65C59 /* EmptyResponseDTO.swift in Sources */,
 				D0719DD023847DC10046EC0B /* UIColorExtensions.swift in Sources */,
 				E3945F46239290AC007ED444 /* AccountViewController.swift in Sources */,
 				E3945F48239290C8007ED444 /* OrdersViewController.swift in Sources */,

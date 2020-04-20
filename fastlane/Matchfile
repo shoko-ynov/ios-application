@@ -1,4 +1,4 @@
-git_url("git@gitlab.com:self-buy/fastlane-certificates.git")
+git_url("git@github.com:shoko-ynov/fastlan")
 
 storage_mode("git")
 

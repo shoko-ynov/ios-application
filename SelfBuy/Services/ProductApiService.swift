@@ -17,7 +17,7 @@ final class ProductApiService {
             Request()
                 .setPath("/products")
                 .setMethod(.GET)
-                .send([Product].self) {
+                .sendWithDecode([Product].self) {
                     switch $0 {
                     case .success(let products):
                         single(.success(products))

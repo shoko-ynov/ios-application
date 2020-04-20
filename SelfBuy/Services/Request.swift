@@ -91,7 +91,7 @@ class Request {
         return request
     }
     
-    func callRequest(completion: @escaping (Result<Data, Error>) -> Void) {
+    private func callRequest(completion: @escaping (Result<Data, Error>) -> Void) {
         guard let request = self.getRequest() else { return }
         
         URLSession.shared.dataTask(with: request) { (data, urlResponse, error) in

@@ -18,7 +18,7 @@ final class UserApiService {
                 .setPath("/me")
                 .setMethod(.GET)
                 .withAuthentication()
-                .send(User.self) {
+                .sendWithDecode(User.self) {
                     switch $0 {
                     case .success(let user):
                         print(user)
@@ -39,7 +39,7 @@ final class UserApiService {
                 .setPath("/cards")
                 .setMethod(.GET)
                 .withAuthentication()
-                .send([Card].self) {
+                .sendWithDecode([Card].self) {
                     switch $0 {
                     case .success(let cards):
                         print(cards)
@@ -55,20 +55,13 @@ final class UserApiService {
     }
     
     
-    func updateUser(user: User, id: Int, completionHandler: @escaping (Result<Token, Error>) -> Void) {
+    func updateUser(user: User, id: Int, completionHandler: @escaping (Result<NSNull, Error>) -> Void) {
           let request = Request()
           
           request
               .setPath("users/:\(id)")
               .setMethod(.POST)
               .setBody(user)
-              .send(RegisterResponseDTO.self) {
-                  switch $0 {
-                  case .success(let data):
-                      print(data)
-                  case .failure(let error):
-                      print(error)
-                  }
-          }
+              .send(completion: completionHandler)
       }
 }

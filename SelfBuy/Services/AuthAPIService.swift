@@ -11,21 +11,14 @@ import RxSwift
 
 final class AuthAPIService{
     
-    func register(mail: RegisterDTO, completionHandler: @escaping (Result<Token, Error>) -> Void) {
+    func register(mail: RegisterDTO, completionHandler: @escaping (Result<NSNull, Error>) -> Void) {
         let request = Request()
         
         request
             .setPath("/users")
             .setMethod(.POST)
             .setBody(mail)
-            .send(RegisterResponseDTO.self) {
-                switch $0 {
-                case .success(let data):
-                    print(data)
-                case .failure(let error):
-                    print(error)
-                }
-        }
+            .send(completion: completionHandler)
     }
     
     func getMe(completion: @escaping (Result<User, Error>) -> Void){
@@ -35,7 +28,7 @@ final class AuthAPIService{
             .setPath("/me")
             .setMethod(.GET)
             .withAuthentication()
-            .send(User.self, completion: completion)
+            .sendWithDecode(User.self, completion: completion)
     }
     
     
@@ -56,7 +49,7 @@ final class AuthAPIService{
             .setMethod(.POST)
             .setBody(token)
             .disableCanRefreshToken()
-            .send(Token.self, completion: completion)
+            .sendWithDecode(Token.self, completion: completion)
     }
     
     func login(user: UserLoginDTO, completionHandler: @escaping (Result<Token, Error>) -> Void) {
@@ -66,7 +59,7 @@ final class AuthAPIService{
             .setPath("/auth")
             .setMethod(.POST)
             .setBody(user)
-            .send(Token.self, completion: completionHandler)
+            .sendWithDecode(Token.self, completion: completionHandler)
     }
     
 }

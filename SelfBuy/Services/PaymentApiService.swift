@@ -23,13 +23,6 @@ final class PaymentApiService {
         request
             .setMethod(.POST)
             .setBody(body)
-            .send(StripeCard.self) {
-                switch $0 {
-                case .success(let data):
-                    print(data)
-                case .failure(let error):
-                    print(error)
-                }
-        }
+            .send(StripeCard.self, completion: completionHandler)
     }
 }

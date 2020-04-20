@@ -59,6 +59,7 @@ final class AuthAPIService{
             .setPath("/auth")
             .setMethod(.POST)
             .setBody(user)
+            .disableCanRefreshToken()
             .sendWithDecode(Token.self, completion: completionHandler)
     }
     

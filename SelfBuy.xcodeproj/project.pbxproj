@@ -111,6 +111,7 @@
 		B3C4D2FF242BA7670083F47F /* CardPaymentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentDTO.swift; sourceTree = "<group>"; };
 		B3C4D301242BA7720083F47F /* StripeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCard.swift; sourceTree = "<group>"; };
 		B3C4D303242BA8CA0083F47F /* StripeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeRequest.swift; sourceTree = "<group>"; };
+		D01E3FCB244D24560091931B /* Shok'o.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shok'o.entitlements"; sourceTree = "<group>"; };
 		D026F9CA2372E41000372EA0 /* Shok'o.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shok'o.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D026F9CD2372E41000372EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D026F9CF2372E41000372EA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -302,6 +303,7 @@
 		D026F9CC2372E41000372EA0 /* SelfBuy */ = {
 			isa = PBXGroup;
 			children = (
+				D01E3FCB244D24560091931B /* Shok'o.entitlements */,
 				D0E57520244B230200B7B26A /* Repositories */,
 				8E1C3CB923858868005847A0 /* Models */,
 				D026F9E12372E52400372EA0 /* Additions */,
@@ -725,6 +727,7 @@
 				D08A5C9D2374C78100221F37 /* ProfileViewController.swift in Sources */,
 				D051DD50244A598200D6AC3C /* PaymentMethodViewController.swift in Sources */,
 				D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */,
+				D01E3FCD244D28290091931B /* URLExtensions.swift in Sources */,
 				B3C4D300242BA7670083F47F /* CardPaymentDTO.swift in Sources */,
 				E3163E6923C935A000AC83A9 /* OrdersCellView.swift in Sources */,
 				7380E7322397DE1500685B7C /* AuthAPIService.swift in Sources */,
@@ -882,6 +885,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SelfBuy/Shok'o.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 94FLWD5X32;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -906,6 +910,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SelfBuy/Shok'o.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 94FLWD5X32;
 				FRAMEWORK_SEARCH_PATHS = (

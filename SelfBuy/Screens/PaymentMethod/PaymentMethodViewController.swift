@@ -101,7 +101,6 @@ final class PaymentMethodViewController: PresentableViewController {
 extension PaymentMethodViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(viewModel.repository.cards.count)
         return viewModel.repository.cards.count
     }
     

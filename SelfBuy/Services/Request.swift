@@ -91,7 +91,7 @@ class Request {
         return request
     }
     
-    func send<T: Decodable>(_ type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+    private func callRequest(completion: @escaping (Result<Data, Error>) -> Void) {
         guard let request = self.getRequest() else { return }
         
         URLSession.shared.dataTask(with: request) { (data, urlResponse, error) in
@@ -113,7 +113,7 @@ class Request {
                         case .success(let token):
                             AuthenticationManager.setToken(token: token)
                             self.token = token.token
-                            self.send(type, completion: completion)
+                            self.callRequest(completion: completion)
                         case .failure(let error):
                             print(error)
                             AuthenticationManager.removeTokens()
@@ -126,20 +126,44 @@ class Request {
                     throw NSError(domain: "Server error, status code : \(urlResponse.statusCode)", code: 500)
                 }
                 
-                let response = self.decodeData(T.self, data: data)
-                
-                switch response {
-                case .success(let decoded):
-                    completion(.success(decoded.data))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
+                completion(.success(data))
                 
             } catch let parseError as NSError {
                 completion(.failure(parseError))
             }
             
         }.resume()
+    }
+    
+    func sendWithDecode<T:Decodable>(_ type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+        callRequest { result in
+            do {
+                let decoder = JSONDecoder()
+                
+                switch result {
+                case .success(let data):
+                    let decodedData = try decoder.decode(GenericServerResponse<T>.self, from: data)
+                    completion(.success(decodedData.data))
+                    break
+                case .failure(let error):
+                    completion(.failure(error))
+                    break
+                }
+            } catch let error {
+                return completion(.failure(error))
+            }
+        }
+    }
+    
+    func send(completion: @escaping (Result<NSNull, Error>) -> Void) {
+        callRequest {
+            switch $0 {
+            case .success(_):
+                completion(.success(.init()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
     
 }

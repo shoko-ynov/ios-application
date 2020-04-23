@@ -73,7 +73,8 @@ class ProductDetailViewController: PresentableViewController {
         view.addSubview(nbPicker)
         view.addSubview(addCartBtn)
         
-        productFirstImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 40, left: 0, bottom: 0, right: 0), size: .init(width: 200, height: 200))
+        productFirstImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 40, left: 0, bottom: 0, right: 0))
+        productFirstImage.heightAnchor.constraint(equalToConstant: 200).isActive = true
         
         titleLabel.anchor(top: productFirstImage.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 25, left: 50, bottom: 0, right: 0) )
         titleLabel.text = viewModel.product.name

@@ -91,8 +91,8 @@ final class PaymentMethodCellView: UICollectionViewCell, ReusableView {
             top: titleLabel.topAnchor,
             leading: titleLabel.trailingAnchor,
             bottom: titleLabel.bottomAnchor,
-            trailing: brandCardImage.leadingAnchor,
-            padding: .init(top: 0, left: 15, bottom: 0, right: 15)
+            trailing: nil,
+            padding: .init(top: 0, left: 15, bottom: 0, right: 0)
         )
         
         brandCardImage.anchor(

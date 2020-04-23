@@ -12,15 +12,15 @@ import RxSwift
 protocol PaymentMethodViewModelling {
     var service: UserApiService { get }
     var bag: DisposeBag { get }
-    
-    func fetchData() -> Single<[Card]>
+    var repository: CardRepository { get }
 }
 
 final class PaymentMethodViewModel: PaymentMethodViewModelling {
+    let repository: CardRepository
     let service: UserApiService = UserApiService()
     let bag: DisposeBag = DisposeBag()
     
-    func fetchData() -> Single<[Card]> {
-        return service.getUserCards()
+    init() {
+        repository = CardRepository.shared
     }
 }

@@ -16,10 +16,6 @@ final class CartItemRepository {
     var products: [CartItem] = []
     var productsPublishSubject: PublishSubject<[CartItem]> = PublishSubject()
     
-    init() {
-        productsPublishSubject.onNext(products)
-    }
-    
     func addProductToCart(product: Product, quantity: Int) {
         let cartItem = CartItem(product: product, quantity: quantity)
         products.append(cartItem)

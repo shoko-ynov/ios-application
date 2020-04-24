@@ -64,6 +64,21 @@ final class PaymentMethodCellView: UICollectionViewCell, ReusableView {
         return image
     }()
     
+    private let deleteButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "trash"), for: .normal)
+        button.tintColor = .red
+        
+        NSLayoutConstraint.activate([
+            button.heightAnchor.constraint(equalToConstant: 40),
+            button.widthAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        return button
+    }()
+    
+    private var viewModel: PaymentMethodCellViewModelling?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -71,13 +86,14 @@ final class PaymentMethodCellView: UICollectionViewCell, ReusableView {
         applyCornerRadius()
         backgroundColor = .white
         
-        self.addSubview(cardNumberLabel)
-        self.addSubview(cardNameLabel)
-        self.addSubview(expireTextLabel)
-        self.addSubview(expireDateLabel)
-        self.addSubview(titleLabel)
-        self.addSubview(defaultCardLabel)
-        self.addSubview(brandCardImage)
+        addSubview(cardNumberLabel)
+        addSubview(cardNameLabel)
+        addSubview(expireTextLabel)
+        addSubview(expireDateLabel)
+        addSubview(titleLabel)
+        addSubview(defaultCardLabel)
+        addSubview(brandCardImage)
+        addSubview(deleteButton)
         
         titleLabel.anchor(
             top: self.topAnchor,
@@ -134,13 +150,23 @@ final class PaymentMethodCellView: UICollectionViewCell, ReusableView {
             bottom: expireTextLabel.bottomAnchor,
             trailing: nil
         )
+        
+        deleteButton.anchor(
+            top: nil,
+            leading: nil,
+            bottom: bottomAnchor,
+            trailing: trailingAnchor,
+            padding: .init(top: 0, left: 0, bottom: 10, right: 10)
+        )
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(viewModel: CardCellViewModelling, index: IndexPath) {
+    func configure(viewModel: PaymentMethodCellViewModelling, index: IndexPath) {
+        self.viewModel = viewModel
+        
         cardNumberLabel.text = "**** **** **** \(viewModel.card.last4)"
         cardNameLabel.text = viewModel.card.name
         titleLabel.text = "Carte n°\(index.row + 1)"
@@ -160,5 +186,11 @@ final class PaymentMethodCellView: UICollectionViewCell, ReusableView {
         default:
             break
         }
+        
+
+        deleteButton.rx.tap.bind { [weak self] in
+            guard let strongSelf = self, let viewModel = strongSelf.viewModel else { return }
+            viewModel.deleteMethod()
+        }.disposed(by: viewModel.bag)
     }
 }

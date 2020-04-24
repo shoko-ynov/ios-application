@@ -37,4 +37,11 @@ final class PaymentApiService {
             .setBody(body)
             .send(completion: completion)
     }
+    
+    func removeCard(card: Card, completion: @escaping (Result<NSNull, Error>) -> Void) {
+        Request()
+            .setPath("/cards/\(card._id)")
+            .setMethod(.DELETE)
+            .send(completion: completion)
+    }
 }

@@ -7,15 +7,33 @@
 //
 
 import Foundation
+import RxSwift
+import UIKit
 
-protocol CardCellViewModelling {
+protocol PaymentMethodCellViewModelling {
     var card: Card { get }
+    var bag: DisposeBag { get }
+    
+    func deleteMethod() -> Void
 }
 
-final class PaymentMethodCellViewModel: CardCellViewModelling {
+final class PaymentMethodCellViewModel: PaymentMethodCellViewModelling {
+    var bag: DisposeBag
     var card: Card
     
     init(card: Card) {
         self.card = card
+        self.bag = DisposeBag()
+    }
+    
+    func deleteMethod() -> Void {
+        PaymentApiService().removeCard(card: card) {
+            switch $0 {
+            case .success(_):
+                CardRepository.shared.synchronizeCards()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

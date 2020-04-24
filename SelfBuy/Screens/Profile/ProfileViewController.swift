@@ -18,9 +18,6 @@ class ProfileViewController: UIViewController {
     //    let profileName = "Zakarya Tolba"
     //    let profileEmail = "zakarya.tolba@ynov.com"
     
-    // Button arrow
-    let chevron_left = UIImage(systemName: "chevron.left")
-    let chevron_right = UIImage(systemName: "chevron.right")
     
     let loginVC = LoginViewController(viewModel: LoginViewModel())
     var titleLabel: UILabel = UILabel()
@@ -31,8 +28,6 @@ class ProfileViewController: UIViewController {
         
         setHeaderImage()
         titleLabel = setTitleLabel("Profile", textColor: UIColor.white)
-        
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         loginVC.onDismiss = {[weak self] in
             if let _ = UserDefaults.standard.string(forKey: "TOKEN") {

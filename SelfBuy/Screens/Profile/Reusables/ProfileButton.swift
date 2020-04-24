@@ -72,7 +72,7 @@ class ProfileButton: UIView {
               bottom: self.bottomAnchor,
               trailing: arrow.trailingAnchor,
               padding: .init(top: 3, left: 0, bottom: 0, right: 0),
-              size: .init(width: self.frame.width, height: 0.3)
+              size: .init(width: self.frame.width, height: 0)
         )
 
         button

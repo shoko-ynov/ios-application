@@ -12,7 +12,7 @@ protocol CardCellViewModelling {
     var card: Card { get }
 }
 
-final class CardCellViewModel: CardCellViewModelling {
+final class PaymentMethodCellViewModel: CardCellViewModelling {
     var card: Card
     
     init(card: Card) {

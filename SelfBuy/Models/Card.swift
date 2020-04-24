@@ -11,7 +11,7 @@ import Foundation
 struct Card: Decodable {
     var _id: String
     var name: String
-    var band: String
+    var brand: String
     var last4: String
     var expMonth: Int
     var expYear: Int

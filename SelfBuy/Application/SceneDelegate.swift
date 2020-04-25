@@ -24,17 +24,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         
         let tabBarVC = TabBarViewController()
-        let nvc = UINavigationController(rootViewController: tabBarVC)
-        nvc.navigationBar.backItem?.leftBarButtonItem?.tintColor = .white
-        nvc.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        nvc.navigationBar.shadowImage = UIImage()
-        nvc.navigationBar.isTranslucent = true
-        nvc.view.backgroundColor = .clear
+  
                 
-        window?.rootViewController = nvc
+        window?.rootViewController = tabBarVC
         //window?.makeKeyAndVisible()
     }
 
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        guard let url = userActivity.webpageURL else { return }
+        
+        if url.path == "/users/activation" {
+            guard let key = url.valueOf("k"), let userId = url.valueOf("u") else {
+                return
+            }
+            
+            let activationVC = UserActivationViewController(viewModel: UserActivationViewModel(
+                key: key,
+                userId: userId)
+            )
+            
+            window?.rootViewController = TabBarService.shared.tabBarController
+            window?.rootViewController?.present(activationVC, animated: true)
+            window?.makeKeyAndVisible()
+        }
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

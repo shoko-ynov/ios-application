@@ -7,144 +7,123 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ProfileViewController: UIViewController {
     
-    // Temp strings for profileName & avatarFileName
-    let profileName = "Zakarya Tolba"
-    let profileEmail = "zakarya.tolba@ynov.com"
+    // MARK: Temporary profile menu titles
+    let profileName = " "
+    let profileEmail = " "
+    //    let profileName = "Zakarya Tolba"
+    //    let profileEmail = "zakarya.tolba@ynov.com"
     
-    // Button arrow
-    let chevron_left = UIImage(systemName: "chevron.left")
-    let chevron_right = UIImage(systemName: "chevron.right")
     
+    let loginVC = LoginViewController(viewModel: LoginViewModel())
+    var titleLabel: UILabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
-
+        
+        setHeaderImage()
+        titleLabel = setTitleLabel("Profile", textColor: UIColor.white)
+        
+        loginVC.onDismiss = {[weak self] in
+            if AuthenticationManager.hasToken() {
+                self?.showView()
+            } else {
+                self?.tabBarController?.selectedIndex = 0
+            }
+        }
     }
     
-    override func loadView() {
-        super.loadView()
-        setHeaderImage()
-        
-        
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        _ = setTitleLabel("Profile", textColor: UIColor.white)
-        
-        
-        // MARK: Profile name label
-        let profileNameLabel = UILabel()
-        profileNameLabel.textColor = UIColor.white
-        profileNameLabel.text = profileName
-        profileNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        profileNameLabel.textAlignment = .center
-        profileNameLabel.setToBold(size: 25.0)
-        self.view.addSubview(profileNameLabel)
-        
-        profileNameLabel.anchor(
-            top: self.view.topAnchor,
-            leading: self.view.leadingAnchor,
-            bottom: nil,
-            trailing: self.view.trailingAnchor,
-            padding: .init(top: 200, left: 0, bottom: 0, right: 0)
-        )
-        
-        
-        // MARK: Profile email label
-        let profileEmailLabel = UILabel()
-        profileEmailLabel.textColor = UIColor.white
-        profileEmailLabel.text = profileEmail
-        profileEmailLabel.translatesAutoresizingMaskIntoConstraints = false
-        profileEmailLabel.textAlignment = .center
-        profileEmailLabel.setToMedium(size: 20.0)
-        self.view.addSubview(profileEmailLabel)
-        
-        profileEmailLabel.anchor(
-            top: profileNameLabel.bottomAnchor,
-            leading: self.view.leadingAnchor,
-            bottom: nil,
-            trailing: self.view.trailingAnchor,
-            padding: .init(top: 10, left: 0, bottom: 0, right: 0)
-        )
+    override func viewDidAppear(_ animated: Bool) {
+        if AuthenticationManager.hasToken() {
+            self.showView()
+        } else {
+            self.present(loginVC, animated: true)
+            return;
+        }
+    }
     
-        // text: String, iconName: String, data: String
-        // MARK: Account button
-        let accountButton = ProfileButton(text: "Account")
+    func showView() {
+        let scrollView = UIScrollView()
+        view.addSubview(scrollView)
+        scrollView.anchor(
+            top: titleLabel.bottomAnchor,
+            leading: view.leadingAnchor,
+            bottom: tabBarController?.tabBar.topAnchor,
+            trailing: view.trailingAnchor
+        )
         
-        self.view.addSubview(accountButton)
+        // MARK: Account button
+        let accountButton = ProfileButton(text: "Compte")
+        
+        scrollView.addSubview(accountButton)
+        
         accountButton.anchor(
-            top: profileEmailLabel.bottomAnchor,
+            top: scrollView.topAnchor,
             leading: self.view.leadingAnchor,
             bottom: nil,
             trailing: self.view.trailingAnchor,
-            padding: .init(top: 150, left: 0, bottom: 0, right: 0)
+            padding: .init(top: 350, left: 0, bottom: 0, right: 0)
         )
+        
         accountButton.onTapHandler = { [weak self] in
-            self?.present(AccountViewController(), animated: true)
+            self?.present(AccountViewController(viewModel: UserViewModel()), animated: true)
         }
         
-        
         // MARK: Orders button
-        let ordersButton = ProfileButton(text: "Orders")
-        
-        self.view.addSubview(ordersButton)
+        let ordersButton = ProfileButton(text: "Commandes")
+
+        scrollView.addSubview(ordersButton)
+
         ordersButton.anchor(
             top: accountButton.bottomAnchor,
             leading: self.view.leadingAnchor,
             bottom: nil,
             trailing: self.view.trailingAnchor,
-            padding: .init(top: 20, left: 0, bottom: 0, right: 0)
+            padding: .init(top: 40, left: 0, bottom: 0, right: 0)
         )
-        ordersButton.onTapHandler = { [weak self] in
-                 self?.present(AboutUsViewController(), animated: true)
-        }
-        
-         // MARK: Payment method button
-        let paymentButton = ProfileButton(text: "Payment")
-        
-        self.view.addSubview(paymentButton)
+
+        /*ordersButton.onTapHandler = { [weak self] in
+            self?.present(AboutUsViewController(), animated: true)
+        }*/
+
+        // MARK: Payment method button
+        let paymentButton = ProfileButton(text: "Paiement")
+
+        scrollView.addSubview(paymentButton)
+
         paymentButton.anchor(
             top: ordersButton.bottomAnchor,
             leading: self.view.leadingAnchor,
             bottom: nil,
             trailing: self.view.trailingAnchor,
-            padding: .init(top: 20, left: 0, bottom: 0, right: 0)
+            padding: .init(top: 40, left: 0, bottom: 0, right: 0)
         )
         paymentButton.onTapHandler = { [weak self] in
-                 self?.present(EditInfoViewController(), animated: true)
+            self?.present(PaymentMethodViewController(viewModel: PaymentMethodViewModel()), animated: true)
         }
-        
-        // MARK: Privacy & Policy button
-        let ppButton = ProfileButton(text: "Privacy & Policy")
-        
-          self.view.addSubview(ppButton)
-          ppButton.anchor(
-              top: paymentButton.bottomAnchor,
-              leading: self.view.leadingAnchor,
-              bottom: nil,
-              trailing: self.view.trailingAnchor,
-              padding: .init(top: 20, left: 0, bottom: 0, right: 0)
-          )
-        ppButton.onTapHandler = { [weak self] in
-                 self?.present(PPViewController(), animated: true)
+
+
+        // MARK: Disconnect button
+        let disconnectButton = ProfileButton(text: "Se déconnecter")
+
+        scrollView.addSubview(disconnectButton)
+
+        disconnectButton.anchor(
+            top: paymentButton.bottomAnchor,
+            leading: self.view.leadingAnchor,
+            bottom: scrollView.bottomAnchor,
+            trailing: self.view.trailingAnchor,
+            padding: .init(top: 40, left: 0, bottom: 20, right: 0)
+        )
+
+        disconnectButton.onTapHandler = { [weak self] in
+            AuthenticationManager.removeTokens()
+            self?.present(self!.loginVC, animated: true)
         }
-        
-        // MARK: About us button
-        let aboutUsButton = ProfileButton(text: "About us")
-           
-           self.view.addSubview(aboutUsButton)
-           aboutUsButton.anchor(
-               top: ppButton.bottomAnchor,
-               leading: self.view.leadingAnchor,
-               bottom: nil,
-               trailing: self.view.trailingAnchor,
-               padding: .init(top: 20, left: 0, bottom: 0, right: 0)
-           )
-            aboutUsButton.onTapHandler = { [weak self] in
-                     self?.present(AboutUsViewController(), animated: true)
-            }
-        
     }
 }

@@ -16,6 +16,7 @@ class Request {
     private var method: HTTPMethod = .GET
     private var token: String?
     private let encoder = JSONEncoder()
+    private var canRefreshToken = true
     
     init(domain: String = Config.baseApi) {
         self.domain = domain
@@ -37,10 +38,17 @@ class Request {
     }
     
     func withAuthentication() -> Request {
-        guard let tokenSaved = UserDefaults.standard.string(forKey: "TOKEN") else {
+        guard let tokenSaved = AuthenticationManager.getToken() else {
             return self
         }
         self.token = tokenSaved
+        
+        return self
+    }
+    
+    func disableCanRefreshToken() -> Request {
+        self.canRefreshToken = false
+        
         return self
     }
     
@@ -83,7 +91,7 @@ class Request {
         return request
     }
     
-    func send<T: Decodable>(_ type: T.Type, completion: @escaping (Result<T, Error>) -> Void ) {
+    private func callRequest(completion: @escaping (Result<Data, Error>) -> Void) {
         guard let request = self.getRequest() else { return }
         
         URLSession.shared.dataTask(with: request) { (data, urlResponse, error) in
@@ -92,40 +100,70 @@ class Request {
             do {
                 print("Status code : \(urlResponse.statusCode)")
                 if urlResponse.statusCode == 401 {
-                    let response = self.decodeData(ApiError.self, data: data)
-                    
-                    switch response {
-                    case .success(let decoded):
-                        if(decoded.data.code == "INVALID_REFRESH_TOKEN") {
-                            UserDefaults.standard.set("", forKey: "TOKEN")
-                            UserDefaults.standard.set("", forKey: "refreshToken")
-                        } else {
-                            let service: AuthAPIService = AuthAPIService()
-                            service.refreshToken()
-                        }
-                    case .failure(let error):
-                        completion(.failure(error))
+                    if (!self.canRefreshToken) {
+                        AuthenticationManager.removeTokens()
+                        return
                     }
                     
+                    let service: AuthAPIService = AuthAPIService()
+                    
+                    self.canRefreshToken = false
+                    service.refreshToken() {
+                        switch $0 {
+                        case .success(let token):
+                            AuthenticationManager.setToken(token: token)
+                            self.token = token.token
+                            self.callRequest(completion: completion)
+                        case .failure(let error):
+                            print(error)
+                            AuthenticationManager.removeTokens()
+                            completion(.failure(error))
+                        }
+                    }
+                    
+                    return
                 } else if urlResponse.statusCode != 200 && urlResponse.statusCode != 201 && urlResponse.statusCode != 204 {
                     throw NSError(domain: "Server error, status code : \(urlResponse.statusCode)", code: 500)
                 }
                 
-                
-                let response = self.decodeData(T.self, data: data)
-                
-                switch response {
-                case .success(let decoded):
-                    completion(.success(decoded.data))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
+                completion(.success(data))
                 
             } catch let parseError as NSError {
                 completion(.failure(parseError))
             }
             
         }.resume()
+    }
+    
+    func sendWithDecode<T:Decodable>(_ type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+        callRequest { result in
+            do {
+                let decoder = JSONDecoder()
+                
+                switch result {
+                case .success(let data):
+                    let decodedData = try decoder.decode(GenericServerResponse<T>.self, from: data)
+                    completion(.success(decodedData.data))
+                    break
+                case .failure(let error):
+                    completion(.failure(error))
+                    break
+                }
+            } catch let error {
+                return completion(.failure(error))
+            }
+        }
+    }
+    
+    func send(completion: @escaping (Result<NSNull, Error>) -> Void) {
+        callRequest {
+            switch $0 {
+            case .success(_):
+                completion(.success(.init()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
     
 }

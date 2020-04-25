@@ -43,6 +43,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         setHeaderImage()
         let titleLabel = setTitleLabel("Accueil", textColor: .white)
+        
         view.backgroundColor = .lightGray
         view.addSubview(productsCollectionView)
         
@@ -67,14 +68,15 @@ final class HomeViewController: UIViewController {
         productsCollectionView
             .rx
             .itemSelected
-            .subscribe { indexPath in
-                guard let itemIndex = indexPath.element?.row else {
+            .subscribe { [weak self] indexPath in
+                guard let strongSelf = self, let itemIndex = indexPath.element?.row else {
                     return;
                 }
                 
-                let productDetailVM = ProductCellViewModel(product: self.products[itemIndex])
+                let productDetailVM = ProductDetailViewModel(product: strongSelf.products[itemIndex])
                 let productDetailVC = ProductDetailViewController(viewModel: productDetailVM)
-                self.navigationController?.pushViewController(productDetailVC, animated: true)
+                
+                strongSelf.present(productDetailVC, animated: true)
         }.disposed(by: dispodeBag)
     }
 }

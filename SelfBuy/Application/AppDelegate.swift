@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
+        Stripe.setDefaultPublishableKey(Config.stripePublicKey)
     
         // Override point for customization after application launch.
         return true
@@ -36,7 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     @objc func appMovedToBackground() {
-        service.getMe()
+        if AuthenticationManager.hasToken() {
+            service.getMe() {
+                print($0)
+            }
+        }
     }
 }
 

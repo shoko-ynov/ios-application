@@ -7,45 +7,42 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol CartViewModelling {
     var numberOfSection: Int { get }
     var numberOfItems: Int { get }
-    var itemsViewModels: [CartCellViewModel] { get }
-    // La, il manque des trucs... mais je les est pas comprises 😭
+    var cartItemPublishSubject: PublishSubject<[CartItem]> { get }
     
-    func addItem()
+    var bag : DisposeBag { get }
+    
     func getItem(index: IndexPath) -> CartCellViewModel
-    func fetchOrders()
 }
 
 final class CartViewModel: CartViewModelling {
-    
-    func fetchOrders() {
-        //self.cellViewModels.append(contentsOf: <#T##Sequence#>)
-    }
-    
-    var itemsViewModels: [CartCellViewModel] = []
+    var bag = DisposeBag()
+
     var numberOfSection: Int = 1
-    
     var numberOfItems: Int {
-        return self.itemsViewModels.count
+        return CartItemRepository.shared.products.count
     }
+    
+    var cartItemPublishSubject: PublishSubject<[CartItem]>
     
     init() {
-        let product = Product(_id: "5dda933ee0d25a0017b59900", name: "Sachet de Truffes au chocolat", category: "Sachet", price: 29.0, description: "Test de tablette", images: ["http://dev.maxencemottard.com/selfbuy/sachet_truffe_chocolat.png"])
-        let item = CartItem(_id: "189U3H1B", cartId: "10K213K1", product: product, quantity: 3)
+        cartItemPublishSubject = PublishSubject()
+        cartItemPublishSubject.onNext(CartItemRepository.shared.products)
         
-        self.itemsViewModels.append(CartCellViewModel(cartItem: item))
-        self.itemsViewModels.append(CartCellViewModel(cartItem: item))
-    }
-    
-    func addItem() {
-        
+        CartItemRepository.shared.productsPublishSubject
+            .subscribe(onNext: { [weak self] products in
+                guard let strongSelf = self else { return }
+                strongSelf.cartItemPublishSubject.onNext(CartItemRepository.shared.products)
+            }).disposed(by: bag)
     }
     
     func getItem(index: IndexPath) -> CartCellViewModel {
-        return self.itemsViewModels[index.row]
+        let cartItem = CartItemRepository.shared.products[index.row]
+        return CartCellViewModel(cartItem: cartItem)
     }
     
 }

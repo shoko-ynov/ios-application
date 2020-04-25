@@ -9,8 +9,6 @@
 import Foundation
 
 struct CartItem: Decodable {
-    var _id: String
-    var cartId: String
     var product: Product
     var quantity: Int
 }

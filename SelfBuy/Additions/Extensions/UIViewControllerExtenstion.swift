@@ -25,7 +25,13 @@ extension UIViewController {
         
         self.view.addSubview(titleLabel)
         
-        titleLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
+        titleLabel.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: nil,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 20, left: 20, bottom: 0, right: 60)
+        )
         
         return titleLabel
     }
@@ -33,7 +39,7 @@ extension UIViewController {
     func setHeaderImage() {
         
         let headerImage: UIImageView = {
-            let image = UIImage(named: "HeaderImage")
+            let image = UIImage(named: "chocolat")
             let imageView = UIImageView()
             imageView.image = image
             
@@ -49,6 +55,7 @@ extension UIViewController {
             trailing: self.view.trailingAnchor
         )
         
+        headerImage.heightAnchor.constraint(equalToConstant: 300).isActive = true
     }
     
 }

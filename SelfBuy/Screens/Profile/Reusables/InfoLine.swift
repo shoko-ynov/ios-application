@@ -36,7 +36,7 @@ class InfoLine: UIView {
     }()
     
     
-    init(text: String, iconName: String, data: String) {
+    init(text: String, iconName: String, data: String?) {
         super.init(frame: .zero)
         
         profileData.text = data
@@ -75,6 +75,10 @@ class InfoLine: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func update(profileText: String) {
+        profileData.text = profileText
     }
     
 }

@@ -58,7 +58,6 @@ final class ProductCellView: UICollectionViewCell, ReusableView {
         contentView.addSubview(productPriceLabel)
         
         let padding = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        let spacing = 8
         
         productCategoryLabel.anchor(
             top: contentView.topAnchor,

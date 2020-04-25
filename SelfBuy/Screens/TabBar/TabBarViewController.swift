@@ -29,8 +29,7 @@ final class TabBarViewController: UITabBarController {
         homeVC.tabBarItem.image = UIImage(named: "home")
         let cartVC = CartViewController(viewModel: CartViewModel())
         cartVC.tabBarItem.image = UIImage(named: "cart")
-        let profileVC = LoginViewController(viewModel: LoginViewModel())
-
+        let profileVC = ProfileViewController()
         profileVC.tabBarItem.image = UIImage(named: "user")
         
         self.viewControllers = [
@@ -78,12 +77,13 @@ extension TabBarViewController: UITabBarControllerDelegate  {
     func animateToTab(toIndex: Int) {
         guard let tabViewControllers = viewControllers,
             let selectedVC = selectedViewController else { return }
-
+        
         guard let fromView = selectedVC.view,
             let toView = tabViewControllers[toIndex].view,
             let fromIndex = tabViewControllers.firstIndex(of: selectedVC),
             fromIndex != toIndex else { return }
-
+        
+        tabViewControllers[toIndex].viewWillAppear(true)
 
         // Add the toView to the tab bar view
         fromView.superview?.addSubview(toView)

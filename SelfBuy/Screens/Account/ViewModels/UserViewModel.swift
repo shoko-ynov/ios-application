@@ -20,9 +20,12 @@ class UserViewModel {
     let service: AuthAPIService = AuthAPIService()
     
     let staticUserData = [
-        UserData(label: "Name", iconName: "person.fill"),
+        UserData(label: "Prénom", iconName: "person.fill"),
+        UserData(label: "Nom", iconName: "person.fill"),
         UserData(label: "Email", iconName: "envelope.fill"),
-        UserData(label: "Address", iconName: "house.fill")
+        UserData(label: "Adresse", iconName: "house.fill"),
+        UserData(label: "Ville", iconName: "house.fill"),
+        UserData(label: "Code Postal", iconName: "house.fill"),
     ]
     
     func showData() {

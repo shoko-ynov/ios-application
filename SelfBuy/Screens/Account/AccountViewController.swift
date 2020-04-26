@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 class AccountViewController: PresentableViewController {
-    let viewModel: UserViewModel
+    let viewModel: AccountViewModelling
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -23,16 +23,6 @@ class AccountViewController: PresentableViewController {
         return stackView
     }()
     
-    init(viewModel: UserViewModel) {
-        self.viewModel = viewModel
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-         fatalError("init(coder:) has not been implemented")
-     }
-    
     private let editButton: UIButton = {
          let button = UIButton()
          return button
@@ -43,17 +33,25 @@ class AccountViewController: PresentableViewController {
          return image!
      }()
     
+    init(viewModel: AccountViewModelling) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+         fatalError("init(coder:) has not been implemented")
+     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         
-        viewModel.showData()
         bindViewModel()
-
     }
     
     @objc func handleTap(value: String) {
-        self.present(EditInfoViewController(viewModel: viewModel, fieldName: "Test Field", fieldValue: "Zakarya"), animated: true)
+    
         print(value)
     }
     
@@ -80,7 +78,8 @@ class AccountViewController: PresentableViewController {
             var views = [InfoLine]()
             
             for (index, value) in values.enumerated()  {
-                guard let user = viewModel.user.value else { return }
+                guard let user = UserRepository.shared.user else { return [] }
+                
                 let vm = UserEditViewModel(valueName: viewModel.staticUserData[index].label, value: value ?? "", userId: user._id)
                 let viewController = UserEditViewController(viewModel: vm)
                 let view = InfoLine(text: viewModel.staticUserData[index].label, iconName: viewModel.staticUserData[index].iconName, data: value)
@@ -111,7 +110,16 @@ class AccountViewController: PresentableViewController {
             ])
         }
         
-        viewModel
+        viewModel.repository.userSubject.subscribe { event in
+            guard let eventElement = event.element, let user = eventElement else { return }
+            
+            let infos = mapUserInformations(from: user)
+            let views = mapViews(from: infos)
+            setupStackView(with: views)
+        }.disposed(by: viewModel.bag)
+        
+        
+        /*viewModel
             .user
             .asDriver()
             .filter({ $0 != nil })
@@ -121,6 +129,6 @@ class AccountViewController: PresentableViewController {
             .drive(onNext: { views in
                 setupStackView(with: views)
             })
-        .disposed(by: bag)
+        .disposed(by: bag)*/
     }
 }

@@ -1,5 +1,5 @@
 //
-//  UserDetailViewModel.swift
+//  AccountViewModel.swift
 //  SelfBuy
 //
 //  Created by Zakarya TOLBA on 25/03/2020.
@@ -7,17 +7,19 @@
 //
 
 import Foundation
-import RxRelay
 import RxSwift
 
 struct UserData {
     let label, iconName: String
 }
 
-class UserViewModel {
+protocol AccountViewModelling {
+    var repository: UserRepository { get }
+    var staticUserData: [UserData] { get }
+    var bag: DisposeBag { get }
+}
 
-    let user = BehaviorRelay<User?>(value: nil)
-    let service: AuthAPIService = AuthAPIService()
+final class AccountViewModel: AccountViewModelling {
     
     let staticUserData = [
         UserData(label: "Prénom", iconName: "person.fill"),
@@ -28,7 +30,10 @@ class UserViewModel {
         UserData(label: "Code Postal", iconName: "house.fill"),
     ]
     
-    func showData() {
+    let repository: UserRepository = UserRepository.shared
+    
+    let bag = DisposeBag()
+    /*func showData() {
         _ = service.getMe() { [weak user] in
             switch $0 {
                 case .success(let data):
@@ -37,5 +42,5 @@ class UserViewModel {
                     print("error \(error)")
             }
         }
-    }
+    }*/
 }

@@ -11,7 +11,6 @@ import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    let service: AuthAPIService = AuthAPIService()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -39,11 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     @objc func appMovedToBackground() {
-        if AuthenticationManager.hasToken() {
-            service.getMe() {
-                print($0)
-            }
-        }
+        UserRepository.shared.synchronizeUser()
     }
 }
 

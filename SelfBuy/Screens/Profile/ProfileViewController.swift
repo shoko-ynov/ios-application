@@ -76,7 +76,7 @@ class ProfileViewController: UIViewController {
         )
         
         accountButton.onTapHandler = { [weak self] in
-            self?.present(AccountViewController(viewModel: UserViewModel()), animated: true)
+            self?.present(AccountViewController(viewModel: AccountViewModel()), animated: true)
         }
         
         // MARK: Orders button

@@ -72,6 +72,7 @@
 		D0C098772452423F00239225 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C098762452423F00239225 /* CardRepository.swift */; };
 		D0CE24A62393002E00C41ACD /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE24A52393002E00C41ACD /* ProductDetailViewController.swift */; };
 		D0CE24A92393005B00C41ACD /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE24A82393005B00C41ACD /* ProductDetailViewModel.swift */; };
+		D0E396802452BB4D00D8E114 /* DeletableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3967F2452BB4D00D8E114 /* DeletableItemView.swift */; };
 		D0E57511244AD4CC00B7B26A /* PaymentMethodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E57510244AD4CC00B7B26A /* PaymentMethodViewModel.swift */; };
 		D0E57513244AD54400B7B26A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E57512244AD54400B7B26A /* Card.swift */; };
 		D0E57516244ADAB400B7B26A /* PaymentMethodCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E57515244ADAB400B7B26A /* PaymentMethodCellView.swift */; };
@@ -162,6 +163,7 @@
 		D0C098762452423F00239225 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
 		D0CE24A52393002E00C41ACD /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		D0CE24A82393005B00C41ACD /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
+		D0E3967F2452BB4D00D8E114 /* DeletableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableItemView.swift; sourceTree = "<group>"; };
 		D0E57510244AD4CC00B7B26A /* PaymentMethodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodViewModel.swift; sourceTree = "<group>"; };
 		D0E57512244AD54400B7B26A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		D0E57515244ADAB400B7B26A /* PaymentMethodCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCellView.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 		D026F9E12372E52400372EA0 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				D0E3967E2452BB1400D8E114 /* Reusables */,
 				D0C03474244C9C6F008ACAAC /* Class */,
 				D09C29672378E87F007E69AF /* Extensions */,
 				D026F9E22372E52B00372EA0 /* Protocols */,
@@ -577,6 +580,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		D0E3967E2452BB1400D8E114 /* Reusables */ = {
+			isa = PBXGroup;
+			children = (
+				D0E3967F2452BB4D00D8E114 /* DeletableItemView.swift */,
+			);
+			path = Reusables;
+			sourceTree = "<group>";
+		};
 		D0E5750F244AD4BA00B7B26A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -753,6 +764,7 @@
 				D01E3FD5244D2B720091931B /* UserActivationViewModel.swift in Sources */,
 				D0E5751A244B05E400B7B26A /* CartItemRepository.swift in Sources */,
 				7320AF3A23AA514300FF5EB7 /* RegisterViewModel.swift in Sources */,
+				D0E396802452BB4D00D8E114 /* DeletableItemView.swift in Sources */,
 				8E1C3CBF23858FE6005847A0 /* UILabelExtensions.swift in Sources */,
 				E3945F4C239290EA007ED444 /* PPViewController.swift in Sources */,
 				D026F9D02372E41000372EA0 /* SceneDelegate.swift in Sources */,

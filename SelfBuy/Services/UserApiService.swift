@@ -70,7 +70,7 @@ final class UserApiService {
           
           request
               .setPath("users/:\(id)")
-              .setMethod(.POST)
+              .setMethod(.PUT)
               .setBody(user)
               .send(completion: completionHandler)
       }

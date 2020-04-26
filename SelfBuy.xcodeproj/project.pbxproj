@@ -86,9 +86,10 @@
 		E3163E6D23C9377C00AC83A9 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3163E6C23C9377B00AC83A9 /* ProfileButton.swift */; };
 		E3163E7023C937EF00AC83A9 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3163E6F23C937EF00AC83A9 /* OrdersViewModel.swift */; };
 		E3163E7223C9380800AC83A9 /* OrdersCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3163E7123C9380800AC83A9 /* OrdersCellViewModel.swift */; };
+		E31702DB245629CE004FD16D /* UserEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31702DA245629CE004FD16D /* UserEditViewController.swift */; };
+		E31702DD24562C4F004FD16D /* UserEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31702DC24562C4F004FD16D /* UserEditViewModel.swift */; };
 		E3945F46239290AC007ED444 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F45239290AC007ED444 /* AccountViewController.swift */; };
 		E3945F48239290C8007ED444 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F47239290C8007ED444 /* OrdersViewController.swift */; };
-		E3945F4C239290EA007ED444 /* PPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F4B239290EA007ED444 /* PPViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -174,9 +175,10 @@
 		E3163E6C23C9377B00AC83A9 /* ProfileButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		E3163E6F23C937EF00AC83A9 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrdersViewModel.swift; path = SelfBuy/Screens/Profile/OrdersViewModel.swift; sourceTree = SOURCE_ROOT; };
 		E3163E7123C9380800AC83A9 /* OrdersCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrdersCellViewModel.swift; path = SelfBuy/Screens/Profile/OrdersCellViewModel.swift; sourceTree = SOURCE_ROOT; };
+		E31702DA245629CE004FD16D /* UserEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditViewController.swift; sourceTree = "<group>"; };
+		E31702DC24562C4F004FD16D /* UserEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditViewModel.swift; sourceTree = "<group>"; };
 		E3945F45239290AC007ED444 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		E3945F47239290C8007ED444 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
-		E3945F4B239290EA007ED444 /* PPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -508,8 +510,9 @@
 				73665558238541220062A358 /* Views */,
 				D08A5C9C2374C78100221F37 /* ProfileViewController.swift */,
 				E3945F47239290C8007ED444 /* OrdersViewController.swift */,
-				E3945F4B239290EA007ED444 /* PPViewController.swift */,
 				E3163E6623C92DDF00AC83A9 /* EditInfoViewController.swift */,
+				E31702DA245629CE004FD16D /* UserEditViewController.swift */,
+				E31702DC24562C4F004FD16D /* UserEditViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 				D0632E062419265E0010A7D9 /* EditButton.swift in Sources */,
 				D0E57511244AD4CC00B7B26A /* PaymentMethodViewModel.swift in Sources */,
 				D043C0B523894A9E00B05967 /* ProductCellView.swift in Sources */,
+				E31702DD24562C4F004FD16D /* UserEditViewModel.swift in Sources */,
 				B3C4D304242BA8CA0083F47F /* StripeRequest.swift in Sources */,
 				B3C4D2F1242B93160083F47F /* CardViewController.swift in Sources */,
 				8E1C3CBB238588AA005847A0 /* CartItem.swift in Sources */,
@@ -746,7 +750,6 @@
 				D0E5751A244B05E400B7B26A /* CartItemRepository.swift in Sources */,
 				7320AF3A23AA514300FF5EB7 /* RegisterViewModel.swift in Sources */,
 				8E1C3CBF23858FE6005847A0 /* UILabelExtensions.swift in Sources */,
-				E3945F4C239290EA007ED444 /* PPViewController.swift in Sources */,
 				D026F9D02372E41000372EA0 /* SceneDelegate.swift in Sources */,
 				D043C0B723894BC100B05967 /* ProductCellViewModel.swift in Sources */,
 				D08681D1239FF84600F65961 /* AnyEncodable.swift in Sources */,
@@ -761,6 +764,7 @@
 				D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */,
 				D01E3FCD244D28290091931B /* URLExtensions.swift in Sources */,
 				B3C4D300242BA7670083F47F /* CardPaymentDTO.swift in Sources */,
+				E31702DB245629CE004FD16D /* UserEditViewController.swift in Sources */,
 				E3163E6923C935A000AC83A9 /* OrdersCellView.swift in Sources */,
 				7380E7322397DE1500685B7C /* AuthAPIService.swift in Sources */,
 				D0C03476244C9C93008ACAAC /* PresentableViewController.swift in Sources */,

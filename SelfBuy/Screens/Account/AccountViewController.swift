@@ -52,33 +52,16 @@ class AccountViewController: PresentableViewController {
 
     }
     
+    @objc func handleTap(value: String) {
+        self.present(EditInfoViewController(viewModel: viewModel, fieldName: "Test Field", fieldValue: "Zakarya"), animated: true)
+        print(value)
+    }
+    
     override func loadView() {
         super.loadView()
         
-        _ = setTitleLabel("Account", textColor: UIColor.black)
+        _ = setTitleLabel("Compte", textColor: UIColor.black)
         navigationController?.navigationBar.isHidden = true
-        
-        
-        // MARK: Edit button (disabled)
-//        self.view.addSubview(editButton)
-//
-//        editButton.setImage(editIcon, for: .normal)
-//
-//        editButton.anchor(
-//            top: nil,
-//            leading: self.view.trailingAnchor,
-//            bottom: self.view.bottomAnchor,
-//            trailing: nil,
-//            padding: .init(top: 0, left: -230, bottom: 150, right: 0)
-//        )
-//
-//        editButton
-//            .rx
-//            .tap
-//            .bind { [ weak self ] in
-//                self?.present(EditInfoViewController(viewModel: UserViewModel()), animated: true)
-//        }.disposed(by: bag)
-        
     }
     
     private func bindViewModel() {
@@ -86,21 +69,27 @@ class AccountViewController: PresentableViewController {
         func mapUserInformations(from user: User) -> [String?] {
             let firstName = user.firstName ?? ""
             let lastName = user.lastName ?? ""
-            let fullName = firstName + " " + lastName
             let address = user.address ?? ""
             let postalCode = user.postalCode ?? ""
             let city = user.city ?? ""
-            let fullAddress = address + " " + postalCode + " " + city
             
-            return [fullName, user.mail, fullAddress]
+            return [firstName, lastName, user.mail, address, city, postalCode]
         }
         
         func mapViews(from values: [String?]) -> [InfoLine] {
             var views = [InfoLine]()
             
             for (index, value) in values.enumerated()  {
+                guard let user = viewModel.user.value else { return }
+                let vm = UserEditViewModel(valueName: viewModel.staticUserData[index].label, value: value ?? "", userId: user._id)
+                let viewController = UserEditViewController(viewModel: vm)
                 let view = InfoLine(text: viewModel.staticUserData[index].label, iconName: viewModel.staticUserData[index].iconName, data: value)
+                view.addTapGestureRecognizer { [weak self] in
+                    guard let strongSelf = self else { return }
+                    strongSelf.present(viewController, animated: true)
+                }
                 view.heightAnchor.constraint(equalToConstant: 65).isActive = true
+                view.isUserInteractionEnabled = true
                 view.translatesAutoresizingMaskIntoConstraints = false
                 views.append(view)
             }
@@ -109,7 +98,10 @@ class AccountViewController: PresentableViewController {
         }
         
         func setupStackView(with views: [InfoLine]) {
-            views.forEach({ stackView.addArrangedSubview($0) })
+            views.forEach({
+               
+                stackView.addArrangedSubview($0)
+            })
             view.addSubview(stackView)
             
             NSLayoutConstraint.activate([

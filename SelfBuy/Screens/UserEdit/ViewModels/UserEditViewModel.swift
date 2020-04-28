@@ -44,11 +44,10 @@ final class UserEditViewModel: UserEditViewModelling {
                value: value
        )
 
-        service.updateUser(userData: user, id: userId, parameter: parameter){ (result) in
+        service.updateUser(userData: user, id: userId){ (result) in
             switch result {
-            case .success(let user):
+            case .success(_):
                 print("success")
-                print(user)
             case .failure(let error as NSError):
                 print(error)
             default:
@@ -56,5 +55,4 @@ final class UserEditViewModel: UserEditViewModelling {
             }
         }
     }
-
 }

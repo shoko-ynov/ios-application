@@ -71,7 +71,7 @@ class ProfileViewController: UIViewController {
         )
         
         accountButton.onTapHandler = { [weak self] in
-            self?.present(AccountViewController(viewModel: UserViewModel()), animated: true)
+            self?.present(AccountViewController(viewModel: AccountViewModel()), animated: true)
         }
         
         // MARK: Orders button
@@ -92,8 +92,8 @@ class ProfileViewController: UIViewController {
         }*/
 
         // MARK: Payment method button
-        let paymentButton = ProfileButton(text: "Paiement")
-
+        let paymentButton = ProfileButton(text: "Moyen de paiement")
+      
         scrollView.addSubview(paymentButton)
 
         paymentButton.anchor(

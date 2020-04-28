@@ -82,6 +82,7 @@
 		E3163E6D23C9377C00AC83A9 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3163E6C23C9377B00AC83A9 /* ProfileButton.swift */; };
 		E31702DB245629CE004FD16D /* UserEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31702DA245629CE004FD16D /* UserEditViewController.swift */; };
 		E31702DD24562C4F004FD16D /* UserEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31702DC24562C4F004FD16D /* UserEditViewModel.swift */; };
+		E36F5193245792A5001E0C50 /* UserEditDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36F5192245792A5001E0C50 /* UserEditDTO.swift */; };
 		E3945F46239290AC007ED444 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F45239290AC007ED444 /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -164,6 +165,7 @@
 		E3163E6C23C9377B00AC83A9 /* ProfileButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		E31702DA245629CE004FD16D /* UserEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditViewController.swift; sourceTree = "<group>"; };
 		E31702DC24562C4F004FD16D /* UserEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditViewModel.swift; sourceTree = "<group>"; };
+		E36F5192245792A5001E0C50 /* UserEditDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditDTO.swift; sourceTree = "<group>"; };
 		E3945F45239290AC007ED444 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -424,6 +426,7 @@
 				B3C4D2FF242BA7670083F47F /* CardPaymentDTO.swift */,
 				D0E5751B244B06B300B7B26A /* CartItemDTO.swift */,
 				D01E86E1244D85B000C65C59 /* UserActivationDTO.swift */,
+				E36F5192245792A5001E0C50 /* UserEditDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -716,6 +719,7 @@
 				B3C4D2F4242B93650083F47F /* CardViewModel.swift in Sources */,
 				D097768B238AA8250080F701 /* UIImageViewExtensions.swift in Sources */,
 				B3C4D2FC242BA31C0083F47F /* ProductPayment.swift in Sources */,
+				E36F5193245792A5001E0C50 /* UserEditDTO.swift in Sources */,
 				B374343D23F4303100F9B288 /* RefreshTokenDTO.swift in Sources */,
 				D026F9CE2372E41000372EA0 /* AppDelegate.swift in Sources */,
 				7366555D2385431C0062A358 /* LoginViewController.swift in Sources */,

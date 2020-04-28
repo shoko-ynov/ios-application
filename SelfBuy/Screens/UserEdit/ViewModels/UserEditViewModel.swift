@@ -45,8 +45,7 @@ final class UserEditViewModel: UserEditViewModelling {
             value: value
         )
         
-        service.updateUser(userData: user, id: userId) { [weak self] (result) in
-            guard let strongSelf = self else { return }
+        service.updateUser(userData: user, id: userId) { result in
             switch result {
             case .success(_):
                 UserRepository.shared.synchronizeUser()

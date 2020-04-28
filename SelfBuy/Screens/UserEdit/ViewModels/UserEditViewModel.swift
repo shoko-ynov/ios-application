@@ -17,7 +17,8 @@ protocol UserEditViewModelling {
     var userId: String { get }
     var parameter: String { get }
     var service: UserApiService { get }
-    func updateUser(valueName: String, value: String, userId: String, parameter: String)
+    
+    func updateUser(valueName: String, value: String, userId: String, parameter: String, completion: @escaping (Result<NSNull, Error>) -> Void) -> Void
 }
 
 final class UserEditViewModel: UserEditViewModelling {
@@ -27,7 +28,7 @@ final class UserEditViewModel: UserEditViewModelling {
     var parameter: String
     var service = UserApiService()
     var bag: DisposeBag
-    
+
     init(valueName: String, value: String, userId: String, parameter: String) {
         self.valueName = valueName
         self.value = BehaviorRelay(value: value)
@@ -37,22 +38,38 @@ final class UserEditViewModel: UserEditViewModelling {
         self.service = UserApiService()
     }
     
-    func updateUser(valueName : String, value: String, userId: String, parameter: String) {
+    func updateUser(valueName : String, value: String, userId: String, parameter: String, completion: @escaping (Result<NSNull, Error>) -> Void) -> Void {
         
         let user = UserEditDTO(
                parameter: parameter,
                value: value
        )
+//
+//        service.updateUser(userData: user, id: userId){ (result) in
+//            switch result {
+//            case .success(_):
+//                print("success")
+//            case .failure(let error as NSError):
+//                print(error)
+//            default:
+//                print("default")
+//            }
+//        }
 
-        service.updateUser(userData: user, id: userId){ (result) in
+        service.updateUser(userData: user, id: userId) { [weak self] (result) in
+            guard let strongSelf = self else { return }
             switch result {
             case .success(_):
-                print("success")
-            case .failure(let error as NSError):
-                print(error)
-            default:
-                print("default")
+                    UserRepository.shared.synchronizeUser()
+                    completion(.success(NSNull()))
+                    print("success")
+                case .failure(let error as NSError):
+                    completion(.failure(error))
+                default:
+                    print("default")
             }
         }
+        
+        
     }
 }

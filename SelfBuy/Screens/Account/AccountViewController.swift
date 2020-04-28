@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 class AccountViewController: PresentableViewController {
-    let viewModel: UserViewModel
+    let viewModel: AccountViewModelling
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -23,16 +23,6 @@ class AccountViewController: PresentableViewController {
         return stackView
     }()
     
-    init(viewModel: UserViewModel) {
-        self.viewModel = viewModel
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-         fatalError("init(coder:) has not been implemented")
-     }
-    
     private let editButton: UIButton = {
          let button = UIButton()
          return button
@@ -43,42 +33,28 @@ class AccountViewController: PresentableViewController {
          return image!
      }()
     
+    init(viewModel: AccountViewModelling) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+         fatalError("init(coder:) has not been implemented")
+     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         
-        viewModel.showData()
         bindViewModel()
-
     }
     
     override func loadView() {
         super.loadView()
         
-        _ = setTitleLabel("Account", textColor: UIColor.black)
+        _ = setTitleLabel("Compte", textColor: UIColor.black)
         navigationController?.navigationBar.isHidden = true
-        
-        
-        // MARK: Edit button (disabled)
-//        self.view.addSubview(editButton)
-//
-//        editButton.setImage(editIcon, for: .normal)
-//
-//        editButton.anchor(
-//            top: nil,
-//            leading: self.view.trailingAnchor,
-//            bottom: self.view.bottomAnchor,
-//            trailing: nil,
-//            padding: .init(top: 0, left: -230, bottom: 150, right: 0)
-//        )
-//
-//        editButton
-//            .rx
-//            .tap
-//            .bind { [ weak self ] in
-//                self?.present(EditInfoViewController(viewModel: UserViewModel()), animated: true)
-//        }.disposed(by: bag)
-        
     }
     
     private func bindViewModel() {
@@ -86,30 +62,41 @@ class AccountViewController: PresentableViewController {
         func mapUserInformations(from user: User) -> [String?] {
             let firstName = user.firstName ?? ""
             let lastName = user.lastName ?? ""
-            let fullName = firstName + " " + lastName
             let address = user.address ?? ""
             let postalCode = user.postalCode ?? ""
             let city = user.city ?? ""
-            let fullAddress = address + " " + postalCode + " " + city
             
-            return [fullName, user.mail, fullAddress]
+            return [firstName, lastName, user.mail, address, city, postalCode]
         }
         
         func mapViews(from values: [String?]) -> [InfoLine] {
             var views = [InfoLine]()
             
             for (index, value) in values.enumerated()  {
+                guard let user = UserRepository.shared.user else { return [] }
+                
+                let vm = UserEditViewModel(valueName: viewModel.staticUserData[index].label, value: value ?? "", userId: user._id, parameter: viewModel.staticUserData[index].parameter)
+                let viewController = UserEditViewController(viewModel: vm)
                 let view = InfoLine(text: viewModel.staticUserData[index].label, iconName: viewModel.staticUserData[index].iconName, data: value)
+                view.addTapGestureRecognizer { [weak self] in
+                    guard let strongSelf = self else { return }
+                    strongSelf.present(viewController, animated: true)
+                }
                 view.heightAnchor.constraint(equalToConstant: 65).isActive = true
+                view.isUserInteractionEnabled = true
                 view.translatesAutoresizingMaskIntoConstraints = false
                 views.append(view)
+                
             }
             
             return views
         }
         
+        
         func setupStackView(with views: [InfoLine]) {
-            views.forEach({ stackView.addArrangedSubview($0) })
+            views.forEach({
+                stackView.addArrangedSubview($0)
+            })
             view.addSubview(stackView)
             
             NSLayoutConstraint.activate([
@@ -119,16 +106,18 @@ class AccountViewController: PresentableViewController {
             ])
         }
         
-        viewModel
-            .user
-            .asDriver()
-            .filter({ $0 != nil })
-            .map({ $0.unsafelyUnwrapped })
-            .map({ mapUserInformations(from: $0) })
-            .map({ mapViews(from: $0) })
-            .drive(onNext: { views in
+        
+        viewModel.repository.userSubject.subscribe { event in
+            guard let eventElement = event.element, let user = eventElement else { return }
+            
+            DispatchQueue.main.async {
+                let infos = mapUserInformations(from: user)
+                let views = mapViews(from: infos)
+                self.stackView.subviews.forEach { $0.removeFromSuperview() }
                 setupStackView(with: views)
-            })
-        .disposed(by: bag)
+            }
+            
+            
+        }.disposed(by: viewModel.bag)
     }
 }

@@ -139,6 +139,7 @@ class LoginViewController: PresentableViewController {
         
         viewModel.onSuccesfulLogin = { [weak self] in
             DispatchQueue.main.async {
+                UserRepository.shared.synchronizeUser()
                 self?.dismiss(animated: true)
             }
         }

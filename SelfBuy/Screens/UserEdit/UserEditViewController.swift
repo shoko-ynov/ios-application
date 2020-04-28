@@ -52,7 +52,6 @@ class UserEditViewController: PresentableViewController {
         textField.placeholder = viewModel.valueName
         textField.rx.text.skip(1).map({ $0.unsafelyUnwrapped }).asObservable().bind(to: viewModel.value).disposed(by: viewModel.bag)
         
-        print(viewModel.value)
         textField.text = viewModel.value.value
         
         view.addSubview(textField)

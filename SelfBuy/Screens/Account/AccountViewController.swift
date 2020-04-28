@@ -50,11 +50,6 @@ class AccountViewController: PresentableViewController {
         bindViewModel()
     }
     
-    @objc func handleTap(value: String) {
-    
-        print(value)
-    }
-    
     override func loadView() {
         super.loadView()
         
@@ -124,18 +119,5 @@ class AccountViewController: PresentableViewController {
             
             
         }.disposed(by: viewModel.bag)
-        
-        
-        /*viewModel
-            .user
-            .asDriver()
-            .filter({ $0 != nil })
-            .map({ $0.unsafelyUnwrapped })
-            .map({ mapUserInformations(from: $0) })
-            .map({ mapViews(from: $0) })
-            .drive(onNext: { views in
-                setupStackView(with: views)
-            })
-        .disposed(by: bag)*/
     }
 }

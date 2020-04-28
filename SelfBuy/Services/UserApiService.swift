@@ -77,9 +77,5 @@ final class UserApiService {
             .setMethod(.PUT)
             .setBody(json)
             .send(completion: completionHandler)
-        
-        
     }
-        
-   
 }

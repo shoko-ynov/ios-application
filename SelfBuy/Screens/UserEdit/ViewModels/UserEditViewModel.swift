@@ -41,35 +41,19 @@ final class UserEditViewModel: UserEditViewModelling {
     func updateUser(valueName : String, value: String, userId: String, parameter: String, completion: @escaping (Result<NSNull, Error>) -> Void) -> Void {
         
         let user = UserEditDTO(
-               parameter: parameter,
-               value: value
-       )
-//
-//        service.updateUser(userData: user, id: userId){ (result) in
-//            switch result {
-//            case .success(_):
-//                print("success")
-//            case .failure(let error as NSError):
-//                print(error)
-//            default:
-//                print("default")
-//            }
-//        }
-
+            parameter: parameter,
+            value: value
+        )
+        
         service.updateUser(userData: user, id: userId) { [weak self] (result) in
             guard let strongSelf = self else { return }
             switch result {
             case .success(_):
-                    UserRepository.shared.synchronizeUser()
-                    completion(.success(NSNull()))
-                    print("success")
-                case .failure(let error as NSError):
-                    completion(.failure(error))
-                default:
-                    print("default")
+                UserRepository.shared.synchronizeUser()
+                completion(.success(NSNull()))
+            case .failure(let error as NSError):
+                completion(.failure(error))
             }
         }
-        
-        
     }
 }

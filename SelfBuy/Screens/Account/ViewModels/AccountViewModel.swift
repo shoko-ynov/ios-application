@@ -33,14 +33,4 @@ final class AccountViewModel: AccountViewModelling {
     let repository: UserRepository = UserRepository.shared
     
     let bag = DisposeBag()
-    /*func showData() {
-        _ = service.getMe() { [weak user] in
-            switch $0 {
-                case .success(let data):
-                    user?.accept(data)
-                case .failure(let error):
-                    print("error \(error)")
-            }
-        }
-    }*/
 }

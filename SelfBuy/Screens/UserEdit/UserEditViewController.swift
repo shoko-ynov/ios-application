@@ -58,15 +58,29 @@ class UserEditViewController: PresentableViewController {
         view.addSubview(textField)
         view.addSubview(validationButton)
         
-        
         textField.anchor(top: title.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 25, left: 15, bottom: 0, right: 15))
         validationButton.anchor(top: textField.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 30, left: 15, bottom: 0, right: 15))
         
         validationButton.rx.tap.bind { _ in
-            let textFieldValue: String = self.textField.text!
-            self.viewModel.updateUser(valueName: self.viewModel.valueName, value: textFieldValue, userId: self.viewModel.userId, parameter: self.viewModel.parameter)
-            UserRepository.shared.synchronizeUser()
-            self.dismiss(animated: true)
+            self.save()
         }.disposed(by: viewModel.bag)
+    }
+    
+    @objc
+    func save() {
+        let textFieldValue: String = self.textField.text!
+        
+        viewModel.updateUser(valueName: viewModel.valueName, value: textFieldValue, userId: viewModel.userId, parameter: viewModel.parameter) { [weak self] result in
+            guard let strongSelf = self else { return }
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    strongSelf.dismiss(animated: true)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
 }

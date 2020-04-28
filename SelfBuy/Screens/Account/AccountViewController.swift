@@ -91,14 +91,15 @@ class AccountViewController: PresentableViewController {
                 view.isUserInteractionEnabled = true
                 view.translatesAutoresizingMaskIntoConstraints = false
                 views.append(view)
+                
             }
             
             return views
         }
         
+        
         func setupStackView(with views: [InfoLine]) {
             views.forEach({
-               
                 stackView.addArrangedSubview($0)
             })
             view.addSubview(stackView)
@@ -110,12 +111,18 @@ class AccountViewController: PresentableViewController {
             ])
         }
         
+        
         viewModel.repository.userSubject.subscribe { event in
             guard let eventElement = event.element, let user = eventElement else { return }
             
-            let infos = mapUserInformations(from: user)
-            let views = mapViews(from: infos)
-            setupStackView(with: views)
+            DispatchQueue.main.async {
+                let infos = mapUserInformations(from: user)
+                let views = mapViews(from: infos)
+                self.stackView.subviews.forEach { $0.removeFromSuperview() }
+                setupStackView(with: views)
+            }
+            
+            
         }.disposed(by: viewModel.bag)
         
         

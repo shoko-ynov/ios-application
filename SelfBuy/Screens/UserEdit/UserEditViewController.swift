@@ -65,6 +65,8 @@ class UserEditViewController: PresentableViewController {
         validationButton.rx.tap.bind { _ in
             let textFieldValue: String = self.textField.text!
             self.viewModel.updateUser(valueName: self.viewModel.valueName, value: textFieldValue, userId: self.viewModel.userId, parameter: self.viewModel.parameter)
+            UserRepository.shared.synchronizeUser()
+            self.dismiss(animated: true)
         }.disposed(by: viewModel.bag)
     }
 }

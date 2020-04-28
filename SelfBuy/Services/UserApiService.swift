@@ -51,13 +51,17 @@ final class UserApiService {
     }
     
     
-    func updateUser(user: User, id: Int, completionHandler: @escaping (Result<NSNull, Error>) -> Void) {
-          let request = Request()
-          
-          request
-              .setPath("users/:\(id)")
-              .setMethod(.POST)
-              .setBody(user)
-              .send(completion: completionHandler)
-      }
+    func updateUser(userData: UserEditDTO, id: String, completionHandler: @escaping (Result<NSNull, Error>) -> Void) {
+        let request = Request()
+
+        let json = [
+            "\(userData.parameter)" : "\(userData.value)"
+        ]
+
+        request
+            .setPath("/users/\(id)")
+            .setMethod(.PUT)
+            .setBody(json)
+            .send(completion: completionHandler)
+    }
 }

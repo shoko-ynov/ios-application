@@ -65,19 +65,17 @@ final class UserApiService {
     }
     
     
-    func updateUser(userData: UserEditDTO, id: String, parameter: String, completionHandler: @escaping (Result<NSNull, Error>) -> Void) {
+    func updateUser(userData: UserEditDTO, id: String, completionHandler: @escaping (Result<NSNull, Error>) -> Void) {
         let request = Request()
-  
-        guard let jsonData = try? JSONEncoder().encode(userData) else {
-                   print("Error: Trying to convert model to JSON data")
-                   return
-       }
-        
-        print(jsonData)
+
+        let json = [
+            "\(userData.parameter)" : "\(userData.value)"
+        ]
+
         request
             .setPath("/users/\(id)")
             .setMethod(.PUT)
-            .setBody(jsonData)
+            .setBody(json)
             .send(completion: completionHandler)
         
         

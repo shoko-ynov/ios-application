@@ -1,4 +1,4 @@
-git_url("git@github.com:shoko-ynov/fastlan")
+git_url("git@github.com:shoko-ynov/fastlane-certificates.git")
 
 storage_mode("git")
 

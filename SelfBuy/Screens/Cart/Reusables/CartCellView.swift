@@ -35,89 +35,40 @@ class CartCellView: UICollectionViewCell, ReusableView {
         return image
     }()
     
-    private let container: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.applyShadow()
-        view.applyCornerRadius()
-        
-        return view
-    }()
+    private let deletableView = DeletableItemView()
     
-    private let deleteButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .red
-        button.layer.cornerRadius = 20
-        button.setImage(UIImage(systemName: "trash"), for: .normal)
-        button.tintColor = .white
-        button.isEnabled = false
-        
-        NSLayoutConstraint.activate([
-            button.heightAnchor.constraint(equalToConstant: 40),
-            button.widthAnchor.constraint(equalToConstant: 40)
-        ])
-        
-        return button
-    }()
-    
-    private var xOrigin: CGFloat = 0
     private var viewModel: CartCellViewModelling?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.addSubview(container)
-        contentView.addSubview(deleteButton)
+        addSubview(deletableView)
         
-        deleteButton.layer.zPosition = 1
-        container.layer.zPosition = 2
+        deletableView.container.addSubview(itemNameLabel)
+        deletableView.container.addSubview(priceLabel)
+        deletableView.container.addSubview(productFirstImage)
         
-        deleteButton.anchor(
-            top: nil,
-            leading: nil,
-            bottom: nil,
-            trailing: contentView.trailingAnchor,
-            padding: .init(top: 10, left: 0, bottom: 10, right: 10)
-        )
-        
-        deleteButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        
-        container.anchor(
+        deletableView.anchor(
             top: contentView.topAnchor,
             leading: contentView.leadingAnchor,
             bottom: contentView.bottomAnchor,
             trailing: contentView.trailingAnchor
         )
         
-        xOrigin = container.frame.origin.x
-        
-        let containerLeftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeLeft))
-        containerLeftSwipeGesture.direction = [.left]
-        
-        let containerRightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeRight))
-        containerRightSwipeGesture.direction = [.right]
-        
-        container.addGestureRecognizer(containerLeftSwipeGesture)
-        container.addGestureRecognizer(containerRightSwipeGesture)
-        
-        container.addSubview(itemNameLabel)
-        container.addSubview(priceLabel)
-        container.addSubview(productFirstImage)
-        
         productFirstImage.anchor(
-            top: container.topAnchor,
-            leading: container.leadingAnchor,
-            bottom: container.bottomAnchor,
+            top: deletableView.container.topAnchor,
+            leading: deletableView.container.leadingAnchor,
+            bottom: deletableView.container.bottomAnchor,
             trailing: nil,
             padding: .init(top: 20, left: 10, bottom: 20, right: 0)
         )
         productFirstImage.widthAnchor.constraint(equalToConstant: 90).isActive = true
         
         itemNameLabel.anchor(
-            top: container.topAnchor,
+            top: deletableView.container.topAnchor,
             leading: productFirstImage.trailingAnchor,
             bottom: nil,
-            trailing: container.trailingAnchor,
+            trailing: deletableView.container.trailingAnchor,
             padding: UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 20)
         )
         
@@ -125,7 +76,7 @@ class CartCellView: UICollectionViewCell, ReusableView {
             top: itemNameLabel.bottomAnchor,
             leading: nil,
             bottom: nil,
-            trailing: container.trailingAnchor,
+            trailing: deletableView.container.trailingAnchor,
             padding: .init(top: 10, left: 0, bottom: 0, right: 20)
         )
     }
@@ -134,56 +85,8 @@ class CartCellView: UICollectionViewCell, ReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bindDeleteButton() {
-        guard let strongVM = viewModel else { return }
-        
-        strongVM.isMove.subscribe(onNext: { [weak self] isMove in
-            guard let strongSelf = self else { return }
-            
-            if (isMove) {
-                UIView.animate(withDuration: 0.25) {
-                    strongSelf.container.frame = CGRect(
-                        x: strongSelf.xOrigin - 60,
-                        y: strongSelf.container.frame.origin.y,
-                        width: strongSelf.container.frame.width,
-                        height: strongSelf.container.frame.height
-                    )
-                }
-            } else {
-                UIView.animate(withDuration: 0.25) { [weak self] in
-                    guard let strongSelf = self else { return }
-                    strongSelf.container.frame = CGRect(
-                        x: strongSelf.xOrigin,
-                        y: strongSelf.container.frame.origin.y,
-                        width: strongSelf.container.frame.width,
-                        height: strongSelf.container.frame.height
-                    )
-                }
-            }
-        }).disposed(by: strongVM.bag)
-        
-        deleteButton.rx
-            .tap
-            .bind { [weak self] in
-                guard let strongSelf = self, let strongVm = strongSelf.viewModel else { return }
-                strongVm.deleteProductFromCart()
-        }.disposed(by: strongVM.bag)
-    }
-    
-    @objc
-    func handleSwipeRight() {
-        viewModel?.isMove.onNext(false)
-        deleteButton.isEnabled = false
-    }
-    
-    @objc
-    func handleSwipeLeft() {
-        viewModel?.isMove.onNext(true)
-        deleteButton.isEnabled = true
-    }
-    
     func configure(with setupModel: CartCellViewModelling) {
-        self.viewModel = setupModel
+        viewModel = setupModel
                 
         let price = setupModel.cartItem.product.price * Float(setupModel.cartItem.quantity)
         
@@ -194,11 +97,14 @@ class CartCellView: UICollectionViewCell, ReusableView {
             let url = URL(string: setupModel.cartItem.product.images.first!)
             
             if let safeUrl = url {
-                self.productFirstImage.load(url: safeUrl)
+                productFirstImage.load(url: safeUrl)
             }
         }
-        self.bindDeleteButton()
-        viewModel?.isMove.onNext(false)
+        
+        deletableView.deleteFunction = { [weak self] in
+            guard let strongSelf = self, let viewModel = strongSelf.viewModel else { return }
+            viewModel.deleteProductFromCart()
+        }
     }
     
 }

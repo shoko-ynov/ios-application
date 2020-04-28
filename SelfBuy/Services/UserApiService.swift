@@ -21,7 +21,6 @@ final class UserApiService {
                 .sendWithDecode(User.self) {
                     switch $0 {
                     case .success(let user):
-                        print(user)
                         single(.success(user))
                     case .failure(let error):
                         single(.error(error))
@@ -33,25 +32,12 @@ final class UserApiService {
 
     }
     
-    func getUserCards() -> Single<[Card]> {
-        return Single<[Card]>.create { single in
-            Request()
-                .setPath("/cards")
-                .setMethod(.GET)
-                .withAuthentication()
-                .sendWithDecode([Card].self) {
-                    switch $0 {
-                    case .success(let cards):
-                        print(cards)
-                        single(.success(cards))
-                    case .failure(let error):
-                        print(error)
-                        single(.error(error))
-                    }
-            }
-            
-            return Disposables.create()
-        }
+    func getUserCards(completion: @escaping (Result<[Card], Error>) -> Void) -> Void {
+        Request()
+            .setPath("/cards")
+            .setMethod(.GET)
+            .withAuthentication()
+            .sendWithDecode([Card].self, completion: completion)
     }
     
     func activeUser(_ userActivationDto: UserActivationDTO, completion: @escaping (Result<NSNull, Error>) -> Void) {

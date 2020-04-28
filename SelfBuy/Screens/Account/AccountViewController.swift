@@ -80,7 +80,7 @@ class AccountViewController: PresentableViewController {
             for (index, value) in values.enumerated()  {
                 guard let user = UserRepository.shared.user else { return [] }
                 
-                let vm = UserEditViewModel(valueName: viewModel.staticUserData[index].label, value: value ?? "", userId: user._id)
+                let vm = UserEditViewModel(valueName: viewModel.staticUserData[index].label, value: value ?? "", userId: user._id, parameter: viewModel.staticUserData[index].parameter)
                 let viewController = UserEditViewController(viewModel: vm)
                 let view = InfoLine(text: viewModel.staticUserData[index].label, iconName: viewModel.staticUserData[index].iconName, data: value)
                 view.addTapGestureRecognizer { [weak self] in

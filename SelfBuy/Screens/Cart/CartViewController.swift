@@ -64,8 +64,11 @@ final class CartViewController: UIViewController {
         itemCollectionView.register(CartCellView.self, forCellWithReuseIdentifier: CartCellView.reuseIdentifier)
         itemCollectionView.anchor(top: titleLabel.bottomAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 5, left: 0, bottom: 5, right: 0))
         
-        checkoutBtn.rx.tap.bind { _ in
-            print("valider")
+        checkoutBtn.rx.tap.bind { [weak self] _ in
+            guard let strongSelf = self else { return }
+            
+            let paymentVC = PaymentViewController(viewModel: PaymentViewModel())
+            strongSelf.present(paymentVC, animated: true)
         }.disposed(by: viewModel.bag)
         
         viewModel.cartItemPublishSubject

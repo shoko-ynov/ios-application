@@ -185,11 +185,18 @@ extension ProductDetailViewController: UIPickerViewDataSource, UIPickerViewDeleg
 
         if Int(text) != nil && text != "" {
             // Text field converted to an Int
-            self.quantity = Int(text)!
+            quantity = Int(text)!
+            
+            if(quantity < 10){
+                quantityInput.inputView = nbPicker
+            }
+            
             return true
         }
         
         if(text == ""){
+            quantityInput.inputView = nbPicker
+            
             return true
         }
 

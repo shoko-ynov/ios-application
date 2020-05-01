@@ -44,6 +44,8 @@ final class PaymentViewController: PresentableViewController {
     
     let orderShippingView = OrderShippingView(viewModel: OrderShippingViewModel())
     
+    let orderConfirmationView = OrderConfirmationView(viewModel: OrderShippingViewModel())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,9 +77,18 @@ final class PaymentViewController: PresentableViewController {
             strongSelf.breadcrumb.viewModel.index.onNext(indexPath)
         }
         
+        orderConfirmationView.swipeToNextPage = { [weak self] in
+            guard let strongSelf = self else { return }
+            let indexPath = IndexPath(item: 3, section: 0)
+            
+            strongSelf.swipeableCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            strongSelf.breadcrumb.viewModel.index.onNext(indexPath)
+        }
+        
         collectionViewScreens = [
             orderShippingView,
-            selectPaymentMethodView
+            selectPaymentMethodView,
+            orderConfirmationView
         ]
         
         swipeableCollectionView.delegate = self

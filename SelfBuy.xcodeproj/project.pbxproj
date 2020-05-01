@@ -98,6 +98,7 @@
 		E3880D65245C7B1D009A12FA /* OrderShippingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3880D64245C7B1D009A12FA /* OrderShippingView.swift */; };
 		E3880D67245C7BE1009A12FA /* OrderShippingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3880D66245C7BE1009A12FA /* OrderShippingViewModel.swift */; };
 		E3880D69245C927C009A12FA /* UserOrderShippingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3880D68245C927C009A12FA /* UserOrderShippingDTO.swift */; };
+		E3880D6B245C9982009A12FA /* OrderConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3880D6A245C9982009A12FA /* OrderConfirmationView.swift */; };
 		E3945F46239290AC007ED444 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F45239290AC007ED444 /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -196,6 +197,7 @@
 		E3880D64245C7B1D009A12FA /* OrderShippingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderShippingView.swift; sourceTree = "<group>"; };
 		E3880D66245C7BE1009A12FA /* OrderShippingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderShippingViewModel.swift; sourceTree = "<group>"; };
 		E3880D68245C927C009A12FA /* UserOrderShippingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOrderShippingDTO.swift; sourceTree = "<group>"; };
+		E3880D6A245C9982009A12FA /* OrderConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationView.swift; sourceTree = "<group>"; };
 		E3945F45239290AC007ED444 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -537,6 +539,7 @@
 				E3880D64245C7B1D009A12FA /* OrderShippingView.swift */,
 				D07BEA242455ED9200B4A053 /* FirstPaymentView.swift */,
 				D07BEA262455EF5500B4A053 /* SelectPaymentMethodView.swift */,
+				E3880D6A245C9982009A12FA /* OrderConfirmationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -794,6 +797,7 @@
 				D0632E04241926550010A7D9 /* InfoLine.swift in Sources */,
 				8E1C3CB323856B1E005847A0 /* CartViewModel.swift in Sources */,
 				D0736013237494E600CD6B72 /* HomeViewModel.swift in Sources */,
+				E3880D6B245C9982009A12FA /* OrderConfirmationView.swift in Sources */,
 				D07360182374A9E700CD6B72 /* UIViewController.swift in Sources */,
 				73872A1A23AA7C59007530CB /* RegisterDTO.swift in Sources */,
 				D0C03478244CADBB008ACAAC /* AuthenticationManager.swift in Sources */,

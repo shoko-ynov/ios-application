@@ -10,9 +10,19 @@ import UIKit
 
 final class OrderShippingView: UIView {
     
-    let shippingTitle: UILabel = {
+    let shippingAddressTitle: UILabel = {
         let label = UILabel()
         label.text = "Adresse de livraison"
+        label.setToBold(size: 18)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    let shippingMethodTitle: UILabel = {
+        let label = UILabel()
+        label.text = "Mode de livraison"
         label.setToBold(size: 18)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -123,7 +133,7 @@ final class OrderShippingView: UIView {
     }()
     
     private var validateShippingButton: UIButton = {
-        let button:UIButton = UIButton(frame: CGRect(x: 0, y: 475, width: 250, height: 50))
+        let button = UIButton(frame: CGRect(x: 0, y: 300, width: 250, height: 50))
         button.backgroundColor = .primary
         button.layer.cornerRadius = 25
         button.layer.borderWidth = 0
@@ -143,8 +153,8 @@ final class OrderShippingView: UIView {
     }
     
     func setupView() {
-        addSubview(shippingTitle)
-        shippingTitle.anchor(
+        addSubview(shippingAddressTitle)
+        shippingAddressTitle.anchor(
             top: topAnchor,
             leading: leadingAnchor,
             bottom: nil,
@@ -154,14 +164,14 @@ final class OrderShippingView: UIView {
         
         addSubview(scrollView)
         scrollView.anchor(
-            top: shippingTitle.bottomAnchor,
+            top: shippingAddressTitle.bottomAnchor,
             leading: leadingAnchor,
             bottom: bottomAnchor,
             trailing: trailingAnchor
         )
         
-        //        scrollView.contentSize = CGSize(width: 0, height: self.scrollView.contentSize.height) // Uncomment to set height auto
-        scrollView.contentSize = CGSize(width: 0, height: 2000) // Remove if height auto
+//                scrollView.contentSize = CGSize(width: 0, height: self.scrollView.contentSize.height) // Uncomment to set height auto
+        scrollView.contentSize = CGSize(width: 0, height: 100)
         scrollView.alwaysBounceVertical = true
         scrollView.contentInset = UIEdgeInsets.zero
         
@@ -250,25 +260,36 @@ final class OrderShippingView: UIView {
             padding: .init(top: 30, left: 20, bottom: 0, right: 20)
         )
         
-        scrollView.addSubview(validateShippingButton)
-        validateShippingButton.anchor(
+        scrollView.addSubview(shippingMethodTitle)
+        shippingMethodTitle.anchor(
             top: phoneTextField.bottomAnchor,
             leading: leadingAnchor,
             bottom: nil,
             trailing: trailingAnchor,
             padding: .init(top: 30, left: 20, bottom: 0, right: 20)
         )
+           
+        
+        scrollView.addSubview(validateShippingButton)
+        validateShippingButton.anchor(
+            top: shippingMethodTitle.bottomAnchor,
+            leading: nil,
+            bottom: scrollView.bottomAnchor,
+            trailing: nil,
+            padding: .init(top: 30, left: 0, bottom: 30, right: 0)
+        )
         
         NSLayoutConstraint.activate([
-            genderSC.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            lastNameTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            firstNameTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            addressTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            addressAdditionTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            postalCodeTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            cityTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            countryTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            phoneTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+        genderSC.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+//            lastNameTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+//            firstNameTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+//            addressTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+//            addressAdditionTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+//            postalCodeTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+//            cityTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+//            countryTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+//            phoneTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            validateShippingButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
         ])
     }
     

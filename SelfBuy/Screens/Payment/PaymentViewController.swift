@@ -56,7 +56,7 @@ final class PaymentViewController: PresentableViewController {
         
         collectionViewScreens = [
             firstView,
-            SecondPaymentView()
+            OrderShippingView()
         ]
         
         swipeableCollectionView.delegate = self

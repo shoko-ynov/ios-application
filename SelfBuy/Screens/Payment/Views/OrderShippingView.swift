@@ -113,30 +113,6 @@ final class OrderShippingView: UIView {
         return input
     }()
     
-    var countryTextField: UITextField = {
-        let input = UITextField()
-        input.placeholder = " Pays *"
-        input.backgroundColor = .darkGray
-        input.layer.cornerRadius = 15
-        input.borderStyle = UITextField.BorderStyle.roundedRect
-        input.tintColor = .primary
-        input.font = UIFont.systemFont(ofSize: 15)
-        input.textColor = .black
-        return input
-    }()
-    
-    var phoneTextField: UITextField = {
-        let input = UITextField()
-        input.placeholder = " Numéro de téléphone *"
-        input.backgroundColor = .darkGray
-        input.layer.cornerRadius = 15
-        input.borderStyle = UITextField.BorderStyle.roundedRect
-        input.tintColor = .primary
-        input.font = UIFont.systemFont(ofSize: 15)
-        input.textColor = .black
-        return input
-    }()
-    
     private var validateShippingButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 300, width: 250, height: 50))
         button.backgroundColor = .primary
@@ -250,35 +226,33 @@ final class OrderShippingView: UIView {
             trailing: trailingAnchor,
             padding: .init(top: 30, left: 20, bottom: 0, right: 20)
         )
-        scrollView.addSubview(countryTextField)
-        countryTextField.anchor(
+        
+        scrollView.addSubview(shippingMethodTitle)
+        shippingMethodTitle.anchor(
             top: cityTextField.bottomAnchor,
             leading: leadingAnchor,
             bottom: nil,
             trailing: trailingAnchor,
             padding: .init(top: 30, left: 20, bottom: 0, right: 20)
         )
-        scrollView.addSubview(phoneTextField)
-        phoneTextField.anchor(
-            top: countryTextField.bottomAnchor,
-            leading: leadingAnchor,
-            bottom: nil,
-            trailing: trailingAnchor,
-            padding: .init(top: 30, left: 20, bottom: 0, right: 20)
-        )
         
-        scrollView.addSubview(shippingMethodTitle)
-        shippingMethodTitle.anchor(
-            top: phoneTextField.bottomAnchor,
-            leading: leadingAnchor,
+        
+        let shippingMethodsItems = ["Éco", "Standard", "Express"]
+        let shippingMethodSC = UISegmentedControl(items: shippingMethodsItems)
+        shippingMethodSC.selectedSegmentIndex = 0
+        
+        scrollView.addSubview(shippingMethodSC)
+        shippingMethodSC.anchor(
+            top: shippingMethodTitle.bottomAnchor,
+            leading: scrollView.trailingAnchor,
             bottom: nil,
-            trailing: trailingAnchor,
-            padding: .init(top: 30, left: 20, bottom: 0, right: 20)
+            trailing: nil,
+            padding: .init(top: 30, left: 0, bottom: 0, right: 0)
         )
         
         scrollView.addSubview(validateShippingButton)
         validateShippingButton.anchor(
-            top: shippingMethodTitle.bottomAnchor,
+            top: shippingMethodSC.bottomAnchor,
             leading: nil,
             bottom: scrollView.bottomAnchor,
             trailing: nil,
@@ -286,10 +260,11 @@ final class OrderShippingView: UIView {
         )
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-           addGestureRecognizer(tap)
+        addGestureRecognizer(tap)
         
         NSLayoutConstraint.activate([
             genderSC.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            shippingMethodSC.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             validateShippingButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
         ])
     }
@@ -311,8 +286,50 @@ final class OrderShippingView: UIView {
             .bind(to: viewModel.lastName)
             .disposed(by: viewModel.bag)
         
+        lastNameTextField.text = viewModel.getBehaviorSubjectValue(viewModel.lastName)
+        
+        firstNameTextField.rx
+            .text
+            .skip(1)
+            .map({ $0.unsafelyUnwrapped })
+            .asObservable()
+            .bind(to: viewModel.firstName)
+            .disposed(by: viewModel.bag)
+        
+        firstNameTextField.text = viewModel.getBehaviorSubjectValue(viewModel.firstName)
+        
+        addressTextField.rx
+            .text
+            .skip(1)
+            .map({ $0.unsafelyUnwrapped })
+            .asObservable()
+            .bind(to: viewModel.address)
+            .disposed(by: viewModel.bag)
+        
+        addressTextField.text = viewModel.getBehaviorSubjectValue(viewModel.address)
+        
+        postalCodeTextField.rx
+            .text
+            .skip(1)
+            .map({ $0.unsafelyUnwrapped })
+            .asObservable()
+            .bind(to: viewModel.postalCode)
+            .disposed(by: viewModel.bag)
+        
+        postalCodeTextField.text = viewModel.getBehaviorSubjectValue(viewModel.postalCode)
+        
+        cityTextField.rx
+            .text
+            .skip(1)
+            .map({ $0.unsafelyUnwrapped })
+            .asObservable()
+            .bind(to: viewModel.city)
+            .disposed(by: viewModel.bag)
+        
+        cityTextField.text = viewModel.getBehaviorSubjectValue(viewModel.city)
+        
     }
-
+    
     
     @objc func dismissKeyboard() {
         endEditing(true)

@@ -42,13 +42,14 @@ final class PaymentViewController: PresentableViewController {
     
     let selectPaymentMethodView = SelectPaymentMethodView(viewModel: SelectPaymentMethodViewModel())
     
+    let orderShippingView = OrderShippingView(viewModel: OrderShippingViewModel())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .lightGray
         
-        let firstView = FirstPaymentView()
-        firstView.swipeToNextPage = { [weak self] in
+        orderShippingView.swipeToNextPage = { [weak self] in
             guard let strongSelf = self else { return }
             let indexPath = IndexPath(item: 1, section: 0)
             
@@ -65,7 +66,7 @@ final class PaymentViewController: PresentableViewController {
         }
         
         collectionViewScreens = [
-            OrderShippingView()
+            orderShippingView,
             selectPaymentMethodView
         ]
         

@@ -63,7 +63,7 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
         return textField
     }()
     
-    private var pickerData = [1, 2, 3, 4, 5]
+    private var pickerData = [1, 2, 3, 4, 5, 6, 7, 8, 9, "10+"] as [Any]
     
     private var nbPicker: UIPickerView = {
         let picker = UIPickerView()
@@ -165,8 +165,35 @@ extension ProductDetailViewController: UIPickerViewDataSource, UIPickerViewDeleg
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        quantity = pickerData[row]
-        quantityInput.text = String(quantity)
+        let quantitySelected = pickerData[row]
+        
+        if(quantitySelected is Int){
+            quantity = quantitySelected as! Int
+            quantityInput.text = String(quantity)
+        } else {
+            quantityInput.inputView = nil
+            quantity = 10
+            quantityInput.text = String(quantity)
+        }
+    }
+    
+    func textField(_ textField: UITextField,
+    shouldChangeCharactersIn range: NSRange,
+          replacementString string: String) -> Bool {
+        
+        let text = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
+
+        if Int(text) != nil && text != "" {
+            // Text field converted to an Int
+            self.quantity = Int(text)!
+            return true
+        }
+        
+        if(text == ""){
+            return true
+        }
+
+        return false
     }
     
     func dismissPickerView() {

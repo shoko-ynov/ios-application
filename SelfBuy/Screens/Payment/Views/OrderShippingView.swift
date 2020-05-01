@@ -114,11 +114,12 @@ final class OrderShippingView: UIView {
     }()
     
     private var validateShippingButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 300, width: 250, height: 50))
+        let button = UIButton()
         button.backgroundColor = .primary
         button.layer.cornerRadius = 25
         button.layer.borderWidth = 0
         button.setTitle("Accéder au paiement", for: .normal)
+        button.contentEdgeInsets = UIEdgeInsets(top: 15,left: 20,bottom: 15,right: 20)
         
         return button
     }()
@@ -153,7 +154,6 @@ final class OrderShippingView: UIView {
             trailing: trailingAnchor
         )
         
-        //                scrollView.contentSize = CGSize(width: 0, height: self.scrollView.contentSize.height) // Uncomment to set height auto
         scrollView.contentSize = CGSize(width: 0, height: 100)
         scrollView.alwaysBounceVertical = true
         scrollView.contentInset = UIEdgeInsets.zero
@@ -327,9 +327,7 @@ final class OrderShippingView: UIView {
             .disposed(by: viewModel.bag)
         
         cityTextField.text = viewModel.getBehaviorSubjectValue(viewModel.city)
-        
     }
-    
     
     @objc func dismissKeyboard() {
         endEditing(true)

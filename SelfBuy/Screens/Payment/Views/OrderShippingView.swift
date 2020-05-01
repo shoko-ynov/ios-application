@@ -15,17 +15,6 @@ final class OrderShippingView: UIView {
     
     var swipeToNextPage = {}
     
-    init(viewModel: OrderShippingViewModelling) {
-        self.viewModel = viewModel
-        super.init(frame: .zero)
-        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
     let shippingAddressTitle: UILabel = {
         let label = UILabel()
         label.text = "Adresse de livraison"
@@ -158,6 +147,16 @@ final class OrderShippingView: UIView {
         return button
     }()
     
+    init(viewModel: OrderShippingViewModelling) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
+        setupView()
+        bind()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     func setupView() {
@@ -286,6 +285,17 @@ final class OrderShippingView: UIView {
             padding: .init(top: 30, left: 0, bottom: 30, right: 0)
         )
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+           addGestureRecognizer(tap)
+        
+        NSLayoutConstraint.activate([
+            genderSC.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            validateShippingButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+        ])
+    }
+    
+    func bind() {
+        
         validateShippingButton.rx.tap.bind { [weak self] _ in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
@@ -293,18 +303,14 @@ final class OrderShippingView: UIView {
             }
         }.disposed(by: self.viewModel.bag)
         
+        lastNameTextField.rx
+            .text
+            .skip(1)
+            .map({ $0.unsafelyUnwrapped })
+            .asObservable()
+            .bind(to: viewModel.lastName)
+            .disposed(by: viewModel.bag)
         
-        lastNameTextField.rx.text.asObservable().bind(to: viewModel.lastName).dispose(by: viewModel.bag)
-        
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-           addGestureRecognizer(tap)
-     
-        
-        NSLayoutConstraint.activate([
-            genderSC.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            validateShippingButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-        ])
     }
 
     

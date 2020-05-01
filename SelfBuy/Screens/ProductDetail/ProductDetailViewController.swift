@@ -63,7 +63,7 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
         return textField
     }()
     
-    private var pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
+    private var pickerData = [1, 2, 3, 4, 5]
     
     private var nbPicker: UIPickerView = {
         let picker = UIPickerView()
@@ -139,31 +139,15 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        dismissPickerView()
         
         nbPicker.dataSource = self
         nbPicker.delegate = self
         quantityInput.delegate = self
         
+        quantityInput.inputView = nbPicker
+        
         view.backgroundColor = .lightGray
-    }
-    
-    func textField(_ textField: UITextField,
-    shouldChangeCharactersIn range: NSRange,
-          replacementString string: String) -> Bool {
-        
-        let text = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
-
-        if Int(text) != nil && text != "" {
-            // Text field converted to an Int
-            self.quantity = Int(text)!
-            return true
-        }
-        
-        if(text == ""){
-            return true
-        }
-        
-        return false
     }
 }
 
@@ -178,5 +162,24 @@ extension ProductDetailViewController: UIPickerViewDataSource, UIPickerViewDeleg
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return "\(pickerData[row])"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        quantity = pickerData[row]
+        quantityInput.text = String(quantity)
+    }
+    
+    func dismissPickerView() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        let button = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(self.action))
+        toolBar.setItems([button], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        quantityInput.inputAccessoryView = toolBar
+    }
+    
+    @objc func action() {
+       view.endEditing(true)
     }
 }

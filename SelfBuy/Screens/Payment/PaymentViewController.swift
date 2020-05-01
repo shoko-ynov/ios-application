@@ -52,7 +52,17 @@ final class PaymentViewController: PresentableViewController {
         orderShippingView.swipeToNextPage = { [weak self] in
             guard let strongSelf = self else { return }
             let indexPath = IndexPath(item: 1, section: 0)
+            let viewModel = strongSelf.orderShippingView.viewModel
+            let getSubjectValue = viewModel.getBehaviorSubjectValue
+            let userOrderShipping = UserOrderShippingDTO(
+                firstName: getSubjectValue(viewModel.firstName),
+                lastName: getSubjectValue(viewModel.lastName),
+                address: getSubjectValue(viewModel.address),
+                postalCode: Int(getSubjectValue(viewModel.postalCode)) ?? 0,
+                city: getSubjectValue(viewModel.city)
+            )
             
+            strongSelf.viewModel.setUserOrderShipping(userOrderShipping)
             strongSelf.swipeableCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             strongSelf.breadcrumb.viewModel.index.onNext(indexPath)
         }

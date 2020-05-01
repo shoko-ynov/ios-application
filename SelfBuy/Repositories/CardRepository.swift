@@ -6,15 +6,14 @@
 //  Copyright © 2020 MaxenceMottard. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import RxSwift
 
 final class CardRepository {
     
     static let shared = CardRepository()
     
-    var cards: [Card] = []
-    var cardsPublishSubject: PublishSubject<[Card]> = PublishSubject()
+    let cardsSubject: BehaviorSubject<[Card]> = BehaviorSubject(value: [])
     let service = UserApiService()
     
     func synchronizeCards() -> Void {
@@ -23,14 +22,23 @@ final class CardRepository {
             
             switch $0 {
             case .success(let cards):
-                strongSelf.cards = cards
-                strongSelf.cardsPublishSubject.onNext(cards)
+                strongSelf.cardsSubject.onNext(cards)
             case .failure(let error):
-                strongSelf.cards = []
-                strongSelf.cardsPublishSubject.onNext([])
+                strongSelf.cardsSubject.onNext([])
                 print(error)
             }
         }
     }
     
+    func getCards() -> [Card]{
+        do {
+            return try cardsSubject.value()
+        } catch {
+            return []
+        }
+    }
+    
+    func getCard(_ index: IndexPath) -> Card {
+        return getCards()[index.row]
+    }
 }

@@ -93,7 +93,6 @@ final class PaymentMethodCellView: UICollectionViewCell, ReusableView {
         addSubview(titleLabel)
         addSubview(defaultCardLabel)
         addSubview(brandCardImage)
-        addSubview(deleteButton)
         
         titleLabel.anchor(
             top: self.topAnchor,
@@ -150,6 +149,11 @@ final class PaymentMethodCellView: UICollectionViewCell, ReusableView {
             bottom: expireTextLabel.bottomAnchor,
             trailing: nil
         )
+    }
+    
+    func enableDeleteButton() {
+        guard let strongVM = viewModel else { return }
+        addSubview(deleteButton)
         
         deleteButton.anchor(
             top: nil,
@@ -158,6 +162,11 @@ final class PaymentMethodCellView: UICollectionViewCell, ReusableView {
             trailing: trailingAnchor,
             padding: .init(top: 0, left: 0, bottom: 10, right: 10)
         )
+        
+        deleteButton.rx.tap.bind { [weak self] in
+            guard let strongSelf = self, let viewModel = strongSelf.viewModel else { return }
+            viewModel.deleteMethod()
+        }.disposed(by: strongVM.bag)
     }
     
     required init?(coder: NSCoder) {
@@ -186,11 +195,5 @@ final class PaymentMethodCellView: UICollectionViewCell, ReusableView {
         default:
             break
         }
-        
-
-        deleteButton.rx.tap.bind { [weak self] in
-            guard let strongSelf = self, let viewModel = strongSelf.viewModel else { return }
-            viewModel.deleteMethod()
-        }.disposed(by: viewModel.bag)
     }
 }

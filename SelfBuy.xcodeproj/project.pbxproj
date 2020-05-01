@@ -63,7 +63,7 @@
 		D07BEA1D2455E62500B4A053 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07BEA1C2455E62500B4A053 /* PaymentViewModel.swift */; };
 		D07BEA232455ECE300B4A053 /* PaymentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07BEA222455ECE300B4A053 /* PaymentCellView.swift */; };
 		D07BEA252455ED9200B4A053 /* FirstPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07BEA242455ED9200B4A053 /* FirstPaymentView.swift */; };
-		D07BEA272455EF5500B4A053 /* SecondPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07BEA262455EF5500B4A053 /* SecondPaymentView.swift */; };
+		D07BEA272455EF5500B4A053 /* SelectPaymentMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07BEA262455EF5500B4A053 /* SelectPaymentMethodView.swift */; };
 		D07E38B024563DDC00F7E8FF /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E38AF24563DDC00F7E8FF /* UserRepository.swift */; };
 		D07E38B2245641B600F7E8FF /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E38B1245641B600F7E8FF /* AccountViewModel.swift */; };
 		D08681D1239FF84600F65961 /* AnyEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08681D0239FF84600F65961 /* AnyEncodable.swift */; };
@@ -72,6 +72,7 @@
 		D0941C3A238912F30052F598 /* CartCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0941C39238912F30052F598 /* CartCellView.swift */; };
 		D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0941C3C238942EE0052F598 /* UIViewControllerExtenstion.swift */; };
 		D097768B238AA8250080F701 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D097768A238AA8250080F701 /* UIImageViewExtensions.swift */; };
+		D0A54DB5245C5B88007A1079 /* SelectPaymentMethodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A54DB4245C5B88007A1079 /* SelectPaymentMethodViewModel.swift */; };
 		D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B11B8A2385C3F000C74CEA /* CartViewController.swift */; };
 		D0C03476244C9C93008ACAAC /* PresentableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03475244C9C93008ACAAC /* PresentableViewController.swift */; };
 		D0C03478244CADBB008ACAAC /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03477244CADBB008ACAAC /* AuthenticationManager.swift */; };
@@ -157,7 +158,7 @@
 		D07BEA1C2455E62500B4A053 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		D07BEA222455ECE300B4A053 /* PaymentCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCellView.swift; sourceTree = "<group>"; };
 		D07BEA242455ED9200B4A053 /* FirstPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPaymentView.swift; sourceTree = "<group>"; };
-		D07BEA262455EF5500B4A053 /* SecondPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPaymentView.swift; sourceTree = "<group>"; };
+		D07BEA262455EF5500B4A053 /* SelectPaymentMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPaymentMethodView.swift; sourceTree = "<group>"; };
 		D07E38AF24563DDC00F7E8FF /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		D07E38B1245641B600F7E8FF /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		D08681D0239FF84600F65961 /* AnyEncodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyEncodable.swift; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 		D0941C39238912F30052F598 /* CartCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCellView.swift; sourceTree = "<group>"; };
 		D0941C3C238942EE0052F598 /* UIViewControllerExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtenstion.swift; sourceTree = "<group>"; };
 		D097768A238AA8250080F701 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		D0A54DB4245C5B88007A1079 /* SelectPaymentMethodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPaymentMethodViewModel.swift; sourceTree = "<group>"; };
 		D0B11B8A2385C3F000C74CEA /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D0C03475244C9C93008ACAAC /* PresentableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableViewController.swift; sourceTree = "<group>"; };
 		D0C03477244CADBB008ACAAC /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -516,8 +518,28 @@
 			children = (
 				D0441D972455FEDF0027F9F8 /* PaymentBreadcrumbViewModel.swift */,
 				D07BEA1C2455E62500B4A053 /* PaymentViewModel.swift */,
+				D0A54DB4245C5B88007A1079 /* SelectPaymentMethodViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D07BEA1E2455EB9800B4A053 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D07BEA242455ED9200B4A053 /* FirstPaymentView.swift */,
+				D07BEA262455EF5500B4A053 /* SelectPaymentMethodView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D07BEA212455ECC800B4A053 /* Reusables */ = {
+			isa = PBXGroup;
+			children = (
+				D07BEA222455ECE300B4A053 /* PaymentCellView.swift */,
+				D0441D952455FE9C0027F9F8 /* PaymentBreadcrumbView.swift */,
+				D0441D992455FF8A0027F9F8 /* BreadcrumbStepView.swift */,
+			);
+			path = Reusables;
 			sourceTree = "<group>";
 		};
 		D07E38AD24563CCC00F7E8FF /* UserEdit */ = {
@@ -535,25 +557,6 @@
 				E31702DC24562C4F004FD16D /* UserEditViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		D07BEA1E2455EB9800B4A053 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				D07BEA242455ED9200B4A053 /* FirstPaymentView.swift */,
-				D07BEA262455EF5500B4A053 /* SecondPaymentView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		D07BEA212455ECC800B4A053 /* Reusables */ = {
-			isa = PBXGroup;
-			children = (
-				D07BEA222455ECE300B4A053 /* PaymentCellView.swift */,
-				D0441D952455FE9C0027F9F8 /* PaymentBreadcrumbView.swift */,
-				D0441D992455FF8A0027F9F8 /* BreadcrumbStepView.swift */,
-			);
-			path = Reusables;
 			sourceTree = "<group>";
 		};
 		D08A5C9B2374C75A00221F37 /* Profile */ = {
@@ -785,6 +788,7 @@
 				D07360182374A9E700CD6B72 /* UIViewController.swift in Sources */,
 				73872A1A23AA7C59007530CB /* RegisterDTO.swift in Sources */,
 				D0C03478244CADBB008ACAAC /* AuthenticationManager.swift in Sources */,
+				D0A54DB5245C5B88007A1079 /* SelectPaymentMethodViewModel.swift in Sources */,
 				D07BEA232455ECE300B4A053 /* PaymentCellView.swift in Sources */,
 				7396720C23AA237A0077EFA5 /* LoginViewModel.swift in Sources */,
 				73872A1C23AA817C007530CB /* RegisterResponseDTO.swift in Sources */,
@@ -808,7 +812,6 @@
 				D0E396802452BB4D00D8E114 /* DeletableItemView.swift in Sources */,
 				8E1C3CBF23858FE6005847A0 /* UILabelExtensions.swift in Sources */,
 				D07BEA1D2455E62500B4A053 /* PaymentViewModel.swift in Sources */,
-				E3945F4C239290EA007ED444 /* PPViewController.swift in Sources */,
 				D026F9D02372E41000372EA0 /* SceneDelegate.swift in Sources */,
 				D07E38B2245641B600F7E8FF /* AccountViewModel.swift in Sources */,
 				D043C0B723894BC100B05967 /* ProductCellViewModel.swift in Sources */,
@@ -828,9 +831,8 @@
 				E31702DB245629CE004FD16D /* UserEditViewController.swift in Sources */,
 				7380E7322397DE1500685B7C /* AuthAPIService.swift in Sources */,
 				D0C03476244C9C93008ACAAC /* PresentableViewController.swift in Sources */,
-				D0632E08241926C70010A7D9 /* AboutUsViewController.swift in Sources */,
 				D0441D9A2455FF8A0027F9F8 /* BreadcrumbStepView.swift in Sources */,
-				D0E57518244ADAD500B7B26A /* CardCellViewModel.swift in Sources */,
+				D0E57518244ADAD500B7B26A /* PaymentMethodCellViewModel.swift in Sources */,
 				E300E2FC242B956600D122C5 /* UserApiService.swift in Sources */,
 				B376F52B23F4357C00FD8F3A /* ApiError.swift in Sources */,
 				D0CE24A92393005B00C41ACD /* ProductDetailViewModel.swift in Sources */,
@@ -845,12 +847,9 @@
 				7347E1112385954C00644970 /* User.swift in Sources */,
 				D0E5751C244B06B300B7B26A /* CartItemDTO.swift in Sources */,
 				D0709B29239FB5E500055F20 /* Request.swift in Sources */,
-				D0632E022419264D0010A7D9 /* ProfileInput.swift in Sources */,
 				D0441D982455FEDF0027F9F8 /* PaymentBreadcrumbViewModel.swift in Sources */,
-				E3163E7023C937EF00AC83A9 /* OrdersViewModel.swift in Sources */,
 				D01E86E6244DFB5B00C65C59 /* TabBarService.swift in Sources */,
-				D07BEA272455EF5500B4A053 /* SecondPaymentView.swift in Sources */,
-				E3163E6723C92DDF00AC83A9 /* EditInfoViewController.swift in Sources */,
+				D07BEA272455EF5500B4A053 /* SelectPaymentMethodView.swift in Sources */,
 				7347E10F2385948E00644970 /* Token.swift in Sources */,
 				D026F9EA2373027B00372EA0 /* HomeViewController.swift in Sources */,
 				B3C4D2FE242BA3610083F47F /* ProductPaymentDTO.swift in Sources */,

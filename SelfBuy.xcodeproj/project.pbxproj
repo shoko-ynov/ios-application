@@ -97,6 +97,7 @@
 		E36F5193245792A5001E0C50 /* UserEditDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36F5192245792A5001E0C50 /* UserEditDTO.swift */; };
 		E3880D65245C7B1D009A12FA /* OrderShippingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3880D64245C7B1D009A12FA /* OrderShippingView.swift */; };
 		E3880D67245C7BE1009A12FA /* OrderShippingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3880D66245C7BE1009A12FA /* OrderShippingViewModel.swift */; };
+		E3880D69245C927C009A12FA /* UserOrderShippingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3880D68245C927C009A12FA /* UserOrderShippingDTO.swift */; };
 		E3945F46239290AC007ED444 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3945F45239290AC007ED444 /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -194,6 +195,7 @@
 		E36F5192245792A5001E0C50 /* UserEditDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditDTO.swift; sourceTree = "<group>"; };
 		E3880D64245C7B1D009A12FA /* OrderShippingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderShippingView.swift; sourceTree = "<group>"; };
 		E3880D66245C7BE1009A12FA /* OrderShippingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderShippingViewModel.swift; sourceTree = "<group>"; };
+		E3880D68245C927C009A12FA /* UserOrderShippingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOrderShippingDTO.swift; sourceTree = "<group>"; };
 		E3945F45239290AC007ED444 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -458,6 +460,7 @@
 				D01E86E1244D85B000C65C59 /* UserActivationDTO.swift */,
 				E36F5192245792A5001E0C50 /* UserEditDTO.swift */,
 				D0C0987424523A9C00239225 /* LinkCardDTO.swift */,
+				E3880D68245C927C009A12FA /* UserOrderShippingDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -815,6 +818,7 @@
 				D01E3FD5244D2B720091931B /* UserActivationViewModel.swift in Sources */,
 				D0E5751A244B05E400B7B26A /* CartItemRepository.swift in Sources */,
 				7320AF3A23AA514300FF5EB7 /* RegisterViewModel.swift in Sources */,
+				E3880D69245C927C009A12FA /* UserOrderShippingDTO.swift in Sources */,
 				D0E396802452BB4D00D8E114 /* DeletableItemView.swift in Sources */,
 				8E1C3CBF23858FE6005847A0 /* UILabelExtensions.swift in Sources */,
 				D07BEA1D2455E62500B4A053 /* PaymentViewModel.swift in Sources */,

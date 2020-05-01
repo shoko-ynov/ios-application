@@ -7,8 +7,24 @@
 //
 
 import UIKit
+import RxSwift
 
 final class OrderShippingView: UIView {
+    
+    var viewModel: OrderShippingViewModelling
+    
+    var swipeToNextPage = {}
+    
+    init(viewModel: OrderShippingViewModelling) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     let shippingAddressTitle: UILabel = {
         let label = UILabel()
@@ -37,7 +53,7 @@ final class OrderShippingView: UIView {
     }()
     
     var lastNameTextField: UITextField = {
-        let input = UITextField(frame: CGRect(x: -10, y: 350,width:250 ,height: 30))
+        let input = UITextField()
         input.placeholder = " Nom *"
         input.backgroundColor = .darkGray
         input.layer.cornerRadius = 15
@@ -49,7 +65,7 @@ final class OrderShippingView: UIView {
     }()
     
     var firstNameTextField: UITextField = {
-        let input = UITextField(frame: CGRect(x: -10, y: 350,width:250 ,height: 30))
+        let input = UITextField()
         input.placeholder = " Prénom *"
         input.backgroundColor = .darkGray
         input.layer.cornerRadius = 15
@@ -61,7 +77,7 @@ final class OrderShippingView: UIView {
     }()
     
     var addressTextField: UITextField = {
-        let input = UITextField(frame: CGRect(x: -10, y: 350,width:250 ,height: 30))
+        let input = UITextField()
         input.placeholder = " Adresse postale *"
         input.backgroundColor = .darkGray
         input.layer.cornerRadius = 15
@@ -73,7 +89,7 @@ final class OrderShippingView: UIView {
     }()
     
     var addressAdditionTextField: UITextField = {
-        let input = UITextField(frame: CGRect(x: -10, y: 350,width:250 ,height: 30))
+        let input = UITextField()
         input.placeholder = " Complément d'adresse"
         input.backgroundColor = .darkGray
         input.layer.cornerRadius = 15
@@ -85,7 +101,7 @@ final class OrderShippingView: UIView {
     }()
     
     var postalCodeTextField: UITextField = {
-        let input = UITextField(frame: CGRect(x: -10, y: 350,width:250 ,height: 30))
+        let input = UITextField()
         input.placeholder = " Code postal *"
         input.backgroundColor = .darkGray
         input.layer.cornerRadius = 15
@@ -97,7 +113,7 @@ final class OrderShippingView: UIView {
     }()
     
     var cityTextField: UITextField = {
-        let input = UITextField(frame: CGRect(x: -10, y: 350,width:250 ,height: 30))
+        let input = UITextField()
         input.placeholder = " Ville *"
         input.backgroundColor = .darkGray
         input.layer.cornerRadius = 15
@@ -109,7 +125,7 @@ final class OrderShippingView: UIView {
     }()
     
     var countryTextField: UITextField = {
-        let input = UITextField(frame: CGRect(x: -10, y: 350,width:250 ,height: 30))
+        let input = UITextField()
         input.placeholder = " Pays *"
         input.backgroundColor = .darkGray
         input.layer.cornerRadius = 15
@@ -121,7 +137,7 @@ final class OrderShippingView: UIView {
     }()
     
     var phoneTextField: UITextField = {
-        let input = UITextField(frame: CGRect(x: -10, y: 350,width:250 ,height: 30))
+        let input = UITextField()
         input.placeholder = " Numéro de téléphone *"
         input.backgroundColor = .darkGray
         input.layer.cornerRadius = 15
@@ -142,15 +158,7 @@ final class OrderShippingView: UIView {
         return button
     }()
     
-    init() {
-        super.init(frame: .zero)
-        
-        setupView()
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     func setupView() {
         addSubview(shippingAddressTitle)
@@ -170,7 +178,7 @@ final class OrderShippingView: UIView {
             trailing: trailingAnchor
         )
         
-//                scrollView.contentSize = CGSize(width: 0, height: self.scrollView.contentSize.height) // Uncomment to set height auto
+        //                scrollView.contentSize = CGSize(width: 0, height: self.scrollView.contentSize.height) // Uncomment to set height auto
         scrollView.contentSize = CGSize(width: 0, height: 100)
         scrollView.alwaysBounceVertical = true
         scrollView.contentInset = UIEdgeInsets.zero
@@ -268,7 +276,6 @@ final class OrderShippingView: UIView {
             trailing: trailingAnchor,
             padding: .init(top: 30, left: 20, bottom: 0, right: 20)
         )
-           
         
         scrollView.addSubview(validateShippingButton)
         validateShippingButton.anchor(
@@ -279,18 +286,30 @@ final class OrderShippingView: UIView {
             padding: .init(top: 30, left: 0, bottom: 30, right: 0)
         )
         
+        validateShippingButton.rx.tap.bind { [weak self] _ in
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                strongSelf.swipeToNextPage()
+            }
+        }.disposed(by: self.viewModel.bag)
+        
+        
+        lastNameTextField.rx.text.asObservable().bind(to: viewModel.lastName).dispose(by: viewModel.bag)
+        
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+           addGestureRecognizer(tap)
+     
+        
         NSLayoutConstraint.activate([
-        genderSC.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-//            lastNameTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-//            firstNameTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-//            addressTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-//            addressAdditionTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-//            postalCodeTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-//            cityTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-//            countryTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-//            phoneTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            genderSC.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             validateShippingButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
         ])
     }
+
     
+    @objc func dismissKeyboard() {
+        endEditing(true)
+    }
 }
+

@@ -13,7 +13,6 @@ final class UserRepository {
     
     static let shared = UserRepository()
     
-    var user: User?
     let userSubject: BehaviorSubject<User?>
     private var service: AuthAPIService
     
@@ -22,19 +21,31 @@ final class UserRepository {
         self.service = AuthAPIService()
     }
     
-    func synchronizeUser() {
+    func synchronizeUser(onSuccess: @escaping () -> Void) {
         if AuthenticationManager.hasToken() {
             service.getMe() { [weak self] in
                 guard let strongSelf = self else { return }
                 
                 switch $0 {
                 case .success(let user):
-                    strongSelf.user = user
                     strongSelf.userSubject.onNext(user)
-                case .failure(let error):
-                    print(error)
+                    onSuccess()
+                case .failure(_):
+                    strongSelf.userSubject.onNext(nil)
                 }
             }
         }
+    }
+    
+    func getUser() -> User? {
+        do {
+            return try userSubject.value()
+        } catch {
+            return nil
+        }
+    }
+    
+    func disconnect() {
+        userSubject.onNext(nil)
     }
 }

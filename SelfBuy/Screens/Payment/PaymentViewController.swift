@@ -40,6 +40,8 @@ final class PaymentViewController: PresentableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    let selectPaymentMethodView = SelectPaymentMethodView(viewModel: SelectPaymentMethodViewModel())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,9 +56,17 @@ final class PaymentViewController: PresentableViewController {
             strongSelf.breadcrumb.viewModel.index.onNext(indexPath)
         }
         
+        selectPaymentMethodView.swipeToNextPage = { [weak self] in
+            guard let strongSelf = self else { return }
+            let indexPath = IndexPath(item: 2, section: 0)
+            
+            strongSelf.swipeableCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            strongSelf.breadcrumb.viewModel.index.onNext(indexPath)
+        }
+        
         collectionViewScreens = [
             firstView,
-            SecondPaymentView()
+            selectPaymentMethodView
         ]
         
         swipeableCollectionView.delegate = self
@@ -81,9 +91,16 @@ final class PaymentViewController: PresentableViewController {
             trailing: view.trailingAnchor,
             padding: .init(top: 15, left: 0, bottom: 0, right: 0)
         )
+        
+        bind()
     }
     
-    
+    func bind() {
+        selectPaymentMethodView.viewModel.selectedCard.subscribe(onNext: { [weak self] card in
+            guard let strongSelf = self else { return }
+            strongSelf.viewModel.setSelectedCard(card)
+        }).disposed(by: viewModel.bag)
+    }
 }
 
 extension PaymentViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

@@ -18,6 +18,8 @@ protocol OrderShippingViewModelling {
     var address: BehaviorSubject<String> { get }
     var postalCode: BehaviorSubject<String> { get }
     var city: BehaviorSubject<String> { get }
+    
+    func getBehaviorSubjectValue(_ subject: BehaviorSubject<String>) -> String
 }
 
 final class OrderShippingViewModel: OrderShippingViewModelling {
@@ -41,6 +43,14 @@ final class OrderShippingViewModel: OrderShippingViewModelling {
         address = BehaviorSubject(value: user?.address ?? "")
         postalCode = BehaviorSubject(value: (user?.postalCode)! as String)
         city = BehaviorSubject(value: user?.city ?? "")
+    }
+    
+    func getBehaviorSubjectValue(_ subject: BehaviorSubject<String>) -> String {
+        do {
+            return try subject.value()
+        } catch {
+            return ""
+        }
     }
 }
 

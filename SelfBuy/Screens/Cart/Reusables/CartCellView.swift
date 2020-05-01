@@ -52,7 +52,7 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
         return textField
     }()
     
-    private var pickerData = [1, 2, 3, 4, 5]
+    private var pickerData = [1, 2, 3, 4, 5, 6, 7, 8, 9, "10+"] as [Any]
     
     private var nbPicker: UIPickerView = {
         let picker = UIPickerView()
@@ -177,8 +177,42 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        quantity = pickerData[row]
-        quantityInput.text = String(quantity)
+        let quantitySelected = pickerData[row]
+        
+        if(quantitySelected is Int){
+            quantity = quantitySelected as! Int
+            quantityInput.text = String(quantity)
+        } else {
+            quantityInput.inputView = nil
+            quantity = 10
+            quantityInput.text = String(quantity)
+        }
+    }
+    
+    func textField(_ textField: UITextField,
+    shouldChangeCharactersIn range: NSRange,
+          replacementString string: String) -> Bool {
+        
+        let text = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
+
+        if Int(text) != nil && text != "" {
+            // Text field converted to an Int
+            quantity = Int(text)!
+            
+            if(quantity < 10){
+                quantityInput.inputView = nbPicker
+            }
+            
+            return true
+        }
+        
+        if(text == ""){
+            quantityInput.inputView = nbPicker
+            
+            return true
+        }
+
+        return false
     }
     
     func dismissPickerView() {

@@ -24,24 +24,24 @@ final class CartViewModel: CartViewModelling {
 
     var numberOfSection: Int = 1
     var numberOfItems: Int {
-        return CartItemRepository.shared.products.count
+        return CartItemRepository.shared.getProducts().count
     }
     
     var cartItemPublishSubject: PublishSubject<[CartItem]>
     
     init() {
         cartItemPublishSubject = PublishSubject()
-        cartItemPublishSubject.onNext(CartItemRepository.shared.products)
+        cartItemPublishSubject.onNext(CartItemRepository.shared.getProducts())
         
-        CartItemRepository.shared.productsPublishSubject
+        CartItemRepository.shared.productsSubject
             .subscribe(onNext: { [weak self] products in
                 guard let strongSelf = self else { return }
-                strongSelf.cartItemPublishSubject.onNext(CartItemRepository.shared.products)
+                strongSelf.cartItemPublishSubject.onNext(CartItemRepository.shared.getProducts())
             }).disposed(by: bag)
     }
     
     func getItem(index: IndexPath) -> CartCellViewModel {
-        let cartItem = CartItemRepository.shared.products[index.row]
+        let cartItem = CartItemRepository.shared.getProducts()[index.row]
         return CartCellViewModel(cartItem: cartItem)
     }
     

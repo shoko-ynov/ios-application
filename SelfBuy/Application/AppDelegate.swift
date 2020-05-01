@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     @objc func appMovedToBackground() {
         DispatchQueue.main.async {
-            UserRepository.shared.synchronizeUser()
+            UserRepository.shared.synchronizeUser(onSuccess: {})
         }
     }
 }

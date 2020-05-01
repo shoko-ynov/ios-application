@@ -13,16 +13,28 @@ final class CartItemRepository {
     
     static let shared = CartItemRepository()
     
-    var products: [CartItem] = []
-    var productsPublishSubject: PublishSubject<[CartItem]> = PublishSubject()
+    var productsSubject: BehaviorSubject<[CartItem]> = BehaviorSubject(value: [])
+    
+    func getProducts() -> [CartItem] {
+        do {
+            return try productsSubject.value()
+        } catch {
+            return []
+        }
+    }
     
     func addProductToCart(product: Product, quantity: Int) {
         let cartItem = CartItem(product: product, quantity: quantity)
+        
+        var products = getProducts()
         products.append(cartItem)
-        productsPublishSubject.onNext(products)
+        
+        productsSubject.onNext(products)
     }
     
     func modifyQuantityForProduct(product: Product, quantity: Int) {
+        var products = getProducts()
+        
         let indexOfProduct = products.firstIndex { (cartItem: CartItem) -> Bool in
             return cartItem.product._id == product._id
         }
@@ -32,10 +44,12 @@ final class CartItemRepository {
         }
         
         products[index].quantity = quantity
-        productsPublishSubject.onNext(products)
+        productsSubject.onNext(products)
     }
     
     func deleteProduct(product: Product) {
+        var products = getProducts()
+        
         let index = products.firstIndex(where: { cartItem in
             return cartItem.product._id == product._id
         })
@@ -43,6 +57,6 @@ final class CartItemRepository {
         guard let strongIndex = index else { return }
         products.remove(at: strongIndex)
         
-        productsPublishSubject.onNext(products)
+        productsSubject.onNext(products)
     }
 }

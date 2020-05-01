@@ -39,11 +39,10 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if AuthenticationManager.hasToken() {
+        if UserRepository.shared.getUser() != nil {
             self.showView()
         } else {
             self.present(loginVC, animated: true)
-            return;
         }
     }
     
@@ -123,6 +122,7 @@ class ProfileViewController: UIViewController {
 
         disconnectButton.onTapHandler = { [weak self] in
             AuthenticationManager.removeTokens()
+            UserRepository.shared.disconnect()
             self?.present(self!.loginVC, animated: true)
         }
     }

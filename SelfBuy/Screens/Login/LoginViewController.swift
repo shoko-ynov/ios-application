@@ -104,7 +104,9 @@ class LoginViewController: PresentableViewController {
         view.addGestureRecognizer(tap)
         
         loginBtn.rx.tap.bind { _ in
-            self.viewModel.login()
+            DispatchQueue.main.async {
+                self.viewModel.login()
+            }
         }.disposed(by: self.viewModel.bag)
         
         registerBtn.rx.tap.bind { _ in
@@ -137,10 +139,13 @@ class LoginViewController: PresentableViewController {
             .bind(to: viewModel.passwordTextInput)
             .disposed(by: viewModel.bag)
         
-        viewModel.onSuccesfulLogin = { [weak self] in
+        viewModel.onSuccesfulLogin = {
             DispatchQueue.main.async {
-                UserRepository.shared.synchronizeUser()
-                self?.dismiss(animated: true)
+                UserRepository.shared.synchronizeUser(onSuccess: { [weak self] in
+                    DispatchQueue.main.async {
+                        self?.dismiss(animated: true)
+                    }
+                })
             }
         }
     }

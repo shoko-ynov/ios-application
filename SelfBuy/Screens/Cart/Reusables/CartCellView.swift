@@ -219,18 +219,15 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         
-        let button = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(self.action as () -> Void))
+        let button = UIBarButtonItem(title: "Valider", style: .plain, target: self, action: #selector(self.validateQuantity as () -> Void))
         toolBar.setItems([button], animated: true)
         toolBar.isUserInteractionEnabled = true
         quantityInput.inputAccessoryView = toolBar
     }
     
-    func reloadPrice() {
-        priceLabel.text = String(viewModel!.cartItem.product.price * Float(quantity))
-    }
-    
-    @objc func action() {
+    @objc func validateQuantity() {
         endEditing(true)
-        reloadPrice()
+        priceLabel.text = String(viewModel!.cartItem.product.price * Float(quantity))
+        CartItemRepository.shared.modifyQuantityForProduct(product: viewModel!.cartItem.product, quantity: quantity)
     }
 }

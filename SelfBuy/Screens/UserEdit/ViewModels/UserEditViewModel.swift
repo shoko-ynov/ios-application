@@ -48,7 +48,7 @@ final class UserEditViewModel: UserEditViewModelling {
         service.updateUser(userData: user, id: userId) { result in
             switch result {
             case .success(_):
-                UserRepository.shared.synchronizeUser()
+                UserRepository.shared.synchronizeUser(onSuccess: {})
                 completion(.success(NSNull()))
             case .failure(let error as NSError):
                 completion(.failure(error))

@@ -44,6 +44,10 @@ class UserActivationViewModel: UserActivationViewModelling {
     
     func handleUserActivation() {
         
+        if (password.value != passwordConfirmation.value) {
+            return
+        }
+        
         let dto = UserActivationDTO(userId: userId, activationKey: key, password: password.value)
         
         userService.activeUser(dto) { [weak self] in

@@ -100,6 +100,24 @@ class UserActivationViewController: PresentableViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
+        passwordTextField
+            .rx
+            .text
+            .skip(1)
+            .map({ $0.unsafelyUnwrapped })
+            .asObservable()
+            .bind(to: viewModel.password)
+            .disposed(by: viewModel.bag)
+        
+        passwordConfirmationTextField
+            .rx
+            .text
+            .skip(1)
+            .map({ $0.unsafelyUnwrapped })
+            .asObservable()
+            .bind(to: viewModel.passwordConfirmation)
+            .disposed(by: viewModel.bag)
+        
         activationButton.rx.tap.bind { [weak self] in
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }

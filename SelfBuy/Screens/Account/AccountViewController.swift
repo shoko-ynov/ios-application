@@ -73,7 +73,7 @@ class AccountViewController: PresentableViewController {
             var views = [InfoLine]()
             
             for (index, value) in values.enumerated()  {
-                guard let user = UserRepository.shared.user else { return [] }
+                guard let user = UserRepository.shared.getUser() else { return [] }
                 
                 let vm = UserEditViewModel(valueName: viewModel.staticUserData[index].label, value: value ?? "", userId: user._id, parameter: viewModel.staticUserData[index].parameter)
                 let viewController = UserEditViewController(viewModel: vm)

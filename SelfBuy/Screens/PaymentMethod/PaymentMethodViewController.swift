@@ -81,7 +81,7 @@ final class PaymentMethodViewController: PresentableViewController {
             padding: .init(top: 15, left: 0, bottom: 15, right: 0)
         )
         
-        viewModel.repository.cardsPublishSubject.subscribe(onNext: { [weak self] cards in
+        viewModel.repository.cardsSubject.subscribe(onNext: { [weak self] cards in
             guard let strongSelf = self else { return }
             
             DispatchQueue.main.async {
@@ -101,12 +101,13 @@ final class PaymentMethodViewController: PresentableViewController {
 extension PaymentMethodViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.repository.cards.count
+        return viewModel.repository.getCards().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PaymentMethodCellView.reuseIdentifier, for: indexPath) as! PaymentMethodCellView
-        cell.configure(viewModel: PaymentMethodCellViewModel(card: viewModel.repository.cards[indexPath.row]), index: indexPath)
+        cell.configure(viewModel: PaymentMethodCellViewModel(card: viewModel.repository.getCard(indexPath)), index: indexPath)
+        cell.enableDeleteButton()
         
         return cell
     }

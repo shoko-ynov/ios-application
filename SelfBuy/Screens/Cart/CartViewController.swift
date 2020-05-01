@@ -67,14 +67,14 @@ final class CartViewController: UIViewController {
         checkoutBtn.rx.tap.bind { [weak self] _ in
             guard let strongSelf = self else { return }
             
-            if AuthenticationManager.hasToken() {
+            if UserRepository.shared.getUser() != nil {
                 let paymentVc = PaymentViewController(viewModel: PaymentViewModel())
                 strongSelf.present(paymentVc, animated: true)
             } else {
                 let loginVC = LoginViewController(viewModel: LoginViewModel())
                 
                 loginVC.onDismiss = {
-                    if AuthenticationManager.hasToken() {
+                    if UserRepository.shared.getUser() != nil {
                         let paymentVc = PaymentViewController(viewModel: PaymentViewModel())
                         strongSelf.present(paymentVc, animated: true)
                     }

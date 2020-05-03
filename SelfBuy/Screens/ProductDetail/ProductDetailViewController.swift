@@ -49,7 +49,8 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
     private var quantityInCartLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.setToMedium(size: 14)
+        label.textAlignment = NSTextAlignment.center
         
         return label
     }()
@@ -86,6 +87,7 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
         view.addSubview(nbPicker)
         view.addSubview(addCartBtn)
         view.addSubview(quantityInput)
+        view.addSubview(quantityInCartLabel)
         
         productFirstImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 40, left: 0, bottom: 0, right: 0))
         productFirstImage.heightAnchor.constraint(equalToConstant: 200).isActive = true
@@ -110,6 +112,8 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
         
         quantityInput.anchor(top: descriptionLabel.bottomAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 35, left: 0, bottom: 0, right: 50))
         
+        quantityInCartLabel.anchor(top: addCartBtn.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 10, left: 110, bottom: 120, right: 110))
+        
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: self.quantityInput.frame.height))
         quantityInput.leftView = paddingView
         quantityInput.leftViewMode = UITextField.ViewMode.always
@@ -126,6 +130,14 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
                 guard let strongSelf = self else { return }
                 CartItemRepository.shared.addProductToCart(product: strongSelf.viewModel.product, quantity: strongSelf.quantity)
         }.disposed(by: viewModel.bag)
+        
+        CartItemRepository.shared.productsSubject.subscribe(onNext: { [weak self] _ in
+            guard let strongSelf = self else { return }
+            let cartItem = CartItemRepository.shared.getCartItem(product: strongSelf.viewModel.product)
+            if let quantity = cartItem?.quantity {
+                strongSelf.quantityInCartLabel.text = "\(quantity) dans le panier."
+            }
+        }).disposed(by: viewModel.bag)
         
         if (viewModel.product.images.count > 0) {
             let url = URL(string: viewModel.product.images.first!)

@@ -8,9 +8,11 @@
 
 import UIKit
 
-class ProductDetailViewController: PresentableViewController {
+class ProductDetailViewController: PresentableViewController, UITextFieldDelegate {
     
     let viewModel: ProductDetailViewModelling
+    
+    var quantity: Int
     
     private var productFirstImage: UIImageView = {
         let image = UIImageView()
@@ -44,6 +46,23 @@ class ProductDetailViewController: PresentableViewController {
         return label
     }()
     
+    private var quantityLabel: UILabel = {
+        let label = UILabel()
+        
+        label.textColor = .black
+        label.text = "Quantité :"
+        
+        return label
+    }()
+    
+    private var quantityInput: UITextField = {
+        let textField = UITextField()
+        textField.keyboardType = .numberPad
+        textField.placeholder = "1"
+        
+        return textField
+    }()
+    
     private var pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
     
     private var nbPicker: UIPickerView = {
@@ -61,6 +80,8 @@ class ProductDetailViewController: PresentableViewController {
         view.addSubview(priceLabel)
         view.addSubview(nbPicker)
         view.addSubview(addCartBtn)
+        view.addSubview(quantityInput)
+        view.addSubview(quantityLabel)
         
         productFirstImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 40, left: 0, bottom: 0, right: 0))
         productFirstImage.heightAnchor.constraint(equalToConstant: 200).isActive = true
@@ -83,11 +104,15 @@ class ProductDetailViewController: PresentableViewController {
             padding: .init(top: 25, left: 0, bottom: 0, right: 0)
         )
         
+        quantityLabel.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 120, bottom: 190, right: 0))
+        
+        quantityInput.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 205, bottom: 188, right: 0))
+        
         addCartBtn.rx
             .tap
             .bind { [weak self] in
                 guard let strongSelf = self else { return }
-                CartItemRepository.shared.addProductToCart(product: strongSelf.viewModel.product, quantity: 1)
+                CartItemRepository.shared.addProductToCart(product: strongSelf.viewModel.product, quantity: strongSelf.quantity)
         }.disposed(by: viewModel.bag)
         
         if (viewModel.product.images.count > 0) {
@@ -101,6 +126,7 @@ class ProductDetailViewController: PresentableViewController {
     
     init(viewModel: ProductDetailViewModelling) {
         self.viewModel = viewModel
+        self.quantity = 1
         
         
         super.init(nibName: nil, bundle: nil)
@@ -116,8 +142,28 @@ class ProductDetailViewController: PresentableViewController {
         
         nbPicker.dataSource = self
         nbPicker.delegate = self
+        quantityInput.delegate = self
         
         view.backgroundColor = .lightGray
+    }
+    
+    func textField(_ textField: UITextField,
+    shouldChangeCharactersIn range: NSRange,
+          replacementString string: String) -> Bool {
+        
+        let text = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
+
+        if Int(text) != nil && text != "" {
+            // Text field converted to an Int
+            self.quantity = Int(text)!
+            return true
+        }
+        
+        if(text == ""){
+            return true
+        }
+        
+        return false
     }
 }
 

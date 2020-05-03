@@ -41,6 +41,7 @@ final class OrderConfirmationViewModel: OrderConfirmationViewModelling {
         
         service.pay(card: card) { [weak self] in
             guard let strongSelf = self else { return }
+            CartItemRepository.shared.clearCart()
             
             switch $0 {
             case .success(let payment):

@@ -14,6 +14,7 @@ protocol CartRecapViewModelling {
     var repository: CartItemRepository { get }
     var numberOfItems: Int { get }
     
+    func getTotalPrice() -> String
 }
 
 final class CartRecapViewModel: CartRecapViewModelling {
@@ -26,6 +27,16 @@ final class CartRecapViewModel: CartRecapViewModelling {
     init() {
         bag = DisposeBag()
         repository = CartItemRepository.shared
-        
     }
+    
+    func getTotalPrice() -> String {
+        var price: Float = 0.0
+        
+        for cartItem in repository.getProducts() {
+            price += cartItem.product.price * Float(cartItem.quantity)
+        }
+        
+        return String(format: "%.2f", price)
+    }
+
 }

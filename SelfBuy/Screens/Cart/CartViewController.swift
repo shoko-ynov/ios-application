@@ -16,16 +16,7 @@ final class CartViewController: UIViewController {
         
         return collectionView
     }()
-    private var checkoutBtn: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .primary
-        button.layer.cornerRadius = 25
-        button.contentHorizontalAlignment = .left
-        button.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 0.0)
-        button.setTitle("Valider le panier", for: .normal)
-        
-        return button
-    }()
+    private var checkoutBtn = SolidButton(text: "Valider le panier")
     
     let viewModel: CartViewModelling
     
@@ -52,9 +43,14 @@ final class CartViewController: UIViewController {
         view.backgroundColor = .lightGray
         view.addSubview(itemCollectionView)
         
-        checkoutBtn.frame = CGRect(x: 0, y: self.view.frame.size.height - 160, width: 250, height:50)
-        checkoutBtn.center.x = self.view.center.x
         view.addSubview(checkoutBtn)
+        
+        checkoutBtn.anchor(
+            top: nil,
+            bottom: itemCollectionView.bottomAnchor,
+            centerAnchor: view.centerXAnchor,
+            padding: .init(top: 0, left: 0, bottom: 15, right: 0)
+        )
         
         let titleLabel = setTitleLabel("Mon panier", textColor: .white)
         
@@ -66,6 +62,11 @@ final class CartViewController: UIViewController {
         
         checkoutBtn.rx.tap.bind { [weak self] _ in
             guard let strongSelf = self else { return }
+            
+            if strongSelf.viewModel.numberOfItems < 1 {
+                strongSelf.showNoProductAlert()
+                return
+            }
             
             if UserRepository.shared.getUser() != nil {
                 let paymentVc = PaymentViewController(viewModel: PaymentViewModel())
@@ -85,17 +86,23 @@ final class CartViewController: UIViewController {
             
         }.disposed(by: viewModel.bag)
         
-        viewModel.cartItemPublishSubject
-            .subscribe(onNext: { [weak self] _ in
-                guard let strongSelf = self else { return }
-                strongSelf.itemCollectionView.reloadData()
-            })
-            .disposed(by: viewModel.bag)
+        viewModel.repository.productsSubject.subscribe(onNext: { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.itemCollectionView.reloadData()
+        }).disposed(by: viewModel.bag)
     }
     
+    func showNoProductAlert() {
+        let alert = UIAlertController(title: "Panier", message: "Votre panier est vide. Veuillez sélectionner des produits pour passer à l'étape suivante", preferredStyle: .alert)
+        
+        let closeAction = UIAlertAction(title: "Fermer", style: .cancel)
+        alert.addAction(closeAction)
+        
+        self.present(alert, animated: true)
+    }
 }
 
-extension CartViewController: UICollectionViewDataSource {
+extension CartViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.numberOfSection
@@ -113,10 +120,6 @@ extension CartViewController: UICollectionViewDataSource {
         return cell
     }
     
-}
-
-extension CartViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = itemCollectionView.frame.width
         return CGSize.init(width: size - 30, height: 150)
@@ -126,4 +129,13 @@ extension CartViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets.init(top: 25, left: 0, bottom: 0, right: 0)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cartItem = viewModel.repository.getProducts()[indexPath.row]
+        let productDetailVC = ProductDetailViewController(viewModel: ProductDetailViewModel(product: cartItem.product))
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.present(productDetailVC, animated: true)
+        }
+    }
 }

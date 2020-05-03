@@ -9,64 +9,26 @@ import UIKit
 import RxSwift
 
 class LoginViewController: PresentableViewController {
-    private var loginLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 0, y: 290, width: 80, height: 41))
-        label.font = UIFont(name: "Helvetica", size: 32)
-        label.textColor = .black
-        label.text = "Login"
-        
-        return label
-     }()
-    
-    private var loginBtn: UIButton = {
-        let button:UIButton = UIButton(frame: CGRect(x: 0, y: 475, width: 250, height: 50))
-        button.backgroundColor = .primary
-        button.layer.cornerRadius = 25
-        button.layer.borderWidth = 0
-        button.setTitle("Connexion", for: .normal)
-        
-        return button
-    }()
+    private var loginBtn = SolidButton(text: "Connexion")
     
     private var forgottenPassword: UIButton = {
-        let button:UIButton = UIButton(frame: CGRect(x: 0, y: 605, width: 250, height: 50))
-        button.setTitleColor(.blue, for: .normal)
+        let button:UIButton = UIButton()
+        button.setTitleColor(.gray, for: .normal)
         button.setTitle("Mot de passe oublié ?", for: .normal)
+        button.titleLabel?.setToBold(size: 13)
         
         return button
     }()
     
-    private var registerBtn: UIButton = {
-        let button:UIButton = UIButton(frame: CGRect(x: 0, y: 535, width: 250, height: 50))
-        button.backgroundColor = .primary
-        button.layer.cornerRadius = 25
-        button.setTitle("Inscription", for: .normal)
-        
-        return button
-    }()
+    private var registerBtn = GhostButton(text: "Inscription")
     
-    private var emailTextField: UITextField = {
-        let input = UITextField(frame: CGRect(x: -10, y: 350,width:250 ,height: 50))
-        input.placeholder = " Email"
-        input.backgroundColor = .white
-        input.layer.cornerRadius = 15
-        input.borderStyle = UITextField.BorderStyle.roundedRect
-        input.tintColor = .black
-        input.textColor = .black
-        return input
-    }()
+    private var emailTextField = StyledTextField(placeholder: "Email", keyboardType: .emailAddress)
     
     private var passwordTextField: UITextField = {
-        let password = UITextField(frame: CGRect(x: -10, y: 405,width:250 ,height: 50))
-        password.placeholder = " Mot de passe"
-        password.backgroundColor = .white
-        password.isSecureTextEntry = true
-        password.layer.cornerRadius = 15
-        password.borderStyle = UITextField.BorderStyle.roundedRect
-        password.tintColor = .black
-        password.textColor = .black
+        let testField = StyledTextField(placeholder: "Mot de passe")
+        testField.isSecureTextEntry = true
         
-        return password
+        return testField
     }()
     
     let viewModel: LoginViewModel
@@ -92,14 +54,51 @@ class LoginViewController: PresentableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailTextField.center.x = self.view.center.x
-        passwordTextField.center.x = self.view.center.x
-        loginBtn.center.x = self.view.center.x
-        registerBtn.center.x = self.view.center.x
-        forgottenPassword.center.x = self.view.center.x
+        self.view.addSubview(passwordTextField)
+        self.view.addSubview(emailTextField)
+        self.view.addSubview(loginBtn)
+        self.view.addSubview(registerBtn)
+        self.view.addSubview(forgottenPassword)
         
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
+        forgottenPassword.anchor(
+            top: nil,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            centerAnchor: view.centerXAnchor,
+            padding: .init(top: 0, left: 0, bottom: 50, right: 0)
+        )
+        
+        registerBtn.anchor(
+            top: nil,
+            bottom: forgottenPassword.topAnchor,
+            centerAnchor: view.centerXAnchor,
+            padding: .init(top: 0, left: 0, bottom: 25, right: 0)
+        )
+        
+        loginBtn.anchor(
+            top: nil,
+            bottom: registerBtn.topAnchor,
+            centerAnchor: view.centerXAnchor,
+            padding: .init(top: 0, left: 0, bottom: 10, right: 0)
+        )
+        
+        passwordTextField.anchor(
+            top: nil,
+            leading: view.leadingAnchor,
+            bottom: loginBtn.topAnchor,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 0, left: 25, bottom: 80, right: 25),
+            size: .init(width: 0, height: 50)
+        )
+        
+        emailTextField.anchor(
+            top: nil,
+            leading: view.leadingAnchor,
+            bottom: passwordTextField.topAnchor,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 0, left: 25, bottom: 10, right: 25),
+            size: .init(width: 0, height: 50)
+        )
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
@@ -110,15 +109,11 @@ class LoginViewController: PresentableViewController {
         }.disposed(by: self.viewModel.bag)
         
         registerBtn.rx.tap.bind { _ in
-            let vc = RegisterViewController(viewModel: RegisterViewModel())
-            self.present(vc, animated: true)
+            DispatchQueue.main.async {
+                let vc = RegisterViewController(viewModel: RegisterViewModel())
+                self.present(vc, animated: true)
+            }
         }.disposed(by: self.viewModel.bag)
-        
-        self.view.addSubview(passwordTextField)
-        self.view.addSubview(emailTextField)
-        self.view.addSubview(loginBtn)
-        self.view.addSubview(registerBtn)
-        self.view.addSubview(forgottenPassword)
         self.view.backgroundColor = .lightGray
         
         emailTextField

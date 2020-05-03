@@ -24,12 +24,60 @@ final class CartItemRepository {
     }
     
     func addProductToCart(product: Product, quantity: Int) {
-        let cartItem = CartItem(product: product, quantity: quantity)
-        
         var products = getProducts()
-        products.append(cartItem)
+
+        let isProductInCard = isProductInCart(product: product)
         
+        if(!isProductInCard){
+            let cartItem = CartItem(product: product, quantity: quantity)
+            products.append(cartItem)
+            productsSubject.onNext(products)
+        } else {
+            addQuantityToProduct(product: product, quantity: quantity)
+        }
+    }
+    
+    func isProductInCart(product: Product) -> Bool {
+        let products = getProducts()
+        
+        let indexOfProduct = products.firstIndex { (cartItem: CartItem) -> Bool in
+            return cartItem.product._id == product._id
+        }
+        
+        if (indexOfProduct != nil) {
+            return true
+        }
+        
+        return false
+    }
+    
+    func addQuantityToProduct(product: Product, quantity: Int){
+        var products = getProducts()
+        
+        let indexOfProduct = products.firstIndex { (cartItem: CartItem) -> Bool in
+            return cartItem.product._id == product._id
+        }
+        
+        guard let index = indexOfProduct else {
+            return
+        }
+        
+        products[index].quantity = products[index].quantity + quantity
         productsSubject.onNext(products)
+    }
+    
+    func getCartItem(product: Product) -> CartItem? {
+        let products = getProducts()
+        
+        let indexOfProduct = products.firstIndex { (cartItem: CartItem) -> Bool in
+            return cartItem.product._id == product._id
+        }
+        
+        guard let index = indexOfProduct else {
+            return nil
+        }
+        
+        return products[index]
     }
     
     func modifyQuantityForProduct(product: Product, quantity: Int) {
@@ -58,5 +106,12 @@ final class CartItemRepository {
         products.remove(at: strongIndex)
         
         productsSubject.onNext(products)
+    }
+    
+    func clearCart() {
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.productsSubject.onNext([])
+        }
     }
 }

@@ -44,4 +44,27 @@ final class PaymentApiService {
             .setMethod(.DELETE)
             .send(completion: completion)
     }
+    
+    func pay(card: Card, completion: @escaping (Result<StripePaymentParams, Error>) -> Void) {
+        
+        let products: [PayProductDTO] = CartItemRepository.shared.getProducts().map {
+            return PayProductDTO(productId: $0.product._id, quantity: $0.quantity)
+        }
+        let body = PayDTO(products: products, cardId: card._id)
+        
+        return Request()
+            .setPath("/stripe/pay")
+            .setMethod(.POST)
+            .setBody(body)
+            .sendWithDecode(StripePaymentParams.self, completion: completion)
+    }
+    
+    func getStripePayementIntent(_ payment: StripePaymentParams, completion: @escaping (Result<StripePaymentIntent, Error>) -> Void) {
+        let params = "client_secret=\(payment.clientSecret)"
+        
+        return StripeRequest(url: "https://api.stripe.com/v1/payment_intents/\(payment.paymentIntentId)?\(params)")
+            .setMethod(.GET)
+            .send(StripePaymentIntent.self, completion: completion)
+    }
+    
 }

@@ -43,6 +43,8 @@ final class PaymentViewController: PresentableViewController {
     let selectPaymentMethodView = SelectPaymentMethodView(viewModel: SelectPaymentMethodViewModel())
     
     let orderShippingView = OrderShippingView(viewModel: OrderShippingViewModel())
+    let orderConfirmationView = OrderConfirmationView(viewModel: OrderConfirmationViewModel())
+    let paymentSuccessView = PaymentSuccessView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,9 +77,17 @@ final class PaymentViewController: PresentableViewController {
             strongSelf.breadcrumb.viewModel.index.onNext(indexPath)
         }
         
+        paymentSuccessView.onClose = {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true)
+            }
+        }
+        
         collectionViewScreens = [
             orderShippingView,
-            selectPaymentMethodView
+            selectPaymentMethodView,
+            orderConfirmationView,
+            paymentSuccessView,
         ]
         
         swipeableCollectionView.delegate = self
@@ -110,6 +120,28 @@ final class PaymentViewController: PresentableViewController {
         selectPaymentMethodView.viewModel.selectedCard.subscribe(onNext: { [weak self] card in
             guard let strongSelf = self else { return }
             strongSelf.viewModel.setSelectedCard(card)
+            strongSelf.orderConfirmationView.viewModel.setSelectedCard(card)
+        }).disposed(by: viewModel.bag)
+        
+        orderConfirmationView.viewModel.paymentIntent.subscribe(onNext: { [weak self] paymentIntent in
+            guard let strongSelf = self else { return }
+            
+            switch paymentIntent.status {
+            case .succeeded:
+                DispatchQueue.main.async {
+                    let indexPath = IndexPath(item: 3, section: 0)
+                    print(strongSelf.collectionViewScreens[indexPath.row])
+                    strongSelf.swipeableCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+                }
+            case .requires_action:
+                if let threedSecureUrl = paymentIntent.next_action?.redirect_to_url?.url, let url = URL(string: threedSecureUrl) {
+                    DispatchQueue.main.async {
+                        UIApplication.shared.open(url)
+                    }
+                }
+            case .requires_payment_method:
+                print("fail")
+            }
         }).disposed(by: viewModel.bag)
     }
 }

@@ -83,7 +83,6 @@ class DeletableItemView: UIView {
         
         isTranslate.subscribe (onNext: { [weak self] isTranslate in
             guard let strongSelf = self else { return }
-            print(isTranslate)
             
             if (isTranslate) {
                 strongSelf.translateViewToLeft()

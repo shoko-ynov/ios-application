@@ -61,11 +61,11 @@ final class SelectPaymentMethodView: UIView {
         )
         
         cardsCollectionView.anchor(
-            top: label.topAnchor,
+            top: label.bottomAnchor,
             leading: leadingAnchor,
             bottom: bottomAnchor,
             trailing: trailingAnchor,
-            padding: .init(top: 15, left: 0, bottom: 0, right: 0)
+            padding: .init(top: 5, left: 0, bottom: 0, right: 0)
         )
         
         viewModel.repository.cardsSubject.subscribe(onNext: { [weak self] _ in
@@ -85,7 +85,6 @@ extension SelectPaymentMethodView: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(viewModel.numberOfItems)
         return viewModel.numberOfItems
     }
     

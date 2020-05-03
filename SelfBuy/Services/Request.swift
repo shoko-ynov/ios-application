@@ -123,7 +123,7 @@ class Request {
                     
                     return
                 } else if urlResponse.statusCode != 200 && urlResponse.statusCode != 201 && urlResponse.statusCode != 204 {
-                    throw NSError(domain: "Server error, status code : \(urlResponse.statusCode)", code: 500)
+                    throw NSError(domain: "The status code announces an error.", code: urlResponse.statusCode)
                 }
                 
                 completion(.success(data))

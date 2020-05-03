@@ -78,6 +78,7 @@
 		D0C0987524523A9C00239225 /* LinkCardDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C0987424523A9C00239225 /* LinkCardDTO.swift */; };
 		D0C098772452423F00239225 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C098762452423F00239225 /* CardRepository.swift */; };
 		D0C4DD75245F2F4400975BC8 /* SolidButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4DD74245F2F4400975BC8 /* SolidButton.swift */; };
+		D0C4DD77245F348500975BC8 /* GhostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4DD76245F348500975BC8 /* GhostButton.swift */; };
 		D0CE24A62393002E00C41ACD /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE24A52393002E00C41ACD /* ProductDetailViewController.swift */; };
 		D0CE24A92393005B00C41ACD /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE24A82393005B00C41ACD /* ProductDetailViewModel.swift */; };
 		D0E396802452BB4D00D8E114 /* DeletableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3967F2452BB4D00D8E114 /* DeletableItemView.swift */; };
@@ -177,6 +178,7 @@
 		D0C0987424523A9C00239225 /* LinkCardDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCardDTO.swift; sourceTree = "<group>"; };
 		D0C098762452423F00239225 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
 		D0C4DD74245F2F4400975BC8 /* SolidButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidButton.swift; sourceTree = "<group>"; };
+		D0C4DD76245F348500975BC8 /* GhostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostButton.swift; sourceTree = "<group>"; };
 		D0CE24A52393002E00C41ACD /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		D0CE24A82393005B00C41ACD /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 		D0E3967F2452BB4D00D8E114 /* DeletableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableItemView.swift; sourceTree = "<group>"; };
@@ -649,6 +651,7 @@
 			children = (
 				D0E3967F2452BB4D00D8E114 /* DeletableItemView.swift */,
 				D0C4DD74245F2F4400975BC8 /* SolidButton.swift */,
+				D0C4DD76245F348500975BC8 /* GhostButton.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -850,6 +853,7 @@
 				D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */,
 				D01E3FCD244D28290091931B /* URLExtensions.swift in Sources */,
 				B3C4D300242BA7670083F47F /* CardPaymentDTO.swift in Sources */,
+				D0C4DD77245F348500975BC8 /* GhostButton.swift in Sources */,
 				E31702DB245629CE004FD16D /* UserEditViewController.swift in Sources */,
 				7380E7322397DE1500685B7C /* AuthAPIService.swift in Sources */,
 				D0C03476244C9C93008ACAAC /* PresentableViewController.swift in Sources */,

@@ -15,6 +15,7 @@ class SolidButton: UIButton {
         
         setTitle(text, for: .normal)
         setupView()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -24,17 +25,24 @@ class SolidButton: UIButton {
     func setupView() {
         heightAnchor.constraint(equalToConstant: 50).isActive = true
         widthAnchor.constraint(equalToConstant: 250).isActive = true
-
-        layer.cornerRadius = 25
+        
         setTitleColor(.white, for: .normal)
         titleLabel?.setToBold(size: 14)
-        layer.borderWidth = 0
         contentHorizontalAlignment = .center
-        backgroundColor = .primary
         
-        /*layer.borderWidth = 1.0
-        layer.borderColor = UIColor.primary.cgColor
-        layer.borderWidth = 2*/
+        layer.insertSublayer(getGradient(), at: 0)
+    }
+    
+    func getGradient() -> CALayer {
+        let gradientLayer = CAGradientLayer()
+        
+        gradientLayer.colors = [UIColor.lightPrimary.cgColor, UIColor.lightPrimary.cgColor, UIColor.primary.cgColor]
+        gradientLayer.frame = bounds
+        gradientLayer.cornerRadius = frame.height / 2
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        
+        return gradientLayer
     }
     
     override func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {

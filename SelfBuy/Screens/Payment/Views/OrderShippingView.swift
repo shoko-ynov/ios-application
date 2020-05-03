@@ -118,6 +118,7 @@ final class OrderShippingView: UIView {
         button.backgroundColor = .primary
         button.layer.cornerRadius = 25
         button.layer.borderWidth = 0
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .bold)
         button.setTitle("Accéder au paiement", for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 15,left: 20,bottom: 15,right: 20)
         

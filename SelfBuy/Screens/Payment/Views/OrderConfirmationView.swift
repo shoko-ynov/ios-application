@@ -15,6 +15,9 @@ final class OrderConfirmationView: UIView {
     
     var swipeToNextPage = {}
     
+    let cartRecapView = CartRecapView()
+    let ordersRecapView = ShippingRecapView()
+    
     let shippingAddressTitle: UILabel = {
         let label = UILabel()
         label.text = "Récapitulatif de la commande"
@@ -31,14 +34,14 @@ final class OrderConfirmationView: UIView {
         return scrollView
     }()
     
-    
     private var validateShippingButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .primary
         button.layer.cornerRadius = 30
         button.layer.borderWidth = 0
         button.setTitle("Confirmer la commande", for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 20,left: 20,bottom: 20,right: 20)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
+        button.contentEdgeInsets = UIEdgeInsets(top: 18,left: 20,bottom: 18,right: 20)
         
         return button
     }()
@@ -71,25 +74,45 @@ final class OrderConfirmationView: UIView {
             bottom: bottomAnchor,
             trailing: trailingAnchor
         )
-        scrollView.contentSize = CGSize(width: 0, height: 100)
+        
+        scrollView.contentSize = CGSize(width: 0, height: 700)
         scrollView.alwaysBounceVertical = true
         scrollView.contentInset = UIEdgeInsets.zero
-        
-    
-        
+
+        scrollView.addSubview(cartRecapView)
+        scrollView.addSubview(ordersRecapView)
         scrollView.addSubview(validateShippingButton)
-        validateShippingButton.anchor(
-            top: shippingAddressTitle.bottomAnchor,
-            leading: nil,
-            bottom: scrollView.bottomAnchor,
-            trailing: nil,
-            padding: .init(top: 30, left: 0, bottom: 30, right: 0)
+        
+        cartRecapView.anchor(
+            top: scrollView.topAnchor,
+            leading: leadingAnchor,
+            bottom: nil,
+            trailing: trailingAnchor,
+            padding: .init(top: 20, left: 20, bottom: 0, right: 20)
         )
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        addGestureRecognizer(tap)
+        ordersRecapView.anchor(
+            top: cartRecapView.bottomAnchor,
+            leading: leadingAnchor,
+            bottom: nil,
+            trailing: trailingAnchor,
+            padding: .init(top: 20, left: 20, bottom: 0, right: 20)
+        )
+        
+        validateShippingButton.anchor(
+            top: ordersRecapView.bottomAnchor,
+            leading: nil,
+            bottom: nil,
+            trailing: nil,
+            padding: .init(top: 30, left: 0, bottom: 0, right: 0)
+        )
+        
         
         NSLayoutConstraint.activate([
+            cartRecapView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            cartRecapView.heightAnchor.constraint(equalToConstant: 400),
+            ordersRecapView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            ordersRecapView.heightAnchor.constraint(equalToConstant: 170),
             validateShippingButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
         ])
     }

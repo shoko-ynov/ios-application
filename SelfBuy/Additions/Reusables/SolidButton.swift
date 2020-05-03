@@ -27,7 +27,7 @@ class SolidButton: UIButton {
         widthAnchor.constraint(equalToConstant: 250).isActive = true
         
         setTitleColor(.white, for: .normal)
-        titleLabel?.setToBold(size: 14)
+        titleLabel?.setToBold(size: 16)
         contentHorizontalAlignment = .center
         
         layer.insertSublayer(getGradient(), at: 0)

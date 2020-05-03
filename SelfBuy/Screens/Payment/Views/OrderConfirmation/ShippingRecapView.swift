@@ -126,9 +126,9 @@ final class ShippingRecapView: UIView {
         country.anchor(
             top: postalCode.bottomAnchor,
             leading: leadingAnchor,
-            bottom: nil,
+            bottom: bottomAnchor,
             trailing: nil,
-            padding: .init(top: 10, left: 15, bottom: 0, right: 0)
+            padding: .init(top: 10, left: 15, bottom: 10, right: 0)
         )
         
         name.text = viewModel.getBehaviorSubjectValue(viewModel.firstName) + " " + viewModel.getBehaviorSubjectValue(viewModel.lastName).uppercased()

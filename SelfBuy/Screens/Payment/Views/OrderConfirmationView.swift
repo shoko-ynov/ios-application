@@ -11,7 +11,7 @@ import RxSwift
 
 final class OrderConfirmationView: UIView {
     
-    var viewModel: OrderShippingViewModelling
+    var viewModel: OrderConfirmationViewModelling
     
     var swipeToNextPage = {}
     
@@ -43,7 +43,7 @@ final class OrderConfirmationView: UIView {
         return button
     }()
     
-    init(viewModel: OrderShippingViewModelling) {
+    init(viewModel: OrderConfirmationViewModelling) {
         self.viewModel = viewModel
         super.init(frame: .zero)
         setupView()
@@ -92,6 +92,30 @@ final class OrderConfirmationView: UIView {
         NSLayoutConstraint.activate([
             validateShippingButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
         ])
+        
+        validateShippingButton.rx.tap.bind { [weak self] _ in
+            guard let strongSelf = self else { return }
+            
+            DispatchQueue.main.async {
+                strongSelf.viewModel.payOrder()
+            }
+        }.disposed(by: viewModel.bag)
+        
+        
+        viewModel.paymentIntent.subscribe(onNext: { paymentIntent in
+            switch paymentIntent.status {
+            case .succeeded:
+                print("succeeded")
+            case .requires_action:
+                if let threedSecureUrl = paymentIntent.next_action?.use_stripe_sdk?.stripe_js, let url = URL(string: threedSecureUrl) {
+                    DispatchQueue.main.async {
+                        UIApplication.shared.open(url)
+                    }
+                }
+            case .requires_payment_method:
+                print("fail")
+            }
+        }).disposed(by: viewModel.bag)
     }
 }
 

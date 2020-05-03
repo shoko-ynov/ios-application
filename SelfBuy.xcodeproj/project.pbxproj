@@ -76,6 +76,7 @@
 		D0A54DB5245C5B88007A1079 /* SelectPaymentMethodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A54DB4245C5B88007A1079 /* SelectPaymentMethodViewModel.swift */; };
 		D0A54DB7245CAFB0007A1079 /* PayDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A54DB6245CAFB0007A1079 /* PayDTO.swift */; };
 		D0A54DB9245CB610007A1079 /* StripePaymentParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A54DB8245CB610007A1079 /* StripePaymentParams.swift */; };
+		D0A54DBB245CB85A007A1079 /* OrderConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A54DBA245CB85A007A1079 /* OrderConfirmationViewModel.swift */; };
 		D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B11B8A2385C3F000C74CEA /* CartViewController.swift */; };
 		D0C03476244C9C93008ACAAC /* PresentableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03475244C9C93008ACAAC /* PresentableViewController.swift */; };
 		D0C03478244CADBB008ACAAC /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03477244CADBB008ACAAC /* AuthenticationManager.swift */; };
@@ -178,6 +179,7 @@
 		D0A54DB4245C5B88007A1079 /* SelectPaymentMethodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPaymentMethodViewModel.swift; sourceTree = "<group>"; };
 		D0A54DB6245CAFB0007A1079 /* PayDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayDTO.swift; sourceTree = "<group>"; };
 		D0A54DB8245CB610007A1079 /* StripePaymentParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentParams.swift; sourceTree = "<group>"; };
+		D0A54DBA245CB85A007A1079 /* OrderConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewModel.swift; sourceTree = "<group>"; };
 		D0B11B8A2385C3F000C74CEA /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D0C03475244C9C93008ACAAC /* PresentableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableViewController.swift; sourceTree = "<group>"; };
 		D0C03477244CADBB008ACAAC /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 				D07BEA1C2455E62500B4A053 /* PaymentViewModel.swift */,
 				D0A54DB4245C5B88007A1079 /* SelectPaymentMethodViewModel.swift */,
 				E3880D66245C7BE1009A12FA /* OrderShippingViewModel.swift */,
+				D0A54DBA245CB85A007A1079 /* OrderConfirmationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -877,7 +880,7 @@
 				D0709B29239FB5E500055F20 /* Request.swift in Sources */,
 				D0441D982455FEDF0027F9F8 /* PaymentBreadcrumbViewModel.swift in Sources */,
 				D01E86E6244DFB5B00C65C59 /* TabBarService.swift in Sources */,
-				D07BEA272455EF5500B4A053 /* SelectPaymentMethodView.swift in Sources */,
+				D0A54DBB245CB85A007A1079 /* OrderConfirmationViewModel.swift in Sources */,
 				D07BEA272455EF5500B4A053 /* SelectPaymentMethodView.swift in Sources */,
 				7347E10F2385948E00644970 /* Token.swift in Sources */,
 				D026F9EA2373027B00372EA0 /* HomeViewController.swift in Sources */,

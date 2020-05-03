@@ -44,7 +44,7 @@ final class PaymentViewController: PresentableViewController {
     
     let orderShippingView = OrderShippingView(viewModel: OrderShippingViewModel())
     
-    let orderConfirmationView = OrderConfirmationView(viewModel: OrderShippingViewModel())
+    let orderConfirmationView = OrderConfirmationView(viewModel: OrderConfirmationViewModel())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,6 +121,7 @@ final class PaymentViewController: PresentableViewController {
         selectPaymentMethodView.viewModel.selectedCard.subscribe(onNext: { [weak self] card in
             guard let strongSelf = self else { return }
             strongSelf.viewModel.setSelectedCard(card)
+            strongSelf.orderConfirmationView.viewModel.setSelectedCard(card)
         }).disposed(by: viewModel.bag)
     }
 }

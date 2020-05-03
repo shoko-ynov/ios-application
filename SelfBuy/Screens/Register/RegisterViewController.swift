@@ -67,8 +67,17 @@ class RegisterViewController: PresentableViewController {
             padding: .init(top: 50, left: 0, bottom: 0, right: 0)
         )
         
-        registerBtn.rx.tap.bind { _ in
-            self.viewModel.register()
+        registerBtn.rx.tap.bind { [weak self] _ in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.viewModel.register {
+                switch $0 {
+                case .success(_):
+                    strongSelf.dismiss(animated: true)
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }.disposed(by: self.viewModel.bag)
         
         emailTextField

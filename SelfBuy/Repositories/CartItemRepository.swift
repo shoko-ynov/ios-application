@@ -59,4 +59,11 @@ final class CartItemRepository {
         
         productsSubject.onNext(products)
     }
+    
+    func clearCart() {
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.productsSubject.onNext([])
+        }
+    }
 }

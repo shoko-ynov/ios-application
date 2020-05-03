@@ -52,7 +52,7 @@ final class OrderShippingView: UIView {
     var postalCodeTextField = StyledTextField(placeholder: "Code postal *")
     
     var cityTextField = StyledTextField(placeholder: "Ville *")
-    
+  
     private var validateShippingButton = SolidButton(text: "Accéder au paiement")
     
     init(viewModel: OrderShippingViewModelling) {

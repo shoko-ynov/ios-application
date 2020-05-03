@@ -85,7 +85,6 @@ extension SelectPaymentMethodView: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(viewModel.numberOfItems)
         return viewModel.numberOfItems
     }
     

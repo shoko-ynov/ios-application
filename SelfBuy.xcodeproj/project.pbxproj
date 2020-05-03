@@ -77,6 +77,7 @@
 		D0C03478244CADBB008ACAAC /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03477244CADBB008ACAAC /* AuthenticationManager.swift */; };
 		D0C0987524523A9C00239225 /* LinkCardDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C0987424523A9C00239225 /* LinkCardDTO.swift */; };
 		D0C098772452423F00239225 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C098762452423F00239225 /* CardRepository.swift */; };
+		D0C4DD75245F2F4400975BC8 /* SolidButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C4DD74245F2F4400975BC8 /* SolidButton.swift */; };
 		D0CE24A62393002E00C41ACD /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE24A52393002E00C41ACD /* ProductDetailViewController.swift */; };
 		D0CE24A92393005B00C41ACD /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CE24A82393005B00C41ACD /* ProductDetailViewModel.swift */; };
 		D0E396802452BB4D00D8E114 /* DeletableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3967F2452BB4D00D8E114 /* DeletableItemView.swift */; };
@@ -147,6 +148,7 @@
 		D0441D952455FE9C0027F9F8 /* PaymentBreadcrumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentBreadcrumbView.swift; sourceTree = "<group>"; };
 		D0441D972455FEDF0027F9F8 /* PaymentBreadcrumbViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentBreadcrumbViewModel.swift; sourceTree = "<group>"; };
 		D0441D992455FF8A0027F9F8 /* BreadcrumbStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadcrumbStepView.swift; sourceTree = "<group>"; };
+		D0470945244E2A540083E076 /* SolidButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidButton.swift; sourceTree = "<group>"; };
 		D051DD4F244A598200D6AC3C /* PaymentMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodViewController.swift; sourceTree = "<group>"; };
 		D0632E03241926550010A7D9 /* InfoLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoLine.swift; sourceTree = "<group>"; };
 		D0709B28239FB5E500055F20 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		D0C03477244CADBB008ACAAC /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		D0C0987424523A9C00239225 /* LinkCardDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCardDTO.swift; sourceTree = "<group>"; };
 		D0C098762452423F00239225 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
+		D0C4DD74245F2F4400975BC8 /* SolidButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidButton.swift; sourceTree = "<group>"; };
 		D0CE24A52393002E00C41ACD /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		D0CE24A82393005B00C41ACD /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 		D0E3967F2452BB4D00D8E114 /* DeletableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableItemView.swift; sourceTree = "<group>"; };
@@ -317,6 +320,7 @@
 				D026F9CC2372E41000372EA0 /* SelfBuy */,
 				D026F9CB2372E41000372EA0 /* Products */,
 				D043C0C12389526600B05967 /* Frameworks */,
+				D0C4DD6D245F2E9D00975BC8 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -615,6 +619,14 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		D0C4DD6D245F2E9D00975BC8 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				D0470945244E2A540083E076 /* SolidButton.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		D0CE24A42393000C00C41ACD /* ProductDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,6 +648,7 @@
 			isa = PBXGroup;
 			children = (
 				D0E3967F2452BB4D00D8E114 /* DeletableItemView.swift */,
+				D0C4DD74245F2F4400975BC8 /* SolidButton.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -802,6 +815,7 @@
 				D0941C3A238912F30052F598 /* CartCellView.swift in Sources */,
 				D0C098772452423F00239225 /* CardRepository.swift in Sources */,
 				B3C4D2F4242B93650083F47F /* AddCardViewModel.swift in Sources */,
+				D0C4DD75245F2F4400975BC8 /* SolidButton.swift in Sources */,
 				D097768B238AA8250080F701 /* UIImageViewExtensions.swift in Sources */,
 				B3C4D2FC242BA31C0083F47F /* ProductPayment.swift in Sources */,
 				E36F5193245792A5001E0C50 /* UserEditDTO.swift in Sources */,
@@ -857,7 +871,6 @@
 				D0709B29239FB5E500055F20 /* Request.swift in Sources */,
 				D0441D982455FEDF0027F9F8 /* PaymentBreadcrumbViewModel.swift in Sources */,
 				D01E86E6244DFB5B00C65C59 /* TabBarService.swift in Sources */,
-				D07BEA272455EF5500B4A053 /* SelectPaymentMethodView.swift in Sources */,
 				D07BEA272455EF5500B4A053 /* SelectPaymentMethodView.swift in Sources */,
 				7347E10F2385948E00644970 /* Token.swift in Sources */,
 				D026F9EA2373027B00372EA0 /* HomeViewController.swift in Sources */,

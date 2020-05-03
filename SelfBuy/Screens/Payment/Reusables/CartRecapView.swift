@@ -10,7 +10,7 @@ import UIKit
 
 final class CartRecapView: UIView {
     
-    let viewModel = CartViewModel()
+    let viewModel: CartRecapViewModelling
     
     public var itemCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -47,7 +47,8 @@ final class CartRecapView: UIView {
         return label
     }()
     
-    init() {
+    init(viewModel: CartRecapViewModelling) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
         setupView()
     }
@@ -67,7 +68,7 @@ final class CartRecapView: UIView {
             leading: leadingAnchor,
             bottom: nil,
             trailing: nil,
-            padding: .init(top: 10, left: 20, bottom: 0, right: 0)
+            padding: .init(top: 10, left: 20, bottom: 10, right: 0)
         )
         
         addSubview(totalPriceTitle)
@@ -94,23 +95,22 @@ final class CartRecapView: UIView {
         itemCollectionView.dataSource = self
         itemCollectionView.alwaysBounceVertical = true
         itemCollectionView.register(CartRecapCellView.self, forCellWithReuseIdentifier: CartRecapCellView.reuseIdentifier)
-        itemCollectionView.anchor(top: viewTitle.bottomAnchor, leading: leadingAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, trailing: trailingAnchor, padding: .init(top: 5, left: 0, bottom: 80, right: 0))
+        itemCollectionView.anchor(top: viewTitle.bottomAnchor, leading: leadingAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, trailing: trailingAnchor, padding: .init(top: 10, left: 0, bottom: 80, right: 0))
         
-        viewModel.cartItemPublishSubject
-            .subscribe(onNext: { [weak self] _ in
-                guard let strongSelf = self else { return }
-                strongSelf.itemCollectionView.reloadData()
-            })
-            .disposed(by: viewModel.bag)
+        viewModel.repository.productsSubject.subscribe(onNext: { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.itemCollectionView.reloadData()
+            strongSelf.totalPrice.text = "33 €"
+        }).disposed(by: viewModel.bag)
         
-        totalPrice.text = "33 €"
+
     }
 }
 
 extension CartRecapView: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.numberOfSection
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -120,7 +120,7 @@ extension CartRecapView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CartRecapCellView.reuseIdentifier, for: indexPath) as! CartRecapCellView
         
-        cell.configure(with: viewModel.getItem(index: indexPath))
+        cell.configure(cartItem: viewModel.repository.getProducts()[indexPath.row])
         
         return cell
     }
@@ -135,7 +135,7 @@ extension CartRecapView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.init(top: 25, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
     }
     
 }

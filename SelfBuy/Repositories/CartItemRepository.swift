@@ -67,6 +67,8 @@ final class CartItemRepository {
     }
     
     func getCartItem(product: Product) -> CartItem? {
+        let products = getProducts()
+        
         let indexOfProduct = products.firstIndex { (cartItem: CartItem) -> Bool in
             return cartItem.product._id == product._id
         }

@@ -108,11 +108,14 @@ final class CartRecapView: UIView {
         viewModel.repository.productsSubject.subscribe(onNext: { [weak self] _ in
             guard let strongSelf = self else { return }
             strongSelf.itemCollectionView.reloadData()
-            strongSelf.totalPrice.text = "33 €"
+            
+            strongSelf.totalPrice.text = "\(strongSelf.viewModel.getTotalPrice()) €"
         }).disposed(by: viewModel.bag)
         
 
     }
+    
+
 }
 
 extension CartRecapView: UICollectionViewDataSource {

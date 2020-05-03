@@ -52,6 +52,8 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
         label.textColor = .black
         label.text = "Quantité :"
         
+        label.setToBold(size: 20)
+        
         return label
     }()
     
@@ -59,6 +61,7 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
         let textField = UITextField()
         textField.keyboardType = .numberPad
         textField.placeholder = "1"
+        textField.font =  UIFont.systemFont(ofSize: 20)
         
         return textField
     }()
@@ -106,7 +109,7 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
         
         quantityLabel.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 120, bottom: 190, right: 0))
         
-        quantityInput.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 205, bottom: 188, right: 0))
+        quantityInput.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 225, bottom: 188, right: 0))
         
         addCartBtn.rx
             .tap
@@ -189,6 +192,9 @@ extension ProductDetailViewController: UIPickerViewDataSource, UIPickerViewDeleg
             
             if(quantity < 10){
                 quantityInput.inputView = nbPicker
+                nbPicker.selectRow(quantity - 1, inComponent:0, animated:true)
+            } else {
+                quantityInput.inputView = nil
             }
             
             return true

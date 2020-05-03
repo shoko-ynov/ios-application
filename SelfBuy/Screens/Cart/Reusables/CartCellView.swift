@@ -41,13 +41,17 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
         label.textColor = .black
         label.text = "Quantité :"
         
+        label.setToBold(size: 20)
+        
         return label
     }()
     
     private var quantityInput: UITextField = {
         let textField = UITextField()
         textField.keyboardType = .numberPad
+        textField.layer.borderWidth = 1
         textField.placeholder = "1"
+        textField.font = UIFont.systemFont(ofSize: 20)
         
         return textField
     }()
@@ -79,7 +83,6 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
         
         addSubview(deletableView)
         
-        deletableView.container.addSubview(quantityLabel)
         deletableView.container.addSubview(itemNameLabel)
         deletableView.container.addSubview(priceLabel)
         deletableView.container.addSubview(productFirstImage)
@@ -119,20 +122,12 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
             padding: .init(top: 10, left: 0, bottom: 0, right: 20)
         )
         
-        quantityLabel.anchor(
-            top: deletableView.container.topAnchor,
-            leading: productFirstImage.trailingAnchor,
-            bottom: nil,
-            trailing: deletableView.container.trailingAnchor,
-            padding: UIEdgeInsets(top: 110, left: 10, bottom: 0, right: 20)
-        )
-        
         quantityInput.anchor(
             top: deletableView.container.topAnchor,
-            leading: productFirstImage.trailingAnchor,
+            leading: nil,
             bottom: nil,
             trailing: deletableView.container.trailingAnchor,
-            padding: UIEdgeInsets(top: 110, left: 95, bottom: 0, right: 20)
+            padding: UIEdgeInsets(top: 110, left: 0, bottom: 0, right: 20)
         )
     }
     
@@ -147,6 +142,13 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
         
         quantity = setupModel.cartItem.quantity
         quantityInput.text = String(quantity)
+        
+        if(quantity < 10){
+            quantityInput.inputView = nbPicker
+            nbPicker.selectRow(quantity - 1, inComponent:0, animated:true)
+        } else {
+            quantityInput.inputView = nil
+        }
         
         itemNameLabel.text = setupModel.cartItem.product.name
         priceLabel.text = "\(price) €"
@@ -201,6 +203,8 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
             
             if(quantity < 10){
                 quantityInput.inputView = nbPicker
+            } else {
+                quantityInput.inputView = nil
             }
             
             return true
@@ -223,6 +227,8 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
         toolBar.setItems([button], animated: true)
         toolBar.isUserInteractionEnabled = true
         quantityInput.inputAccessoryView = toolBar
+        
+        nbPicker.selectRow(quantity - 1, inComponent:0, animated:true)
     }
     
     @objc func validateQuantity() {

@@ -67,6 +67,8 @@ final class CartViewController: UIViewController {
         checkoutBtn.rx.tap.bind { [weak self] _ in
             guard let strongSelf = self else { return }
             
+            //if strongSelf.viewModel.cartItemPublishSubject
+            
             if UserRepository.shared.getUser() != nil {
                 let paymentVc = PaymentViewController(viewModel: PaymentViewModel())
                 strongSelf.present(paymentVc, animated: true)
@@ -85,17 +87,15 @@ final class CartViewController: UIViewController {
             
         }.disposed(by: viewModel.bag)
         
-        viewModel.cartItemPublishSubject
-            .subscribe(onNext: { [weak self] _ in
-                guard let strongSelf = self else { return }
-                strongSelf.itemCollectionView.reloadData()
-            })
-            .disposed(by: viewModel.bag)
+        viewModel.repository.productsSubject.subscribe(onNext: { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.itemCollectionView.reloadData()
+        }).disposed(by: viewModel.bag)
     }
     
 }
 
-extension CartViewController: UICollectionViewDataSource {
+extension CartViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.numberOfSection
@@ -112,10 +112,6 @@ extension CartViewController: UICollectionViewDataSource {
         
         return cell
     }
-    
-}
-
-extension CartViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = itemCollectionView.frame.width

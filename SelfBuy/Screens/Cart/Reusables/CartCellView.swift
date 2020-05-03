@@ -14,7 +14,7 @@ class CartCellView: UICollectionViewCell, ReusableView {
     private let itemNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.setToBold(size: 16)
+        label.setToBold(size: 20)
         label.numberOfLines = 3
         
         return label
@@ -35,11 +35,23 @@ class CartCellView: UICollectionViewCell, ReusableView {
         return image
     }()
     
+    private var quantityLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .darkGray
+        label.setToMedium(size: 15)
+        
+        return label
+    }()
+    
+    var quantity: Int
+    
     private let deletableView = DeletableItemView()
     
     private var viewModel: CartCellViewModelling?
     
     override init(frame: CGRect) {
+        self.quantity = 0
+        
         super.init(frame: frame)
         
         addSubview(deletableView)
@@ -47,6 +59,7 @@ class CartCellView: UICollectionViewCell, ReusableView {
         deletableView.container.addSubview(itemNameLabel)
         deletableView.container.addSubview(priceLabel)
         deletableView.container.addSubview(productFirstImage)
+        deletableView.container.addSubview(quantityLabel)
         
         deletableView.anchor(
             top: contentView.topAnchor,
@@ -79,6 +92,14 @@ class CartCellView: UICollectionViewCell, ReusableView {
             trailing: deletableView.container.trailingAnchor,
             padding: .init(top: 10, left: 0, bottom: 0, right: 20)
         )
+        
+        quantityLabel.anchor(
+            top: itemNameLabel.bottomAnchor,
+            leading: productFirstImage.trailingAnchor,
+            bottom: nil,
+            trailing: deletableView.container.trailingAnchor,
+            padding: .init(top: 10, left: 10, bottom: 0, right: 190)
+        )
     }
     
     required init?(coder: NSCoder) {
@@ -88,10 +109,11 @@ class CartCellView: UICollectionViewCell, ReusableView {
     func configure(with setupModel: CartCellViewModelling) {
         viewModel = setupModel
                 
-        let price = setupModel.cartItem.product.price * Float(setupModel.cartItem.quantity)
+        let price = String(format: "%.2f", setupModel.cartItem.product.price * Float(setupModel.cartItem.quantity))
         
         itemNameLabel.text = setupModel.cartItem.product.name
         priceLabel.text = "\(price) €"
+        quantityLabel.text = "x\(setupModel.cartItem.quantity)"
         
         if (setupModel.cartItem.product.images.count > 0) {
             let url = URL(string: setupModel.cartItem.product.images.first!)
@@ -106,5 +128,4 @@ class CartCellView: UICollectionViewCell, ReusableView {
             viewModel.deleteProductFromCart()
         }
     }
-    
 }

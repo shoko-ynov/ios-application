@@ -27,16 +27,7 @@ class AddCardViewController: PresentableViewController {
         return nameTextField
     }()
     
-    private let saveButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.layer.cornerRadius = 5
-        button.backgroundColor = .systemBlue
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 22)
-        button.setTitle("Ajouter", for: .normal)
-        button.addTarget(self, action: #selector(save), for: .touchUpInside)
-        
-        return button
-    }()
+    private let saveButton = SolidButton(text: "Ajouter")
     
     private let mandateLabel: UILabel = {
         let mandateLabel = UILabel()
@@ -69,11 +60,13 @@ class AddCardViewController: PresentableViewController {
         view.addGestureRecognizer(tap)
         
         view.backgroundColor = .white
-        let stackView = UIStackView(arrangedSubviews: [nameTextField, cardTextField, mandateLabel, saveButton])
+        let stackView = UIStackView(arrangedSubviews: [nameTextField, cardTextField, mandateLabel])
         stackView.axis = .vertical
         stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(stackView)
+        view.addSubview(saveButton)
         
         stackView.anchor(
             top: nil,
@@ -83,6 +76,18 @@ class AddCardViewController: PresentableViewController {
             padding: .init(top: 15, left: 15, bottom: 15, right: 15)
         )
         stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        saveButton.anchor(
+            top: stackView.bottomAnchor,
+            bottom: nil,
+            centerAnchor: view.centerXAnchor,
+            padding: .init(top: 25, left: 0, bottom: 0, right: 0)
+        )
+        
+        saveButton.rx.tap.bind { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.save()
+        }.disposed(by: bag)
         
         nameTextField
             .rx
@@ -95,7 +100,6 @@ class AddCardViewController: PresentableViewController {
         // Do any additional setup after loading the view.
     }
     
-    @objc
     func save() {
         let cardParams = cardTextField.cardParams
         

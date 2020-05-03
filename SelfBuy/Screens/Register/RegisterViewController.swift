@@ -10,7 +10,7 @@ import UIKit
 
 class RegisterViewController: PresentableViewController {
     private var emailTextField: UITextField = {
-        let email = UITextField(frame: CGRect(x: -10, y: 335,width:250 ,height: 50))
+        let email = UITextField()
         email.placeholder = " Email"
         email.backgroundColor = .white
         email.layer.cornerRadius = 15
@@ -21,17 +21,7 @@ class RegisterViewController: PresentableViewController {
         return email
     }()
     
-    private var registerBtn: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 410, width: 250, height:50))
-        button.backgroundColor = .primary
-        button.layer.cornerRadius = 25
-        button.contentHorizontalAlignment = .left
-        button.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 0.0)
-        button.setTitle("S'inscrire", for: .normal)
-        button.titleLabel?.textAlignment = .center
-        
-        return button
-    }()
+    private var registerBtn = SolidButton(text: "S'inscrire")
     
     private var backgroundImg: UIImageView = {
         let image = UIImage(named: "RegisterBackgroundImage")
@@ -54,15 +44,28 @@ class RegisterViewController: PresentableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailTextField.center.x = self.view.center.x
-        registerBtn.center.x = self.view.center.x
-        
         self.backgroundImg.frame = CGRect(x: self.view.frame.size.width - 290, y: self.view.frame.size.height - 170, width: 250, height:135)
         
         self.view.backgroundColor = .lightGray
         self.view.addSubview(self.emailTextField)
         self.view.addSubview(self.registerBtn)
         self.view.addSubview(self.backgroundImg)
+        
+        emailTextField.anchor(
+            top: nil,
+            leading: view.leadingAnchor,
+            bottom: view.centerYAnchor,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 0, left: 25, bottom: 0, right: 25),
+            size: .init(width: 0, height: 50)
+        )
+        
+        registerBtn.anchor(
+            top: emailTextField.bottomAnchor,
+            bottom: nil,
+            centerAnchor: view.centerXAnchor,
+            padding: .init(top: 50, left: 0, bottom: 0, right: 0)
+        )
         
         registerBtn.rx.tap.bind { _ in
             self.viewModel.register()

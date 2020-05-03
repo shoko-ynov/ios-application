@@ -22,7 +22,7 @@ extension UIView {
         self.layer.cornerRadius = 8
     }
     
-    func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
+    @objc func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
         translatesAutoresizingMaskIntoConstraints = false
         
         if let top = top {
@@ -48,6 +48,12 @@ extension UIView {
         if size.height != 0 {
             heightAnchor.constraint(equalToConstant: size.height).isActive = true
         }
+    }
+    
+    @objc func anchor(top: NSLayoutYAxisAnchor?, bottom: NSLayoutYAxisAnchor?, centerAnchor: NSLayoutXAxisAnchor, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
+        anchor(top: top, leading: nil, bottom: bottom, trailing: nil, padding: padding, size: size)
+        
+        centerXAnchor.constraint(equalTo: centerAnchor).isActive = true
     }
 }
 

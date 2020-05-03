@@ -146,7 +146,7 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
     func configure(with setupModel: CartCellViewModelling) {
         viewModel = setupModel
                 
-        let price = setupModel.cartItem.product.price * Float(setupModel.cartItem.quantity)
+        let price = String(format: "%.2f", setupModel.cartItem.product.price * Float(setupModel.cartItem.quantity))
         
         quantity = setupModel.cartItem.quantity
         quantityInput.text = String(quantity)
@@ -241,7 +241,10 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
     
     @objc func validateQuantity() {
         endEditing(true)
-        priceLabel.text = String(viewModel!.cartItem.product.price * Float(quantity))
+        
+        let price = String(format: "%.2f", viewModel!.cartItem.product.price * Float(quantity))
+        priceLabel.text = "\(price) €"
+        
         CartItemRepository.shared.modifyQuantityForProduct(product: viewModel!.cartItem.product, quantity: quantity)
     }
 }

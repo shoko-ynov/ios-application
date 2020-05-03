@@ -66,6 +66,18 @@ final class CartItemRepository {
         productsSubject.onNext(products)
     }
     
+    func getCartItem(product: Product) -> CartItem? {
+        let indexOfProduct = products.firstIndex { (cartItem: CartItem) -> Bool in
+            return cartItem.product._id == product._id
+        }
+        
+        guard let index = indexOfProduct else {
+            return nil
+        }
+        
+        return products[index]
+    }
+    
     func modifyQuantityForProduct(product: Product, quantity: Int) {
         var products = getProducts()
         

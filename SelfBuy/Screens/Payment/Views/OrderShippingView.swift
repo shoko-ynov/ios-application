@@ -258,9 +258,7 @@ final class OrderShippingView: UIView {
             .disposed(by: viewModel.bag)
         
         cityTextField.text = viewModel.getBehaviorSubjectValue(viewModel.city)
-        
     }
-    
     
     @objc func dismissKeyboard() {
         endEditing(true)

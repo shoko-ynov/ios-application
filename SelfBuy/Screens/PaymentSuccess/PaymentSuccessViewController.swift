@@ -25,6 +25,12 @@ class PaymentSuccessViewController: PresentableViewController {
             trailing: view.trailingAnchor,
             padding: .init(top: 15, left: 0, bottom: 0, right: 0)
         )
+        
+        succesView.onClose = {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true)
+            }
+        }
     }
 
 }

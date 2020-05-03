@@ -79,6 +79,12 @@ final class PaymentViewController: PresentableViewController {
             strongSelf.breadcrumb.viewModel.index.onNext(indexPath)
         }
         
+        paymentSuccessView.onClose = {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true)
+            }
+        }
+        
         collectionViewScreens = [
             orderShippingView,
             selectPaymentMethodView,

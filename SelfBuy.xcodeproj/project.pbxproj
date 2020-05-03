@@ -220,7 +220,7 @@
 		E3880D64245C7B1D009A12FA /* OrderShippingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderShippingView.swift; sourceTree = "<group>"; };
 		E3880D66245C7BE1009A12FA /* OrderShippingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderShippingViewModel.swift; sourceTree = "<group>"; };
 		E3880D68245C927C009A12FA /* UserOrderShippingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOrderShippingDTO.swift; sourceTree = "<group>"; };
-		E3880D6A245C9982009A12FA /* OrderConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationView.swift; sourceTree = "<group>"; };
+		E3880D6A245C9982009A12FA /* OrderConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderConfirmationView.swift; path = SelfBuy/Screens/Payment/Views/OrderConfirmationView.swift; sourceTree = SOURCE_ROOT; };
 		E3945F45239290AC007ED444 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -524,9 +524,9 @@
 		D0703333245F6BDD00402E5F /* OrderConfirmation */ = {
 			isa = PBXGroup;
 			children = (
-				E3880D6A245C9982009A12FA /* OrderConfirmationView.swift */,
 				E321773E245DADFE00D637A3 /* CartRecapView.swift */,
 				E3217740245DAE1100D637A3 /* ShippingRecapView.swift */,
+				E3880D6A245C9982009A12FA /* OrderConfirmationView.swift */,
 			);
 			path = OrderConfirmation;
 			sourceTree = "<group>";
@@ -578,7 +578,6 @@
 				D0703333245F6BDD00402E5F /* OrderConfirmation */,
 				E3880D64245C7B1D009A12FA /* OrderShippingView.swift */,
 				D07BEA262455EF5500B4A053 /* SelectPaymentMethodView.swift */,
-				E3880D6A245C9982009A12FA /* OrderConfirmationView.swift */,
 				D0C4DD6B245EE46300975BC8 /* PaymentSuccessView.swift */,
 			);
 			path = Views;
@@ -860,7 +859,6 @@
 				8E1C3CB323856B1E005847A0 /* CartViewModel.swift in Sources */,
 				D0736013237494E600CD6B72 /* HomeViewModel.swift in Sources */,
 				E3880D6B245C9982009A12FA /* OrderConfirmationView.swift in Sources */,
-				D07360182374A9E700CD6B72 /* UIViewController.swift in Sources */,
 				73872A1A23AA7C59007530CB /* RegisterDTO.swift in Sources */,
 				D0C03478244CADBB008ACAAC /* AuthenticationManager.swift in Sources */,
 				D0A54DB5245C5B88007A1079 /* SelectPaymentMethodViewModel.swift in Sources */,

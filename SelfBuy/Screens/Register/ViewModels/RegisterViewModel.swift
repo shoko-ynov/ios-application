@@ -18,18 +18,9 @@ class RegisterViewModel
     
     let mailTextInput = BehaviorRelay<String>(value: "")
     
-    func register() {
+    func register(completionHandler: @escaping (Result<NSNull, Error>) -> Void) {
         let userRegister = RegisterDTO(mail: mailTextInput.value)
         
-        service.register(mail: userRegister, completionHandler: { result in
-            switch result {
-            case .success(_):
-                print("success")
-            case .failure(let error as NSError):
-                print(error)
-            default:
-                print("default")
-            }
-        })
+        service.register(mail: userRegister, completionHandler: completionHandler)
     }
 }

@@ -11,11 +11,11 @@ import RxSwift
 
 final class OrderConfirmationView: UIView {
     
-    var viewModel: OrderShippingViewModelling
+//    var viewModel: OrderShippingViewModelling
     
     var swipeToNextPage = {}
     
-    let cartRecapView = CartRecapView()
+    let cartRecapView = CartRecapView(viewModel: CartRecapViewModel())
     let ordersRecapView = ShippingRecapView()
     
     let shippingAddressTitle: UILabel = {
@@ -47,7 +47,7 @@ final class OrderConfirmationView: UIView {
     }()
     
     init(viewModel: OrderShippingViewModelling) {
-        self.viewModel = viewModel
+//        self.viewModel = viewModel
         super.init(frame: .zero)
         setupView()
     }
@@ -72,7 +72,8 @@ final class OrderConfirmationView: UIView {
             top: shippingAddressTitle.bottomAnchor,
             leading: leadingAnchor,
             bottom: bottomAnchor,
-            trailing: trailingAnchor
+            trailing: trailingAnchor,
+            padding: .init(top: 10, left: 0, bottom: 0, right: 0)
         )
         
         scrollView.contentSize = CGSize(width: 0, height: 700)
@@ -88,7 +89,7 @@ final class OrderConfirmationView: UIView {
             leading: leadingAnchor,
             bottom: nil,
             trailing: trailingAnchor,
-            padding: .init(top: 20, left: 20, bottom: 0, right: 20)
+            padding: .init(top: 0, left: 20, bottom: 0, right: 20)
         )
         
         ordersRecapView.anchor(
@@ -104,7 +105,7 @@ final class OrderConfirmationView: UIView {
             leading: nil,
             bottom: nil,
             trailing: nil,
-            padding: .init(top: 30, left: 0, bottom: 0, right: 0)
+            padding: .init(top: 20, left: 0, bottom: 0, right: 0)
         )
         
         

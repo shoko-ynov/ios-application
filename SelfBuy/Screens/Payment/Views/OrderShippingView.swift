@@ -112,17 +112,8 @@ final class OrderShippingView: UIView {
         input.textColor = .black
         return input
     }()
-    
-    private var validateShippingButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .primary
-        button.layer.cornerRadius = 25
-        button.layer.borderWidth = 0
-        button.setTitle("Accéder au paiement", for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 15,left: 20,bottom: 15,right: 20)
-        
-        return button
-    }()
+
+    private var validateShippingButton = SolidButton(text: "Accéder au paiement")
     
     init(viewModel: OrderShippingViewModelling) {
         self.viewModel = viewModel
@@ -253,9 +244,8 @@ final class OrderShippingView: UIView {
         scrollView.addSubview(validateShippingButton)
         validateShippingButton.anchor(
             top: shippingMethodSC.bottomAnchor,
-            leading: nil,
             bottom: scrollView.bottomAnchor,
-            trailing: nil,
+            centerAnchor: scrollView.centerXAnchor,
             padding: .init(top: 30, left: 0, bottom: 30, right: 0)
         )
         

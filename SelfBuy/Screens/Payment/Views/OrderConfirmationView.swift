@@ -32,16 +32,7 @@ final class OrderConfirmationView: UIView {
     }()
     
     
-    private var validateShippingButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .primary
-        button.layer.cornerRadius = 30
-        button.layer.borderWidth = 0
-        button.setTitle("Confirmer la commande", for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 20,left: 20,bottom: 20,right: 20)
-        
-        return button
-    }()
+    private var validateShippingButton = SolidButton(text: "Confirmer la commande")
     
     init(viewModel: OrderConfirmationViewModelling) {
         self.viewModel = viewModel
@@ -75,23 +66,16 @@ final class OrderConfirmationView: UIView {
         scrollView.alwaysBounceVertical = true
         scrollView.contentInset = UIEdgeInsets.zero
         
-    
-        
         scrollView.addSubview(validateShippingButton)
         validateShippingButton.anchor(
             top: shippingAddressTitle.bottomAnchor,
-            leading: nil,
             bottom: scrollView.bottomAnchor,
-            trailing: nil,
+            centerAnchor: scrollView.centerXAnchor,
             padding: .init(top: 30, left: 0, bottom: 30, right: 0)
         )
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         addGestureRecognizer(tap)
-        
-        NSLayoutConstraint.activate([
-            validateShippingButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-        ])
         
         validateShippingButton.rx.tap.bind { [weak self] _ in
             guard let strongSelf = self else { return }

@@ -47,6 +47,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController?.present(activationVC, animated: true)
             window?.makeKeyAndVisible()
         }
+        
+        if url.path == "/payment/stripe/return" {
+            guard let paymentIntentId = url.valueOf("payment_intent"), let clientSecret = url.valueOf("payment_intent_client_secret") else { return }
+            
+            let service = PaymentApiService()
+            
+            window?.rootViewController = TabBarService.shared.tabBarController
+            window?.makeKeyAndVisible()
+            
+            service.getStripePayementIntent(StripePaymentParams(paymentIntentId: paymentIntentId, clientSecret: clientSecret)) {
+                switch $0 {
+                case .success(let paymentIntent):
+                    switch paymentIntent.status {
+                    case .succeeded:
+                        //let payementSucceededVC =
+                        //window?.rootViewController?.present(payementSucceededVC, animated: true)
+                        print("success")
+                    case .requires_payment_method, .requires_action:
+                        //let payementErrorVC =
+                        //window?.rootViewController?.present(payementErrorVC, animated: true)
+                        print("fail")
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

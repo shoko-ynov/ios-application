@@ -46,6 +46,14 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
         return label
     }()
     
+    private var quantityInCartLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 14)
+        
+        return label
+    }()
+    
     private var quantityInput: UITextField = {
         let textField = UITextField()
         
@@ -108,6 +116,9 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
         
         quantityInput.rightView = paddingView
         quantityInput.rightViewMode = UITextField.ViewMode.always
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.action))
+        self.view.addGestureRecognizer(tapGesture)
         
         addCartBtn.rx
             .tap
@@ -221,6 +232,7 @@ extension ProductDetailViewController: UIPickerViewDataSource, UIPickerViewDeleg
     }
     
     @objc func action() {
-       view.endEditing(true)
+        view.endEditing(true)
+        quantityInput.resignFirstResponder()
     }
 }

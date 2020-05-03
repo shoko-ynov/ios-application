@@ -148,6 +148,9 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
         
         quantityInput.rightView = paddingView
         quantityInput.rightViewMode = UITextField.ViewMode.always
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.validateQuantity))
+        self.addGestureRecognizer(tapGesture)
     }
     
     required init?(coder: NSCoder) {
@@ -256,6 +259,7 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
     
     @objc func validateQuantity() {
         endEditing(true)
+        quantityInput.resignFirstResponder()
         
         let price = String(format: "%.2f", viewModel!.cartItem.product.price * Float(quantity))
         priceLabel.text = "\(price) €"

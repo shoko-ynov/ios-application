@@ -57,7 +57,6 @@
 		D0719DD023847DC10046EC0B /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719DCF23847DC10046EC0B /* UIColorExtensions.swift */; };
 		D0736013237494E600CD6B72 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0736012237494E600CD6B72 /* HomeViewModel.swift */; };
 		D07360162374A46300CD6B72 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360152374A46300CD6B72 /* TabBarViewController.swift */; };
-		D07360182374A9E700CD6B72 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360172374A9E700CD6B72 /* UIViewController.swift */; };
 		D073601A2374AA1500CD6B72 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360192374AA1500CD6B72 /* ReusableView.swift */; };
 		D07BEA1A2455E5B600B4A053 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07BEA192455E5B600B4A053 /* PaymentViewController.swift */; };
 		D07BEA1D2455E62500B4A053 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07BEA1C2455E62500B4A053 /* PaymentViewModel.swift */; };
@@ -155,7 +154,6 @@
 		D0719DCF23847DC10046EC0B /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		D0736012237494E600CD6B72 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D07360152374A46300CD6B72 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		D07360172374A9E700CD6B72 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		D07360192374AA1500CD6B72 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		D07BEA192455E5B600B4A053 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		D07BEA1C2455E62500B4A053 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
@@ -358,7 +356,6 @@
 		D026F9E22372E52B00372EA0 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				D07360172374A9E700CD6B72 /* UIViewController.swift */,
 				D07360192374AA1500CD6B72 /* ReusableView.swift */,
 			);
 			path = Protocols;
@@ -794,7 +791,6 @@
 				D0632E04241926550010A7D9 /* InfoLine.swift in Sources */,
 				8E1C3CB323856B1E005847A0 /* CartViewModel.swift in Sources */,
 				D0736013237494E600CD6B72 /* HomeViewModel.swift in Sources */,
-				D07360182374A9E700CD6B72 /* UIViewController.swift in Sources */,
 				73872A1A23AA7C59007530CB /* RegisterDTO.swift in Sources */,
 				D0C03478244CADBB008ACAAC /* AuthenticationManager.swift in Sources */,
 				D0A54DB5245C5B88007A1079 /* SelectPaymentMethodViewModel.swift in Sources */,

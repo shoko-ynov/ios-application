@@ -58,4 +58,13 @@ final class PaymentApiService {
             .setBody(body)
             .sendWithDecode(StripePaymentParams.self, completion: completion)
     }
+    
+    func getStripePayementIntent(_ payment: StripePaymentParams, completion: @escaping (Result<StripePaymentIntent, Error>) -> Void) {
+        let params = "client_secret=\(payment.clientSecret)"
+        
+        return StripeRequest(url: "https://api.stripe.com/v1/payment_intents/\(payment.paymentIntentId)?\(params)")
+            .setMethod(.GET)
+            .send(StripePaymentIntent.self, completion: completion)
+    }
+    
 }

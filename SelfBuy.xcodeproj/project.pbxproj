@@ -41,6 +41,7 @@
 		D026F9D72372E41200372EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D026F9D62372E41200372EA0 /* Assets.xcassets */; };
 		D026F9DA2372E41200372EA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D026F9D82372E41200372EA0 /* LaunchScreen.storyboard */; };
 		D026F9EA2373027B00372EA0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D026F9E92373027B00372EA0 /* HomeViewController.swift */; };
+		D03E4F84245EBD0F003351FD /* StripePaymentIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03E4F83245EBD0F003351FD /* StripePaymentIntent.swift */; };
 		D043C0B523894A9E00B05967 /* ProductCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043C0B423894A9E00B05967 /* ProductCellView.swift */; };
 		D043C0B723894BC100B05967 /* ProductCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043C0B623894BC100B05967 /* ProductCellViewModel.swift */; };
 		D043C0BB23894D0F00B05967 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = D043C0BA23894D0F00B05967 /* Cartfile */; };
@@ -142,6 +143,7 @@
 		D026F9D92372E41200372EA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D026F9DB2372E41200372EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D026F9E92373027B00372EA0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D03E4F83245EBD0F003351FD /* StripePaymentIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentIntent.swift; sourceTree = "<group>"; };
 		D043C0B423894A9E00B05967 /* ProductCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellView.swift; sourceTree = "<group>"; };
 		D043C0B623894BC100B05967 /* ProductCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellViewModel.swift; sourceTree = "<group>"; };
 		D043C0BA23894D0F00B05967 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				B3C4D2FB242BA31C0083F47F /* ProductPayment.swift */,
 				B3C4D301242BA7720083F47F /* StripeCard.swift */,
 				D0A54DB8245CB610007A1079 /* StripePaymentParams.swift */,
+				D03E4F83245EBD0F003351FD /* StripePaymentIntent.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -869,6 +872,7 @@
 				D07BEA1A2455E5B600B4A053 /* PaymentViewController.swift in Sources */,
 				D01E3FD2244D2B600091931B /* UserActivationViewController.swift in Sources */,
 				7347E1112385954C00644970 /* User.swift in Sources */,
+				D03E4F84245EBD0F003351FD /* StripePaymentIntent.swift in Sources */,
 				D0E5751C244B06B300B7B26A /* CartItemDTO.swift in Sources */,
 				D0709B29239FB5E500055F20 /* Request.swift in Sources */,
 				D0441D982455FEDF0027F9F8 /* PaymentBreadcrumbViewModel.swift in Sources */,

@@ -129,4 +129,13 @@ extension CartViewController: UICollectionViewDataSource, UICollectionViewDelega
         return UIEdgeInsets.init(top: 25, left: 0, bottom: 0, right: 0)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cartItem = viewModel.repository.getProducts()[indexPath.row]
+        let productDetailVC = ProductDetailViewController(viewModel: ProductDetailViewModel(product: cartItem.product))
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.present(productDetailVC, animated: true)
+        }
+    }
 }

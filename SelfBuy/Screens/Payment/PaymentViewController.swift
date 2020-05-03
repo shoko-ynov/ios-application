@@ -43,9 +43,7 @@ final class PaymentViewController: PresentableViewController {
     let selectPaymentMethodView = SelectPaymentMethodView(viewModel: SelectPaymentMethodViewModel())
     
     let orderShippingView = OrderShippingView(viewModel: OrderShippingViewModel())
-    
     let orderConfirmationView = OrderConfirmationView(viewModel: OrderConfirmationViewModel())
-    
     let paymentSuccessView = PaymentSuccessView()
     
     override func viewDidLoad() {

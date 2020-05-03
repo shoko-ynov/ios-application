@@ -19,13 +19,7 @@ class AddCardViewController: PresentableViewController {
         return cardTextField
     }()
     
-    private let nameTextField: UITextField = {
-        let nameTextField = UITextField()
-        nameTextField.placeholder = "Titulaire de la carte"
-        nameTextField.borderStyle = .roundedRect
-        
-        return nameTextField
-    }()
+    private let nameTextField = StyledTextField(placeholder: "Titulaire de la carte")
     
     private let saveButton = SolidButton(text: "Ajouter")
     
@@ -64,6 +58,8 @@ class AddCardViewController: PresentableViewController {
         stackView.axis = .vertical
         stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        cardTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         view.addSubview(stackView)
         view.addSubview(saveButton)

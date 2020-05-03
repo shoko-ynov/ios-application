@@ -9,17 +9,7 @@
 import UIKit
 
 class RegisterViewController: PresentableViewController {
-    private var emailTextField: UITextField = {
-        let email = UITextField()
-        email.placeholder = " Email"
-        email.backgroundColor = .white
-        email.layer.cornerRadius = 15
-        email.borderStyle = UITextField.BorderStyle.roundedRect
-        email.tintColor = .black
-        email.textColor = .black
-        
-        return email
-    }()
+    private var emailTextField = StyledTextField(placeholder: "Email", keyboardType: .emailAddress)
     
     private var registerBtn = SolidButton(text: "S'inscrire")
     
@@ -31,6 +21,7 @@ class RegisterViewController: PresentableViewController {
     }()
     
     let viewModel: RegisterViewModel
+    
     init(viewModel: RegisterViewModel) {
         self.viewModel = viewModel
         
@@ -67,8 +58,17 @@ class RegisterViewController: PresentableViewController {
             padding: .init(top: 50, left: 0, bottom: 0, right: 0)
         )
         
-        registerBtn.rx.tap.bind { _ in
-            self.viewModel.register()
+        registerBtn.rx.tap.bind { [weak self] _ in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.viewModel.register {
+                switch $0 {
+                case .success(_):
+                    strongSelf.dismiss(animated: true)
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }.disposed(by: self.viewModel.bag)
         
         emailTextField

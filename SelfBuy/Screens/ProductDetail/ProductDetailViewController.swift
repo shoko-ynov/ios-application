@@ -187,6 +187,10 @@ extension ProductDetailViewController: UIPickerViewDataSource, UIPickerViewDeleg
             // Text field converted to an Int
             quantity = Int(text)!
             
+            if(quantity > 999){
+                return false
+            }
+            
             if(quantity < 10){
                 quantityInput.inputView = nbPicker
                 nbPicker.selectRow(quantity - 1, inComponent:0, animated:true)

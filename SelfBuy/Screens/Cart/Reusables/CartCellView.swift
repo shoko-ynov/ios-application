@@ -220,6 +220,10 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
             // Text field converted to an Int
             quantity = Int(text)!
             
+            if(quantity > 999){
+                return false
+            }
+            
             if(quantity < 10){
                 quantityInput.inputView = nbPicker
             } else {

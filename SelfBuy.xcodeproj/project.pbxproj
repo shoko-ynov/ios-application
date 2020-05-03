@@ -73,6 +73,8 @@
 		D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0941C3C238942EE0052F598 /* UIViewControllerExtenstion.swift */; };
 		D097768B238AA8250080F701 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D097768A238AA8250080F701 /* UIImageViewExtensions.swift */; };
 		D0A54DB5245C5B88007A1079 /* SelectPaymentMethodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A54DB4245C5B88007A1079 /* SelectPaymentMethodViewModel.swift */; };
+		D0A54DB7245CAFB0007A1079 /* PayDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A54DB6245CAFB0007A1079 /* PayDTO.swift */; };
+		D0A54DB9245CB610007A1079 /* StripePaymentParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A54DB8245CB610007A1079 /* StripePaymentParams.swift */; };
 		D0B11B8B2385C3F000C74CEA /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B11B8A2385C3F000C74CEA /* CartViewController.swift */; };
 		D0C03476244C9C93008ACAAC /* PresentableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03475244C9C93008ACAAC /* PresentableViewController.swift */; };
 		D0C03478244CADBB008ACAAC /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03477244CADBB008ACAAC /* AuthenticationManager.swift */; };
@@ -172,6 +174,8 @@
 		D0941C3C238942EE0052F598 /* UIViewControllerExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtenstion.swift; sourceTree = "<group>"; };
 		D097768A238AA8250080F701 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		D0A54DB4245C5B88007A1079 /* SelectPaymentMethodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPaymentMethodViewModel.swift; sourceTree = "<group>"; };
+		D0A54DB6245CAFB0007A1079 /* PayDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayDTO.swift; sourceTree = "<group>"; };
+		D0A54DB8245CB610007A1079 /* StripePaymentParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentParams.swift; sourceTree = "<group>"; };
 		D0B11B8A2385C3F000C74CEA /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D0C03475244C9C93008ACAAC /* PresentableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableViewController.swift; sourceTree = "<group>"; };
 		D0C03477244CADBB008ACAAC /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -276,6 +280,7 @@
 				B376F52A23F4357C00FD8F3A /* ApiError.swift */,
 				B3C4D2FB242BA31C0083F47F /* ProductPayment.swift */,
 				B3C4D301242BA7720083F47F /* StripeCard.swift */,
+				D0A54DB8245CB610007A1079 /* StripePaymentParams.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 				E36F5192245792A5001E0C50 /* UserEditDTO.swift */,
 				D0C0987424523A9C00239225 /* LinkCardDTO.swift */,
 				E3880D68245C927C009A12FA /* UserOrderShippingDTO.swift */,
+				D0A54DB6245CAFB0007A1079 /* PayDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -817,6 +823,7 @@
 				D026F9CE2372E41000372EA0 /* AppDelegate.swift in Sources */,
 				7366555D2385431C0062A358 /* LoginViewController.swift in Sources */,
 				B3C4D2F6242B98C90083F47F /* PaymentApiService.swift in Sources */,
+				D0A54DB9245CB610007A1079 /* StripePaymentParams.swift in Sources */,
 				D0941C3D238942EE0052F598 /* UIViewControllerExtenstion.swift in Sources */,
 				D08681D3239FF91900F65961 /* UserDTO.swift in Sources */,
 				D01E3FD5244D2B720091931B /* UserActivationViewModel.swift in Sources */,
@@ -830,6 +837,7 @@
 				D07E38B2245641B600F7E8FF /* AccountViewModel.swift in Sources */,
 				D043C0B723894BC100B05967 /* ProductCellViewModel.swift in Sources */,
 				D08681D1239FF84600F65961 /* AnyEncodable.swift in Sources */,
+				D0A54DB7245CAFB0007A1079 /* PayDTO.swift in Sources */,
 				D07E38B024563DDC00F7E8FF /* UserRepository.swift in Sources */,
 				E3880D65245C7B1D009A12FA /* OrderShippingView.swift in Sources */,
 				D043C0C62389566600B05967 /* GenericServerResponse.swift in Sources */,

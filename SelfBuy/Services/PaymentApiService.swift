@@ -44,4 +44,18 @@ final class PaymentApiService {
             .setMethod(.DELETE)
             .send(completion: completion)
     }
+    
+    func pay(card: Card, completion: @escaping (Result<StripePaymentParams, Error>) -> Void) {
+        
+        let products: [PayProductDTO] = CartItemRepository.shared.getProducts().map {
+            return PayProductDTO(productId: $0.product._id, quantity: $0.quantity)
+        }
+        let body = PayDTO(products: products, cardId: card._id)
+        
+        return Request()
+            .setPath("/stripe/pay")
+            .setMethod(.POST)
+            .setBody(body)
+            .sendWithDecode(StripePaymentParams.self, completion: completion)
+    }
 }

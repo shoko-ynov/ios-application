@@ -67,7 +67,10 @@ final class CartViewController: UIViewController {
         checkoutBtn.rx.tap.bind { [weak self] _ in
             guard let strongSelf = self else { return }
             
-            //if strongSelf.viewModel.cartItemPublishSubject
+            if strongSelf.viewModel.numberOfItems < 1 {
+                strongSelf.showNoProductAlert()
+                return
+            }
             
             if UserRepository.shared.getUser() != nil {
                 let paymentVc = PaymentViewController(viewModel: PaymentViewModel())
@@ -93,6 +96,14 @@ final class CartViewController: UIViewController {
         }).disposed(by: viewModel.bag)
     }
     
+    func showNoProductAlert() {
+        let alert = UIAlertController(title: "Panier", message: "Votre panier est vide. Veuillez sélectionner des produits pour passer à l'étape suivante", preferredStyle: .alert)
+        
+        let closeAction = UIAlertAction(title: "Fermer", style: .cancel)
+        alert.addAction(closeAction)
+        
+        self.present(alert, animated: true)
+    }
 }
 
 extension CartViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

@@ -12,14 +12,13 @@ enum StripePayementIntentStatus: String, Decodable {
     case succeeded, requires_action, requires_payment_method
 }
 
-struct StripeNextActionUseStripeSDK: Decodable {
-    var type: String
-    var stripe_js: String
+struct StripeNextActionRedirectToURL: Decodable {
+    var url: String
 }
 
 struct StripeNextAction: Decodable {
     var type: String
-    var use_stripe_sdk: StripeNextActionUseStripeSDK?
+    var redirect_to_url: StripeNextActionRedirectToURL?
 }
 
 struct StripePaymentIntent: Decodable {

@@ -100,22 +100,6 @@ final class OrderConfirmationView: UIView {
                 strongSelf.viewModel.payOrder()
             }
         }.disposed(by: viewModel.bag)
-        
-        
-        viewModel.paymentIntent.subscribe(onNext: { paymentIntent in
-            switch paymentIntent.status {
-            case .succeeded:
-                print("succeeded")
-            case .requires_action:
-                if let threedSecureUrl = paymentIntent.next_action?.use_stripe_sdk?.stripe_js, let url = URL(string: threedSecureUrl) {
-                    DispatchQueue.main.async {
-                        UIApplication.shared.open(url)
-                    }
-                }
-            case .requires_payment_method:
-                print("fail")
-            }
-        }).disposed(by: viewModel.bag)
     }
 }
 

@@ -56,14 +56,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = TabBarService.shared.tabBarController
             window?.makeKeyAndVisible()
             
-            service.getStripePayementIntent(StripePaymentParams(paymentIntentId: paymentIntentId, clientSecret: clientSecret)) {
+            service.getStripePayementIntent(StripePaymentParams(paymentIntentId: paymentIntentId, clientSecret: clientSecret)) { [weak self] in
+                
+                guard let strongSelf = self else { return }
                 switch $0 {
                 case .success(let paymentIntent):
                     switch paymentIntent.status {
                     case .succeeded:
-                        //let payementSucceededVC =
-                        //window?.rootViewController?.present(payementSucceededVC, animated: true)
-                        print("success")
+                        DispatchQueue.main.async {
+                            let payementSucceededVC = PaymentSuccessViewController()
+                            strongSelf.window?.rootViewController?.present(payementSucceededVC, animated: true)
+                        }
                     case .requires_payment_method, .requires_action:
                         //let payementErrorVC =
                         //window?.rootViewController?.present(payementErrorVC, animated: true)

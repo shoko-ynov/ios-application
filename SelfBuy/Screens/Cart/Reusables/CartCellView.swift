@@ -40,7 +40,6 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
         
         label.textColor = .black
         label.text = "QTÉ :"
-        
         label.font = UIFont.systemFont(ofSize: 18)
         
         return label
@@ -48,9 +47,14 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
     
     private var quantityInput: UITextField = {
         let textField = UITextField()
+        
         textField.keyboardType = .numberPad
         textField.placeholder = "1"
         textField.font = UIFont.systemFont(ofSize: 18)
+        textField.textAlignment = NSTextAlignment.center
+        
+        textField.layer.cornerRadius = 5.0
+        textField.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1.00)
         
         return textField
     }()
@@ -127,7 +131,7 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
             leading: productFirstImage.trailingAnchor,
             bottom: nil,
             trailing: deletableView.container.trailingAnchor,
-            padding: .init(top: 10, left: 10, bottom: 0, right: 0)
+            padding: .init(top: 10, left: 10, bottom: 0, right: 190)
         )
         
         quantityInput.anchor(
@@ -135,8 +139,15 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
             leading: productFirstImage.trailingAnchor,
             bottom: nil,
             trailing: deletableView.container.trailingAnchor,
-            padding: .init(top: 10, left: 66, bottom: 0, right: 180)
+            padding: .init(top: 9, left: 66, bottom: 0, right: 160)
         )
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.quantityInput.frame.height))
+        quantityInput.leftView = paddingView
+        quantityInput.leftViewMode = UITextField.ViewMode.always
+        
+        quantityInput.rightView = paddingView
+        quantityInput.rightViewMode = UITextField.ViewMode.always
     }
     
     required init?(coder: NSCoder) {

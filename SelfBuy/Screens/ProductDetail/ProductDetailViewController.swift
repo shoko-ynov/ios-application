@@ -46,22 +46,16 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
         return label
     }()
     
-    private var quantityLabel: UILabel = {
-        let label = UILabel()
-        
-        label.textColor = .black
-        label.text = "Quantité :"
-        
-        label.setToBold(size: 20)
-        
-        return label
-    }()
-    
     private var quantityInput: UITextField = {
         let textField = UITextField()
+        
         textField.keyboardType = .numberPad
         textField.placeholder = "1"
-        textField.font =  UIFont.systemFont(ofSize: 20)
+        textField.text = "1"
+        textField.font =  UIFont.systemFont(ofSize: 32)
+        
+        textField.layer.cornerRadius = 5.0
+        textField.backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1.00)
         
         return textField
     }()
@@ -84,7 +78,6 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
         view.addSubview(nbPicker)
         view.addSubview(addCartBtn)
         view.addSubview(quantityInput)
-        view.addSubview(quantityLabel)
         
         productFirstImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 40, left: 0, bottom: 0, right: 0))
         productFirstImage.heightAnchor.constraint(equalToConstant: 200).isActive = true
@@ -107,9 +100,14 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
             padding: .init(top: 25, left: 0, bottom: 0, right: 0)
         )
         
-        quantityLabel.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 120, bottom: 190, right: 0))
+        quantityInput.anchor(top: descriptionLabel.bottomAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 35, left: 0, bottom: 0, right: 50))
         
-        quantityInput.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 225, bottom: 188, right: 0))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: self.quantityInput.frame.height))
+        quantityInput.leftView = paddingView
+        quantityInput.leftViewMode = UITextField.ViewMode.always
+        
+        quantityInput.rightView = paddingView
+        quantityInput.rightViewMode = UITextField.ViewMode.always
         
         addCartBtn.rx
             .tap
@@ -130,7 +128,6 @@ class ProductDetailViewController: PresentableViewController, UITextFieldDelegat
     init(viewModel: ProductDetailViewModelling) {
         self.viewModel = viewModel
         self.quantity = 1
-        
         
         super.init(nibName: nil, bundle: nil)
     }

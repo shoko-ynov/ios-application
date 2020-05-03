@@ -22,28 +22,13 @@ class LoginViewController: PresentableViewController {
     
     private var registerBtn = GhostButton(text: "Inscription")
     
-    private var emailTextField: UITextField = {
-        let input = UITextField()
-        input.placeholder = " Email"
-        input.backgroundColor = .white
-        input.layer.cornerRadius = 15
-        input.borderStyle = UITextField.BorderStyle.roundedRect
-        input.tintColor = .black
-        input.textColor = .black
-        return input
-    }()
+    private var emailTextField = StyledTextField(placeholder: "Email", keyboardType: .emailAddress)
     
     private var passwordTextField: UITextField = {
-        let password = UITextField()
-        password.placeholder = " Mot de passe"
-        password.backgroundColor = .white
-        password.isSecureTextEntry = true
-        password.layer.cornerRadius = 15
-        password.borderStyle = UITextField.BorderStyle.roundedRect
-        password.tintColor = .black
-        password.textColor = .black
+        let testField = StyledTextField(placeholder: "Mot de passe")
+        testField.isSecureTextEntry = true
         
-        return password
+        return testField
     }()
     
     let viewModel: LoginViewModel

@@ -69,15 +69,19 @@ final class CartViewController: UIViewController {
             }
             
             if UserRepository.shared.getUser() != nil {
-                let paymentVc = PaymentViewController(viewModel: PaymentViewModel())
-                strongSelf.present(paymentVc, animated: true)
+                DispatchQueue.main.async {
+                    let paymentVc = PaymentViewController(viewModel: PaymentViewModel())
+                    strongSelf.present(paymentVc, animated: true)
+                }
             } else {
                 let loginVC = LoginViewController(viewModel: LoginViewModel())
                 
                 loginVC.onDismiss = {
                     if UserRepository.shared.getUser() != nil {
-                        let paymentVc = PaymentViewController(viewModel: PaymentViewModel())
-                        strongSelf.present(paymentVc, animated: true)
+                        DispatchQueue.main.async {
+                            let paymentVc = PaymentViewController(viewModel: PaymentViewModel())
+                            strongSelf.present(paymentVc, animated: true)
+                        }
                     }
                 }
                 

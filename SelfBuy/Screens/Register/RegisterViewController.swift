@@ -64,7 +64,9 @@ class RegisterViewController: PresentableViewController {
             strongSelf.viewModel.register {
                 switch $0 {
                 case .success(_):
-                    strongSelf.dismiss(animated: true)
+                    DispatchQueue.main.async {
+                        strongSelf.dismiss(animated: true)
+                    }
                 case .failure(let error):
                     print(error)
                 }

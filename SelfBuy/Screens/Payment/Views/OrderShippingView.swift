@@ -41,77 +41,17 @@ final class OrderShippingView: UIView {
         return scrollView
     }()
     
-    var lastNameTextField: UITextField = {
-        let input = UITextField()
-        input.placeholder = " Nom *"
-        input.backgroundColor = .darkGray
-        input.layer.cornerRadius = 15
-        input.borderStyle = UITextField.BorderStyle.roundedRect
-        input.tintColor = .primary
-        input.font = UIFont.systemFont(ofSize: 15)
-        input.textColor = .black
-        return input
-    }()
+    var lastNameTextField = StyledTextField(placeholder: "Nom *")
     
-    var firstNameTextField: UITextField = {
-        let input = UITextField()
-        input.placeholder = " Prénom *"
-        input.backgroundColor = .darkGray
-        input.layer.cornerRadius = 15
-        input.borderStyle = UITextField.BorderStyle.roundedRect
-        input.tintColor = .primary
-        input.font = UIFont.systemFont(ofSize: 15)
-        input.textColor = .black
-        return input
-    }()
+    var firstNameTextField = StyledTextField(placeholder: "Prénom *")
     
-    var addressTextField: UITextField = {
-        let input = UITextField()
-        input.placeholder = " Adresse postale *"
-        input.backgroundColor = .darkGray
-        input.layer.cornerRadius = 15
-        input.borderStyle = UITextField.BorderStyle.roundedRect
-        input.tintColor = .primary
-        input.font = UIFont.systemFont(ofSize: 15)
-        input.textColor = .black
-        return input
-    }()
+    var addressTextField = StyledTextField(placeholder: "Adresse postale *")
     
-    var addressAdditionTextField: UITextField = {
-        let input = UITextField()
-        input.placeholder = " Complément d'adresse"
-        input.backgroundColor = .darkGray
-        input.layer.cornerRadius = 15
-        input.borderStyle = UITextField.BorderStyle.roundedRect
-        input.tintColor = .primary
-        input.font = UIFont.systemFont(ofSize: 15)
-        input.textColor = .black
-        return input
-    }()
+    var addressAdditionTextField = StyledTextField(placeholder: "Complément d'adresse")
     
-    var postalCodeTextField: UITextField = {
-        let input = UITextField()
-        input.placeholder = " Code postal *"
-        input.backgroundColor = .darkGray
-        input.layer.cornerRadius = 15
-        input.borderStyle = UITextField.BorderStyle.roundedRect
-        input.tintColor = .primary
-        input.font = UIFont.systemFont(ofSize: 15)
-        input.textColor = .black
-        return input
-    }()
+    var postalCodeTextField = StyledTextField(placeholder: "Code postal *")
     
-    var cityTextField: UITextField = {
-        let input = UITextField()
-        input.placeholder = " Ville *"
-        input.backgroundColor = .darkGray
-        input.layer.cornerRadius = 15
-        input.borderStyle = UITextField.BorderStyle.roundedRect
-        input.tintColor = .primary
-        input.font = UIFont.systemFont(ofSize: 15)
-        input.textColor = .black
-        return input
-    }()
+    var cityTextField = StyledTextField(placeholder: "Ville *")
     
     private var validateShippingButton = SolidButton(text: "Accéder au paiement")
     
@@ -128,24 +68,16 @@ final class OrderShippingView: UIView {
     
     
     func setupView() {
-        addSubview(shippingAddressTitle)
-        shippingAddressTitle.anchor(
-            top: topAnchor,
-            leading: leadingAnchor,
-            bottom: nil,
-            trailing: trailingAnchor,
-            padding: .init(top: 25, left: 20, bottom: 0, right: 0)
-        )
         
         addSubview(scrollView)
         scrollView.anchor(
-            top: shippingAddressTitle.bottomAnchor,
+            top: topAnchor,
             leading: leadingAnchor,
             bottom: bottomAnchor,
-            trailing: trailingAnchor
+            trailing: trailingAnchor,
+            padding: .init(top: 10, left: 0, bottom: 0, right: 0)
         )
         
-        //                scrollView.contentSize = CGSize(width: 0, height: self.scrollView.contentSize.height) // Uncomment to set height auto
         scrollView.contentSize = CGSize(width: 0, height: 100)
         scrollView.alwaysBounceVertical = true
         scrollView.contentInset = UIEdgeInsets.zero
@@ -164,6 +96,14 @@ final class OrderShippingView: UIView {
             padding: .init(top: 30, left: 0, bottom: 0, right: 0)
         )
         
+        scrollView.addSubview(shippingAddressTitle)
+        shippingAddressTitle.anchor(
+            top: scrollView.topAnchor,
+            leading: leadingAnchor,
+            bottom: nil,
+            trailing: trailingAnchor,
+            padding: .init(top: 0, left: 20, bottom: 0, right: 0)
+        )
         
         scrollView.addSubview(lastNameTextField)
         lastNameTextField.anchor(
@@ -180,7 +120,7 @@ final class OrderShippingView: UIView {
             leading: leadingAnchor,
             bottom: nil,
             trailing: trailingAnchor,
-            padding: .init(top: 30, left: 20, bottom: 0, right: 20)
+            padding: .init(top: 10, left: 20, bottom: 0, right: 20)
         )
         
         scrollView.addSubview(addressTextField)
@@ -189,7 +129,7 @@ final class OrderShippingView: UIView {
             leading: leadingAnchor,
             bottom: nil,
             trailing: trailingAnchor,
-            padding: .init(top: 30, left: 20, bottom: 0, right: 20)
+            padding: .init(top: 10, left: 20, bottom: 0, right: 20)
         )
         
         scrollView.addSubview(addressAdditionTextField)
@@ -198,7 +138,7 @@ final class OrderShippingView: UIView {
             leading: leadingAnchor,
             bottom: nil,
             trailing: trailingAnchor,
-            padding: .init(top: 30, left: 20, bottom: 0, right: 20)
+            padding: .init(top: 10, left: 20, bottom: 0, right: 20)
         )
         
         scrollView.addSubview(postalCodeTextField)
@@ -207,7 +147,7 @@ final class OrderShippingView: UIView {
             leading: leadingAnchor,
             bottom: nil,
             trailing: trailingAnchor,
-            padding: .init(top: 30, left: 20, bottom: 0, right: 20)
+            padding: .init(top: 10, left: 20, bottom: 0, right: 20)
         )
         
         scrollView.addSubview(cityTextField)
@@ -216,7 +156,7 @@ final class OrderShippingView: UIView {
             leading: leadingAnchor,
             bottom: nil,
             trailing: trailingAnchor,
-            padding: .init(top: 30, left: 20, bottom: 0, right: 20)
+            padding: .init(top: 10, left: 20, bottom: 0, right: 20)
         )
         
         scrollView.addSubview(shippingMethodTitle)

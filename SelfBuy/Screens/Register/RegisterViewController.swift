@@ -9,17 +9,7 @@
 import UIKit
 
 class RegisterViewController: PresentableViewController {
-    private var emailTextField: UITextField = {
-        let email = UITextField()
-        email.placeholder = " Email"
-        email.backgroundColor = .white
-        email.layer.cornerRadius = 15
-        email.borderStyle = UITextField.BorderStyle.roundedRect
-        email.tintColor = .black
-        email.textColor = .black
-        
-        return email
-    }()
+    private var emailTextField = StyledTextField(placeholder: "Email", keyboardType: .emailAddress)
     
     private var registerBtn = SolidButton(text: "S'inscrire")
     
@@ -31,6 +21,7 @@ class RegisterViewController: PresentableViewController {
     }()
     
     let viewModel: RegisterViewModel
+    
     init(viewModel: RegisterViewModel) {
         self.viewModel = viewModel
         

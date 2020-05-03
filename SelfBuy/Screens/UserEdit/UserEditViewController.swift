@@ -13,16 +13,7 @@ class UserEditViewController: PresentableViewController {
     
     let viewModel: UserEditViewModelling
     
-    let textField: UITextField = {
-        let input = UITextField(frame: CGRect(x: -10, y: 350, width:250, height: 50))
-        input.backgroundColor = .white
-        input.layer.cornerRadius = 15
-        input.borderStyle = UITextField.BorderStyle.roundedRect
-        input.tintColor = .black
-        input.textColor = .black
-        return input
-    }()
-    
+    let textField: UITextField = StyledTextField(placeholder: "")
     
     private var validationButton = SolidButton(text: "Valider")
     

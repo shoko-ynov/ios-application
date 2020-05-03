@@ -52,6 +52,7 @@
 		D0441D9A2455FF8A0027F9F8 /* BreadcrumbStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0441D992455FF8A0027F9F8 /* BreadcrumbStepView.swift */; };
 		D051DD50244A598200D6AC3C /* PaymentMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D051DD4F244A598200D6AC3C /* PaymentMethodViewController.swift */; };
 		D0632E04241926550010A7D9 /* InfoLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0632E03241926550010A7D9 /* InfoLine.swift */; };
+		D0703332245F5B5000402E5F /* StyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0703331245F5B5000402E5F /* StyledTextField.swift */; };
 		D0709B29239FB5E500055F20 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0709B28239FB5E500055F20 /* Request.swift */; };
 		D0719DCC238469610046EC0B /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719DCB238469610046EC0B /* UIViewExtensions.swift */; };
 		D0719DD023847DC10046EC0B /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0719DCF23847DC10046EC0B /* UIColorExtensions.swift */; };
@@ -152,6 +153,7 @@
 		D0470945244E2A540083E076 /* SolidButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidButton.swift; sourceTree = "<group>"; };
 		D051DD4F244A598200D6AC3C /* PaymentMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodViewController.swift; sourceTree = "<group>"; };
 		D0632E03241926550010A7D9 /* InfoLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoLine.swift; sourceTree = "<group>"; };
+		D0703331245F5B5000402E5F /* StyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledTextField.swift; sourceTree = "<group>"; };
 		D0709B28239FB5E500055F20 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		D0719DCB238469610046EC0B /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		D0719DCF23847DC10046EC0B /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
@@ -652,6 +654,7 @@
 				D0E3967F2452BB4D00D8E114 /* DeletableItemView.swift */,
 				D0C4DD74245F2F4400975BC8 /* SolidButton.swift */,
 				D0C4DD76245F348500975BC8 /* GhostButton.swift */,
+				D0703331245F5B5000402E5F /* StyledTextField.swift */,
 			);
 			path = Reusables;
 			sourceTree = "<group>";
@@ -862,6 +865,7 @@
 				E300E2FC242B956600D122C5 /* UserApiService.swift in Sources */,
 				B376F52B23F4357C00FD8F3A /* ApiError.swift in Sources */,
 				D0CE24A92393005B00C41ACD /* ProductDetailViewModel.swift in Sources */,
+				D0703332245F5B5000402E5F /* StyledTextField.swift in Sources */,
 				D01E86E2244D85B000C65C59 /* UserActivationDTO.swift in Sources */,
 				D07360162374A46300CD6B72 /* TabBarViewController.swift in Sources */,
 				D07BEA252455ED9200B4A053 /* FirstPaymentView.swift in Sources */,

@@ -55,7 +55,8 @@ final class ProductCellView: UICollectionViewCell, ReusableView {
             leading: contentView.leadingAnchor,
             bottom: nil,
             trailing: contentView.trailingAnchor,
-            padding: .init(top: padding.top, left: padding.left, bottom: 0, right: padding.right))
+            padding: .init(top: padding.top, left: padding.left, bottom: 0, right: padding.right),
+            size: .init(width: contentView.frame.width - padding.left - padding.right, height: productNameLabel.label.font!.lineHeight * 2))
         productFirstImage.anchor(
             top: productNameLabel.bottomAnchor,
             leading: contentView.leadingAnchor,

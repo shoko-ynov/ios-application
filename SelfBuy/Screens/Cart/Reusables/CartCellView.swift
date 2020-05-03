@@ -14,7 +14,7 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
     private let itemNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.setToBold(size: 16)
+        label.setToBold(size: 20)
         label.numberOfLines = 3
         
         return label
@@ -39,9 +39,9 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
         let label = UILabel()
         
         label.textColor = .black
-        label.text = "Quantité :"
+        label.text = "QTÉ :"
         
-        label.setToBold(size: 20)
+        label.font = UIFont.systemFont(ofSize: 18)
         
         return label
     }()
@@ -49,9 +49,8 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
     private var quantityInput: UITextField = {
         let textField = UITextField()
         textField.keyboardType = .numberPad
-        textField.layer.borderWidth = 1
         textField.placeholder = "1"
-        textField.font = UIFont.systemFont(ofSize: 20)
+        textField.font = UIFont.systemFont(ofSize: 18)
         
         return textField
     }()
@@ -86,6 +85,7 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
         deletableView.container.addSubview(itemNameLabel)
         deletableView.container.addSubview(priceLabel)
         deletableView.container.addSubview(productFirstImage)
+        deletableView.container.addSubview(quantityLabel)
         deletableView.container.addSubview(quantityInput)
         
         dismissPickerView()
@@ -122,12 +122,20 @@ class CartCellView: UICollectionViewCell, ReusableView, UITextFieldDelegate, UIP
             padding: .init(top: 10, left: 0, bottom: 0, right: 20)
         )
         
-        quantityInput.anchor(
-            top: deletableView.container.topAnchor,
-            leading: nil,
+        quantityLabel.anchor(
+            top: itemNameLabel.bottomAnchor,
+            leading: productFirstImage.trailingAnchor,
             bottom: nil,
             trailing: deletableView.container.trailingAnchor,
-            padding: UIEdgeInsets(top: 110, left: 0, bottom: 0, right: 20)
+            padding: .init(top: 10, left: 10, bottom: 0, right: 0)
+        )
+        
+        quantityInput.anchor(
+            top: itemNameLabel.bottomAnchor,
+            leading: productFirstImage.trailingAnchor,
+            bottom: nil,
+            trailing: deletableView.container.trailingAnchor,
+            padding: .init(top: 10, left: 66, bottom: 0, right: 180)
         )
     }
     

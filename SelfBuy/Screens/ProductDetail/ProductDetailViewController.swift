@@ -52,18 +52,7 @@ class ProductDetailViewController: PresentableViewController {
         return picker
     }()
     
-    private var addCartBtn: UIButton = {
-        let button:UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 250, height: 50))
-        button.layer.borderWidth = 1.0
-        button.layer.cornerRadius = 18
-        button.layer.borderColor = UIColor.primary.cgColor
-        button.layer.borderWidth = 2
-        button.setTitleColor(.primary, for: .normal)
-        button.titleLabel?.setToBold(size: 14)
-        button.setTitle("Ajouter Au Panier", for: .normal)
-        
-        return button
-    }()
+    private var addCartBtn = GhostButton(text: "Ajouter Au Panier")
     
     private func setupView() {
         view.addSubview(productFirstImage)
@@ -87,7 +76,12 @@ class ProductDetailViewController: PresentableViewController {
         
         nbPicker.anchor(top: priceLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.leadingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0))
         
-        addCartBtn.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 110, bottom: 200, right: 110))
+        addCartBtn.anchor(
+            top: priceLabel.bottomAnchor,
+            bottom: nil,
+            centerAnchor: view.centerXAnchor,
+            padding: .init(top: 25, left: 0, bottom: 0, right: 0)
+        )
         
         addCartBtn.rx
             .tap

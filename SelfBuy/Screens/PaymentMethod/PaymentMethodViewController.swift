@@ -25,16 +25,7 @@ final class PaymentMethodViewController: PresentableViewController {
         return collectionView
     }()
         
-    private var addCardButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .primary
-        button.layer.cornerRadius = 25
-        button.contentHorizontalAlignment = .left
-        button.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 0.0)
-        button.setTitle("Ajouter une carte", for: .normal)
-        
-        return button
-    }()
+    private var addCardButton = GhostButton(text: "Ajouter une carte")
     
     init(viewModel: PaymentMethodViewModelling) {
         self.viewModel = viewModel
@@ -62,16 +53,13 @@ final class PaymentMethodViewController: PresentableViewController {
         
         cardsCollectionView.delegate = self
         cardsCollectionView.dataSource = self
-        
+
         addCardButton.anchor(
             top: nil,
-            leading: nil,
-            bottom: view.bottomAnchor,
-            trailing: nil,
-            padding: .init(top: 0, left: 0, bottom: 20, right: 0),
-            size: .init(width: 250, height: 50)
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            centerAnchor: view.centerXAnchor,
+            padding: .init(top: 0, left: 0, bottom: 10, right: 0)
         )
-        addCardButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
 
         cardsCollectionView.anchor(
             top: titleLabel.bottomAnchor,

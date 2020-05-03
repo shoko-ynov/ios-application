@@ -11,14 +11,6 @@ import UIKit
 final class ProductCellView: UICollectionViewCell, ReusableView {
     
     //  MARK: - UI
-    private lazy var productCategoryLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .darkGray
-        label.setToMedium(size: 12)
-        
-        return label
-    }()
-    
     private lazy var productNameLabel: UIViewLabel = {
         let viewLabel = UIViewLabel()
         viewLabel.label.textColor = .black
@@ -52,26 +44,18 @@ final class ProductCellView: UICollectionViewCell, ReusableView {
         applyShadow()
         applyCornerRadius()
         
-        contentView.addSubview(productCategoryLabel)
         contentView.addSubview(productNameLabel)
         contentView.addSubview(productFirstImage)
         contentView.addSubview(productPriceLabel)
         
         let padding = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         
-        productCategoryLabel.anchor(
+        productNameLabel.anchor(
             top: contentView.topAnchor,
             leading: contentView.leadingAnchor,
             bottom: nil,
             trailing: contentView.trailingAnchor,
             padding: .init(top: padding.top, left: padding.left, bottom: 0, right: padding.right))
-        productNameLabel.anchor(
-            top: productCategoryLabel.bottomAnchor,
-            leading: contentView.leadingAnchor,
-            bottom: nil,
-            trailing: contentView.trailingAnchor,
-            padding: .init(top: 3, left: padding.left, bottom: 0, right: padding.right),
-            size: .init(width: contentView.frame.width - padding.left - padding.right, height: productNameLabel.label.font!.lineHeight * 2))
         productFirstImage.anchor(
             top: productNameLabel.bottomAnchor,
             leading: contentView.leadingAnchor,
@@ -94,12 +78,6 @@ final class ProductCellView: UICollectionViewCell, ReusableView {
     //  MARK: - ViewModel
     func configure(viewModel: ProductCellViewModelling) {
         productNameLabel.text = viewModel.product.name
-        
-        if let category = viewModel.product.category {
-            productCategoryLabel.text = "- \(category.uppercased())"
-        } else {
-            productCategoryLabel.text = " "
-        }
         
         if (viewModel.product.images.count > 0) {
             let url = URL(string: viewModel.product.images.first!)

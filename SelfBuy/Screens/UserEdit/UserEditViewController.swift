@@ -13,26 +13,9 @@ class UserEditViewController: PresentableViewController {
     
     let viewModel: UserEditViewModelling
     
-    let textField: UITextField = {
-        let input = UITextField(frame: CGRect(x: -10, y: 350, width:250, height: 50))
-        input.backgroundColor = .white
-        input.layer.cornerRadius = 15
-        input.borderStyle = UITextField.BorderStyle.roundedRect
-        input.tintColor = .black
-        input.textColor = .black
-        return input
-    }()
+    let textField: UITextField = StyledTextField(placeholder: "")
     
-    
-    private var validationButton: UIButton = {
-        let button:UIButton = UIButton(frame: CGRect(x: 0, y: 475, width: 250, height: 50))
-        button.backgroundColor = .primary
-        button.layer.cornerRadius = 25
-        button.layer.borderWidth = 0
-        button.setTitle("Valider", for: .normal)
-        
-        return button
-    }()
+    private var validationButton = SolidButton(text: "Valider")
     
     init(viewModel: UserEditViewModelling) {
         self.viewModel = viewModel
@@ -58,7 +41,13 @@ class UserEditViewController: PresentableViewController {
         view.addSubview(validationButton)
         
         textField.anchor(top: title.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 25, left: 15, bottom: 0, right: 15))
-        validationButton.anchor(top: textField.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 30, left: 15, bottom: 0, right: 15))
+        
+        validationButton.anchor(
+            top: textField.bottomAnchor,
+            bottom: nil,
+            centerAnchor: view.centerXAnchor,
+            padding: .init(top: 30, left: 0, bottom: 0, right: 0)
+        )
         
         validationButton.rx.tap.bind { _ in
             self.save()

@@ -20,7 +20,7 @@ class CartRecapCellView: UICollectionViewCell, ReusableView {
         return label
     }()
     
-    private let priceLabel: UILabel = {
+    private let quantityLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
         label.setToMedium(size: 15)
@@ -53,7 +53,7 @@ class CartRecapCellView: UICollectionViewCell, ReusableView {
         addSubview(view)
         
         view.addSubview(itemNameLabel)
-        view.addSubview(priceLabel)
+        view.addSubview(quantityLabel)
         view.addSubview(productFirstImage)
         
         view.anchor(
@@ -80,12 +80,12 @@ class CartRecapCellView: UICollectionViewCell, ReusableView {
             padding: UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 20)
         )
         
-        priceLabel.anchor(
+        quantityLabel.anchor(
             top: itemNameLabel.bottomAnchor,
             leading: view.leadingAnchor,
             bottom: nil,
             trailing: nil,
-            padding: .init(top: 5, left: 20, bottom: 0, right: 0)
+            padding: .init(top: 5, left: 10, bottom: 0, right: 0)
         )
     }
     
@@ -93,16 +93,15 @@ class CartRecapCellView: UICollectionViewCell, ReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with setupModel: CartCellViewModelling) {
-        viewModel = setupModel
+    func configure(cartItem: CartItem) {
         
-        let price = setupModel.cartItem.product.price * Float(setupModel.cartItem.quantity)
+        let quantity = cartItem.quantity
         
-        itemNameLabel.text = setupModel.cartItem.product.name
-        priceLabel.text = "\(price) €"
+        itemNameLabel.text = cartItem.product.name
+        quantityLabel.text = "x\(quantity)"
         
-        if (setupModel.cartItem.product.images.count > 0) {
-            let url = URL(string: setupModel.cartItem.product.images.first!)
+        if (cartItem.product.images.count > 0) {
+            let url = URL(string: cartItem.product.images.first!)
             
             if let safeUrl = url {
                 productFirstImage.load(url: safeUrl)

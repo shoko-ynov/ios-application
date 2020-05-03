@@ -15,6 +15,8 @@ final class CartRecapView: UIView {
     public var itemCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .clear
+        collectionView.translatesAutoresizingMaskIntoConstraints = true
+        collectionView.autoresizingMask = [.flexibleRightMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
         
         return collectionView
     }()
@@ -95,7 +97,13 @@ final class CartRecapView: UIView {
         itemCollectionView.dataSource = self
         itemCollectionView.alwaysBounceVertical = true
         itemCollectionView.register(CartRecapCellView.self, forCellWithReuseIdentifier: CartRecapCellView.reuseIdentifier)
-        itemCollectionView.anchor(top: viewTitle.bottomAnchor, leading: leadingAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, trailing: trailingAnchor, padding: .init(top: 10, left: 0, bottom: 80, right: 0))
+        itemCollectionView.anchor(
+            top: viewTitle.bottomAnchor,
+            leading: leadingAnchor,
+            bottom: safeAreaLayoutGuide.bottomAnchor,
+            trailing: trailingAnchor,
+            padding: .init(top: 10, left: 0, bottom: 80, right: 0)
+        )
         
         viewModel.repository.productsSubject.subscribe(onNext: { [weak self] _ in
             guard let strongSelf = self else { return }
@@ -128,7 +136,6 @@ extension CartRecapView: UICollectionViewDataSource {
 }
 
 extension CartRecapView: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = itemCollectionView.frame.width
         return CGSize.init(width: size - 30, height: 80)
@@ -137,5 +144,4 @@ extension CartRecapView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
     }
-    
 }

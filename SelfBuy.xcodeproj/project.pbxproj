@@ -500,6 +500,16 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		D0703333245F6BDD00402E5F /* OrderConfirmation */ = {
+			isa = PBXGroup;
+			children = (
+				E3880D6A245C9982009A12FA /* OrderConfirmationView.swift */,
+				E321773E245DADFE00D637A3 /* CartRecapView.swift */,
+				E3217740245DAE1100D637A3 /* ShippingRecapView.swift */,
+			);
+			path = OrderConfirmation;
+			sourceTree = "<group>";
+		};
 		D073600F2374909300CD6B72 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,9 +553,9 @@
 		D07BEA1E2455EB9800B4A053 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D0703333245F6BDD00402E5F /* OrderConfirmation */,
 				E3880D64245C7B1D009A12FA /* OrderShippingView.swift */,
 				D07BEA262455EF5500B4A053 /* SelectPaymentMethodView.swift */,
-				E3880D6A245C9982009A12FA /* OrderConfirmationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -553,8 +563,6 @@
 		D07BEA212455ECC800B4A053 /* Reusables */ = {
 			isa = PBXGroup;
 			children = (
-				E321773E245DADFE00D637A3 /* CartRecapView.swift */,
-				E3217740245DAE1100D637A3 /* ShippingRecapView.swift */,
 				D07BEA222455ECE300B4A053 /* PaymentCellView.swift */,
 				D0441D952455FE9C0027F9F8 /* PaymentBreadcrumbView.swift */,
 				D0441D992455FF8A0027F9F8 /* BreadcrumbStepView.swift */,

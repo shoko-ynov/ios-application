@@ -31,6 +31,8 @@ final class OrderConfirmationView: UIView {
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
+        
         return scrollView
     }()
     
@@ -58,22 +60,13 @@ final class OrderConfirmationView: UIView {
     
     
     func setupView() {
-        addSubview(shippingAddressTitle)
-        shippingAddressTitle.anchor(
-            top: topAnchor,
-            leading: leadingAnchor,
-            bottom: nil,
-            trailing: trailingAnchor,
-            padding: .init(top: 25, left: 20, bottom: 0, right: 0)
-        )
-        
         addSubview(scrollView)
         scrollView.anchor(
-            top: shippingAddressTitle.bottomAnchor,
+            top: topAnchor,
             leading: leadingAnchor,
             bottom: bottomAnchor,
             trailing: trailingAnchor,
-            padding: .init(top: 10, left: 0, bottom: 0, right: 0)
+            padding: .init(top: 15, left: 0, bottom: 0, right: 0)
         )
         
         scrollView.contentSize = CGSize(width: 0, height: 700)
@@ -83,13 +76,22 @@ final class OrderConfirmationView: UIView {
         scrollView.addSubview(cartRecapView)
         scrollView.addSubview(ordersRecapView)
         scrollView.addSubview(validateShippingButton)
+        scrollView.addSubview(shippingAddressTitle)
         
-        cartRecapView.anchor(
+        shippingAddressTitle.anchor(
             top: scrollView.topAnchor,
             leading: leadingAnchor,
             bottom: nil,
             trailing: trailingAnchor,
-            padding: .init(top: 0, left: 20, bottom: 0, right: 20)
+            padding: .init(top: 0, left: 0, bottom: 0, right: 0)
+        )
+        
+        cartRecapView.anchor(
+            top: shippingAddressTitle.bottomAnchor,
+            leading: leadingAnchor,
+            bottom: nil,
+            trailing: trailingAnchor,
+            padding: .init(top: 10, left: 0, bottom: 0, right: 0)
         )
         
         ordersRecapView.anchor(
@@ -97,13 +99,13 @@ final class OrderConfirmationView: UIView {
             leading: leadingAnchor,
             bottom: nil,
             trailing: trailingAnchor,
-            padding: .init(top: 20, left: 20, bottom: 0, right: 20)
+            padding: .init(top: 20, left: 0, bottom: 0, right: 0)
         )
         
         validateShippingButton.anchor(
             top: ordersRecapView.bottomAnchor,
             leading: nil,
-            bottom: nil,
+            bottom: scrollView.bottomAnchor,
             trailing: nil,
             padding: .init(top: 20, left: 0, bottom: 0, right: 0)
         )

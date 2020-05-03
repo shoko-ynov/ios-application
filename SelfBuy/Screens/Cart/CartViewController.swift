@@ -16,16 +16,7 @@ final class CartViewController: UIViewController {
         
         return collectionView
     }()
-    private var checkoutBtn: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .primary
-        button.layer.cornerRadius = 25
-        button.contentHorizontalAlignment = .left
-        button.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 0.0)
-        button.setTitle("Valider le panier", for: .normal)
-        
-        return button
-    }()
+    private var checkoutBtn = SolidButton(text: "Valider le panier")
     
     let viewModel: CartViewModelling
     
@@ -52,9 +43,14 @@ final class CartViewController: UIViewController {
         view.backgroundColor = .lightGray
         view.addSubview(itemCollectionView)
         
-        checkoutBtn.frame = CGRect(x: 0, y: self.view.frame.size.height - 160, width: 250, height:50)
-        checkoutBtn.center.x = self.view.center.x
         view.addSubview(checkoutBtn)
+        
+        checkoutBtn.anchor(
+            top: nil,
+            bottom: itemCollectionView.bottomAnchor,
+            centerAnchor: view.centerXAnchor,
+            padding: .init(top: 0, left: 0, bottom: 15, right: 0)
+        )
         
         let titleLabel = setTitleLabel("Mon panier", textColor: .white)
         

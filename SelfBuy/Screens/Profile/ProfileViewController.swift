@@ -149,10 +149,23 @@ class ProfileViewController: UIViewController {
             padding: .init(top: 40, left: 0, bottom: 20, right: 0)
         )
 
-        disconnectButton.onTapHandler = { [weak self] in
-            AuthenticationManager.removeTokens()
-            UserRepository.shared.disconnect()
-            self?.present(self!.loginVC, animated: true)
+        disconnectButton.onTapHandler = {
+            showDisconnectAlert()
+        }
+        
+        func showDisconnectAlert() {
+            let alert = UIAlertController(title: "Deconnexion", message: "Voulez-vous vraiment vous déconnecter?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Oui", style: .default, handler: { [weak self] action in
+                guard let strongSelf = self else { return }
+                AuthenticationManager.removeTokens()
+                UserRepository.shared.disconnect()
+                strongSelf.present(strongSelf.loginVC, animated: true)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Non", style: .cancel))
+            
+            self.present(alert, animated: true)
         }
     }
 }

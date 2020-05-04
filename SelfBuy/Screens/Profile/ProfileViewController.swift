@@ -154,7 +154,7 @@ class ProfileViewController: UIViewController {
         }
         
         func showDisconnectAlert() {
-            let alert = UIAlertController(title: "Deconnexion", message: "Voulez-vous vraiment vous déconnecter?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Déconnexion", message: "Voulez-vous vraiment vous déconnecter?", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Oui", style: .default, handler: { [weak self] action in
                 guard let strongSelf = self else { return }

@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController {
         profileNameLabel.text = profileName
         profileNameLabel.translatesAutoresizingMaskIntoConstraints = false
         profileNameLabel.textAlignment = .center
-        profileNameLabel.setToBold(size: 25.0)
+        profileNameLabel.setToBold(size: 24.0)
         self.view.addSubview(profileNameLabel)
         
         profileNameLabel.anchor(
@@ -65,7 +65,7 @@ class ProfileViewController: UIViewController {
         profileEmailLabel.text = profileEmail
         profileEmailLabel.translatesAutoresizingMaskIntoConstraints = false
         profileEmailLabel.textAlignment = .center
-        profileEmailLabel.setToMedium(size: 20.0)
+        profileEmailLabel.setToLight(size: 20.0)
         self.view.addSubview(profileEmailLabel)
         
         profileEmailLabel.anchor(

@@ -12,13 +12,6 @@ import RxCocoa
 
 class ProfileViewController: UIViewController {
     
-    // MARK: Temporary profile menu titles
-    let profileName = " "
-    let profileEmail = " "
-    //    let profileName = "Zakarya Tolba"
-    //    let profileEmail = "zakarya.tolba@ynov.com"
-    
-    
     let loginVC = LoginViewController(viewModel: LoginViewModel())
     var titleLabel: UILabel = UILabel()
     
@@ -47,6 +40,42 @@ class ProfileViewController: UIViewController {
     }
     
     func showView() {
+        let profileName = "\(UserRepository.shared.getUser()?.firstName ?? "") \(UserRepository.shared.getUser()?.lastName?.uppercased() ?? "")"
+        let profileEmail = "\(UserRepository.shared.getUser()?.mail ?? "")"
+        
+        // MARK: Profile name label
+        let profileNameLabel = UILabel()
+        profileNameLabel.textColor = .black
+        profileNameLabel.text = profileName
+        profileNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        profileNameLabel.textAlignment = .center
+        profileNameLabel.setToBold(size: 24.0)
+        self.view.addSubview(profileNameLabel)
+        
+        profileNameLabel.anchor(
+            top: self.view.topAnchor,
+            bottom: nil,
+            centerAnchor: view.centerXAnchor,
+            padding: .init(top: 320, left: 0, bottom: 0, right: 0)
+        )
+        
+        // MARK: Profile email label
+        let profileEmailLabel = UILabel()
+        profileEmailLabel.textColor = .black
+        profileEmailLabel.text = profileEmail
+        profileEmailLabel.translatesAutoresizingMaskIntoConstraints = false
+        profileEmailLabel.textAlignment = .center
+        profileEmailLabel.setToLight(size: 20.0)
+        self.view.addSubview(profileEmailLabel)
+        
+        profileEmailLabel.anchor(
+            top: profileNameLabel.bottomAnchor,
+            bottom: nil,
+            centerAnchor: view.centerXAnchor,
+            padding: .init(top: 10, left: 0, bottom: 0, right: 0)
+        )
+        
+        // MARK: Scroll view
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
         scrollView.anchor(
@@ -120,10 +149,23 @@ class ProfileViewController: UIViewController {
             padding: .init(top: 40, left: 0, bottom: 20, right: 0)
         )
 
-        disconnectButton.onTapHandler = { [weak self] in
-            AuthenticationManager.removeTokens()
-            UserRepository.shared.disconnect()
-            self?.present(self!.loginVC, animated: true)
+        disconnectButton.onTapHandler = {
+            showDisconnectAlert()
+        }
+        
+        func showDisconnectAlert() {
+            let alert = UIAlertController(title: "Déconnexion", message: "Voulez-vous vraiment vous déconnecter?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Oui", style: .default, handler: { [weak self] action in
+                guard let strongSelf = self else { return }
+                AuthenticationManager.removeTokens()
+                UserRepository.shared.disconnect()
+                strongSelf.present(strongSelf.loginVC, animated: true)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Non", style: .cancel))
+            
+            self.present(alert, animated: true)
         }
     }
 }
